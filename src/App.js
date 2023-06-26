@@ -15,14 +15,15 @@ import { styled } from 'styled-components';
 
 const AppContainer = styled.div`
   display: flex;
-  background-color: lightblue;
+  background-color: #F8F8F8;
   width: 100%;
   height: 100vh;
 `;
 
 const SidebarContainer = styled.div`
   min-width: 345px;
-  background-color: lightgoldenrodyellow;
+  height: 100vh;
+  margin-top: -15px;
 `;
 
 const MainContent = styled.div`
@@ -47,8 +48,8 @@ function App() {
             <Route path="/" element={<Dashboard/>}/>
             <Route path="/dashboard" element={<Dashboard/>}/>
             <Route path="/bookings" element={<Bookings/>}/>
-            <Route path="/contact" element={<Contact/>}/>
             <Route path="/rooms" element={<Rooms/>}/>
+            <Route path="/contact" element={<Contact/>}/>
             <Route path="/users" element={<Users/>}/>
             {/*<Route path="*" element ={<NotFound/>} /> */} 
           </Routes>
