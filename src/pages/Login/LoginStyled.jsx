@@ -13,7 +13,7 @@ const LoginCard = styled.div`
     display: block;
     border-radius: 8px;
     box-shadow: 0px 16px 30px #00000014;
-    padding: 3%;
+    padding: 4rem;
 `;
 
 const LogoContainer = styled.div`

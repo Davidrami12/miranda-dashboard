@@ -3,7 +3,7 @@ import { Navigate } from 'react-router';
 import { login } from "../../context/actions";
 
 import Button from '../../components/Blocks/Button';
-//import Logo from '../../components/Logo/Logo';
+import Logo from '../../assets/logo.jpg';
 import LoginContext from '../../context/contextLogin';
 
 import {
@@ -41,9 +41,10 @@ export const Login = () => {
         return (
             <LoginContainer>
                 <LoginCard>
-                    {/*<LogoContainer>
-                        <Logo />
-        </LogoContainer>*/}
+                    <LogoContainer>
+                        <img src={Logo} />
+                    </LogoContainer>
+                    <p>Enter mail <b>admin@admin.com</b> and password <b>Admin123</b> to log in</p>
                     <form>
                         <InputContainer>
                             <Input type="text" className='input-user' value={email} placeholder="e-mail" onChange={(e) => setEmail(e.target.value)}></Input>

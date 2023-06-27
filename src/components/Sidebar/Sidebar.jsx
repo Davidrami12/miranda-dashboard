@@ -41,13 +41,13 @@ export const Sidebar = () => {
         <NavContainer display={display ? "0px" : "345px" }>
             <ArrowButton onClick={displayMenu}><FaArrowsAltH className='arrow' /></ArrowButton>
             <LogoContainer>
-                <img src={Logo} />
+                <img src={Logo} alt="Logo"/>
             </LogoContainer>
             <Navigation>
               <ul>
                 <NavLink to="/">
                     <Link route="/" current={location.pathname}>
-                        <div /><AiFillHome className='icon' /><p>Dashboard</p>
+                        <div></div><AiFillHome className='icon' /><p>Dashboard</p>
                     </Link>
                 </NavLink>
                 <NavLink to="/bookings">
@@ -73,9 +73,9 @@ export const Sidebar = () => {
               </ul>
             </Navigation>
 
-            {/*<UserCard>
-                <LoguedUser user={user}></LoguedUser>
-    </UserCard>*/}
+            <UserCard>
+                {/*<LoguedUser user={user}></LoguedUser>*/}
+            </UserCard>
 
             <NavigationDescription>Travl Hotel Admin Dashboard</NavigationDescription>
             <NavigationRights>&copy; 2023 All Rights Reserved</NavigationRights>

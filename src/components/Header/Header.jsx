@@ -1,7 +1,15 @@
-import React from 'react'
-import { styled } from 'styled-components'
-import { useLocation } from 'react-router-dom'
-import { FaBars, FaRegEnvelope, FaRegBell, FaSignOutAlt } from 'react-icons/fa';
+import React, { useState, useEffect, useContext } from 'react';
+import { AiOutlineMail, AiOutlineBell } from "react-icons/ai";
+import { useLocation } from 'react-router';
+import { FiLogOut } from "react-icons/fi";
+
+import { MdLogout } from "react-icons/md";
+
+import { styled } from 'styled-components';
+
+import LoginContext from '../../context/contextLogin';
+import { logout } from '../../context/actions';
+
 
 const HeaderContainer = styled.div`
   width: 100%;
@@ -22,7 +30,7 @@ const HeaderTitle = styled.h1`
 
 const HeaderElements = styled.div`
   width: 100%;
-  padding-left: 3rem;
+  padding-left: 5rem;
   padding-right: 3rem;
   display: flex;
   align-items: center;
@@ -30,30 +38,34 @@ const HeaderElements = styled.div`
   gap: 50px;
 `;
 
-
-
 export const Header = () => {
 
-  let location = useLocation();
+    const [log, setLog] = useContext(LoginContext);
+    let location = useLocation();
 
-  const getNavBarTitle = (currentRoute) => {
-    if (!currentRoute)
-      return "Dashboard";
-    return currentRoute.toUpperCase().charAt(0) + currentRoute.slice(1);
-  }
+    const getNavBarTitle = (currentRoute) => {
+      if (!currentRoute)
+        return "Dashboard";
+      return currentRoute.toUpperCase().charAt(0) + currentRoute.slice(1);
+    }
 
-  return (
-    <HeaderContainer>
-      <HeaderElements>
-        <FaBars style={{width: '24px', height: '27px', cursor: 'pointer'}}/>
-        <HeaderTitle>
-          {getNavBarTitle(location.pathname.split('/')[1])}
-        </HeaderTitle>
-        <FaRegEnvelope style={{width: '24px', height: '27px'}} />
-        <FaRegBell style={{width: '24px', height: '27px'}} />
-        <FaSignOutAlt style={{width: '24px', height: '27px', cursor: 'pointer'}} />
-      </HeaderElements>
-      
-    </HeaderContainer>
-  )
+    const goLogin = () => {
+        setLog(logout({ auth: false, email: log.email }));
+        localStorage.setItem("login", JSON.stringify({ auth: false, email: log.email }));
+    }
+
+    return (
+        <HeaderContainer>
+            <HeaderElements>
+              <HeaderTitle>
+                {getNavBarTitle(location.pathname.split('/')[1])}
+              </HeaderTitle>
+
+              <AiOutlineMail style={{width: 30, height: 30}}/>
+              <AiOutlineBell style={{width: 30, height: 30}}/>
+              <FiLogOut onClick={goLogin} style={{width: 30, height: 30, cursor: 'pointer'}}/>
+
+            </HeaderElements>
+        </HeaderContainer>
+    );
 }
