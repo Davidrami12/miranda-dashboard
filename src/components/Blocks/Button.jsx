@@ -6,16 +6,19 @@ const StyledButton = styled.button`
         switch (props.$type) {
             case "login":
                 return css`
+                    display: block;
+                    margin: 0 auto;
                     transition: background-color 0.1s;
                     background-color: #135846;
                     color: #EBF1EF;
                     border: none;
                     border-radius: 8px;
                     font-weight: 600;
-                    width: 50%;
-                    margin-top: 25px;
+                    padding: 2rem;
+                    margin-top: 2rem;
                     &:hover{
                         background-color: #0e3f32;
+                        cursor: pointer;
                     }
                 `;
             case "contact":

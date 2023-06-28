@@ -33,11 +33,11 @@ const Input = styled.input`
     display: block;
     font-family: var(--font-poppins);
     font-size: 1.1rem;
-    border: none;
+    //border: none;
     border-bottom: 1px solid #C5C5C5;
     padding-left: 30px;
 
-    &:hover{
+    /*&:hover{
         border-bottom: 1px solid #135846;
     }
     &:hover~div .input-icon{
@@ -51,7 +51,7 @@ const Input = styled.input`
 
     &:focus~div .input-icon{
         color: #135846;
-    }
+    }*/
 `;
 
 const Icon = styled.div`

@@ -1,10 +1,10 @@
-import React, { useState, useContext } from 'react';
-import { Navigate } from 'react-router';
-import { login } from "../../context/actions";
+import React, { useState } from 'react';
+import { Navigate, useNavigate } from 'react-router';
+
 
 import Button from '../../components/Blocks/Button';
 import Logo from '../../assets/logo.jpg';
-import LoginContext from '../../context/contextLogin';
+
 
 import {
     LoginContainer,
@@ -20,49 +20,45 @@ import { FaUser } from "react-icons/fa"
 import { RiLockPasswordFill } from "react-icons/ri";
 
 export const Login = () => {
-    const [log, setLog] = useContext(LoginContext);
 
-    const [email, setEmail] = useState("admin@admin.com");
-    const [pass, setPass] = useState("admin123");
+    const navigate = useNavigate();
 
-    let emailHard = log.email || "admin@admin.com";
-    let passHard = "admin123";
+    const [email, setEmail] = useState("");
+    const [pass, setPass] = useState("");
 
-    const checkLogin = () => {
-        if (emailHard === email && passHard === pass) {
-            setLog(login({ auth: true, email: email }));
+    let emailHardcoded = "admin@admin.com";
+    let passHardcoded = "123";
+
+    const checkLogin = (e) => {
+        e.preventDefault();
+
+        if (emailHardcoded === email && passHardcoded === pass) {
             localStorage.setItem("login", JSON.stringify({ auth: true, email: email }));
+            navigate("/");
         } else {
             alert("usuario o contraseña incorrectos");
         }
     }
 
-    if (!log.auth) {
-        return (
-            <LoginContainer>
-                <LoginCard>
-                    <LogoContainer>
-                        <img src={Logo} />
-                    </LogoContainer>
-                    <p>Enter mail <b>admin@admin.com</b> and password <b>Admin123</b> to log in</p>
-                    <form>
-                        <InputContainer>
-                            <Input type="text" className='input-user' value={email} placeholder="e-mail" onChange={(e) => setEmail(e.target.value)}></Input>
-                            <Icon><FaUser className='input-icon'></FaUser></Icon>
-                        </InputContainer>
-                        <InputContainer>
-                            <Input type="password" className='input-pass' value={pass} placeholder="password" onChange={(e) => setPass(e.target.value)}></Input>
-                            <Icon><RiLockPasswordFill className='input-icon'></RiLockPasswordFill></Icon>
-                        </InputContainer>
-                        <Button type="login" text="LOGIN" click={checkLogin}></Button>
-                    </form>
-                </LoginCard>
-            </LoginContainer>
-        );
-
-    } else {
-        return (
-            <Navigate to="/"></Navigate>
-        )
-    }
+    return (
+        <LoginContainer>
+            <LoginCard>
+                <LogoContainer>
+                    <img src={Logo} />
+                </LogoContainer>
+                <p>Enter e-mail <b>admin@admin.com</b> and password <b>123</b> to log in</p>
+                <form onSubmit={(e) => {checkLogin(e)}}>
+                    <InputContainer>
+                        <Input type="text" className='input-user' placeholder="e-mail" onChange={(e) => setEmail(e.target.value)}></Input>
+                        <Icon><FaUser className='input-icon'></FaUser></Icon>
+                    </InputContainer>
+                    <InputContainer>
+                        <Input type="password" className='input-pass' placeholder="password" onChange={(e) => setPass(e.target.value)}></Input>
+                        <Icon><RiLockPasswordFill className='input-icon'></RiLockPasswordFill></Icon>
+                    </InputContainer>
+                    <Button type="login" text="LOGIN"></Button>
+                </form>
+            </LoginCard>
+        </LoginContainer>
+    );
 }

@@ -19,10 +19,10 @@ const NavContainer = styled.div`
 `;
 
 const MenuButton = styled.button`
-    transform: rotate(180deg);
+    transform: rotate(0deg);
     position: absolute;
     right: -60px;
-    top: 40px;
+    top: 45px;
     background-color: transparent;
     border: none;
 

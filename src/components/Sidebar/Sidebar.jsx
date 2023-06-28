@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
 import { NavLink, useLocation } from 'react-router-dom';
-//import LoguedUser from './LoguedUser';
+import LoguedUser from './LoguedUser';
 import Logo from '../../assets/logo.jpg'
-import { MdMenuOpen } from "react-icons/md";
 
 import {
   NavContainer,
@@ -17,10 +16,12 @@ import {
   MenuIcon
 } from "./SidebarStyled"
 
-import { BiKey } from "react-icons/bi";
+import { MdMenuOpen } from "react-icons/md";
+import { LuLayoutDashboard } from 'react-icons/lu'
+import { BiSolidContact } from 'react-icons/bi'
 import { BsCalendarCheck } from "react-icons/bs";
-import { FaUserFriends, FaArrowsAltH } from "react-icons/fa";
-import { AiFillHome, AiFillContacts, AiFillHeart } from "react-icons/ai";
+import { FaUsers } from "react-icons/fa";
+import { ImKey } from "react-icons/im"
 
 
 
@@ -55,27 +56,27 @@ export const Sidebar = () => {
           <ul>
             <NavLink to="/">
               <Link route="/" current={location.pathname}>
-                  <div></div><AiFillHome className='icon' /><p>Dashboard</p>
+                  <div/><LuLayoutDashboard className='icon' /><p>Dashboard</p>
               </Link>
             </NavLink>
             <NavLink to="/bookings">
               <Link route="/bookings" current={location.pathname}>
-                  <div /><BsCalendarCheck className='icon' /><p>Bookings</p>
+                  <div/><BsCalendarCheck className='icon' /><p>Bookings</p>
               </Link>
             </NavLink>
             <NavLink to="/rooms">
               <Link route="/rooms" current={location.pathname}>
-                  <div /><BiKey className='icon' /><p>Rooms</p>
+                  <div/><ImKey className='icon' /><p>Rooms</p>
               </Link>
             </NavLink>
             <NavLink to="/contact">
               <Link route="/contact" current={location.pathname}>
-                  <div /><AiFillContacts className='icon' /><p>Contact</p>
+                  <div/><BiSolidContact className='icon' /><p>Contact</p>
               </Link>
             </NavLink>
             <NavLink to="/users">
               <Link route="/users" current={location.pathname}>
-                  <div /><FaUserFriends className='icon' /><p>Users</p>
+                  <div/><FaUsers className='icon' /><p>Users</p>
               </Link>
             </NavLink>
           </ul>
