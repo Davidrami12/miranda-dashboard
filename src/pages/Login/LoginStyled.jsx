@@ -28,7 +28,7 @@ const InputContainer = styled.div`
 
 const Input = styled.input`
     transition: all 0.1s;
-    width: 100%;
+    width: 90%;
     margin: 30px 0;
     display: block;
     font-family: var(--font-poppins);
@@ -57,11 +57,17 @@ const Input = styled.input`
 const Icon = styled.div`
     position: absolute;
     top: 5px;
+    left: 5px;
     .input-icon{
         transition: all 0.1s;
         color: #C5C5C5;
     }
 `;
+
+const ErrorMessage = styled.span`
+    color: red;
+`;
+
 
 export {
     LoginContainer,
@@ -69,5 +75,6 @@ export {
     LogoContainer,
     InputContainer,
     Input,
-    Icon
+    Icon,
+    ErrorMessage
 };

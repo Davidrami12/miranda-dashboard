@@ -10,7 +10,8 @@ import {
     InputContainer,
     Input,
     Icon,
-    TempLog
+    TempLog,
+    ErrorMessage
 } from "./LoginStyled"
 import { FaUser } from "react-icons/fa"
 import { RiLockPasswordFill } from "react-icons/ri";
@@ -28,6 +29,7 @@ export const Login = ({ auth, setAuth }) => {
 
     const validateLogin = (e) => {
         e.preventDefault();
+        let errorMsg = document.querySelector(".error");
         if (hardCodedMail === email && hardCodedPassword === password) {
             localStorage.setItem(
                 "auth",
@@ -35,7 +37,7 @@ export const Login = ({ auth, setAuth }) => {
             );
             setAuth(true);
         } else {
-            alert("Email or password are not correct! Please try again...");
+            errorMsg.innerHTML = "Email or password are not correct. Please try again.";
         }
     };
 
@@ -51,13 +53,14 @@ export const Login = ({ auth, setAuth }) => {
                     <p>Enter e-mail <b>admin@admin.com</b> and password <b>123</b> to log in</p>
                     <form onSubmit={validateLogin}>
                         <InputContainer>
-                            <Input type="text" className='input-user' placeholder="e-mail" onChange={(e) => setEmail(e.target.value)}></Input>
+                            <Input type="email" className='input-user' placeholder="e-mail" onChange={(e) => setEmail(e.target.value)}></Input>
                             <Icon><FaUser className='input-icon'></FaUser></Icon>
                         </InputContainer>
                         <InputContainer>
                             <Input type="password" className='input-pass' placeholder="password" onChange={(e) => setPassword(e.target.value)}></Input>
                             <Icon><RiLockPasswordFill className='input-icon'></RiLockPasswordFill></Icon>
                         </InputContainer>
+                        <ErrorMessage className="error"> </ErrorMessage>
                         <Button type="login" text="LOGIN"></Button>
                     </form>
                 </LoginCard>
