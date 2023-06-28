@@ -1,11 +1,8 @@
-import React, { useState, useEffect, useContext } from 'react';
-import { useLocation } from 'react-router';
+import React, { useState, useEffect } from "react";
+import { useLocation } from "react-router";
 
 import { MdLogout, MdNotificationsNone, MdOutlineEmail } from "react-icons/md";
 import { styled } from 'styled-components';
-
-import LoginContext from '../../context/contextLogin';
-import { logout } from '../../context/actions';
 
 
 const HeaderContainer = styled.div`
@@ -35,9 +32,8 @@ const HeaderElements = styled.div`
   gap: 50px;
 `;
 
-export const Header = () => {
+export const Header = ({ setAuth }) => {
 
-    const [log, setLog] = useContext(LoginContext);
     let location = useLocation();
 
     const getNavBarTitle = (currentRoute) => {
@@ -47,9 +43,9 @@ export const Header = () => {
     }
 
     const goLogin = () => {
-        setLog(logout({ auth: false, email: log.email }));
-        localStorage.setItem("login", JSON.stringify({ auth: false, email: log.email }));
-    }
+      localStorage.removeItem("auth");
+      setAuth(false);
+    };
 
     return (
         <HeaderContainer>

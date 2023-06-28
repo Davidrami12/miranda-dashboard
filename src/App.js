@@ -1,8 +1,6 @@
 import './App.css';
-import { HashRouter, Navigate, Route, Routes } from 'react-router-dom';
-import { useReducer, useContext, useEffect, useState } from 'react';
-import { reduceLogin } from "./context/reduceLogin";
-import LoginContext from './context/contextLogin';
+import React, { useEffect, useState } from "react";
+import { BrowserRouter, Route, Routes, Navigate } from "react-router-dom";
 
 import { Dashboard } from "./pages/Dashboard/Dashboard";
 import { Bookings } from "./pages/Bookings/Bookings";
@@ -14,6 +12,8 @@ import { Sidebar } from './components/Sidebar/Sidebar';
 import { Header } from './components/Header/Header';
 import { styled } from 'styled-components';
 
+import { ProtectRoute } from "./components/ProtectedRoute ";
+
 const AppContainer = styled.div`
     display: flex;
     background-color: #F8F8F8;
@@ -24,35 +24,50 @@ const AppContainer = styled.div`
 `;
 
 function App() {
+  const [auth, setAuth] = useState(false);
+
+  useEffect(() => {
+    if (localStorage.getItem("auth")) {
+      setAuth(true);
+    }
+  }, []);
 
   return (
     <>
-      <HashRouter>
+      <BrowserRouter>
         <AppContainer>
-
-          <>
-            <Sidebar />
-          </>
+          {auth ? <Sidebar /> : <></>}
 
           <div className='window-container'>
-            <>
-              <Header />
-            </>
+            {auth ? <Header setAuth={setAuth} /> : <></>}
+
             <Routes>
-              <Route path='/login' element={<Login />} />
+              <Route
+                path="/login"
+                element={
+                  auth ? (
+                    <Navigate to="/" />
+                  ) : (
+                    <Login auth={auth} setAuth={setAuth} />
+                  )
+                }
+              />
+              <Route
+                path="/"
+                element={auth ? <Dashboard /> : <Navigate to="/login" replace />}
+              />
 
-              <Route path='/' element={<Dashboard />} />
-              <Route path='/dashboard' element={<Dashboard />} />
-              <Route path="/bookings" element={<Bookings />} />
-              <Route path='/rooms' element={<Rooms />} />
-              <Route path="/contact" element={<Contact />} />
-              <Route path="/users" element={<Users />} />
-              <Route path="*" element={<Dashboard />} />
-
+              <Route path="*" element={<ProtectRoute auth={auth} />}>
+                <Route path="bookings" element={<Bookings />} />
+                <Route path="rooms" element={<Rooms />} />
+                <Route path="contact" element={<Contact />} />
+                <Route path="users" element={<Users />} />
+              </Route>
             </Routes>
+            
           </div>
         </AppContainer>
-      </HashRouter>
+      </BrowserRouter>
     </>
   );
 }
