@@ -43,8 +43,8 @@ export const Header = ({ setAuth }) => {
     }
 
     const goLogin = () => {
-      //localStorage.removeItem("auth");
-      localStorage.setItem("auth", JSON.stringify({ auth: false }));
+      localStorage.removeItem("auth");
+      //localStorage.setItem("auth", JSON.stringify({ auth: false }));
 
       setAuth(false);
     };

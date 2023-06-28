@@ -25,16 +25,23 @@ const AppContainer = styled.div`
 
 function App() {
   const [auth, setAuth] = useState(false);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    if (localStorage.getItem("auth")) {
+    const authState = localStorage.getItem("auth");
+    if (authState) {
       setAuth(true);
     }
+    setLoading(false); // This prevents losing the current page from refreshing
   }, []);
+
+  if (loading) {
+    return null;  // Replace this with a loading spinner
+  }
 
   return (
     <>
-      <BrowserRouter>
+      <BrowserRouter basename='/miranda-dashboard'>
         <AppContainer>
           {auth ? <Sidebar /> : <></>}
 
