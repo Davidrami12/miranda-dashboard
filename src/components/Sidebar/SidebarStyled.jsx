@@ -1,4 +1,12 @@
 import styled from 'styled-components';
+import { MdMenuOpen } from 'react-icons/md';
+
+const MenuIcon = styled(MdMenuOpen)`
+
+    transform: ${props => props.rotated ? 'rotate(-180deg)' : 'none'};
+    transition: transform 0.3s ease-in-out;
+`;
+
 
 const NavContainer = styled.div`
     width: ${props => props.display};
@@ -10,22 +18,18 @@ const NavContainer = styled.div`
     position: relative;
 `;
 
-const ArrowButton = styled.button`
+const MenuButton = styled.button`
+    transform: rotate(180deg);
     position: absolute;
-    right: -50px;
-    top: 45px;
+    right: -60px;
+    top: 40px;
     background-color: transparent;
     border: none;
-    width: 25px;
-    height: 25px;
 
-    &:focus{
-        outline: none;
-    }
-
-    .arrow{
-        width: 25px;
-        height: 25px;
+    .menu{
+        width: 30px;
+        height: 30px;
+        cursor: pointer;
     }
 `;
 
@@ -61,18 +65,24 @@ overflow: hidden;
 `;
 
 const Link = styled.li`
-    width: 70%;
+    width: 100%;
     display: flex;
     height: 70px;
     border-radius: 6px;
     align-items: center;
     gap: 20px;
-    transition: all 0.2s;
+    transition: all 0.3s;
     padding: 0.5rem 0rem 0.5rem 0rem;
+    
+    p, .icon{
+        color: black;
+        transition: all 0.3s ease-in-out;
+    }
 
     &:hover p,
     &:hover .icon{
         color: #E23428;
+        
     }
 
     div{
@@ -140,12 +150,13 @@ const NavigationAuthor = styled.p`
 
 export {
     NavContainer,
-    ArrowButton,
+    MenuButton,
     LogoContainer,
     Navigation,
     UserCard,
     NavigationDescription,
     NavigationRights,
     NavigationAuthor,
-    Link
+    Link,
+    MenuIcon
 };

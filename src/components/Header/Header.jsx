@@ -1,10 +1,7 @@
 import React, { useState, useEffect, useContext } from 'react';
-import { AiOutlineMail, AiOutlineBell } from "react-icons/ai";
 import { useLocation } from 'react-router';
-import { FiLogOut } from "react-icons/fi";
 
-import { MdLogout } from "react-icons/md";
-
+import { MdLogout, MdNotificationsNone, MdOutlineEmail } from "react-icons/md";
 import { styled } from 'styled-components';
 
 import LoginContext from '../../context/contextLogin';
@@ -61,9 +58,9 @@ export const Header = () => {
                 {getNavBarTitle(location.pathname.split('/')[1])}
               </HeaderTitle>
 
-              <AiOutlineMail style={{width: 30, height: 30}}/>
-              <AiOutlineBell style={{width: 30, height: 30}}/>
-              <FiLogOut onClick={goLogin} style={{width: 30, height: 30, cursor: 'pointer'}}/>
+              <MdOutlineEmail style={{width: 30, height: 30}}/>
+              <MdNotificationsNone style={{width: 30, height: 30}}/>
+              <MdLogout onClick={goLogin} style={{width: 30, height: 30, cursor: 'pointer'}}/>
 
             </HeaderElements>
         </HeaderContainer>
