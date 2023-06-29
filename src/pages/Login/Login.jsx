@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Navigate } from "react-router-dom";
 
-import Button from '../../components/Blocks/Button';
+import Button from '../../components/StyledComponents/Button';
 import Logo from '../../assets/logo.jpg';
 import {
     LoginContainer,

@@ -32,11 +32,11 @@ function App() {
     if (authState) {
       setAuth(true);
     }
-    setLoading(false); // This prevents losing the current page from refreshing
+    setLoading(false); // Prevents losing the current page from refreshing
   }, []);
 
   if (loading) {
-    return null;  // Replace this with a loading spinner
+    return null;  // TODO: Replace this with a loading spinner
   }
 
   return (
@@ -49,8 +49,7 @@ function App() {
             {auth ? <Header setAuth={setAuth} /> : <></>}
 
             <Routes>
-              <Route
-                path="/login"
+              <Route path="/login"
                 element={
                   auth ? (
                     <Navigate to="/" />
@@ -59,8 +58,8 @@ function App() {
                   )
                 }
               />
-              <Route
-                path="/"
+
+              <Route path="/"
                 element={auth ? <Dashboard /> : <Navigate to="/login" replace />}
               />
 
