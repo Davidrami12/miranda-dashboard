@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 const KPIContainer = styled.div`
   display: flex;
-  flex-wrap: wrap;
+  //flex-wrap: wrap;
   gap: 40px;
 
 
@@ -17,14 +17,15 @@ const KPI = styled.div`
   border-radius: 12px;
   gap: 20px;
   min-width: 270px;
-  transition: all 0.2s ease 0s;
+  transition: all 0.2s;
 
   &:hover{
     transform: scale(1.02);
-    transition: all .2s;
+    transition: 0.2s;
     box-shadow: 0px 16px 30px #00000014;
 
     div:first-child{
+      transition: 0.5s;
       background-color: red;
       color: white;
     }

@@ -1,11 +1,10 @@
 import React from 'react'
-import { KPI, KPIContainer } from '../../components/Blocks/KPI'
+import { KPI, KPIContainer } from '../../components/StyledComponents/KPI'
 import { styled } from 'styled-components'
 import { MdOutlineBedroomParent, MdCalendarMonth } from "react-icons/md"
 import { RiLogoutBoxFill, RiLogoutBoxRFill } from "react-icons/ri"
 
 const DashboardContainer = styled.div`
-  background-color: lightgreen;
   padding: 50px;
   font-family: var(--font-Poppins);
   display: flex;

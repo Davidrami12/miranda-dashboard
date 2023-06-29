@@ -52,7 +52,8 @@ const LogoContainer = styled.div`
 `;
 
 const Navigation = styled.nav`
-overflow: hidden;
+    overflow: hidden;
+    margin-top: 3rem;
     ul{
         display: flex;
         flex-direction: column;
