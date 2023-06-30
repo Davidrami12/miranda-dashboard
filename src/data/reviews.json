@@ -10,21 +10,21 @@
         "archived": false
     },
     {   
-        "id": "C0002",
-        "date": "2021-05-27",
-        "customer": "Kusnaidi Anderson",
-        "email": "kanderson@gmail.com",
-        "phone": "+34 623 455 928",
+        "id": "C2342",
+        "date": "2023-05-12",
+        "customer": "Maria Telkes",
+        "email": "telkesm@gmail.com",
+        "phone": "+41 643 344 295",
         "affair": "recommendation",
         "comment": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam",
         "archived": false
     },
     {   
         "id": "C0003",
-        "date": "2021-09-05",
-        "customer": "Kusnaidi Anderson",
-        "email": "kanderson@gmail.com",
-        "phone": "+34 623 455 928",
+        "date": "2022-01-11",
+        "customer": "Johan Morales",
+        "email": "johmoral@gmail.com",
+        "phone": "+30 911 253 745",
         "affair": "recommendation",
         "comment": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam",
         "archived": false

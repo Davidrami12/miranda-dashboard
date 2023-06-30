@@ -36,9 +36,10 @@ const ReviewsContainer = styled.div`
 
   :hover{
     background-color: red;
-    background: #FFFFFF;
+    background-color: #FFFFFF;
     box-shadow: 0px 16px 30px #00000014;
   }
+  
 `;
 
 const Review = styled.div`
@@ -48,6 +49,10 @@ const Review = styled.div`
   border: 1px solid #EBEBEB;
 
   max-width: 400px;
+
+  p{
+    padding: 5px;
+  }
 `;
 
 export const Dashboard = () => {
@@ -67,7 +72,6 @@ export const Dashboard = () => {
           </div>
         </KPI>
 
-
         <KPI>
           <div className='kpi-icon'>
             <MdCalendarMonth style={{width: 30, height: 30}}/>
@@ -78,7 +82,6 @@ export const Dashboard = () => {
             <p>Scheduled Rooms</p>
           </div>
         </KPI>
-
 
         <KPI>
           <div className='kpi-icon'>
@@ -91,7 +94,6 @@ export const Dashboard = () => {
           </div>
         </KPI>
 
-
         <KPI>
           <div className='kpi-icon'>
             <RiLogoutBoxFill style={{width: 30, height: 30}}/>
@@ -102,7 +104,6 @@ export const Dashboard = () => {
             <p>Check Out</p>
           </div>
         </KPI>
-
       </KPIContainer>
       
 

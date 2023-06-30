@@ -61,8 +61,8 @@ export const Table = ({data, cols}) => {
                         {cols.map((col, i) => (
                             <td key={i} 
                                 style={ col === 'status' ? 
-                                        (fila[col] === 'active' ? {color: 'green', textTransform: 'uppercase'} : {color: 'red', textTransform: 'uppercase'}) 
-                                        : {} }>
+                                    (fila[col] === 'active' ? {color: 'green', textTransform: 'uppercase'} : {color: 'red', textTransform: 'uppercase'}) 
+                                    : {} }>
                                 {fila[col]}
                             </td>
                         ))}
