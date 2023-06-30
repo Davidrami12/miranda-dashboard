@@ -1,9 +1,11 @@
 import styled from 'styled-components';
 
 const KPIContainer = styled.div`
+  padding-bottom: 50px;
+  font-family: var(--font-Poppins);
   display: flex;
   //flex-wrap: wrap;
-  gap: 40px;
+  gap: 20px;
 
 
   

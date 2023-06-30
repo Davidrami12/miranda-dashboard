@@ -27,6 +27,7 @@ function App() {
   const [auth, setAuth] = useState(false);
   const [loading, setLoading] = useState(true);
 
+  // Load auth state from localStorage when the component mounts
   useEffect(() => {
     const authState = localStorage.getItem("auth");
     if (authState) {
@@ -49,6 +50,8 @@ function App() {
             {auth ? <Header setAuth={setAuth} /> : <></>}
 
             <Routes>
+
+              {/* If user authenticated redirect from login to Dashboard, else show Login */}
               <Route path="/login"
                 element={
                   auth ? (
@@ -59,6 +62,7 @@ function App() {
                 }
               />
 
+              {/* If user is authenticated show Dashboard, else redirect to Login */}
               <Route path="/"
                 element={auth ? <Dashboard /> : <Navigate to="/login" replace />}
               />

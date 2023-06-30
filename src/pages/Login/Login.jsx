@@ -13,9 +13,9 @@ import {
     TempLog,
     ErrorMessage
 } from "./LoginStyled"
+
 import { FaUser } from "react-icons/fa"
 import { RiLockPasswordFill } from "react-icons/ri";
-
 
 
 
@@ -31,6 +31,7 @@ export const Login = ({ auth, setAuth }) => {
         e.preventDefault();
         let errorMsg = document.querySelector(".error");
         if (hardCodedMail === email && hardCodedPassword === password) {
+            // If email and password are correct, the auth object is stored in the localStorage
             localStorage.setItem(
                 "auth",
                 JSON.stringify({ auth: true, email: email })
@@ -41,9 +42,13 @@ export const Login = ({ auth, setAuth }) => {
         }
     };
 
+    // If user is already authenticated redirected to home page
     if(auth){
         return <Navigate to="/"></Navigate>;
+    
+    // If user is not authenticated display login form
     }else{
+        
         return (
             <LoginContainer>
                 <LoginCard>
