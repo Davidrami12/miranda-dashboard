@@ -45,7 +45,7 @@ const TableStyled  = styled.table`
 `;
 
 // Componente de Tabla reutilizable
-export const Table = ({data, cols}) => {
+export const Table = ({data, cols, renderCell}) => {
     return (
         <TableStyled>
             <thead>
@@ -58,12 +58,9 @@ export const Table = ({data, cols}) => {
             <tbody>
                 {data.map((fila, i) => (
                     <tr key={i}>
-                        {cols.map((col, i) => (
-                            <td key={i} 
-                                style={ col === 'status' ? 
-                                    (fila[col] === 'active' ? {color: 'green', textTransform: 'uppercase'} : {color: 'red', textTransform: 'uppercase'}) 
-                                    : {} }>
-                                {fila[col]}
+                        {cols.map((col, j) => (
+                            <td key={j}>
+                                {renderCell(col, fila)}
                             </td>
                         ))}
                     </tr>
