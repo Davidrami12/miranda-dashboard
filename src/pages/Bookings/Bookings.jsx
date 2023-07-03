@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Table } from '../../components/StyledComponents/Table'
+import { Table } from '../../components/styled/Table'
 import bookingsData from '../../data/bookings.json'
 
 // Redux
