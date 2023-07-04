@@ -1,5 +1,5 @@
 import React from 'react'
-import { Table } from '../../components/styled/Table'
+import { Table } from '../../components/styled/Tables'
 import contactData from '../../data/rooms.json'
 
 export const Rooms = () => {
