@@ -1,6 +1,6 @@
 import React from 'react'
 import { useState } from 'react'
-import { KPI, KPIContainer } from '../../components/StyledComponents/KPI'
+import { KPI, KPIContainer } from '../../components/styled/KPI'
 import { styled } from 'styled-components'
 import { MdOutlineBedroomParent, MdCalendarMonth } from "react-icons/md"
 import { RiLogoutBoxFill, RiLogoutBoxRFill } from "react-icons/ri"

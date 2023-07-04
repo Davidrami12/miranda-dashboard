@@ -1,5 +1,5 @@
 import React from 'react'
-import { Table } from '../../components/StyledComponents/Table'
+import { Table } from '../../components/styled/Table'
 import contactData from '../../data/contact.json'
 
 export const Contact = () => {
