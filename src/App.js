@@ -15,8 +15,8 @@ import { Contact } from './pages/Contact/Contact';
 
 import { styled } from 'styled-components';
 
-import { Sidebar } from './components/Sidebar/Sidebar';
-import { Header } from './components/Header/Header';
+import { Sidebar } from './components/sidebar/Sidebar';
+import { Header } from './components/header/Header';
 import { ProtectRoute } from "./components/ProtectedRoute ";
 import Layout from "./components/Layout";
 

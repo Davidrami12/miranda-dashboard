@@ -11,5 +11,5 @@ export const store = configureStore({
     roomsReducer: sliceRooms,
     usersReducer: sliceUsers,
     contactReducer: sliceContact,
-  }
-})
+  },
+});
