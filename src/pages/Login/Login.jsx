@@ -31,7 +31,7 @@ import { RiLockPasswordFill } from "react-icons/ri";
 
 export const Login = ({ auth, setAuth }) => {
 
-    //const { login } = useLogin();
+    const { login } = useLogin();
 
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
@@ -44,12 +44,12 @@ export const Login = ({ auth, setAuth }) => {
         let errorMsg = document.querySelector(".error");
         if (hardCodedMail === email && hardCodedPassword === password) {
             // If email and password are correct, the auth object is stored in the localStorage
-            //login(email, password);
+            login(email, password);
             localStorage.setItem(
                 "auth",
                 JSON.stringify({ auth: true, email: email, password: password })
             );
-            setAuth(true);
+            //setAuth(true);
         } else {
             errorMsg.innerHTML = "Email or password are not correct. Please try again.";
         }

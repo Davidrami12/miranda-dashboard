@@ -7,10 +7,7 @@ import { useAuthContext } from "./hooks/useAuthContext";
 import { AuthContextProvider } from './context/AuthContext';
 
 import { Dashboard } from "./pages/Dashboard/Dashboard";
-import {Bookings} from "./pages/Bookings/Bookings";
-import { SingleBooking } from "./pages/Bookings/SingleBooking";
-import { EditBooking } from "./pages/Bookings/EditBooking";
-import { NewBooking } from "./pages/Bookings/NewBooking";
+import { Bookings } from "./pages/Bookings/Bookings";
 import { Rooms } from "./pages/Rooms/Rooms";
 import { Users } from "./pages/Users/Users";
 import { Login } from './pages/Login/Login';
@@ -25,56 +22,46 @@ import { ProtectRoute } from "./components/ProtectedRoute ";
 import Layout from "./components/Layout";
 
 const AppContainer = styled.div`
-    display: flex;
-    background-color: #F8F8F8;
-    .window-container{
-        width: 100%;
-        min-height: 100vh;
-    }
+  display: flex;
+  background-color: #F8F8F8;
+  .window-container{
+    width: 100%;
+    min-height: 100vh;
+  }
 `;
 
 function App() {
+  return (
+    <AuthContextProvider>
+      <AppContent />
+    </AuthContextProvider>
+  );
+}
 
-  const [auth, setAuth] = useState(false);
-  const [loading, setLoading] = useState(true);
+function AppContent() {
 
-  // Load auth state from localStorage when the component mounts
-  useEffect(() => {
-
-    const authState = localStorage.getItem("auth");
-    if (authState) {
-      setAuth(true);
-    }
-    setLoading(false); // Prevents losing the current page from refreshing
-  }, []);
-
-  if (loading) {
-    return null;  // TODO: Replace this with a loading spinner
-  }
+  const { authReady } = useAuthContext();
   
   return (
     <div>
       <BrowserRouter>
         <AppContainer>
-          {auth ? <Sidebar /> : <></>}
+          {authReady ? <Sidebar /> : <></>}
           <div className='window-container'>
-            {auth ? <Header setAuth={setAuth} /> : <></>}
+            {authReady ? <Header /> : <></>}
             <Routes>
               
-              <Route path="/login"
+              <Route
+                path="/login"
+                element={authReady ? <Navigate to="/" /> : <Login />}
+              />
+              <Route
+                path="/"
                 element={
-                  auth ? (
-                    <Navigate to="/" />
-                  ) : (
-                    <Login auth={auth} setAuth={setAuth} />
-                  )
+                  authReady ? <Dashboard /> : <Navigate replace to="/login" />
                 }
               />
-               
-              <Route path="/"
-                element={auth ? <Dashboard /> : <Navigate to="/login" replace />}
-              />
-              <Route path="*" element={<ProtectRoute auth={auth} />}>
+              <Route path="*" element={<ProtectRoute authReady={authReady} />}>
                 <Route path="bookings" element={<Bookings />} />
                 <Route path="rooms" element={<Rooms />} />
                 <Route path="contact" element={<Contact />} />

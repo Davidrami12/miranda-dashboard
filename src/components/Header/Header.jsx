@@ -4,6 +4,8 @@ import { useLocation } from "react-router";
 import { MdLogout, MdNotificationsNone, MdOutlineEmail } from "react-icons/md";
 import { styled } from 'styled-components';
 
+import { useLogout } from "../../hooks/useLogout"
+
 
 const HeaderContainer = styled.div`
   width: 100%;
@@ -32,9 +34,10 @@ const HeaderElements = styled.div`
   gap: 50px;
 `;
 
-export const Header = ({ setAuth }) => {
+export const Header = () => {
 
     let location = useLocation();
+    const { logout } = useLogout();
 
     const getNavBarTitle = (currentRoute) => {
       if (!currentRoute)
@@ -44,9 +47,10 @@ export const Header = ({ setAuth }) => {
 
     const goLogin = () => {
       localStorage.removeItem("auth");
+      logout()
       //localStorage.setItem("auth", JSON.stringify({ auth: false }));
 
-      setAuth(false);
+      //setAuth(false);
     };
 
     return (
