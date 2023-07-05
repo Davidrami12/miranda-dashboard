@@ -30,20 +30,12 @@ const AppContainer = styled.div`
   }
 `;
 
+
+
 function App() {
-  return (
-    <AuthContextProvider>
-      <AppContent />
-    </AuthContextProvider>
-  );
-}
-
-function AppContent() {
-
-  const { authReady } = useAuthContext();
+    const { authReady } = useAuthContext();
   
   return (
-    <div>
       <BrowserRouter>
         <AppContainer>
           {authReady ? <Sidebar /> : <></>}
@@ -72,8 +64,9 @@ function AppContent() {
           </div>
         </AppContainer>
       </BrowserRouter>
-    </div>
   );
 }
+
+
 
 export default App;
