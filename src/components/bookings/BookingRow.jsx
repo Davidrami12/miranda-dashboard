@@ -4,7 +4,7 @@ import { useNavigate } from "react-router";
 
 // Redux
 import { useDispatch } from "react-redux";
-import { deleteBooking } from "../../features/bookings/bookingsSlice";
+import { deleteBooking } from "../../features/bookingsSlice";
 
 // Styled Components
 import {

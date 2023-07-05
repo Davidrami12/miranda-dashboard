@@ -4,9 +4,13 @@ import { BrowserRouter, Route, Routes, Navigate } from "react-router-dom";
 
 // React Context
 import { useAuthContext } from "./hooks/useAuthContext";
+import { AuthContextProvider } from './context/AuthContext';
 
 import { Dashboard } from "./pages/Dashboard/Dashboard";
-import { Bookings } from "./pages/Bookings/Bookings";
+import {Bookings} from "./pages/Bookings/Bookings";
+import { SingleBooking } from "./pages/Bookings/SingleBooking";
+import { EditBooking } from "./pages/Bookings/EditBooking";
+import { NewBooking } from "./pages/Bookings/NewBooking";
 import { Rooms } from "./pages/Rooms/Rooms";
 import { Users } from "./pages/Users/Users";
 import { Login } from './pages/Login/Login';
@@ -30,12 +34,12 @@ const AppContainer = styled.div`
 `;
 
 function App() {
+
   const [auth, setAuth] = useState(false);
   const [loading, setLoading] = useState(true);
 
   // Load auth state from localStorage when the component mounts
   useEffect(() => {
-    const { authIsReady } = useAuthContext();
 
     const authState = localStorage.getItem("auth");
     if (authState) {
@@ -47,19 +51,16 @@ function App() {
   if (loading) {
     return null;  // TODO: Replace this with a loading spinner
   }
-
+  
   return (
-    <>
-      <BrowserRouter basename='/miranda-dashboard'>
+    <div>
+      <BrowserRouter>
         <AppContainer>
           {auth ? <Sidebar /> : <></>}
-
           <div className='window-container'>
             {auth ? <Header setAuth={setAuth} /> : <></>}
-
             <Routes>
-
-              {/* If user authenticated redirect from login to Dashboard, else show Login */}
+              
               <Route path="/login"
                 element={
                   auth ? (
@@ -69,12 +70,10 @@ function App() {
                   )
                 }
               />
-
-              {/* If user is authenticated show Dashboard, else redirect to Login */}
+               
               <Route path="/"
                 element={auth ? <Dashboard /> : <Navigate to="/login" replace />}
               />
-
               <Route path="*" element={<ProtectRoute auth={auth} />}>
                 <Route path="bookings" element={<Bookings />} />
                 <Route path="rooms" element={<Rooms />} />
@@ -86,7 +85,7 @@ function App() {
           </div>
         </AppContainer>
       </BrowserRouter>
-    </>
+    </div>
   );
 }
 

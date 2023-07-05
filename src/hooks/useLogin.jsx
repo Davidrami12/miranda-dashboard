@@ -5,11 +5,11 @@ import { useAuthContext } from "./useAuthContext";
 export const useLogin = () => {
   const { dispatch } = useAuthContext();
 
-  const login = async (userName, email) => {
+  const login = async (email, password) => {
     try {
       dispatch({
         type: "LOGIN",
-        payload: { userName: userName, email: email },
+        payload: { email: email, password: password },
       });
     } catch (err) {
       console.log(err.message);

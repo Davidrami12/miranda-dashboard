@@ -1,6 +1,9 @@
 import React, { useState } from 'react';
 import { Navigate } from "react-router-dom";
 
+// React Context
+import { useLogin } from "../../hooks/useLogin";
+
 import Button from '../../components/styled/Buttons';
 import Logo from '../../assets/logo.jpg';
 import {
@@ -10,8 +13,15 @@ import {
     InputContainer,
     Input,
     Icon,
-    TempLog,
-    ErrorMessage
+    ErrorMessage,
+    LoginButton,
+    Description,
+    RadioInput,
+    RadioLabel,
+    RadioDescription,
+    InputSubmit,
+    FormTitle,
+    InputCancel,
 } from "./LoginStyled"
 
 import { FaUser } from "react-icons/fa"
@@ -20,6 +30,8 @@ import { RiLockPasswordFill } from "react-icons/ri";
 
 
 export const Login = ({ auth, setAuth }) => {
+
+    //const { login } = useLogin();
 
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
@@ -32,9 +44,10 @@ export const Login = ({ auth, setAuth }) => {
         let errorMsg = document.querySelector(".error");
         if (hardCodedMail === email && hardCodedPassword === password) {
             // If email and password are correct, the auth object is stored in the localStorage
+            //login(email, password);
             localStorage.setItem(
                 "auth",
-                JSON.stringify({ auth: true, email: email })
+                JSON.stringify({ auth: true, email: email, password: password })
             );
             setAuth(true);
         } else {
