@@ -33,7 +33,7 @@ const Bookings = () => {
   );
 
   const [bookings, setBookings] = useState(bookingsList);
-  const [openModal, setOpenModal] = useState(false);
+  
   const [name, setName] = useState("");
   const [request, setRequest] = useState("");
   const [currentBookings, setCurrentBookings] = useState([]);
@@ -56,19 +56,12 @@ const Bookings = () => {
     setBookings(bookingsList.filter((booking) => booking.status === type));
   };
 
-  const handleOpenModal = (name, request, e) => {
-    if (e && e.stopPropagation) e.stopPropagation();
-    setOpenModal(true);
-    setName(name);
-    setRequest(request);
-  };
-
   // Variables for the pagination component
   const [currentPage, setCurrentPage] = useState(1);
   const [bookingsPerPage] = useState(10);
   const indexOfLastImage = currentPage * bookingsPerPage;
   const indexOfFirstImage = indexOfLastImage - bookingsPerPage;
-  
+
   // Setting the current displayed images
   useEffect(() => {
     setCurrentBookings(bookings.slice(indexOfFirstImage, indexOfLastImage));
@@ -127,7 +120,7 @@ const Bookings = () => {
                       index={index}
                       booking={booking}
                       number={booking.id}
-                      handleOpenModal={handleOpenModal}
+                      
                     />
                   ))}
               </tbody>

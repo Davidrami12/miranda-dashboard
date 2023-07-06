@@ -1,34 +1,44 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { fetchData } from "./fetchData";
 
+const addDelay = (promise, delay) => {
+  return new Promise((resolve) => {
+    setTimeout(() => {
+      resolve(promise);
+    }, delay);
+  });
+};
+
 export const getDataBookings = createAsyncThunk(
   "bookings/fetchBookings",
-  async () => {
-    return await fetchData("Bookings");
+  () => {
+    return addDelay(fetchData("Bookings"), 200);
   }
 );
+
 export const getBooking = createAsyncThunk(
   "booking/GetBookingDetails",
   async (idBooking) => {
-    return await idBooking;
+    return await addDelay(idBooking, 200);
   }
 );
+
 export const createNewBooking = createAsyncThunk(
   "bookings/CreateBooking",
   async (newBooking) => {
-    return await newBooking;
+    return await addDelay(newBooking, 200);
   }
 );
 export const editBooking = createAsyncThunk(
   "bookings/EditBooking",
   async (idBooking) => {
-    return await idBooking;
+    return await addDelay(idBooking, 200);
   }
 );
 export const deleteBooking = createAsyncThunk(
   "bookings/DeleteBooking",
   async (bookingID) => {
-    return await bookingID;
+    return await addDelay(bookingID, 200);;
   }
 );
 
@@ -82,14 +92,7 @@ export const bookingsSlice = createSlice({
       );
     });
 
-    builder.addCase(editBooking.fulfilled, (state, action) => {
-      state.bookingsList = state.bookingsList.map((booking) => {
-        return booking.bookingID === action.payload.bookingID
-          ? action.payload
-          : booking;
-      });
-      state.singleBooking = null;
-    });
+    
   },
 });
 

@@ -14,6 +14,6 @@ export const fetchData = (query) => {
     case "Reviews":
       return reviews;
     default:
-      return "";
+      console.log("Sorry, no data found");
   }
 };
