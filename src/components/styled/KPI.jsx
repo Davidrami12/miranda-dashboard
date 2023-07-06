@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+/* import styled from 'styled-components';
 
 const KPIContainer = styled.div`
   padding-bottom: 50px;
@@ -51,4 +51,4 @@ const KPI = styled.div`
 export {
   KPI,
   KPIContainer
-};
+}; */

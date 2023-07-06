@@ -1,14 +1,21 @@
 import React from 'react'
 import { useState } from 'react'
-import { KPI, KPIContainer } from '../../components/styled/KPI'
+//import { KPI, KPIContainer } from '../../components/styled/KPI'
 import { styled } from 'styled-components'
 import { MdOutlineBedroomParent, MdCalendarMonth } from "react-icons/md"
 import { RiLogoutBoxFill, RiLogoutBoxRFill } from "react-icons/ri"
 import reviews from '../../data/reviews.json'
 
-const DashboardContainer = styled.div`
+// Styled Components
+import {
+  DashboardContainer,
+  KPI,
+  KPIContainer
+} from "./DashboardStyled";
+
+/* const DashboardContainer = styled.div`
   margin: 30px;
-`;
+`;*/
 
 const ReviewsBox = styled.div`
   padding: 40px;
@@ -23,7 +30,7 @@ const ReviewsBox = styled.div`
     color: #393939;
     margin-bottom: 25px;
   }
-`;
+`; 
 
 const ReviewsContainer = styled.div`
   display: flex;
@@ -55,56 +62,48 @@ const Review = styled.div`
   }
 `;
 
-export const Dashboard = () => {
 
+
+export const Dashboard = () => {
 
   return (
     <DashboardContainer>
-      <KPIContainer>
-        <KPI>
-          <div className='kpi-icon'>
-            <MdOutlineBedroomParent style={{width: 30, height: 30}}/>
-          </div>
-          
-          <div className='kpi-text'>
+      <KPI>
+        <KPIContainer>
+          <MdOutlineBedroomParent style={{width: 30, height: 30}} className='svg'/>
+          <div>
             <h2>8,461</h2>
             <p>New Booking</p>
           </div>
-        </KPI>
+        </KPIContainer>
 
-        <KPI>
-          <div className='kpi-icon'>
-            <MdCalendarMonth style={{width: 30, height: 30}}/>
-          </div>
+        <KPIContainer>
+          <MdCalendarMonth style={{width: 30, height: 30}}/>
           
-          <div className='kpi-text'>
+          <div>
             <h2>963</h2>
             <p>Scheduled Rooms</p>
           </div>
-        </KPI>
+        </KPIContainer>
 
-        <KPI>
-          <div className='kpi-icon'>
-            <RiLogoutBoxRFill style={{width: 30, height: 30}}/>
-          </div>
+        <KPIContainer>
+          <RiLogoutBoxRFill style={{width: 30, height: 30}}/>
           
-          <div className='kpi-text'>
+          <div>
             <h2>753</h2>
             <p>Check In</p>
           </div>
-        </KPI>
+        </KPIContainer>
 
-        <KPI>
-          <div className='kpi-icon'>
-            <RiLogoutBoxFill style={{width: 30, height: 30}}/>
-          </div>
+        <KPIContainer>
+          <RiLogoutBoxFill style={{width: 30, height: 30}}/>
           
-          <div className='kpi-text'>
+          <div>
             <h2>516</h2>
             <p>Check Out</p>
           </div>
-        </KPI>
-      </KPIContainer>
+        </KPIContainer>
+      </KPI>
       
 
       <ReviewsBox>

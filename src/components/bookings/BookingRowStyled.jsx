@@ -17,10 +17,10 @@ const GuestContainer = styled.div`
 
   img {
     border-radius: 8px;
-    width: 4.5rem;
-    min-width: 4.5rem;
-    height: 4.5rem;
-    min-height: 4.5rem;
+    width: 7rem;
+    min-width: 7rem;
+    height: 7rem;
+    min-height: 7rem;
     object-fit: cover;
   }
 `;
@@ -41,26 +41,25 @@ const BookingID = styled.p`
 `;
 
 const DataContainer = styled.td`
-  vertical-align: top;
+  vertical-align: middle;
 
   p {
     font-family: var(--font-poppins);
     color: #393939;
     font-size: 1.6rem;
     max-width: 30rem;
-    padding-left: 4rem;
+    padding: 3rem 0rem 3rem 4rem;
   }
 `;
 
 const DataContainerButton = styled.td`
-  vertical-align: top;
+  vertical-align: middle;
   padding-right: 30px;
 
   button {
     background-color: transparent;
     border: none;
     margin-left: 60px;
-    margin-top: 15px;
     width: 24px;
     height: 24px;
     cursor: pointer;
@@ -115,8 +114,8 @@ const Status = styled.p`
         return css`
           background-color: rgba(38, 166, 91, 0.5);
           font-family: var(--font-poppins);
-          color: #393939;
-          font-size: 1rem;
+          color: green;
+          font-size: 1.2rem;
           font-weight: 600;
           letter-spacing: 0.05rem;
           transition: background-color 0.3s;
@@ -128,8 +127,8 @@ const Status = styled.p`
         return css`
           background-color: rgba(236, 100, 75, 0.5);
           font-family: var(--font-poppins);
-          color: #393939;
-          font-size: 1rem;
+          color: red;
+          font-size: 1.2rem;
           font-weight: 600;
           letter-spacing: 0.05rem;
           transition: background-color 0.3s;
@@ -139,10 +138,10 @@ const Status = styled.p`
         `;
       case "In Progress":
         return css`
-          background-color: rgba(254, 241, 96, 0.5);
+          background-color: rgba(255, 236, 29, 0.5);
           font-family: var(--font-poppins);
-          color: #393939;
-          font-size: 1rem;
+          color: orange;
+          font-size: 1.2rem;
           font-weight: 600;
           letter-spacing: 0.05rem;
           transition: background-color 0.3s;

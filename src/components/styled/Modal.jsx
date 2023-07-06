@@ -34,7 +34,7 @@ const ModalCard = styled.div`
   p {
     font-family: var(--font-poppins);
     color: #799283;
-    font-size: 1.6rem;
+    font-size: 1rem;
     font-weight: 600;
     padding: 0 4rem;
   }

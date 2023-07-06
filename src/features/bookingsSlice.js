@@ -1,25 +1,34 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { fetchData } from "./fetchData";
 
-const addDelay = (promise, delay) => {
-  return new Promise((resolve) => {
-    setTimeout(() => {
-      resolve(promise);
-    }, delay);
-  });
-};
-
 export const getDataBookings = createAsyncThunk(
   "bookings/fetchBookings",
-  () => {
-    return addDelay(fetchData("Bookings"), 200);
+  async () => {
+    return await fetchData("Bookings");
   }
 );
-
 export const getBooking = createAsyncThunk(
   "booking/GetBookingDetails",
   async (idBooking) => {
-    return await addDelay(idBooking, 200);
+    return await idBooking;
+  }
+);
+export const createNewBooking = createAsyncThunk(
+  "bookings/CreateBooking",
+  async (newBooking) => {
+    return await newBooking;
+  }
+);
+export const editBooking = createAsyncThunk(
+  "bookings/EditBooking",
+  async (idBooking) => {
+    return await idBooking;
+  }
+);
+export const deleteBooking = createAsyncThunk(
+  "bookings/DeleteBooking",
+  async (bookingID) => {
+    return await bookingID;
   }
 );
 
@@ -44,7 +53,7 @@ export const bookingsSlice = createSlice({
       })
       .addCase(getDataBookings.rejected, (state) => {
         state.status = "failed";
-        console.error("Not possible to fetch bookings");
+        console.error("Not possible to fetch the bookings");
       });
 
     builder
@@ -60,8 +69,27 @@ export const bookingsSlice = createSlice({
       })
       .addCase(getBooking.rejected, (state) => {
         state.singleBookingStatus = "failed";
-        console.error("Not possible to fetch booking");
+        console.error("Not possible to fetch the booking");
       });
+
+    builder.addCase(createNewBooking.fulfilled, (state, action) => {
+      state.bookingsList = [...state.bookingsList, action.payload];
+    });
+
+    builder.addCase(deleteBooking.fulfilled, (state, action) => {
+      state.bookingsList = state.bookingsList.filter(
+        (booking) => booking.bookingID !== action.payload
+      );
+    });
+
+    builder.addCase(editBooking.fulfilled, (state, action) => {
+      state.bookingsList = state.bookingsList.map((booking) => {
+        return booking.bookingID === action.payload.bookingID
+          ? action.payload
+          : booking;
+      });
+      state.singleBooking = null;
+    });
   },
 });
 

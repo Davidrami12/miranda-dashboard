@@ -18,6 +18,7 @@ const HeaderContainer = styled.div`
 `;
 
 const HeaderTitle = styled.h1`
+  padding-left: 30px;
   font-size: 28px;
   font: normal normal 600 28px/42px Poppins;
   font-weight: 600;
