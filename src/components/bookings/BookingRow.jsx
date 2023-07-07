@@ -89,7 +89,7 @@ export const BookingRow = ({ booking, handleOpenModal }) => {
             width="30"
             viewBox="0 0 48 48"
             onClick={(e) => {
-              // With this check I avoid the parents event listener to be fired when the child event listener should be fired
+              // avoid the parents event listener to be fired when the child event listener should be fired
               if (e && e.stopPropagation) e.stopPropagation();
               setShowOptions(!showOptions);
             }}
