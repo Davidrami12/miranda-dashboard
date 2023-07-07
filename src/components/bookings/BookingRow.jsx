@@ -30,21 +30,19 @@ export const BookingRow = ({ booking, handleOpenModal }) => {
   const goToSingleBooking = (id) => {
     navigate("/bookings/" + id);
   };
+
   const editSingleBooking = (e, bookingID) => {
     e.preventDefault();
     navigate("/editBooking/" + bookingID);
   };
+
   const deleteCurrentBooking = (e, bookingID) => {
     e.preventDefault();
     dispatch(deleteBooking(bookingID));
   };
 
   return (
-    <Row
-      onClick={() => {
-        goToSingleBooking(booking.bookingID);
-      }}
-    >
+    <Row onClick={() => { goToSingleBooking(booking.bookingID) }}>
       <td>
         <GuestContainer>
           <img

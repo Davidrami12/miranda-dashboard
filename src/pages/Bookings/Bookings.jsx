@@ -35,8 +35,10 @@ const Bookings = () => {
   const [bookings, setBookings] = useState(bookingsList);
   const [currentBookings, setCurrentBookings] = useState([]);
 
+  // useEffect hook runs whenever 'bookingsList' or 'dispatch' changes
   useEffect(() => {
     if (bookingsList.length === 0) {
+      // Check if there is no booking data, dispatch the Redux action to fetch booking data
       dispatch(getDataBookings());
     }
     setBookings(bookingsList);
@@ -50,16 +52,17 @@ const Bookings = () => {
     setBookings(bookingsList.filter((booking) => booking.status === type));
   };
 
-  // Variables for the pagination component
   const [currentPage, setCurrentPage] = useState(1);
-  const [bookingsPerPage] = useState(10);
+  const [bookingsPerPage] = useState(5);
   const indexOfLastImage = currentPage * bookingsPerPage;
   const indexOfFirstImage = indexOfLastImage - bookingsPerPage;
-
-  // Setting the current displayed images
+  
+  // useEffect hook runs whenever 'bookings', 'indexOfFirstImage' or 'indexOfLastImage' changes
   useEffect(() => {
     setCurrentBookings(bookings.slice(indexOfFirstImage, indexOfLastImage));
   }, [bookings, indexOfFirstImage, indexOfLastImage]);
+
+  const nPages = Math.ceil(bookings.length / bookingsPerPage);
 
   return (
     <>
@@ -119,7 +122,16 @@ const Bookings = () => {
               </tbody>
             </Table>
           </Container>
-          
+
+          <Pagination
+            nPages={nPages}
+            currentPage={currentPage}
+            setCurrentPage={setCurrentPage}
+            dataDisplayed={"bookings"}
+            total={bookings.length}
+            indexOfFirstImage={indexOfFirstImage}
+            indexOfLastImage={indexOfLastImage}
+          />
         </>
       )}
     </>

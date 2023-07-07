@@ -17,7 +17,7 @@ const Ul = styled.ul`
 list-style: none;
 display: inline-flex;
 width: 100%;
-justify-content: center;
+justify-content: end;
 `;
 
 const LiNext = styled.li``;

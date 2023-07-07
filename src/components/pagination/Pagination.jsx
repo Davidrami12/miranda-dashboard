@@ -12,20 +12,21 @@ import {
   LiPageBtn,
 } from "./PaginationStyled";
 
-// Component that creates a pagination bar. Each page contains 10 elements.
 const Pagination = ({
+  // props for handling pagination
   nPages,
   currentPage,
   setCurrentPage,
   dataDisplayed,
-  totalRooms,
+  total,
   indexOfLastImage,
   indexOfFirstImage,
 }) => {
-  // Creates an array that holds all the page numbers from 1 to the total number of pages (this variable coming from the parent component)
+
+  // Creating an array of page numbers from 1 to total number of pages
   const pageNumbers = [...Array(nPages + 1).keys()].slice(1);
 
-  // Goes to next or prev page if the user is not at the last page or first page respectively
+  // next / previous page if user is not at the last page or first page respectively
   const nextPage = () => {
     if (currentPage !== nPages) setCurrentPage(currentPage + 1);
   };
@@ -35,11 +36,11 @@ const Pagination = ({
 
   return (
     <Nav aria-label="Page navigation example relative ">
-      {/* Shows the current elements (rooms, bookings, etc) that are currently been displayed */}
+      {/* Shows the current elements that are being displayed */}
       <Text>
         Showing {dataDisplayed} {indexOfFirstImage} to{" "}
-        {indexOfLastImage > totalRooms ? totalRooms : indexOfLastImage} from a
-        total of {totalRooms} {dataDisplayed}
+        {indexOfLastImage > total ? total : indexOfLastImage} from a
+        total of {total} {dataDisplayed}
       </Text>
       <Ul>
         <LiNext>
@@ -47,7 +48,9 @@ const Pagination = ({
             <span>Prev</span>
           </LiNextBtn>
         </LiNext>
-        {/* Creating a button with the number of the page for each page */}
+
+
+        {/* Creating a button for each page number */}
         {pageNumbers.map((pgNumber) => (
           <LiPageNumber key={pgNumber}>
             <LiPageBtn
@@ -60,6 +63,7 @@ const Pagination = ({
             </LiPageBtn>
           </LiPageNumber>
         ))}
+
 
         <LiNext>
           <LiNextBtn onClick={nextPage} style={{ marginLeft: 20 }}>
