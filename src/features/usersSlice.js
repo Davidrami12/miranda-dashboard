@@ -15,12 +15,11 @@ export const getDataUsers = createAsyncThunk(
     return await addDelay(fetchData("Users"), 200);
 });
 
-
 export const getUser = createAsyncThunk(
   "user/GetUserDetails", 
   async (id) => {
     return await id;
-  });
+});
 
 export const createNewUser = createAsyncThunk(
   "users/CreateUser",

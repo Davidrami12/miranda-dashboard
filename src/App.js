@@ -9,7 +9,7 @@ import { AuthContextProvider } from './context/AuthContext';
 import { Dashboard } from "./pages/Dashboard/Dashboard";
 import  Bookings from "./pages/Bookings/Bookings";
 import { Rooms } from "./pages/Rooms/Rooms";
-import { Users } from "./pages/Users/Users";
+import Users from "./pages/Users/Users";
 import { Login } from './pages/Login/Login';
 import { Contact } from './pages/Contact/Contact';
 

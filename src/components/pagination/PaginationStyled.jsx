@@ -11,6 +11,7 @@ const Text = styled.p`
   font-family: var(--font-poppins);
   font-size: 1.6rem;
   color: #393939;
+  width: 100%;
 `;
 
 const Ul = styled.ul`
@@ -23,6 +24,7 @@ justify-content: end;
 const LiNext = styled.li``;
 
 const LiNextBtn = styled.button`
+  cursor: pointer;
   display: block;
   padding: 1.5rem 3rem;
   color: #135846;
@@ -33,9 +35,9 @@ const LiNextBtn = styled.button`
   font-size: 1.6rem;
   transition: all 0.3s;
   :hover {
-    background-color: #135846;
-    opacity: 0.5;
-    color: white;
+    //background-color: #135846;
+    //opacity: 0.5;
+    //color: white;
   }
   svg {
     height: 2rem;

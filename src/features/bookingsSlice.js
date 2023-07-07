@@ -11,7 +11,7 @@ const addDelay = (promise, delay) => {
 
 export const getDataBookings = createAsyncThunk(
   "bookings/fetchBookings",
-  async() => {
+  async () => {
     return await addDelay(fetchData("Bookings"), 200);
   }
 );
