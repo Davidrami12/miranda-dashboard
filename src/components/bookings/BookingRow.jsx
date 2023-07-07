@@ -19,7 +19,8 @@ import {
   DropDown,
 } from "./BookingRowStyled.jsx";
 
-// Component that creates a table row for the bookings table
+
+
 export const BookingRow = ({ booking, handleOpenModal }) => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -47,11 +48,7 @@ export const BookingRow = ({ booking, handleOpenModal }) => {
       <td>
         <GuestContainer>
           <img
-            src={
-              booking.userPicture === ""
-                ? "https://corporate.bestbuy.com/wp-content/uploads/2022/06/Image-Portrait-Placeholder.jpg"
-                : booking.userPicture
-            }
+            src={booking.userPicture}
             alt="User portrait"
           />
           <div>

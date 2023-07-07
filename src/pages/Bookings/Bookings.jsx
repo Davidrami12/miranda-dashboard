@@ -22,28 +22,22 @@ import { CreateButton } from "../../components/styled/Buttons";
 
 // Components
 import { BookingRow } from "../../components/bookings/BookingRow";
-import { Modal } from "../../components/styled/Modal";
 import { Pagination } from "../../components/pagination/Pagination";
 
-// Component that creates a table and add a row for each item in the data base
+
 const Bookings = () => {
+
   const dispatch = useDispatch();
   const { bookingsList, status } = useSelector(
     (state) => state.bookingsReducer
   );
 
   const [bookings, setBookings] = useState(bookingsList);
-  
-  const [name, setName] = useState("");
-  const [request, setRequest] = useState("");
   const [currentBookings, setCurrentBookings] = useState([]);
 
-  // Faking a delay on data fetch
   useEffect(() => {
     if (bookingsList.length === 0) {
-      setTimeout(() => {
-        dispatch(getDataBookings());
-      }, 1000);
+      dispatch(getDataBookings());
     }
     setBookings(bookingsList);
   }, [bookingsList, dispatch]);
@@ -71,7 +65,7 @@ const Bookings = () => {
     <>
       <TableActions>
         <TableFilters>
-          <FilterButton onClick={getAllBookings}>
+          <FilterButton onClick={() => getAllBookings()}>
             All Bookings
           </FilterButton>
           <FilterButton onClick={() => filterByType("Check In")}>
@@ -120,12 +114,12 @@ const Bookings = () => {
                       index={index}
                       booking={booking}
                       number={booking.id}
-                      
                     />
                   ))}
               </tbody>
             </Table>
           </Container>
+          
         </>
       )}
     </>

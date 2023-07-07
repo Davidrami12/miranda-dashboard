@@ -11,8 +11,8 @@ const addDelay = (promise, delay) => {
 
 export const getDataBookings = createAsyncThunk(
   "bookings/fetchBookings",
-  () => {
-    return addDelay(fetchData("Bookings"), 200);
+  async() => {
+    return await addDelay(fetchData("Bookings"), 200);
   }
 );
 
@@ -81,10 +81,6 @@ export const bookingsSlice = createSlice({
         state.singleBookingStatus = "failed";
         console.error("Not possible to fetch the booking");
       });
-
-    builder.addCase(createNewBooking.fulfilled, (state, action) => {
-      state.bookingsList = [...state.bookingsList, action.payload];
-    });
 
     builder.addCase(deleteBooking.fulfilled, (state, action) => {
       state.bookingsList = state.bookingsList.filter(
