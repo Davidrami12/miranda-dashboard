@@ -26,8 +26,11 @@ import { Pagination } from "../../components/pagination/Pagination";
 
 // Component that creates a table and add a row for each item in the data base
 const Users = () => {
+  
   const dispatch = useDispatch();
-  const { usersList, status } = useSelector((state) => state.usersReducer);
+  const { usersList, status } = useSelector(
+    (state) => state.usersReducer
+  );
 
   const [users, setUsers] = useState(usersList);
   const [activeFilter, setActiveFilter] = useState("Start date");
@@ -36,9 +39,9 @@ const Users = () => {
   // Faking a delay on data fetch
   useEffect(() => {
     if (usersList.length === 0) {
-      setTimeout(() => {
+      
         dispatch(getDataUsers());
-      }, 1000);
+     
     }
     setUsers(usersList);
   }, [usersList, dispatch]);
