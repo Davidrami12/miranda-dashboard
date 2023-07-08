@@ -2,7 +2,7 @@
 import styled from "styled-components";
 
 // This makes the whole page a flex container. This makes possible that the sidebar appears and takes the space it needs
-const Layout = styled.div`
+const AppContainer = styled.div`
   display: flex;
   background-color: #f8f8f8;
   width: fit-content;
@@ -14,4 +14,8 @@ const Layout = styled.div`
   }
 `;
 
-export default Layout;
+const WindowContent = styled.div`
+  width: 100%;
+`;
+
+export { AppContainer, WindowContent };

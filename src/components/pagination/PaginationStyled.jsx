@@ -8,6 +8,7 @@ const Nav = styled.nav`
 `;
 
 const Text = styled.p`
+  margin-left: 20px;
   font-family: var(--font-poppins);
   font-size: 1.6rem;
   color: #393939;

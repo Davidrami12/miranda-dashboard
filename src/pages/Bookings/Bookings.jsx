@@ -25,7 +25,7 @@ import { BookingRow } from "../../components/bookings/BookingRow";
 import { Pagination } from "../../components/pagination/Pagination";
 
 
-const Bookings = () => {
+export const Bookings = () => {
 
   const dispatch = useDispatch();
   const { bookingsList, status } = useSelector(
@@ -137,5 +137,3 @@ const Bookings = () => {
     </>
   );
 };
-
-export default Bookings;

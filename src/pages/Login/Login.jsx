@@ -68,7 +68,9 @@ export const Login = ({ auth, setAuth }) => {
                     <LogoContainer>
                         <img src={Logo} alt="Logo"/>
                     </LogoContainer>
-                    <p>Enter e-mail <b>admin@admin.com</b> and password <b>123</b> to log in</p>
+                    <hr></hr>
+                    <p>This is a Dashboard for admin users in Miranda Hotel. </p>
+                    <p>Please enter e-mail <b>admin@admin.com</b> and password <b>123</b> to log in</p>
                     <form onSubmit={validateLogin}>
                         <InputContainer>
                             <Input type="email" className='input-user' placeholder="e-mail" onChange={(e) => setEmail(e.target.value)}></Input>

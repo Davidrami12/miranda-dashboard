@@ -24,8 +24,7 @@ import { CreateButton } from "../../components/styled/Buttons";
 import { UserRow } from "../../components/users/UserRow";
 import { Pagination } from "../../components/pagination/Pagination";
 
-// Component that creates a table and add a row for each item in the data base
-const Users = () => {
+export const Users = () => {
   
   const dispatch = useDispatch();
   const { usersList, status } = useSelector(
@@ -36,14 +35,11 @@ const Users = () => {
   const [activeFilter, setActiveFilter] = useState("Start date");
   const [currentUsers, setCurrentUsers] = useState([]);
 
-  // Faking a delay on data fetch
   useEffect(() => {
-    if (usersList.length === 0) {
-      
-        dispatch(getDataUsers());
-     
-    }
-    setUsers(usersList);
+  if (usersList.length === 0) {
+    dispatch(getDataUsers());
+  }
+  setUsers(usersList);
   }, [usersList, dispatch]);
 
   const getAllUsers = () => {
@@ -90,14 +86,14 @@ const Users = () => {
   // Variables for the pagination component
   const [currentPage, setCurrentPage] = useState(1);
   const [usersPerPage] = useState(10);
-  const indexOfLastImage = currentPage * usersPerPage; // For example: let´s say we have 17 pages. indexOfLastImage = 17 * roomsPerPage
-  const indexOfFirstImage = indexOfLastImage - usersPerPage; // Following same example: indexOfFirstImage = indexOfLastPage – roomsPerPage
+  const indexOfLastImage = currentPage * usersPerPage;
+  const indexOfFirstImage = indexOfLastImage - usersPerPage;
+  
   // Setting the current displayed images
   useEffect(() => {
     setCurrentUsers(users.slice(indexOfFirstImage, indexOfLastImage));
   }, [users, indexOfFirstImage, indexOfLastImage]);
 
-  // Images to be displayed on the current page. slice(96, 102) will return images from index 96 to 101
   const nPages = Math.ceil(users.length / usersPerPage);
 
   return (
@@ -156,7 +152,7 @@ const Users = () => {
             currentPage={currentPage}
             setCurrentPage={setCurrentPage}
             dataDisplayed={"employees"}
-            totalRooms={users.length}
+            total={users.length}
             indexOfFirstImage={indexOfFirstImage}
             indexOfLastImage={indexOfLastImage}
           />
@@ -165,5 +161,3 @@ const Users = () => {
     </>
   );
 };
-
-export default Users;
