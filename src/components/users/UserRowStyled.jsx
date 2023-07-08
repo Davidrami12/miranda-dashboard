@@ -23,6 +23,11 @@ const UserContainer = styled.div`
     min-height: 8rem;
     object-fit: cover;
   }
+
+  svg {
+    position: relative;
+    top: 5px;
+  }
 `;
 const UserName = styled.p`
   font-family: var(--font-poppins);
@@ -48,7 +53,7 @@ const UserJoinDate = styled.p`
 `;
 
 const DataContainer = styled.td`
-  vertical-align: top;
+  vertical-align: middle;
 
   p {
     font-family: var(--font-poppins);
@@ -91,6 +96,7 @@ const Status = styled.p`
   text-align: center;
   margin-left: 4rem;
   width: fit-content;
+  
 `;
 
 export {

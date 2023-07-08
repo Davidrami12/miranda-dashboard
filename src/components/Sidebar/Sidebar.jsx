@@ -44,7 +44,7 @@ export const Sidebar = () => {
     }
 
     return (
-      <NavContainer display={display ? "0px" : "345px" }>
+      <NavContainer display={display ? "0px" : "345px"}>
         <MenuButton onClick={displayMenu}>
           <MenuIcon rotated={rotated ? 1 : 0} className='menu' style={{}}/>
         </MenuButton>
