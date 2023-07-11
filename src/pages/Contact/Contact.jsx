@@ -87,14 +87,14 @@ export const Contact = () => {
   // Variables for the pagination component
   const [currentPage, setCurrentPage] = useState(1);
   const [roomsPerPage] = useState(10);
-  const indexOfLastImage = currentPage * roomsPerPage;
-  const indexOfFirstImage = indexOfLastImage - roomsPerPage;
-  
-  
+  const indexOfLastImage = currentPage * roomsPerPage; // For example: let´s say we have 17 pages. indexOfLastImage = 17 * roomsPerPage
+  const indexOfFirstImage = indexOfLastImage - roomsPerPage; // Following same example: indexOfFirstImage = indexOfLastPage – roomsPerPage
+  // Setting the current displayed images
   useEffect(() => {
     setCurrentReviews(reviews.slice(indexOfFirstImage, indexOfLastImage));
   }, [reviews, indexOfFirstImage, indexOfLastImage]);
 
+  // Images to be displayed on the current page. slice(96, 102) will return images from index 96 to 101
   const nPages = Math.ceil(reviews.length / roomsPerPage);
 
   return (
@@ -110,7 +110,7 @@ export const Contact = () => {
           </Container>
           <TableActions>
             <TableFilters>
-              <FilterButton onClick={() => getAllReviews()}>
+              <FilterButton onClick={getAllReviews}>
                 All Customer Reviews
               </FilterButton>
               <FilterButton onClick={() => filterByType(false)}>
@@ -157,7 +157,7 @@ export const Contact = () => {
             currentPage={currentPage}
             setCurrentPage={setCurrentPage}
             dataDisplayed={"reviews"}
-            total={reviews.length}
+            totalRooms={reviews.length}
             indexOfFirstImage={indexOfFirstImage}
             indexOfLastImage={indexOfLastImage}
           />

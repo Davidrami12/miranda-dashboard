@@ -33,11 +33,11 @@ export const ReviewRow = ({ review }) => {
         <p>{review.date}</p>
       </DataContainer>
       <DataContainer className="data-container__text">
-        <p>{review.user.name}</p>
+        <p>{review.user}</p>
       </DataContainer>
       <DataContainer className="data-container__text">
         <div>{stars}</div>
-        <p>{review.message.body}</p>
+        <p>{review.message}</p>
       </DataContainer>
       <DataContainerButton>
         <button className="green">Publish</button>
