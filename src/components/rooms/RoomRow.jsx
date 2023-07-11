@@ -46,7 +46,7 @@ export const RoomRow = ({ room, index, number }) => {
           <img src={room.photo} alt="Room Img" />
           <div>
             <RoomId>#{room.id}</RoomId>
-            <RoomNumber>Room Nr: {room.room_number}</RoomNumber>
+            <RoomNumber>Room Nº. {room.room_number}</RoomNumber>
           </div>
         </RoomNameContainer>
       </td>

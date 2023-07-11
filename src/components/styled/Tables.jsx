@@ -25,7 +25,7 @@ const TableActions = styled.div`
 const TableFilters = styled.div`
   display: flex;
   width: 60%;
-  margin-bottom: 50px;
+  //margin-bottom: 10px;
   
 `;
 

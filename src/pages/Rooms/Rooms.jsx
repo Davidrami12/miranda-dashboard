@@ -33,7 +33,7 @@ export const Rooms = () => {
   const { roomsList, status } = useSelector((state) => state.roomsReducer);
 
   const [rooms, setRooms] = useState(roomsList);
-  const [activeFilter, setActiveFilter] = useState("Room Nr.");
+  const [activeFilter, setActiveFilter] = useState("Room Nº.");
   const [currentRooms, setCurrentRooms] = useState([]);
 
   useEffect(() => {
@@ -56,7 +56,7 @@ export const Rooms = () => {
     // Filtering by dropdown selection based on the filtered by search input array
     const orderedRooms = [...roomsList];
     switch (activeFilter) {
-      case "Room Nr.":
+      case "Room Nº":
         orderedRooms.sort((a, b) => a.room_number - b.room_number);
         break;
       case "Highest rate first":
@@ -102,7 +102,7 @@ export const Rooms = () => {
           <DropdownMenu
             setActiveFilter={setActiveFilter}
             type="white"
-            options={["Room Nr.", "Highest rate first", "Lowest rate first"]}
+            options={["Room Nº.", "Highest rate first", "Lowest rate first"]}
           ></DropdownMenu>
         </TableButtons>
       </TableActions>
