@@ -9,6 +9,7 @@ const Loader = styled.div`
   width: 120px;
   height: 120px;
   animation: spin 1s linear infinite;
+  margin-top: 150px;
 
 
   @keyframes spin {
