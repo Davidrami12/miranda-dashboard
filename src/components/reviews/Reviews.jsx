@@ -115,7 +115,7 @@ const ReviewsSwiper = () => {
               alt="User portrait"
             />
             <div>
-              <GuestName>Kusnaidi Anderson</GuestName>
+              <GuestName>Bella Saphira</GuestName>
               <BookingID>4m ago</BookingID>
             </div>
             <div>

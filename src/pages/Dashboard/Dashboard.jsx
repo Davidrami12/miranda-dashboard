@@ -15,7 +15,6 @@ import ReviewsSwiper from "../../components/reviews/Reviews";
 
 
 //import { KPI, KPIContainer } from '../../components/styled/KPI'
-import { styled } from 'styled-components'
 import { MdOutlineBedroomParent, MdCalendarMonth } from "react-icons/md"
 import { RiLogoutBoxFill, RiLogoutBoxRFill } from "react-icons/ri"
 import reviews from '../../data/reviews.json'

@@ -249,34 +249,10 @@ const KPIContainer = styled.div`
   }
 `;
 
-const CalendarAndGraph = styled.div`
-  height: 100%;
-  width: 100%;
-  display: flex;
-  justify-content: space-between;
-  gap: 4rem;
-`;
 
-const CalendarAndGraphSubcontainer = styled.div`
-  height: 100%;
-  width: 50%;
-  max-width: 50%;
-  background-color: #ffffff;
-  border-radius: 2rem;
-  padding: 2rem;
-  flex: 1 1 0;
-  width: 0;
-  p {
-    text-align: center;
-    margin-top: 20rem;
-    font-family: "Poppins";
-    font-weight: 600;
-    font-size: 3rem;
-    color: #393939;
-  }
-`;
 
 const Reviews = styled.div`
+  max-width: 1200px;
   position: relative;
   background-color: #FFFFFF;
   box-shadow: 0px 4px 4px #00000005;
@@ -320,14 +296,14 @@ const Reviews = styled.div`
   }
   
   .swiper-slide {
-    text-align: center;
+    text-align: left;
     background: #FFFFFF;
     border: 1px solid #EBEBEB;
     border-radius: 2rem;
     animation: all 2s;
     margin: 3rem 2% 7rem 2%;
     width: 29.1% !important;
-    :hover{
+    &:hover{
       box-shadow: 0px 16px 30px #00000014;
     }
     p{
@@ -353,7 +329,5 @@ export {
   DashboardContainer,
   KPI,
   KPIContainer,
-  CalendarAndGraph,
-  CalendarAndGraphSubcontainer,
   Reviews,
 };
