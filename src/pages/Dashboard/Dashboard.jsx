@@ -1,5 +1,19 @@
-import React from 'react'
-import { useState } from 'react'
+// React
+import React from "react";
+
+// Styled Components
+import {
+  DashboardContainer,
+  KPI,
+  KPIContainer,
+  Reviews,
+} from "./DashboardStyled";
+// Components
+import ReviewsSwiper from "../../components/reviews/Reviews";
+
+
+
+
 //import { KPI, KPIContainer } from '../../components/styled/KPI'
 import { styled } from 'styled-components'
 import { MdOutlineBedroomParent, MdCalendarMonth } from "react-icons/md"
@@ -7,17 +21,17 @@ import { RiLogoutBoxFill, RiLogoutBoxRFill } from "react-icons/ri"
 import reviews from '../../data/reviews.json'
 
 // Styled Components
-import {
+/* import {
   DashboardContainer,
   KPI,
   KPIContainer
-} from "./DashboardStyled";
+} from "./DashboardStyled"; */
 
 /* const DashboardContainer = styled.div`
   margin: 30px;
 `;*/
 
-const ReviewsBox = styled.div`
+/* const ReviewsBox = styled.div`
   padding: 40px;
   position: relative;
   background: #FFFFFF;
@@ -60,7 +74,7 @@ const Review = styled.div`
   p{
     padding: 5px;
   }
-`;
+`; */
 
 
 
@@ -68,6 +82,59 @@ export const Dashboard = () => {
 
   return (
     <DashboardContainer>
+      <KPI>
+        <KPIContainer>
+          <div className='kpi-icon'>
+            <MdOutlineBedroomParent style={{width: 35, height: 35}}/>
+          </div>
+          
+          <div>
+            <h2>8,461</h2>
+            <p>New Booking</p>
+          </div>
+        </KPIContainer>
+
+        <KPIContainer>
+          <div className='kpi-icon'>
+            <MdCalendarMonth style={{width: 35, height: 35}}/>
+          </div>
+          <div>
+            <h2>963</h2>
+            <p>Scheduled Rooms</p>
+          </div>
+        </KPIContainer>
+
+        <KPIContainer>
+          <div className='kpi-icon'>
+            <RiLogoutBoxRFill style={{width: 35, height: 35}}/>
+          </div>
+          <div>
+            <h2>753</h2>
+            <p>Check In</p>
+          </div>
+        </KPIContainer>
+
+        <KPIContainer>
+          <div className='kpi-icon'>
+            <RiLogoutBoxFill style={{width: 35, height: 35}}/>
+          </div>
+          <div>
+            <h2>516</h2>
+            <p>Check Out</p>
+          </div>
+        </KPIContainer>
+      </KPI>
+
+
+      <Reviews>
+        <p>Latest Reviews by Customers</p>
+        <ReviewsSwiper></ReviewsSwiper>
+      </Reviews>
+    </DashboardContainer>
+
+
+
+    /* <DashboardContainer>
       <KPI>
         <KPIContainer>
           <MdOutlineBedroomParent style={{width: 30, height: 30}} className='svg'/>
@@ -123,6 +190,6 @@ export const Dashboard = () => {
         </ReviewsContainer>
       </ReviewsBox>
 
-    </DashboardContainer>
+    </DashboardContainer> */
   )
 }

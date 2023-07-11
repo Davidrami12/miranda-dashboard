@@ -181,32 +181,30 @@ const DashboardContainer = styled.div`
 `;
 
 const KPI = styled.div`
-  height: 12.5rem;
+  /* height: 12.5rem;
   width: 100%;
   display: flex;
   justify-content: space-between;
-  gap: 4rem;
+  gap: 4rem; */
+  display: flex;
+  flex-wrap: wrap;
+  gap: 40px;
 `;
 
 const KPIContainer = styled.div`
-  height: 100%;
-  width: 100%;
-  background-color: white;
-  border-radius: 12px;
   display: flex;
+  padding: 20px;
+  gap: 20px;
+  min-width: 270px;
+  border-radius: 15px;
+  background-color: white;
   justify-content: start;
   align-items: center;
   gap: 2.2rem;
   padding-left: 3rem;
   box-shadow: 0px 4px 4px #00000005;
   transition: box-shadow 0.3s;
-  svg {
-    padding: 2rem;
-    border-radius: 8px;
-    background-color: rgb(255, 237, 236);
-    fill: rgb(226, 52, 40);
-    transition: all 0.3s;
-  }
+  
   div {
     font-family: "Poppins";
     h2 {
@@ -222,13 +220,31 @@ const KPIContainer = styled.div`
       margin: 0;
     }
   }
-  :hover {
-    box-shadow: 0px 16px 30px #00000014;
+
+  & .kpi-icon{
+    padding: 15px;
+    background-color: rgb(255, 237, 236);
+    color: red;
+    border-radius: 12px;
+    transition: all 0.3s;
     svg {
-      background-color: #e23428;
-      fill: white;
+      //background-color: rgb(255, 237, 236);
+      color: red;
+      transition: all 0.3s;
     }
-    div {
+  }
+
+  &:hover {
+    box-shadow: 0px 16px 30px #00000014;
+    transition: all 0.3s;
+    .kpi-icon{
+      background: #E23428 0% 0% no-repeat padding-box;
+      transition: all 0.3s;
+    }
+    svg {
+      //background-color: #e23428;
+      fill: white;
+      transition: all 0.3s;
     }
   }
 `;
