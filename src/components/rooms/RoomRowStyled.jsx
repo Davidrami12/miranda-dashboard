@@ -2,8 +2,10 @@ import styled from "styled-components";
 
 const Row = styled.tr`
   border-top: 1px solid #d4d4d4;
-  transition: background-color 0.3s;
+  transition: all 0.3s;
+  cursor: pointer;
   &:hover {
+    background-color: white;
     box-shadow: 0px 4px 30px #00000014;
   }
 `;
@@ -53,7 +55,7 @@ const DataContainerButton = styled.td`
   button {
     background-color: transparent;
     border: none;
-    margin-left: 60px;
+    margin-left: 30px;
     &:focus {
       outline: none;
     }
@@ -100,9 +102,10 @@ const RoomStatus = styled.p`
 const DropDown = styled.div`
   display: block;
   position: absolute;
-  background-color: #777777;
-  top: 40%;
-  left: 0%;
+  //background-color: #777777;
+  background-color: white;
+  top: 60%;
+  right: 0%;
   z-index: 2;
   ul {
     list-style: none;
@@ -117,11 +120,12 @@ const DropDown = styled.div`
         padding: 10px 15px;
         display: block;
         border: 1px solid #d4d4d4;
-        color: white;
+        //color: white;
+        color: black;
         font-family: var(--font-poppins);
         transition: all 0.3s;
         &:hover {
-          background-color: #c5c5c5;
+          //background-color: #c5c5c5;
         }
       }
     }

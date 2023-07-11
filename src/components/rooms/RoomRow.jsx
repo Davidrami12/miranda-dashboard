@@ -40,7 +40,7 @@ export const RoomRow = ({ room, index, number }) => {
   };
 
   return (
-    <Row key={room.id}>
+    <Row key={room.id} onClick={() => { goToSingleRoom(room.id) }}>
       <td>
         <RoomNameContainer>
           <img src={room.photo} alt="Room Img" />
@@ -97,17 +97,14 @@ export const RoomRow = ({ room, index, number }) => {
         </RoomStatus>
       </td>
       <DataContainerButton>
-        <button
-        // onClick={() => {
-        //   goToSingleRoom(room.id);
-        // }}
-        >
+        <button>
           <svg
             xmlns="http://www.w3.org/2000/svg"
             height="30"
             width="30"
             viewBox="0 0 48 48"
-            onClick={() => {
+            onClick={(e) => {
+              e.stopPropagation();
               setShowOptions(!showOptions);
             }}
           >
@@ -115,37 +112,39 @@ export const RoomRow = ({ room, index, number }) => {
           </svg>
         </button>
         {showOptions ? (
-          <DropDown>
-            <ul>
-              <li>
-                <button
-                  onClick={() => {
-                    goToSingleRoom(room.id);
-                  }}
-                >
-                  Room details
-                </button>
-              </li>
-              <li>
-                <button
-                  onClick={(e) => {
-                    editSingleRoom(e, room.id);
-                  }}
-                >
-                  Edit room
-                </button>
-              </li>
-              <li>
-                <button
-                  onClick={(e) => {
-                    deleteCurrentRoom(e, room.id);
-                  }}
-                >
-                  Delete room
-                </button>
-              </li>
-            </ul>
-          </DropDown>
+          <DropDown onClick={(e) => e.stopPropagation()}>
+          <ul>
+            <li>
+              <button
+                onClick={() => {
+                  goToSingleRoom(room.id);
+                }}
+              >
+                Room details
+              </button>
+            </li>
+            <li>
+              <button
+                onClick={(e) => {
+                  e.stopPropagation();  // prevent event bubbling
+                  editSingleRoom(e, room.id);
+                }}
+              >
+                Edit room
+              </button>
+            </li>
+            <li>
+              <button
+                onClick={(e) => {
+                  e.stopPropagation();  // prevent event bubbling
+                  deleteCurrentRoom(e, room.id);
+                }}
+              >
+                Delete room
+              </button>
+            </li>
+          </ul>
+        </DropDown>
         ) : null}
       </DataContainerButton>
     </Row>
