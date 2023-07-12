@@ -1,23 +1,30 @@
 describe('Dashboard URL', () => {
-  it('Enter hotel admin dashboard', () => {
+  it('Initialize hotel admin dashboard', () => {
     cy.visit('http://localhost:3000/')
   })
-
-  it("Aparece el formulario", () => {
-    //cy.contains("Login");
-  });
 })
 
+describe("Login - Integration test", () => {
+  beforeEach("Initialize", () => {
+    cy.visit("http://localhost:3000/");
+  });
 
-describe("Login", () => {
-  it("If login success then navigates to dashboard", () => {
-    cy.visit("localhost:3000");
+  it("Check login route", () => {
     cy.url().should("include", "/login");
-    /* cy.get(".input-email")
-      .type("test@test.com")
-      .should("have.value", "test@test.com");
-    cy.get(".input-pass").type("12345").should("have.value", "12345");
-    cy.contains("Login").click(); */
+  });
+
+  it("Check email & password", () => {
+    cy.get('[data-cy="email"]')
+      .type("admin@admin.com")
+      .should("have.value", "admin@admin.com");
+
+    cy.get('[data-cy="password"]')
+      .type("Admin123")
+      .should("have.value", "Admin123");
+
+    cy.contains("LOGIN")
+      .click();
+    // cy.get('[data-cy="submit"]') does not work properly because it's a BUTTON not an INPUT
 
     cy.url().should("include", "/");
   });
