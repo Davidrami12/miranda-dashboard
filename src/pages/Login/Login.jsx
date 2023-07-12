@@ -92,7 +92,7 @@ export const Login = ({ auth, setAuth }) => {
             </InputContainer>
             <ErrorMessage className="error"> </ErrorMessage>
             <Button 
-              type="button" 
+              type="login" 
               text="LOGIN"
               data-cy="submit">
                 LOGIN

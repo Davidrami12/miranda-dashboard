@@ -27,18 +27,17 @@ const ReviewsSwiper = () => {
       <SwiperSlide className="slider-container">
         <p>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-          minim veniam
+          eiusmod tempor incididunt ut labore et dolore magna aliqua.
         </p>
         <div>
           <GuestContainer className="reviewUser">
             <img
-              src="https://images.unsplash.com/photo-1485893086445-ed75865251e0?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1180&q=80"
+              src="https://images.unsplash.com/photo-1552374196-c4e7ffc6e126?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80"
               alt="User portrait"
             />
             <div>
-              <GuestName>Kusnaidi Anderson</GuestName>
-              <BookingID>4m ago</BookingID>
+              <GuestName>Richard M.</GuestName>
+              <BookingID>7m ago</BookingID>
             </div>
             <div>
               <svg
@@ -66,18 +65,17 @@ const ReviewsSwiper = () => {
       <SwiperSlide className="slider-container">
         <p>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-          minim veniam
+          eiusmod tempor incididunt ut labore et dolore magna aliqua.
         </p>
         <div>
           <GuestContainer className="reviewUser">
             <img
-              src="https://images.unsplash.com/photo-1485893086445-ed75865251e0?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1180&q=80"
+              src="https://images.unsplash.com/photo-1578774296842-c45e472b3028?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1946&q=80"
               alt="User portrait"
             />
             <div>
-              <GuestName>Kusnaidi Anderson</GuestName>
-              <BookingID>4m ago</BookingID>
+              <GuestName>Nichole C.</GuestName>
+              <BookingID>10m ago</BookingID>
             </div>
             <div>
               <svg
@@ -105,18 +103,17 @@ const ReviewsSwiper = () => {
       <SwiperSlide className="slider-container">
         <p>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-          minim veniam
+          eiusmod tempor incididunt ut labore et dolore magna aliqua.
         </p>
         <div>
           <GuestContainer className="reviewUser">
             <img
-              src="https://images.unsplash.com/photo-1485893086445-ed75865251e0?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1180&q=80"
+              src="https://images.unsplash.com/photo-1508214751196-bcfd4ca60f91?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80"
               alt="User portrait"
             />
             <div>
-              <GuestName>Bella Saphira</GuestName>
-              <BookingID>4m ago</BookingID>
+              <GuestName>Lucy P.</GuestName>
+              <BookingID>5m ago</BookingID>
             </div>
             <div>
               <svg
@@ -144,18 +141,17 @@ const ReviewsSwiper = () => {
       <SwiperSlide className="slider-container">
         <p>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-          minim veniam
+          eiusmod tempor incididunt ut labore et dolore magna aliqua.
         </p>
         <div>
           <GuestContainer className="reviewUser">
             <img
-              src="https://images.unsplash.com/photo-1485893086445-ed75865251e0?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1180&q=80"
+              src="https://images.unsplash.com/photo-1599566150163-29194dcaad36?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80"
               alt="User portrait"
             />
             <div>
-              <GuestName>Kusnaidi Anderson</GuestName>
-              <BookingID>4m ago</BookingID>
+              <GuestName>Austin F.</GuestName>
+              <BookingID>6m ago</BookingID>
             </div>
             <div>
               <svg
@@ -183,18 +179,17 @@ const ReviewsSwiper = () => {
       <SwiperSlide className="slider-container">
         <p>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-          minim veniam
+          eiusmod tempor incididunt ut labore et dolore magna aliqua.
         </p>
         <div>
           <GuestContainer className="reviewUser">
             <img
-              src="https://images.unsplash.com/photo-1485893086445-ed75865251e0?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1180&q=80"
+              src="https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80"
               alt="User portrait"
             />
             <div>
-              <GuestName>Kusnaidi Anderson</GuestName>
-              <BookingID>4m ago</BookingID>
+              <GuestName>Cathy W.</GuestName>
+              <BookingID>10m ago</BookingID>
             </div>
             <div>
               <svg
@@ -222,18 +217,17 @@ const ReviewsSwiper = () => {
       <SwiperSlide className="slider-container">
         <p>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-          minim veniam
+          eiusmod tempor incididunt ut labore et dolore magna aliqua.
         </p>
         <div>
           <GuestContainer className="reviewUser">
             <img
-              src="https://images.unsplash.com/photo-1485893086445-ed75865251e0?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1180&q=80"
+              src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80"
               alt="User portrait"
             />
             <div>
-              <GuestName>Kusnaidi Anderson</GuestName>
-              <BookingID>4m ago</BookingID>
+              <GuestName>Leon D.</GuestName>
+              <BookingID>9m ago</BookingID>
             </div>
             <div>
               <svg

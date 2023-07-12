@@ -301,21 +301,22 @@ const Reviews = styled.div`
     border: 1px solid #EBEBEB;
     border-radius: 2rem;
     animation: all 2s;
-    margin: 3rem 2% 7rem 2%;
+    margin: 3rem 2rem 3rem 3rem;
     width: 29.1% !important;
+    transition: all 0.3s;
     &:hover{
       box-shadow: 0px 16px 30px #00000014;
     }
     p{
-      font-size: 1.6rem;
+      font-size: 1.5rem;
       font-weight: 400;
       color:#4E4E4E;
-      margin: 3rem
+      margin: 3rem;
     }
     .reviewUser{
+      display: flex;
       text-align: left;
-      margin-bottom: 3rem;
-      margin-right: 3rem;
+      margin: 0rem 3rem 3rem 3rem;
       justify-content: space-between;
       
       p{
