@@ -27,5 +27,22 @@ describe("Login - Integration test", () => {
     // cy.get('[data-cy="submit"]') does not work properly because it's a BUTTON not an INPUT
 
     cy.url().should("include", "/");
+
+
+    cy.getAllLocalStorage().then((localStorage) => {
+      cy.log(localStorage); // This will log the entire localStorage to the Cypress log
+      expect(localStorage['auth']).to.exist;
+      console.log(localStorage)
+    });
+
+
   });
+
+  it("Check auth key in localStorage", () => {
+    
+
+  });
+
+
+  
 });
