@@ -32,7 +32,7 @@ describe("Login successful & check localStorage saved items", () => {
 
     // Check localStorage
     cy.getAllLocalStorage().then((localStorage) => {
-      cy.log(localStorage); // This will log the entire localStorage to the Cypress log
+      cy.log(localStorage);
       expect(localStorage['http://localhost:3000']['auth']).to.exist;
 
       let authData = JSON.parse(localStorage['http://localhost:3000']['auth']);
