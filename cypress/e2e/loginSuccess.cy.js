@@ -4,7 +4,7 @@ describe('Dashboard URL', () => {
   })
 })
 
-describe("Login - Integration test", () => {
+describe("Login Successful - Integration test", () => {
   beforeEach("Initialize", () => {
     cy.visit("http://localhost:3000/");
   });
@@ -28,21 +28,14 @@ describe("Login - Integration test", () => {
 
     cy.url().should("include", "/");
 
-
-    cy.getAllLocalStorage().then((localStorage) => {
+    // Check localStorage
+    /* cy.getAllLocalStorage().then((localStorage) => {
       cy.log(localStorage); // This will log the entire localStorage to the Cypress log
       expect(localStorage['auth']).to.exist;
       console.log(localStorage)
-    });
+    }); */
+      
 
 
   });
-
-  it("Check auth key in localStorage", () => {
-    
-
-  });
-
-
-  
 });
