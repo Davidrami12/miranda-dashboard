@@ -37,35 +37,36 @@ const HeaderElements = styled.div`
 
 export const Header = () => {
 
-    let location = useLocation();
-    const { logout } = useLogout();
+  let location = useLocation();
+  const { logout } = useLogout();
 
-    const getNavBarTitle = (currentRoute) => {
-      if (!currentRoute)
-        return "Dashboard";
-      return currentRoute.toUpperCase().charAt(0) + currentRoute.slice(1);
-    }
+  const getNavBarTitle = (currentRoute) => {
+    if (!currentRoute)
+      return "Dashboard";
+    return currentRoute.toUpperCase().charAt(0) + currentRoute.slice(1);
+  }
 
-    const goLogin = () => {
-      localStorage.removeItem("auth");
-      logout()
-      //localStorage.setItem("auth", JSON.stringify({ auth: false }));
+  const goLogin = () => {
+    localStorage.removeItem("auth");
+    logout()
+    //localStorage.setItem("auth", JSON.stringify({ auth: false }));
 
-      //setAuth(false);
-    };
+    //setAuth(false);
+  };
 
-    return (
-        <HeaderContainer>
-            <HeaderElements>
-              <HeaderTitle>
-                {getNavBarTitle(location.pathname.split('/')[1])}
-              </HeaderTitle>
+  return (
+    <HeaderContainer>
+        <HeaderElements>
+          <HeaderTitle>
+            {getNavBarTitle(location.pathname.split('/')[1])}
+          </HeaderTitle>
 
-              <MdOutlineEmail style={{width: 30, height: 30}}/>
-              <MdNotificationsNone style={{width: 30, height: 30}}/>
-              <MdLogout onClick={goLogin} style={{width: 30, height: 30, cursor: 'pointer'}}/>
+          <MdOutlineEmail style={{width: 30, height: 30}}/>
+          <MdNotificationsNone style={{width: 30, height: 30}}/>
+          <MdLogout data-cy="logout-button" onClick={goLogin} style={{width: 30, height: 30, cursor: 'pointer'}}/>
 
-            </HeaderElements>
-        </HeaderContainer>
-    );
+
+        </HeaderElements>
+    </HeaderContainer>
+  );
 }
