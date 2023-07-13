@@ -29,7 +29,13 @@ describe("Login Failed - Integration test", () => {
     cy.url().should("include", "/login");
 
     cy.get('.error').should('have.text', "Email or password are not correct. Please try again.");
+    
+    cy.getAllLocalStorage().then((localStorage) => {
+      cy.log(localStorage);
 
+      expect(localStorage['auth']).to.be.undefined; //check that there is no 'auth' item in localStorage
+      expect(Object.keys(localStorage).length).to.eq(0); // checks that localStorage is entirely empty
+    });
 
   });
 });
