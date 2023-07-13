@@ -29,10 +29,12 @@ describe("Checking user log out - Integration test", () => {
 
     cy.url().should("include", "/");
 
-    // CHECK LOG OUT
+    // Check log out functionality
     cy.wait(2000)
     cy.get('[data-cy=logout-button]').click()
     cy.url().should("include", "/login");
+
+    
 
   });
 });

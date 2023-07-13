@@ -90,7 +90,7 @@ export const Login = ({ auth, setAuth }) => {
                 onChange={(e) => setPassword(e.target.value)}/>
               <Icon><RiLockPasswordFill className='input-icon'></RiLockPasswordFill></Icon>
             </InputContainer>
-            <ErrorMessage className="error"> </ErrorMessage>
+            <ErrorMessage className="error">&nbsp;</ErrorMessage>
             <Button 
               type="login" 
               text="LOGIN"

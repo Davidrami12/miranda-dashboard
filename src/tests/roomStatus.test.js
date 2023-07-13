@@ -8,11 +8,13 @@ test("Renders green tag with text AVAILABLE if the current room is available", (
 
   render(<RoomStatus status={roomStatus}>{roomStatus}</RoomStatus>);
 
+  // const available = getByText('Available');
+
   expect(screen.getByText("Available")).toBeInTheDocument("Available");
   expect(screen.getByText("Available")).toHaveStyle(`backgroundColor:"#5AD07A"`);
 });
 
-test("Renders red tag with text Booked if the current room is available", () => {
+test("Renders red tag with text BOOKED if the current room is not available", () => {
   const roomStatus = "Booked";
 
   render(<RoomStatus status={roomStatus}>{roomStatus}</RoomStatus>);

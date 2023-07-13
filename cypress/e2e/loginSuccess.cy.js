@@ -1,10 +1,10 @@
-describe('Dashboard URL', () => {
+describe('Dashboard URL - Integration tests', () => {
   it('Initialize hotel admin dashboard', () => {
     cy.visit('http://localhost:3000/')
   })
 })
 
-describe("Login Successful - Integration test", () => {
+describe("Login successful & check localStorage saved items", () => {
   beforeEach("Initialize", () => {
     cy.visit("http://localhost:3000/");
   });
@@ -13,7 +13,7 @@ describe("Login Successful - Integration test", () => {
     cy.url().should("include", "/login");
   });
 
-  it("Check email & password", () => {
+  it("Check email, password and auth (localStorage)", () => {
     cy.get('[data-cy="email"]')
       .type("admin@admin.com")
       .should("have.value", "admin@admin.com");
@@ -22,20 +22,24 @@ describe("Login Successful - Integration test", () => {
       .type("Admin123")
       .should("have.value", "Admin123");
 
+    cy.wait(1000)
     cy.contains("LOGIN")
       .click();
     // cy.get('[data-cy="submit"]') does not work properly because it's a BUTTON not an INPUT
 
     cy.url().should("include", "/");
 
+
     // Check localStorage
-    /* cy.getAllLocalStorage().then((localStorage) => {
+    cy.getAllLocalStorage().then((localStorage) => {
       cy.log(localStorage); // This will log the entire localStorage to the Cypress log
-      expect(localStorage['auth']).to.exist;
-      console.log(localStorage)
-    }); */
-      
+      expect(localStorage['http://localhost:3000']['auth']).to.exist;
 
-
+      let authData = JSON.parse(localStorage['http://localhost:3000']['auth']);
+  
+      expect(authData).to.have.property('auth', true);
+      expect(authData).to.have.property('email', 'admin@admin.com');
+      expect(authData).to.have.property('password', 'Admin123');
+    });
   });
 });
