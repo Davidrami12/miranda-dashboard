@@ -63,10 +63,10 @@ export const Dashboard = () => {
       </KPI>
 
 
-      {/* <Reviews>
+      <Reviews>
         <p>Latest Reviews by Customers</p>
         <ReviewsSwiper></ReviewsSwiper>
-      </Reviews> */}
+      </Reviews>
 
     </DashboardContainer>
   )

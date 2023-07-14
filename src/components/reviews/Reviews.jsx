@@ -1,4 +1,4 @@
-/* // Swiper Components
+// Swiper Components
 import { Swiper, SwiperSlide } from "swiper/react";
 
 // Swiper Styles
@@ -256,4 +256,4 @@ const ReviewsSwiper = () => {
   );
 };
 
-export default ReviewsSwiper; */
+export default ReviewsSwiper;
