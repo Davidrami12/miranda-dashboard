@@ -22,10 +22,8 @@ describe("Log out successful & check localStorage deleted items", () => {
       .type("Admin123")
       .should("have.value", "Admin123");
 
-    cy.wait(1000)
-    cy.contains("LOGIN")
+    cy.get('[data-cy="submit"]')
       .click();
-    // cy.get('[data-cy="submit"]') does not work properly because it's a BUTTON not an INPUT
 
     cy.url().should("include", "/");
 
@@ -42,7 +40,6 @@ describe("Log out successful & check localStorage deleted items", () => {
     });
 
     // Check log out functionality
-    cy.wait(2000)
     cy.get('[data-cy=logout-button]').click()
     cy.url().should("include", "/login");
 

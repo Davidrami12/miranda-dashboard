@@ -22,9 +22,8 @@ describe("Login Failed - Integration test", () => {
       .type("WrongPassword")
       .should("have.value", "WrongPassword");
 
-    cy.contains("LOGIN")
-      .click();
-    // cy.get('[data-cy="submit"]') does not work properly because it's a BUTTON not an INPUT
+    cy.get('[data-cy="submit"]')
+      .click()
 
     cy.url().should("include", "/login");
 

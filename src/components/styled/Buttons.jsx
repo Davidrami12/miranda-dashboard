@@ -110,7 +110,7 @@ const StyledButton = styled.button`
 const Button = ({ type, text, enabled, click }) => {
 
     return (
-        <StyledButton $type={type} $enabled={enabled} onClick={click}>{text}</StyledButton>
+        <StyledButton $type={type} $enabled={enabled} data-cy="submit" onClick={click}>{text}</StyledButton>
     );
 }
 
