@@ -33,12 +33,9 @@ export const Contact = () => {
   const [activeFilter, setActiveFilter] = useState("Date");
   const [currentReviews, setCurrentReviews] = useState([]);
 
-  // Faking a delay on data fetch
   useEffect(() => {
     if (reviewsList.length === 0) {
-      setTimeout(() => {
         dispatch(getDataReviews());
-      }, 1000);
     }
     setReviews(reviewsList);
   }, [reviewsList, dispatch]);
@@ -157,7 +154,7 @@ export const Contact = () => {
             currentPage={currentPage}
             setCurrentPage={setCurrentPage}
             dataDisplayed={"reviews"}
-            totalRooms={reviews.length}
+            total={reviews.length}
             indexOfFirstImage={indexOfFirstImage}
             indexOfLastImage={indexOfLastImage}
           />
