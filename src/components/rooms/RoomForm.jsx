@@ -5,15 +5,17 @@ import React from "react";
 import {
   LoginContainer,
   LoginCard,
+  DashboardForm,
   InputContainer,
   Input,
+  InputForm,
   FormTitle,
   RadioInput,
   RadioLabel,
   RadioDescription,
   InputSubmit,
   InputCancel,
-} from "../../pages/login/LoginStyled";
+} from "../../pages/Login/LoginStyled";
 
 // This form gets used from editRoom and newRoom. If used for editing a room it will be preloaded with the data from the currentRoom to edit
 const RoomForm = ({
@@ -23,28 +25,13 @@ const RoomForm = ({
   formTitle,
   handleCancel,
 }) => {
-  const listOfAmenities = [
-    "Air Conditioner",
-    "Kitchen",
-    "Grocery",
-    "Towels",
-    "Smart Security",
-    "High speed WiFi",
-    "Cleaning",
-    "Single Bed",
-    "24/7 Online Support",
-    "Expert Team",
-    "Breakfast",
-    "Shower",
-    "Shop near",
-    "Strong locker",
-  ];
+  const listOfAmenities = [ "AC", "Shower", "Towel", "Bathtub", "Coffee Set", "LED TV", "Wi-Fi"];
 
   return (
     <>
-      <LoginContainer style={{ minHeight: "80%" }}>
+      <DashboardForm style={{ minHeight: "80%" }}>
         <LoginCard
-          style={{ height: "fit-content", margin: "2rem 0", width: "90%" }}
+          style={{ height: "fit-content", width: "850px" }}
         >
           <FormTitle>{formTitle}</FormTitle>
           <form
@@ -53,63 +40,68 @@ const RoomForm = ({
               handleSubmit();
             }}
           >
-            <InputContainer>
-              <RadioDescription>Photo one</RadioDescription>
-              <Input
-                type="text"
-                className="input-user"
-                name="photo"
-                value={currentRoom.photo}
-                placeholder="First photo URL"
-                onChange={handleInput}
-              ></Input>
-            </InputContainer>
-            <InputContainer>
-              <RadioDescription>Photo two</RadioDescription>
-              <Input
-                type="text"
-                className="input-user"
-                name="photoTwo"
-                value={currentRoom.photoTwo}
-                placeholder="Second photo URL"
-                onChange={handleInput}
-              ></Input>
-            </InputContainer>
-            <InputContainer>
-              <RadioDescription>Photo three</RadioDescription>
-              <Input
-                type="text"
-                className="input-user"
-                name="photoThree"
-                value={currentRoom.photoThree}
-                placeholder="Third photo URL"
-                onChange={handleInput}
-              ></Input>
-            </InputContainer>
-            <InputContainer>
-              <RadioDescription>Photo four</RadioDescription>
-              <Input
-                type="text"
-                className="input-user"
-                name="photoFour"
-                value={currentRoom.photoFour}
-                placeholder="Four photo URL"
-                onChange={handleInput}
-              ></Input>
-            </InputContainer>
-            <InputContainer>
+            <div style={{display: "flex", justifyContent: "space-between"}}>
+              <InputContainer style={{ width: "45%" }}>
+                <RadioDescription>Photo one</RadioDescription>
+                <InputForm
+                  type="text"
+                  className="input-user"
+                  name="photo"
+                  value={currentRoom.photo}
+                  placeholder="First photo URL"
+                  onChange={handleInput}
+                ></InputForm>
+              </InputContainer>
+              <InputContainer style={{ width: "45%" }}>
+                <RadioDescription>Photo two</RadioDescription>
+                <InputForm
+                  type="text"
+                  className="input-user"
+                  name="photoTwo"
+                  value={currentRoom.photoTwo}
+                  placeholder="Second photo URL"
+                  onChange={handleInput}
+                ></InputForm>
+              </InputContainer>
+            </div>
+            <div style={{display: "flex", justifyContent: "space-between"}}>
+              <InputContainer style={{ width: "45%" }}>
+                <RadioDescription>Photo three</RadioDescription>
+                <InputForm
+                  type="text"
+                  className="input-user"
+                  name="photoThree"
+                  value={currentRoom.photoThree}
+                  placeholder="Third photo URL"
+                  onChange={handleInput}
+                ></InputForm>
+              </InputContainer>
+              <InputContainer style={{ width: "45%" }}>
+                <RadioDescription>Photo four</RadioDescription>
+                <InputForm
+                  type="text"
+                  className="input-user"
+                  name="photoFour"
+                  value={currentRoom.photoFour}
+                  placeholder="Four photo URL"
+                  onChange={handleInput}
+                ></InputForm>
+              </InputContainer>
+            </div>
+            
+            {/* <InputContainer>
               <RadioDescription>Photo five</RadioDescription>
-              <Input
+              <InputForm
                 type="text"
                 className="input-user"
                 name="photoFive"
                 value={currentRoom.photoFive}
                 placeholder="Five photo URL"
                 onChange={handleInput}
-              ></Input>
-            </InputContainer>
+              ></InputForm>
+            </InputContainer> */}
             <InputContainer>
-              <RadioDescription>Select the Room Type</RadioDescription>
+              <RadioDescription>Room Type</RadioDescription>
               <RadioInput
                 required
                 type="radio"
@@ -153,7 +145,7 @@ const RoomForm = ({
             </InputContainer>
             <InputContainer>
               <RadioDescription>Room number</RadioDescription>
-              <Input
+              <InputForm
                 required
                 type="text"
                 className="input-user"
@@ -161,83 +153,89 @@ const RoomForm = ({
                 value={currentRoom.room_number}
                 placeholder="Room Number"
                 onChange={handleInput}
-              ></Input>
+              ></InputForm>
             </InputContainer>
             <InputContainer>
               <RadioDescription>Room description</RadioDescription>
-              <Input
+              <InputForm
                 type="text"
                 className="input-user"
                 name="description"
                 value={currentRoom.description}
                 placeholder="Room description"
                 onChange={handleInput}
-              ></Input>
+              ></InputForm>
             </InputContainer>
-            <InputContainer>
-              <RadioDescription>Offer</RadioDescription>
-              <RadioInput
-                required
-                type="radio"
-                id="yes"
-                value="Yes"
-                name="discount"
-                onClick={handleInput}
-                defaultChecked={currentRoom.discount === "Yes"}
-              />
-              <RadioLabel htmlFor="yes">Yes</RadioLabel>
-              <RadioInput
-                required
-                type="radio"
-                id="no"
-                value="No"
-                name="discount"
-                onClick={handleInput}
-                defaultChecked={currentRoom.discount === "No"}
-              />
-              <RadioLabel htmlFor="no">No</RadioLabel>
-            </InputContainer>
-            <InputContainer>
-              <RadioDescription>Room rate</RadioDescription>
-              <Input
-                required
-                type="number"
-                className="input-user"
-                placeholder="Price per night"
-                name="room_rate"
-                value={currentRoom.room_rate}
-                onChange={handleInput}
-              ></Input>
-            </InputContainer>
-            {currentRoom.discount === "Yes" ? (
-              <InputContainer>
-                <RadioDescription>Discount %</RadioDescription>
-                <Input
-                  required
-                  type="number"
-                  className="input-user"
-                  name="discountPercent"
-                  value={currentRoom.discountPercent}
-                  placeholder="Discount %"
-                  onChange={handleInput}
-                ></Input>
-              </InputContainer>
-            ) : null}
+            <div style={{display: "flex", alignItems: "center"}}>
+              <div style={{display: "flex", justifyContent: "space-between", alignItems: "center", width: "70%"}}>
+                <InputContainer style={{ width: "40%" }}>
+                  <RadioDescription>Room rate</RadioDescription>
+                  <InputForm
+                    required
+                    type="number"
+                    className="input-user"
+                    placeholder="Price per night"
+                    name="room_rate"
+                    value={currentRoom.room_rate}
+                    onChange={handleInput}
+                  ></InputForm>
+                </InputContainer>
+                <InputContainer style={{ width: "40%" }}>
+                  <RadioDescription>Offer</RadioDescription>
+                  <RadioInput
+                    required
+                    type="radio"
+                    id="yes"
+                    value="Yes"
+                    name="discount"
+                    onClick={handleInput}
+                    defaultChecked={currentRoom.discount === "Yes"}
+                  />
+                  <RadioLabel htmlFor="yes">Yes</RadioLabel>
+                  <RadioInput
+                    required
+                    type="radio"
+                    id="no"
+                    value="No"
+                    name="discount"
+                    onClick={handleInput}
+                    defaultChecked={currentRoom.discount === "No"}
+                  />
+                  <RadioLabel htmlFor="no">No</RadioLabel>
+                </InputContainer>
+              </div>
+
+              {currentRoom.discount === "Yes" ? (
+                <InputContainer style={{ width: "30%" }}>
+                  <RadioDescription>Discount %</RadioDescription>
+                  <InputForm
+                    required
+                    type="number"
+                    className="input-user"
+                    name="discountPercent"
+                    value={currentRoom.discountPercent}
+                    placeholder="Discount %"
+                    onChange={handleInput}
+                  ></InputForm>
+                </InputContainer>
+              ) : null}
+              
+            </div>
 
             <InputContainer>
               <RadioDescription>Cancellation Policy</RadioDescription>
-              <Input
+              <InputForm
                 type="text"
                 className="input-user"
                 name="cancellationPolicy"
                 value={currentRoom.cancellationPolicy}
                 placeholder="Cancellation Policy"
                 onChange={handleInput}
-              ></Input>
+              ></InputForm>
             </InputContainer>
             <InputContainer>
               <RadioDescription>
-                Select the amenities included in the new room
+                Desired amenities to include in the new room
               </RadioDescription>
               {listOfAmenities.map((amenity, index) => (
                 <div key={index} style={{ display: "inline-block" }}>
@@ -307,7 +305,7 @@ const RoomForm = ({
             </div>
           </form>
         </LoginCard>
-      </LoginContainer>
+      </DashboardForm>
     </>
   );
 };

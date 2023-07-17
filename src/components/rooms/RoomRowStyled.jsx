@@ -37,6 +37,7 @@ const RoomId = styled.p`
 `;
 
 const RoomNumber = styled.p`
+  text-align: left;
   font-family: var(--font-poppins);
   font-size: 1.6rem;
   font-weight: 400;

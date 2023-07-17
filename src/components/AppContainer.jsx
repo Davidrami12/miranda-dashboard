@@ -8,7 +8,7 @@ const AppContainer = styled.div`
   width: fit-content;
   min-width: 100%;
   min-height: 100vh;
-  height: 100%;
+  //height: 100%;
   .window-container {
     width: 100%;
   }

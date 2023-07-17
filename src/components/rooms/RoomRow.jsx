@@ -57,7 +57,7 @@ export const RoomRow = ({ room, index, number }) => {
         <RoomText>
           {room.room_facilities.map((facility, index) => (
             <span key={index}>
-              {/* Small logic to includes ",", "." and "&" in the right places of the displayed array. */}
+              {/* Small logic to include ",", "." and "&" in the right places of the displayed array. */}
               {(index && index !== room.room_facilities.length - 1
                 ? ", "
                 : "") +
@@ -114,15 +114,6 @@ export const RoomRow = ({ room, index, number }) => {
         {showOptions ? (
           <DropDown onClick={(e) => e.stopPropagation()}>
           <ul>
-            <li>
-              <button
-                onClick={() => {
-                  goToSingleRoom(room.id);
-                }}
-              >
-                Room details
-              </button>
-            </li>
             <li>
               <button
                 onClick={(e) => {
