@@ -40,8 +40,8 @@ const InputContainer = styled.div`
 
 const Input = styled.input`
   transition: all 0.1s;
-  width: 90%;
-  margin: 30px 0;
+  width: 100%;
+  margin: 3rem 0rem 2rem 0rem;
   display: block;
   font-family: var(--font-poppins);
   font-size: 1.5rem;
@@ -114,6 +114,41 @@ const ErrorMessage = styled.span`
   justify-content: center;
 `; */
 
+const DashboardForm = styled.div`
+width: 100%;
+height: 100%;
+display: flex;
+justify-content: center;
+margin-top: 4rem;
+`;
+
+const InputForm = styled.input`
+  transition: all 0.1s;
+  width: 100%;
+  margin: 1rem 0rem 2rem 0rem;
+  display: block;
+  font-family: var(--font-poppins);
+  font-size: 1.5rem;
+  //border: none;
+  border-bottom: 1px solid #C5C5C5;
+
+  /*&:hover{
+      border-bottom: 1px solid #135846;
+  }
+  &:hover~div .input-icon{
+      color: #135846;
+  }
+
+  &:focus{
+      outline: none;
+      border-bottom: 1px solid #135846;
+  }
+
+  &:focus~div .input-icon{
+      color: #135846;
+  }*/
+`;
+
 const Description = styled.p`
   text-align: center;
   font-family: var(--font-poppins);
@@ -123,10 +158,10 @@ const Description = styled.p`
 const FormTitle = styled.p`
   text-align: center;
   font-family: var(--font-poppins);
-  font-size: 2rem;
+  font-size: 3.5rem;
   font-weight: 500;
   color: #393939;
-  margin-bottom: 4rem;
+  margin-bottom: 0rem;
 `;
 
 /* const InputContainer = styled.div`
@@ -181,7 +216,7 @@ const LoginButton = styled.div`
   }
 `;
 const InputSubmit = styled.input`
-  display: inline-block;
+  /* display: inline-block;
   background-color: #ebf1ef;
   border: none;
   border-radius: 8px;
@@ -197,10 +232,10 @@ const InputSubmit = styled.input`
   margin: auto;
   :hover {
     background-color: rgba(19, 87, 69, 0.2);
-  }
+  } */
 `;
 const InputCancel = styled.button`
-  display: inline-block;
+  /* display: inline-block;
   background-color: rgba(226, 52, 40, 0.1);
   border: none;
   border-radius: 8px;
@@ -216,7 +251,7 @@ const InputCancel = styled.button`
   margin: auto;
   :hover {
     background-color: rgba(226, 52, 40, 0.2);
-  }
+  } */
 `;
 
 const RadioInput = styled.input`
@@ -231,7 +266,7 @@ const RadioLabel = styled.label`
   font-family: var(--font-poppins);
   font-size: 1.6rem;
   color: #777777;
-  margin-right: 1rem;
+  margin-right: 4rem;
 `;
 
 const RadioDescription = styled.p`
@@ -239,6 +274,8 @@ const RadioDescription = styled.p`
   font-size: 1.6rem;
   color: #393939;
   margin-top: 0;
+  text-decoration: underline;
+  font-weight: bolder;
 `;
 
 
@@ -261,6 +298,8 @@ export {
   
   
   LoginButton,
+  DashboardForm,
+  InputForm,
   Description,
   RadioInput,
   RadioLabel,

@@ -65,8 +65,7 @@ export const Bookings = () => {
           let dateA = a.orderDate.slice(0, 10);
           let dateB = b.orderDate.slice(0, 10);
           if (
-            dateB.split("/").reverse().join() <
-            dateA.split("/").reverse().join()
+            dateB.split("/").reverse().join() < dateA.split("/").reverse().join()
           ) {
             return -1;
           } else {
@@ -88,10 +87,18 @@ export const Bookings = () => {
         });
         break;
       case "Check In":
-        orderedBookings.sort((a, b) => a.room_rate - b.room_rate);
+        orderedBookings.sort((a, b) => {
+          const dateA = new Date(a.checkIn);
+          const dateB = new Date(b.checkIn);
+          return dateA - dateB; 
+        });
         break;
       case "Check Out":
-        orderedBookings.sort((a, b) => a.room_rate - b.room_rate);
+        orderedBookings.sort((a, b) => {
+          const dateA = new Date(a.checkOut);
+          const dateB = new Date(b.checkOut);
+          return dateA - dateB;
+        });
         break;
       default:
         break;
@@ -147,7 +154,7 @@ export const Bookings = () => {
           <DropdownMenu
             setActiveFilter={setActiveFilter}
             type="white"
-            options={["Order Date", "Guest"]}
+            options={["Order Date", "Guest", "Check In", "Check Out"]}
           ></DropdownMenu>
         </TableButtons>
       </TableActions>

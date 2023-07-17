@@ -5,15 +5,17 @@ import React from "react";
 import {
   LoginContainer,
   LoginCard,
+  DashboardForm,
   InputContainer,
   Input,
+  InputForm,
   FormTitle,
   RadioInput,
   RadioLabel,
   RadioDescription,
   InputSubmit,
   InputCancel,
-} from "../../pages/login/LoginStyled";
+} from "../../pages/Login/LoginStyled";
 
 // This form gets used from editBooking and newBooking. If used for editing a booking it will be preloaded with the data from the currentBooking to edit
 const BookingForm = ({
@@ -25,9 +27,9 @@ const BookingForm = ({
 }) => {
   return (
     <>
-      <LoginContainer style={{ minHeight: "80%" }}>
+      <DashboardForm style={{ minHeight: "80%" }}>
         <LoginCard
-          style={{ height: "fit-content", margin: "2rem 0", width: "90%" }}
+          style={{ height: "fit-content", width: "850px" }}
         >
           <FormTitle>{formTitle}</FormTitle>
           <form
@@ -38,7 +40,7 @@ const BookingForm = ({
           >
             <InputContainer>
               <RadioDescription>User name</RadioDescription>
-              <Input
+              <InputForm
                 required
                 type="text"
                 className="input-user"
@@ -46,57 +48,59 @@ const BookingForm = ({
                 placeholder="User Name"
                 name="userName"
                 onChange={handleInput}
-              ></Input>
+              ></InputForm>
             </InputContainer>
             <InputContainer>
               <RadioDescription>User picture</RadioDescription>
-              <Input
+              <InputForm
                 className="input-user"
                 value={currentBooking.userPicture}
                 placeholder="Copy your photo URL"
                 name="userPicture"
                 onChange={(e) => handleInput(e.target.value)}
-              ></Input>
+              ></InputForm>
             </InputContainer>
+            <div style={{ display: "flex", justifyContent: "space-between"}}>
+              <InputContainer style={{ width: "45%" }}>
+                <RadioDescription>Check in</RadioDescription>
+                <InputForm
+                  required
+                  style={{ color: "#777777" }}
+                  type="date"
+                  className="input-user"
+                  placeholder="dd-mm-yyyy"
+                  name="checkIn"
+                  value={currentBooking.checkIn}
+                  onChange={handleInput}
+                ></InputForm>
+              </InputContainer>
+              <InputContainer style={{ width: "45%" }}>
+                <RadioDescription>Check out</RadioDescription>
+                <InputForm
+                  required
+                  style={{ color: "#777777" }}
+                  type="date"
+                  className="input-user"
+                  placeholder="dd-mm-yyyy"
+                  name="checkOut"
+                  value={currentBooking.checkOut}
+                  onChange={handleInput}
+                ></InputForm>
+              </InputContainer>
+            </div>
             <InputContainer>
-              <RadioDescription>Check in</RadioDescription>
-              <Input
-                required
-                style={{ color: "#777777" }}
-                type="date"
-                className="input-user"
-                placeholder="dd-mm-yyyy"
-                name="checkIn"
-                value={currentBooking.checkIn}
-                onChange={handleInput}
-              ></Input>
-            </InputContainer>
-            <InputContainer>
-              <RadioDescription>Check out</RadioDescription>
-              <Input
-                required
-                style={{ color: "#777777" }}
-                type="date"
-                className="input-user"
-                placeholder="dd-mm-yyyy"
-                name="checkOut"
-                value={currentBooking.checkOut}
-                onChange={handleInput}
-              ></Input>
-            </InputContainer>
-            <InputContainer>
-              <RadioDescription>Special request</RadioDescription>
-              <Input
-                type="text"
+              <RadioDescription>Special request &#40;optional&#41;</RadioDescription>
+              <InputForm
+                type="textarea"
                 className="input-user"
                 placeholder="Special request"
                 name="specialRequest"
                 value={currentBooking.specialRequest}
                 onChange={handleInput}
-              ></Input>
+              ></InputForm>
             </InputContainer>
             <InputContainer>
-              <RadioDescription>Select the Room Type</RadioDescription>
+              <RadioDescription>Room Type</RadioDescription>
               <RadioInput
                 required
                 type="radio"
@@ -139,7 +143,7 @@ const BookingForm = ({
               <RadioLabel htmlFor="suite">Suite</RadioLabel>
             </InputContainer>
             <InputContainer>
-              <RadioDescription>Select the Booking Status</RadioDescription>
+              <RadioDescription>Booking Status</RadioDescription>
               <RadioInput
                 required
                 type="radio"
@@ -173,8 +177,9 @@ const BookingForm = ({
             </InputContainer>
             <div
               style={{
+                marginTop: "3rem",
                 display: "flex",
-                justifyContent: "center",
+                justifyContent: "space-between",
                 width: "30%",
                 margin: "auto",
                 gap: "2rem",
@@ -191,7 +196,7 @@ const BookingForm = ({
             </div>
           </form>
         </LoginCard>
-      </LoginContainer>
+      </DashboardForm>
     </>
   );
 };

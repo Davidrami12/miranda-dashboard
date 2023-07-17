@@ -33,6 +33,10 @@ const DropdownMenuStyled = styled.select`
   &:focus {
     outline: none;
   }
+
+  option {
+    color: red;
+  }
 `;
 
 // Dropdown component. It is given a number of options depending on in which page the dropdown is being used
