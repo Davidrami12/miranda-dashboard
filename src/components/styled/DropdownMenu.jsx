@@ -26,7 +26,7 @@ const DropdownMenuStyled = styled.select`
   border-radius: 8px;
   font-weight: 500;
   font-family: var(--font-poppins);
-  padding: 1.3rem 4rem;
+  padding: 1rem 4rem 1rem 2rem;
   height: 50px;
   cursor: pointer;
   appearance: none;
@@ -35,7 +35,7 @@ const DropdownMenuStyled = styled.select`
   }
 
   option {
-    color: red;
+    //color: red;
   }
 `;
 
@@ -70,7 +70,7 @@ const DropdownMenu = ({
         })}
       </DropdownMenuStyled>
       <svg
-        style={{ position: "absolute", top: "25%", right: "5%" }}
+        style={{ position: "absolute", top: "28%", right: "5%" }}
         xmlns="http://www.w3.org/2000/svg"
         height="25"
         width="25"

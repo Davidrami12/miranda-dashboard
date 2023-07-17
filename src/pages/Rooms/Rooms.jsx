@@ -56,13 +56,13 @@ export const Rooms = () => {
     // Filtering by dropdown selection based on the filtered by search input array
     const orderedRooms = [...roomsList];
     switch (activeFilter) {
-      case "Room Nº":
+      case "Room Number":
         orderedRooms.sort((a, b) => a.room_number - b.room_number);
         break;
-      case "Highest rate first":
+      case "Highest rate":
         orderedRooms.sort((a, b) => b.room_rate - a.room_rate);
         break;
-      case "Lowest rate first":
+      case "Lowest rate":
         orderedRooms.sort((a, b) => a.room_rate - b.room_rate);
         break;
       default:
@@ -102,7 +102,7 @@ export const Rooms = () => {
           <DropdownMenu
             setActiveFilter={setActiveFilter}
             type="white"
-            options={["Room Nº.", "Highest rate first", "Lowest rate first"]}
+            options={["Room Nº", "Highest rate", "Lowest rate"]}
           ></DropdownMenu>
         </TableButtons>
       </TableActions>

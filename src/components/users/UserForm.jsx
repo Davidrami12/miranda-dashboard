@@ -5,15 +5,17 @@ import React from "react";
 import {
   LoginContainer,
   LoginCard,
+  DashboardForm,
   InputContainer,
   Input,
+  InputForm,
   FormTitle,
   RadioInput,
   RadioLabel,
   RadioDescription,
   InputSubmit,
   InputCancel,
-} from "../../pages/login/LoginStyled";
+} from "../../pages/Login/LoginStyled";
 import { DropdownMenu } from "../styled/DropdownMenu";
 
 // This form gets used from editBooking and newBooking. If used for editing a booking it will be preloaded with the data from the currentUser to edit
@@ -26,9 +28,9 @@ const UserForm = ({
 }) => {
   return (
     <>
-      <LoginContainer style={{ minHeight: "80%" }}>
+      <DashboardForm style={{ minHeight: "80%" }}>
         <LoginCard
-          style={{ height: "fit-content", margin: "2rem 0", width: "90%" }}
+          style={{ height: "fit-content", width: "850px" }}
         >
           <FormTitle>{formTitle}</FormTitle>
           <form
@@ -38,8 +40,19 @@ const UserForm = ({
             }}
           >
             <InputContainer>
+              <RadioDescription>User picture</RadioDescription>
+              <InputForm
+                type="text"
+                className="input-user"
+                value={currentUser.photo}
+                placeholder="Copy your photo URL"
+                name="photo"
+                onChange={handleInput}
+              ></InputForm>
+            </InputContainer>
+            <InputContainer>
               <RadioDescription>User name</RadioDescription>
-              <Input
+              <InputForm
                 required
                 type="text"
                 className="input-user"
@@ -47,22 +60,12 @@ const UserForm = ({
                 placeholder="User Name"
                 name="name"
                 onChange={handleInput}
-              ></Input>
+              ></InputForm>
             </InputContainer>
-            <InputContainer>
-              <RadioDescription>User picture</RadioDescription>
-              <Input
-                type="text"
-                className="input-user"
-                value={currentUser.photo}
-                placeholder="Copy your photo URL"
-                name="photo"
-                onChange={handleInput}
-              ></Input>
-            </InputContainer>
+            
             <InputContainer>
               <RadioDescription>User Email</RadioDescription>
-              <Input
+              <InputForm
                 required
                 type="text"
                 className="input-user"
@@ -70,19 +73,19 @@ const UserForm = ({
                 placeholder="User Email"
                 name="email"
                 onChange={handleInput}
-              ></Input>
+              ></InputForm>
             </InputContainer>
             <InputContainer>
               <RadioDescription>Phone Number</RadioDescription>
-              <Input
+              <InputForm
                 required
-                type="text"
+                type="number"
                 className="input-user"
                 value={currentUser.phone}
                 placeholder="Phone Number"
                 name="phone"
                 onChange={handleInput}
-              ></Input>
+              ></InputForm>
             </InputContainer>
             <InputContainer
               style={{ width: "fit-content", marginBottom: "2rem" }}
@@ -98,7 +101,7 @@ const UserForm = ({
             </InputContainer>
             <InputContainer>
               <RadioDescription>Start Date</RadioDescription>
-              <Input
+              <InputForm
                 required
                 style={{ color: "#777777" }}
                 type="date"
@@ -107,18 +110,18 @@ const UserForm = ({
                 name="date"
                 value={currentUser.date}
                 onChange={handleInput}
-              ></Input>
+              ></InputForm>
             </InputContainer>
             <InputContainer>
               <RadioDescription>Position Description</RadioDescription>
-              <Input
+              <InputForm
                 type="text"
                 className="input-user"
                 placeholder="Position Description"
                 name="description"
                 value={currentUser.description}
                 onChange={handleInput}
-              ></Input>
+              ></InputForm>
             </InputContainer>
             <InputContainer>
               <RadioDescription>Select the User Status</RadioDescription>
@@ -145,14 +148,14 @@ const UserForm = ({
             </InputContainer>
             <InputContainer>
               <RadioDescription>Password</RadioDescription>
-              <Input
-                type="text"
+              <InputForm
+                type="password"
                 className="input-user"
                 value={currentUser.pass}
                 placeholder="Enter the Password"
                 name="pass"
                 onChange={handleInput}
-              ></Input>
+              ></InputForm>
             </InputContainer>
             <div
               style={{
@@ -174,7 +177,7 @@ const UserForm = ({
             </div>
           </form>
         </LoginCard>
-      </LoginContainer>
+      </DashboardForm>
     </>
   );
 };
