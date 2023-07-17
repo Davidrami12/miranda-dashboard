@@ -50,55 +50,68 @@ const UserForm = ({
                 onChange={handleInput}
               ></InputForm>
             </InputContainer>
-            <InputContainer>
-              <RadioDescription>User name</RadioDescription>
-              <InputForm
-                required
-                type="text"
-                className="input-user"
-                value={currentUser.name}
-                placeholder="User Name"
-                name="name"
-                onChange={handleInput}
-              ></InputForm>
-            </InputContainer>
+            <div style={{display: "flex", justifyContent: "space-between"}}>
+              <InputContainer style={{ width: "30%" }}>
+                <RadioDescription>User name</RadioDescription>
+                <InputForm
+                  required
+                  type="text"
+                  className="input-user"
+                  value={currentUser.name}
+                  placeholder="User Name"
+                  name="name"
+                  onChange={handleInput}
+                ></InputForm>
+              </InputContainer>
+              <InputContainer style={{ width: "30%" }}>
+                <RadioDescription>User email</RadioDescription>
+                <InputForm
+                  required
+                  type="email"
+                  className="input-user"
+                  value={currentUser.email}
+                  placeholder="User Email"
+                  name="email"
+                  onChange={handleInput}
+                ></InputForm>
+              </InputContainer>
+              <InputContainer style={{ width: "30%" }}>
+                <RadioDescription>Phone number</RadioDescription>
+                <InputForm
+                  required
+                  type="number"
+                  className="input-user"
+                  value={currentUser.phone}
+                  placeholder="Phone Number"
+                  name="phone"
+                  onChange={handleInput}
+                ></InputForm>
+              </InputContainer>
+            </div>
+            <div style={{display: "flex", justifyContent: "space-between"}}>
+              <InputContainer style={{ width: "fit-content", marginBottom: "2rem" }}>
+                <RadioDescription>Position</RadioDescription>
+                <DropdownMenu
+                  type="white"
+                  name="position"
+                  options={["Manager", "Reception", "Room Service"]}
+                  selected={currentUser.position}
+                  handleInput={handleInput}
+                ></DropdownMenu>
+              </InputContainer>
+              <InputContainer style={{ width: "50%" }}>
+                <RadioDescription>Position Description</RadioDescription>
+                <InputForm
+                  type="text"
+                  className="input-user"
+                  placeholder="Position Description"
+                  name="description"
+                  value={currentUser.description}
+                  onChange={handleInput}
+                ></InputForm>
+              </InputContainer>
+            </div>
             
-            <InputContainer>
-              <RadioDescription>User Email</RadioDescription>
-              <InputForm
-                required
-                type="text"
-                className="input-user"
-                value={currentUser.email}
-                placeholder="User Email"
-                name="email"
-                onChange={handleInput}
-              ></InputForm>
-            </InputContainer>
-            <InputContainer>
-              <RadioDescription>Phone Number</RadioDescription>
-              <InputForm
-                required
-                type="number"
-                className="input-user"
-                value={currentUser.phone}
-                placeholder="Phone Number"
-                name="phone"
-                onChange={handleInput}
-              ></InputForm>
-            </InputContainer>
-            <InputContainer
-              style={{ width: "fit-content", marginBottom: "2rem" }}
-            >
-              <RadioDescription>Position</RadioDescription>
-              <DropdownMenu
-                type="white"
-                name="position"
-                options={["Manager", "Reception", "Room Service"]}
-                selected={currentUser.position}
-                handleInput={handleInput}
-              ></DropdownMenu>
-            </InputContainer>
             <InputContainer>
               <RadioDescription>Start Date</RadioDescription>
               <InputForm
@@ -112,17 +125,7 @@ const UserForm = ({
                 onChange={handleInput}
               ></InputForm>
             </InputContainer>
-            <InputContainer>
-              <RadioDescription>Position Description</RadioDescription>
-              <InputForm
-                type="text"
-                className="input-user"
-                placeholder="Position Description"
-                name="description"
-                value={currentUser.description}
-                onChange={handleInput}
-              ></InputForm>
-            </InputContainer>
+            
             <InputContainer>
               <RadioDescription>Select the User Status</RadioDescription>
               <RadioInput
