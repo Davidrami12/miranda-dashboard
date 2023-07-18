@@ -35,4 +35,4 @@ const ButtonNew = styled.div`
     }
 `;
 
-export { ButtonNew };
+export { LinkButton, ButtonNew };

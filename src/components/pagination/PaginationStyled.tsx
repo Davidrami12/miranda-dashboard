@@ -16,10 +16,10 @@ const Text = styled.p`
 `;
 
 const Ul = styled.ul`
-list-style: none;
-display: inline-flex;
-width: 100%;
-justify-content: end;
+  list-style: none;
+  display: inline-flex;
+  width: 100%;
+  justify-content: end;
 `;
 
 const LiNext = styled.li``;
@@ -49,7 +49,11 @@ const LiNextBtn = styled.button`
 
 const LiPageNumber = styled.li``;
 
-const LiPageBtn = styled.button`
+interface LiPageBtnProps {
+  $type: "currentPage" | "notCurrentPage";
+}
+
+const LiPageBtn = styled.button<LiPageBtnProps>`
   ${(props) => {
     switch (props.$type) {
       case "currentPage":

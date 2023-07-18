@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { ReactNode } from 'react';
 import styled, { css } from 'styled-components';
 
 const NotesButton = styled.button`
@@ -32,7 +32,12 @@ const CreateButton = styled.div`
   }
 `;
 
-const StyledButton = styled.button`
+interface StyledButtonProps {
+  $type: string;
+  $enabled?: boolean;
+}
+
+const StyledButton = styled.button<StyledButtonProps>`
     ${(props) => {
         switch (props.$type) {
             case "login":
@@ -107,8 +112,14 @@ const StyledButton = styled.button`
     font-family: var(--font-poppins);
 `;
 
-const Button = ({ type, text, enabled, click }) => {
+interface ButtonProps {
+  type: string;
+  text: string | ReactNode;
+  enabled?: boolean;
+  click: () => void;
+}
 
+const Button: React.FC<ButtonProps> = ({ type, text, enabled = false, click }) => {
     return (
         <StyledButton $type={type} $enabled={enabled} data-cy="submit" onClick={click}>{text}</StyledButton>
     );

@@ -1,10 +1,14 @@
 // React
-import React from "react";
+import React, { ChangeEvent, ReactNode } from "react";
 
 // Styled Components
 import styled, { css } from "styled-components";
 
-const DropdownMenuStyled = styled.select`
+interface DropdownMenuStyledProps {
+  $type: string;
+}
+
+const DropdownMenuStyled = styled.select<DropdownMenuStyledProps>`
   ${(props) => {
     switch (props.$type) {
       case "green":
@@ -23,6 +27,7 @@ const DropdownMenuStyled = styled.select`
         return css``;
     }
   }};
+
   border-radius: 8px;
   font-weight: 500;
   font-family: var(--font-poppins);
@@ -30,6 +35,7 @@ const DropdownMenuStyled = styled.select`
   height: 50px;
   cursor: pointer;
   appearance: none;
+  
   &:focus {
     outline: none;
   }
@@ -39,31 +45,40 @@ const DropdownMenuStyled = styled.select`
   }
 `;
 
-// Dropdown component. It is given a number of options depending on in which page the dropdown is being used
-const DropdownMenu = ({
+interface DropdownMenuProps {
+  type: string;
+  options: string[];
+  setActiveFilter: (filter: string) => void;
+  handleInput: (event: ChangeEvent<HTMLSelectElement>) => void;
+  selected?: string;
+}
+
+const DropdownMenu: React.FC<DropdownMenuProps> = ({
   type,
   options,
   setActiveFilter,
   handleInput,
   selected,
 }) => {
+  const handleChange = (e: ChangeEvent<HTMLSelectElement>) => {
+    if (
+      e.target.value !== "Manager" &&
+      e.target.value !== "Reception" &&
+      e.target.value !== "Room Service"
+    ) {
+      setActiveFilter(e.target.value);
+    } else {
+      handleInput(e);
+    }
+  };
+
   return (
     <div style={{ position: "relative" }}>
       <DropdownMenuStyled
         defaultValue={selected ? selected : "Manager"}
         $type={type}
         name="position"
-        onChange={(e) => {
-          if (
-            e.target.value !== "Manager" &&
-            e.target.value !== "Reception" &&
-            e.target.value !== "Room Service"
-          ) {
-            setActiveFilter(e.target.value);
-          } else {
-            handleInput(e);
-          }
-        }}
+        onChange={handleChange}
       >
         {options.map((option, index) => {
           return <option key={index}>{option}</option>;
