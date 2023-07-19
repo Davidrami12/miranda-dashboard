@@ -8,7 +8,7 @@ export const useLogout = () => {
   const logout = async () => {
     try {
       dispatch({ type: "LOGOUT" });
-    } catch (err) {
+    } catch (err: any) {
       console.log(err.message);
     }
   };

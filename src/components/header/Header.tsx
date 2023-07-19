@@ -2,45 +2,16 @@ import React, { useState, useEffect } from "react";
 import { useLocation } from "react-router";
 
 import { MdLogout, MdNotificationsNone, MdOutlineEmail } from "react-icons/md";
-import { styled } from 'styled-components';
+import { HeaderContainer, HeaderTitle, HeaderElements } from './HeaderStyled';
 
 import { useLogout } from "../../hooks/useLogout"
-
-
-const HeaderContainer = styled.div`
-  width: 100%;
-  height: 120px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: white;
-  box-shadow: 0px 3px 10px #00000005;
-`;
-
-const HeaderTitle = styled.h1`
-  padding-left: 30px;
-  font-size: 28px;
-  font: normal normal 600 28px/42px Poppins;
-  font-weight: 600;
-  flex: 1;
-`;
-
-const HeaderElements = styled.div`
-  width: 100%;
-  padding-left: 5rem;
-  padding-right: 3rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 50px;
-`;
 
 export const Header = () => {
 
   let location = useLocation();
   const { logout } = useLogout();
 
-  const getNavBarTitle = (currentRoute) => {
+  const getNavBarTitle = (currentRoute: string) => {
     if (!currentRoute)
       return "Dashboard";
     return currentRoute.toUpperCase().charAt(0) + currentRoute.slice(1);
@@ -49,9 +20,6 @@ export const Header = () => {
   const goLogin = () => {
     localStorage.removeItem("auth");
     logout()
-    //localStorage.setItem("auth", JSON.stringify({ auth: false }));
-
-    //setAuth(false);
   };
 
   return (
@@ -64,8 +32,7 @@ export const Header = () => {
           <MdOutlineEmail style={{width: 30, height: 30}}/>
           <MdNotificationsNone style={{width: 30, height: 30}}/>
           <MdLogout data-cy="logout-button" onClick={goLogin} style={{width: 30, height: 30, cursor: 'pointer'}}/>
-
-
+        
         </HeaderElements>
     </HeaderContainer>
   );

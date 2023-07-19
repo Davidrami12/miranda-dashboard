@@ -17,26 +17,38 @@ import {
   Status,
   NotesButton,
   DropDown,
-} from "./BookingRowStyled.jsx";
+} from "./BookingRowStyled";
 
+// TypeScript
+import { useAppDispatch } from "../../app/hooks";
+import { BookingInterface, BookingRowInt } from "../../interfaces/BookingInterface";
 
+type BookingsType = {
+  singleBooking: BookingInterface | null | undefined;
+};
 
-export const BookingRow = ({ booking, handleOpenModal }) => {
+export const BookingRow = ({ booking, handleOpenModal }: BookingRowInt) => {
   const navigate = useNavigate();
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
 
-  const [showOptions, setShowOptions] = useState(false);
+  const [showOptions, setShowOptions] = useState<boolean>(false);
 
-  const goToSingleBooking = (id) => {
+  const goToSingleBooking = (id: number): void => {
     navigate("/bookings/" + id);
   };
 
-  const editSingleBooking = (e, bookingID) => {
+  const editSingleBooking = (
+    e: React.MouseEvent<HTMLButtonElement>,
+    bookingID: number
+  ): void => {
     e.preventDefault();
     navigate("/editBooking/" + bookingID);
   };
 
-  const deleteCurrentBooking = (e, bookingID) => {
+  const deleteCurrentBooking = (
+    e: React.MouseEvent<HTMLButtonElement>,
+    bookingID: number
+  ): void => {
     e.preventDefault();
     dispatch(deleteBooking(bookingID));
   };
@@ -66,7 +78,7 @@ export const BookingRow = ({ booking, handleOpenModal }) => {
       </DataContainer>
       <td>
         <NotesButton
-          type={booking.specialRequest}
+          request={booking.specialRequest}
           onClick={(e) => {
             handleOpenModal(booking.userName, booking.specialRequest, e);
           }}
@@ -79,7 +91,7 @@ export const BookingRow = ({ booking, handleOpenModal }) => {
         <p>{booking.roomType}</p>
       </DataContainer>
       <td>
-        <Status $type={booking.status}>{booking.status}</Status>
+        <Status status={booking.status}>{booking.status}</Status>
       </td>
       <DataContainerButton style={{ position: "relative" }}>
         <button>

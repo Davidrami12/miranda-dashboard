@@ -26,7 +26,7 @@ import { Login } from "./pages/Login/Login";
 // Main app components
 import { Sidebar } from './components/sidebar/Sidebar';
 import { Header } from './components/header/Header';
-import { ProtectRoute } from "./components/ProtectedRoute ";
+import { ProtectRoute } from "./components/ProtectedRoute";
 import { AppContainer, WindowContent} from "./components/AppContainer";
 
 function App() {

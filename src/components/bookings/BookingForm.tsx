@@ -17,6 +17,9 @@ import {
   InputCancel,
 } from "../../pages/Login/LoginStyled";
 
+// TypeScript
+import { BookingFormInt } from "../../interfaces/BookingInterface";
+
 // This form gets used from editBooking and newBooking. If used for editing a booking it will be preloaded with the data from the currentBooking to edit
 const BookingForm = ({
   currentBooking,
@@ -24,7 +27,7 @@ const BookingForm = ({
   handleSubmit,
   formTitle,
   handleCancel,
-}) => {
+}: BookingFormInt ) => {
   return (
     <>
       <DashboardForm style={{ minHeight: "80%" }}>
@@ -57,7 +60,9 @@ const BookingForm = ({
                 value={currentBooking.userPicture}
                 placeholder="Copy your photo URL"
                 name="userPicture"
-                onChange={(e) => handleInput(e.target.value)}
+                onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+                  handleInput(e)
+                }
               ></InputForm>
             </InputContainer>
             <div style={{ display: "flex", justifyContent: "space-between"}}>
@@ -187,7 +192,7 @@ const BookingForm = ({
             >
               <InputSubmit type="submit" value={"Save"} />
               <InputCancel
-                onClick={(e) => {
+                onClick={(e: any) => {
                   handleCancel(e);
                 }}
               >
