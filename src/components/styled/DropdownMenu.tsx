@@ -4,13 +4,9 @@ import React, { ChangeEvent, ReactNode } from "react";
 // Styled Components
 import styled, { css } from "styled-components";
 
-interface DropdownMenuStyledProps {
-  $type: string;
-}
-
-const DropdownMenuStyled = styled.select<DropdownMenuStyledProps>`
+const DropdownMenuStyled = styled.select<{ filter: any }>`
   ${(props) => {
-    switch (props.$type) {
+    switch (props.filter) {
       case "green":
         return css`
           background-color: #135846;
@@ -45,47 +41,38 @@ const DropdownMenuStyled = styled.select<DropdownMenuStyledProps>`
   }
 `;
 
-interface DropdownMenuProps {
-  type: string;
-  options: string[];
-  setActiveFilter: (filter: string) => void;
-  handleInput: (event: ChangeEvent<HTMLSelectElement>) => void;
-  selected?: string;
-}
-
-const DropdownMenu: React.FC<DropdownMenuProps> = ({
+const DropdownMenu = ({
   type,
   options,
   setActiveFilter,
   handleInput,
   selected,
-}) => {
-  const handleChange = (e: ChangeEvent<HTMLSelectElement>) => {
-    if (
-      e.target.value !== "Manager" &&
-      e.target.value !== "Reception" &&
-      e.target.value !== "Room Service"
-    ) {
-      setActiveFilter(e.target.value);
-    } else {
-      handleInput(e);
-    }
-  };
-
+}: any) => {
   return (
     <div style={{ position: "relative" }}>
       <DropdownMenuStyled
         defaultValue={selected ? selected : "Manager"}
-        $type={type}
+        filter={type}
         name="position"
-        onChange={handleChange}
+        onChange={(e) => {
+          if (
+            e.target.value !== "Manager" &&
+            e.target.value !== "Reception" &&
+            e.target.value !== "Room Service"
+          ) {
+            setActiveFilter(e.target.value);
+          } else {
+            handleInput(e);
+          }
+        }}
       >
-        {options.map((option, index) => {
+        {options.map((option: string[], index: number) => {
           return <option key={index}>{option}</option>;
         })}
       </DropdownMenuStyled>
+      {/* Another option instead of adding a SVG would be to add a custom background-image to the element to add the custom arrow */}
       <svg
-        style={{ position: "absolute", top: "28%", right: "5%" }}
+        style={{ position: "absolute", top: "15%", right: "5%" }}
         xmlns="http://www.w3.org/2000/svg"
         height="25"
         width="25"

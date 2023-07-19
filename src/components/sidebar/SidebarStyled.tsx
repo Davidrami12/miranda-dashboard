@@ -1,18 +1,23 @@
 import styled from 'styled-components';
 import { MdMenuOpen } from 'react-icons/md';
 
-const MenuIcon = styled(MdMenuOpen)`
+type MenuIconProps = {
+  rotated?: boolean;
+};
 
+const MenuIcon = styled(MdMenuOpen)<MenuIconProps>`
   transform: ${props => props.rotated ? 'rotate(-180deg)' : 'none'};
   transition: transform 0.3s ease-in-out;
 `;
 
 
-const NavContainer = styled.div`
+const NavContainer = styled.div<{
+  display: string;
+  adjustHeight?: string | number;
+}>`
   width: ${props => props.display};
   //max-width: ${props => props.display};;
   //min-width: ${props => props.display};;
-  //height: 100vh;
   box-shadow: 13px 3px 40px #00000005;
   background-color: #FFFFFF;
   transition: width 0.3s;
@@ -67,7 +72,10 @@ const Navigation = styled.nav`
   }
 `;
 
-const Link = styled.li`
+const Link = styled.li<{
+  route: string;
+  current: string;
+}>`
   width: 100%;
   display: flex;
   height: 70px;

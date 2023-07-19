@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { NavLink, useLocation } from 'react-router-dom';
 // import LoguedUser from './LoguedUser';
-import Logo from '../../assets/logo.jpg'
+import Logo from '../../assets/logo.jpg';
 
 import {
   NavContainer,
@@ -27,7 +27,7 @@ import { ImKey } from "react-icons/im"
 
 export const Sidebar = () => {
 
-    let user = {
+    let user: object = {
       photo: "https://images.unsplash.com/photo-1609335044871-319fe51d2b7f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1974&q=80",
       name: "Admin",
       email: "admin@admin.com",
@@ -39,14 +39,14 @@ export const Sidebar = () => {
     const location = useLocation();
 
     const displayMenu = () => {
-      setDisplay(!display)
-      setRotated(!rotated);  
+      setDisplay(display === 0 ? 345 : 0);
+      setRotated(!rotated);
     }
 
     return (
       <NavContainer display={display ? "0px" : "345px"}>
         <MenuButton onClick={displayMenu}>
-          <MenuIcon rotated={rotated ? 1 : 0} className='menu' style={{}}/>
+          <MenuIcon rotated={rotated} className='menu' />
         </MenuButton>
 
         <LogoContainer>

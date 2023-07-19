@@ -64,9 +64,9 @@ const DataContainer = styled.td`
   }
 `;
 
-const Status = styled.p`
+const Status = styled.p<{ state: string }>`
   ${(props) => {
-    switch (props.$type) {
+    switch (props.state) {
       case "ACTIVE":
         return css`
           font-family: var(--font-poppins);

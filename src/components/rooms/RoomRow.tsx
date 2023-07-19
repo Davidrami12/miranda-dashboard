@@ -20,21 +20,36 @@ import {
   DropDown,
 } from "./RoomRowStyled";
 
-export const RoomRow = ({ room, index, number }) => {
+// TypeScript
+import { useAppDispatch } from "../../app/hooks";
+import { RoomInterface } from "../../interfaces/RoomInterface";
+
+type RoomsType = {
+  singleRoom: RoomInterface | null | undefined;
+};
+
+export const RoomRow = ({ room, index }: RoomsType | any) => {
   const navigate = useNavigate();
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
 
-  const [showOptions, setShowOptions] = useState(false);
+  const [showOptions, setShowOptions] = useState<boolean>(false);
 
-  const goToSingleRoom = (id) => {
+  const goToSingleRoom = (id: number): void => {
     navigate("/rooms/" + id);
   };
 
-  const editSingleRoom = (e, id) => {
+  const editSingleRoom = (
+    e: React.MouseEvent<HTMLButtonElement>,
+    id: number
+  ): void => {
     e.preventDefault();
     navigate("/editRoom/" + id);
   };
-  const deleteCurrentRoom = (e, id) => {
+
+  const deleteCurrentRoom = (
+    e: React.MouseEvent<HTMLButtonElement>,
+    id: number
+  ): void => {
     e.preventDefault();
     dispatch(deleteRoom(id));
   };
@@ -55,7 +70,7 @@ export const RoomRow = ({ room, index, number }) => {
       </DataContainer>
       <DataContainer>
         <RoomText>
-          {room.room_facilities.map((facility, index) => (
+          {room.room_facilities.map((facility: string, index: number) => (
             <span key={index}>
               {/* Small logic to include ",", "." and "&" in the right places of the displayed array. */}
               {(index && index !== room.room_facilities.length - 1

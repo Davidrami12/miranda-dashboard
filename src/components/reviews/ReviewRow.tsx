@@ -5,9 +5,9 @@ import React from "react";
 import { Row, DataContainer, DataContainerButton } from "./ReviewRowStyled";
 
 // Component that creates a table row for the bookings table
-export const ReviewRow = ({ review }) => {
+export const ReviewRow = ({ review }: any) => {
   // Here I display a star based on the user´s given rating
-  const stars = [];
+  const stars: JSX.Element[] = [];
   let i = 0;
   while (i < review.stars) {
     stars.push(

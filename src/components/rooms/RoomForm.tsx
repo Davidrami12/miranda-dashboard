@@ -17,6 +17,13 @@ import {
   InputCancel,
 } from "../../pages/Login/LoginStyled";
 
+// TypeScript
+import { RoomInterface } from "../../interfaces/RoomInterface";
+
+type RoomType = {
+  currentRoom: RoomInterface | null | undefined;
+};
+
 // This form gets used from editRoom and newRoom. If used for editing a room it will be preloaded with the data from the currentRoom to edit
 const RoomForm = ({
   currentRoom,
@@ -24,7 +31,7 @@ const RoomForm = ({
   handleSubmit,
   formTitle,
   handleCancel,
-}) => {
+}: RoomType | any) => {
   const listOfAmenities = [ "AC", "Shower", "Towel", "Bathtub", "Coffee Set", "LED TV", "Wi-Fi"];
 
   return (

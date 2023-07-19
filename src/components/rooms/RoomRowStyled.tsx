@@ -88,7 +88,7 @@ const RoomPrice = styled.p`
   }
 `;
 
-const RoomStatus = styled.p`
+const RoomStatus = styled.p<{ status: string }>`
   background-color: ${(props) => props.status};
   font-family: var(--font-poppins);
   font-size: 1.6rem;

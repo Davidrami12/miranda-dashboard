@@ -25,7 +25,7 @@ const UserForm = ({
   handleSubmit,
   formTitle,
   handleCancel,
-}) => {
+}: any) => {
   return (
     <>
       <DashboardForm style={{ minHeight: "80%" }}>

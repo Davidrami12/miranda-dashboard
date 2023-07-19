@@ -18,21 +18,31 @@ import {
 } from "./UserRowStyled";
 import { DataContainerButton, DropDown } from "../bookings/BookingRowStyled";
 
+// TypeScript
+import { useAppDispatch } from "../../app/hooks";
+import { UserInterface } from "../../interfaces/UserInterface";
+
+type UsersType = {
+  singleUser: UserInterface | null | undefined;
+};
+
 // Component that creates a table row for the bookings table
-export const UserRow = ({ user }) => {
+export const UserRow = ({ user }: UsersType | any) => {
   const navigate = useNavigate();
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
 
-  const [showOptions, setShowOptions] = useState(false);
+  const [showOptions, setShowOptions] = useState<boolean>(false);
 
-  const goToSingleUser = (id) => {
+  const goToSingleUser = (id: number) => {
     navigate("/users/" + id);
   };
-  const editSingleUser = (e, id) => {
+
+  const editSingleUser = (e: Event, id: number) => {
     e.preventDefault();
     navigate("/editUser/" + id);
   };
-  const deleteCurrentUser = (e, id) => {
+
+  const deleteCurrentUser = (e: Event, id: number) => {
     e.preventDefault();
     dispatch(deleteUser(id));
   };
@@ -85,7 +95,7 @@ export const UserRow = ({ user }) => {
         </UserContainer>
       </td>
       <td>
-        <Status $type={user.state}>{user.state}</Status>
+        <Status state={user.state}>{user.state}</Status>
       </td>
       <DataContainerButton style={{ position: "relative" }}>
         <button>
@@ -108,7 +118,7 @@ export const UserRow = ({ user }) => {
             <ul>
               <li>
                 <button
-                  onClick={(e) => {
+                  onClick={(e: any) => {
                     if (e && e.stopPropagation) e.stopPropagation();
                     editSingleUser(e, user.id);
                   }}
@@ -118,7 +128,7 @@ export const UserRow = ({ user }) => {
               </li>
               <li>
                 <button
-                  onClick={(e) => {
+                  onClick={(e: any) => {
                     if (e && e.stopPropagation) e.stopPropagation();
                     deleteCurrentUser(e, user.id);
                   }}

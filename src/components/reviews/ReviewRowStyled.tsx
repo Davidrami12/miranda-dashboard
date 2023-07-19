@@ -81,9 +81,9 @@ const DataContainerButton = styled.td`
   }
 `;
 
-const NotesButton = styled.button`
+const NotesButton = styled.button<{ request: String }>`
   ${(props) => {
-    if (props.type == null) {
+    if (props.request === "") {
       return css`
         background-color: white;
         font-family: var(--font-poppins);
@@ -122,9 +122,9 @@ const NotesButton = styled.button`
   }}
 `;
 
-const Status = styled.p`
+const Status = styled.p<{ status: string }>`
   ${(props) => {
-    switch (props.$type) {
+    switch (props.status) {
       case "Check In":
         return css`
           background-color: rgba(38, 166, 91, 0.5);
