@@ -119,7 +119,7 @@ interface ButtonProps {
   click: () => void;
 }
 
-const Button: React.FC<ButtonProps> = ({ type, text, enabled = false, click }) => {
+const Button = ({ type, text, enabled, click }: ButtonProps ) => {
     return (
         <StyledButton $type={type} $enabled={enabled} data-cy="submit" onClick={click}>{text}</StyledButton>
     );

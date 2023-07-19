@@ -1,6 +1,7 @@
 // React & Router
 import React, { useState, useEffect } from "react";
 import { NavLink } from "react-router-dom";
+import type { BookingInterface } from "../interfaces/BookingInt";
 
 // Redux
 import { useDispatch, useSelector } from "react-redux";

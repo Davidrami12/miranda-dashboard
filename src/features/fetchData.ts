@@ -3,7 +3,7 @@ import rooms from "../data/rooms.json";
 import users from "../data/users.json";
 import reviews from "../data/reviews.json";
 
-export const fetchData = (query) => {
+export const fetchData = (query: string) => {
   switch (query) {
     case "Bookings":
       return bookings;
