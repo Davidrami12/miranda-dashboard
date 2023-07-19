@@ -2,25 +2,15 @@ import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { fetchData } from "./fetchData";
 import type { BookingInterface } from "../interfaces/BookingInterface";
 
-const addDelay = <T>(promise: Promise<T>, delay: number): Promise<T> => {
-  return new Promise<T>((resolve, reject) => {
-    setTimeout(() => {
-      promise.then(resolve).catch(reject);
-    }, delay);
-  });
-};
-
-
-interface ActionInterface {
-  type: string;
-  payload: any;
-}
-
 interface BookingsState {
   bookingsList: BookingInterface[] | [];
   singleBooking: BookingInterface | null | undefined;
   status: "loading" | "success" | "failed";
   singleBookingStatus: "loading" | "success" | "failed";
+}
+interface ActionInterface {
+  type: string;
+  payload: any;
 }
 
 const initialState: BookingsState = {
@@ -30,6 +20,15 @@ const initialState: BookingsState = {
   singleBookingStatus: "loading",
 };
 
+
+
+const addDelay = <T>(promise: Promise<T>, delay: number): Promise<T> => {
+  return new Promise<T>((resolve, reject) => {
+    setTimeout(() => {
+      promise.then(resolve).catch(reject);
+    }, delay);
+  });
+};
 
 export const getDataBookings = createAsyncThunk(
   "bookings/fetchBookings",
@@ -41,7 +40,7 @@ export const getDataBookings = createAsyncThunk(
 
 export const getBooking = createAsyncThunk(
   "booking/GetBookingDetails",
-  async (idBooking: string) => {
+  async (idBooking: number) => {
     return addDelay(Promise.resolve(idBooking), 200);
   }
 );
