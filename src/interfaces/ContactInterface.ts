@@ -9,7 +9,7 @@ type comment = {
   body: string;
 };
 
-export interface ReviewInt {
+export interface ContactInterface {
   id: number;
   date: string;
   user: user;

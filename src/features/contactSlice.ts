@@ -1,16 +1,23 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { fetchData } from "./fetchData";
-import type { ReviewInt } from "../interfaces/ContactInterface";
+import type { ContactInterface } from "../interfaces/ContactInterface";
 
 interface ReviewState {
-  reviewsList: ReviewInt[] | [];
+  reviewsList: ContactInterface[] | [];
   status: string;
 }
 
-interface ActionInt {
+interface ActionInterface {
   type: string;
   payload: any;
 }
+
+const initialState: ReviewState = {
+  reviewsList: [],
+  status: "loading",
+};
+
+
 
 export const getDataReviews = createAsyncThunk(
   "reviews/fetchReviews",
@@ -19,10 +26,7 @@ export const getDataReviews = createAsyncThunk(
   }
 );
 
-const initialState = {
-  reviewsList: [],
-  status: "loading",
-};
+
 
 export const reviewsSlice = createSlice({
   name: "reviews",
@@ -35,7 +39,7 @@ export const reviewsSlice = createSlice({
       })
       .addCase(
         getDataReviews.fulfilled,
-        (state: ReviewState, action: ActionInt) => {
+        (state: ReviewState, action: ActionInterface) => {
           state.status = "success";
           state.reviewsList = action.payload;
         }

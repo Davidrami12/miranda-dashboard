@@ -1,4 +1,4 @@
-import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { fetchData } from "./fetchData";
 import type { BookingInterface } from "../interfaces/BookingInterface";
 
@@ -48,7 +48,7 @@ export const getBooking = createAsyncThunk(
 
 export const createNewBooking = createAsyncThunk(
   "bookings/CreateBooking",
-  async (newBooking) => {
+  async (newBooking: BookingInterface) => {
     return await newBooking;
   }
 );
