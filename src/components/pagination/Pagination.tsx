@@ -13,7 +13,7 @@ interface PaginationProps {
   nPages: number;
   currentPage: number;
   setCurrentPage: (page: number) => void;
-  dataDisplayed: number;
+  dataDisplayed: string;
   total: number;
   indexOfLastImage: number;
   indexOfFirstImage: number;
@@ -43,7 +43,7 @@ const Pagination: React.FC<PaginationProps> = ({
       <Text>
         Showing {dataDisplayed} {indexOfFirstImage} to{" "}
         {indexOfLastImage > total ? total : indexOfLastImage} from a
-        total of {total} {dataDisplayed}
+        total of<strong> {total} {dataDisplayed}</strong>
       </Text>
       <Ul>
         <LiNext>

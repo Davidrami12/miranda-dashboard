@@ -25,11 +25,26 @@ import { BookingRow } from "../../components/bookings/BookingRow";
 import { Modal } from "../../components/styled/Modal";
 import { Pagination } from "../../components/pagination/Pagination";
 
+// TypeScript
+import { useAppDispatch, useAppSelector } from "../../app/hooks";
+import { BookingInterface } from "../../interfaces/BookingInterface";
+
+type BookingsType = {
+  bookingsList: BookingInterface[];
+};
+
+type StatusType = {
+  status: string;
+};
 
 export const Bookings = () => {
 
-  const dispatch = useDispatch();
-  const { bookingsList, status } = useSelector(
+  const dispatch = useAppDispatch();
+  const { bookingsList } = useAppSelector<BookingsType>(
+    (state) => state.bookingsReducer
+  );
+  
+  const { status } = useAppSelector<StatusType>(
     (state) => state.bookingsReducer
   );
 
@@ -38,7 +53,7 @@ export const Bookings = () => {
   const [name, setName] = useState("");
   const [request, setRequest] = useState("");
   const [activeFilter, setActiveFilter] = useState("Order Date");
-  const [currentBookings, setCurrentBookings] = useState([]);
+  const [currentBookings, setCurrentBookings] = useState<BookingInterface[]>([]);
 
   // useEffect hook runs whenever 'bookingsList' or 'dispatch' changes
   useEffect(() => {
@@ -53,7 +68,7 @@ export const Bookings = () => {
     setBookings(bookingsList);
   };
 
-  const filterByType = (type) => {
+  const filterByType = (type: string): void => {
     setBookings(bookingsList.filter((booking) => booking.status === type));
   };
 
@@ -90,14 +105,14 @@ export const Bookings = () => {
         orderedBookings.sort((a, b) => {
           const dateA = new Date(a.checkIn);
           const dateB = new Date(b.checkIn);
-          return dateA - dateB; 
+          return Number(dateA) - Number(dateB); 
         });
         break;
       case "Check Out":
         orderedBookings.sort((a, b) => {
           const dateA = new Date(a.checkOut);
           const dateB = new Date(b.checkOut);
-          return dateA - dateB;
+          return Number(dateA) - Number(dateB);
         });
         break;
       default:
@@ -106,11 +121,11 @@ export const Bookings = () => {
     setBookings(orderedBookings);
   }, [activeFilter, bookingsList]);
 
-  const closeModal = () => {
+  const closeModal = (): void => {
     setOpenModal(false);
   };
 
-  const handleOpenModal = (name, request, e) => {
+  const handleOpenModal = (name: string, request: string, e: any): void => {
     if (e && e.stopPropagation) e.stopPropagation();
     setOpenModal(true);
     setName(name);
@@ -118,17 +133,17 @@ export const Bookings = () => {
   };
 
 
-  const [currentPage, setCurrentPage] = useState(1);
-  const [bookingsPerPage] = useState(5);
-  const indexOfLastImage = currentPage * bookingsPerPage;
-  const indexOfFirstImage = indexOfLastImage - bookingsPerPage;
+  const [currentPage, setCurrentPage] = useState<number>(1);
+  const [bookingsPerPage] = useState<number>(5);
+  const indexOfLastImage: number = currentPage * bookingsPerPage;
+  const indexOfFirstImage: number = indexOfLastImage - bookingsPerPage;
   
   // useEffect hook runs whenever 'bookings', 'indexOfFirstImage' or 'indexOfLastImage' changes
   useEffect(() => {
     setCurrentBookings(bookings.slice(indexOfFirstImage, indexOfLastImage));
   }, [bookings, indexOfFirstImage, indexOfLastImage]);
 
-  const nPages = Math.ceil(bookings.length / bookingsPerPage);
+  const nPages: number = Math.ceil(bookings.length / bookingsPerPage);
 
   return (
     <>

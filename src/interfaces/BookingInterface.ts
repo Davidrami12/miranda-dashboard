@@ -27,6 +27,8 @@ export interface BookingFormInt {
 }
 
 export interface BookingRowInt {
+  index: number;
+  number: number;
   booking: BookingInterface;
   handleOpenModal: (userName: string, specialRequest: string, e: any) => void;
 }

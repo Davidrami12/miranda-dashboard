@@ -156,7 +156,7 @@ const SwiperContainer = styled.div`
   }
 `;
 
-const Tag = styled.div`
+const Tag = styled.div<{ currentStatus: string }>`
   position: absolute;
   right: -6rem;
   top: 2rem;
@@ -168,7 +168,7 @@ const Tag = styled.div`
   transform: rotate(45deg);
   z-index: 2;
   ${(props) => {
-    switch (props.$type) {
+    switch (props.currentStatus) {
       case "Check In":
         return css`
           background-color: green;

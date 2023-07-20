@@ -11,15 +11,25 @@ import { getBooking, editBooking } from "../../features/bookingsSlice";
 import BookingForm from "../../components/bookings/BookingForm";
 import { Loader } from "../../components/styled/Loader";
 
+// TypeScript
+import { useAppDispatch, useAppSelector } from "../../app/hooks";
+import { BookingInterface } from "../../interfaces/BookingInterface";
+
+type BookingsType = {
+  singleBooking: BookingInterface | null | undefined;
+};
+
 export const EditBooking = () => {
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
   const navigate = useNavigate();
   const params = useParams();
   const { bookingId } = params;
-  const { singleBooking } = useSelector((state) => state.bookingsReducer);
+  const { singleBooking } = useAppSelector<BookingsType>(
+    (state) => state.bookingsReducer
+  );
 
-  const [currentBooking, setCurrentBooking] = useState(null);
-  const formTitle = "Edit current booking";
+  const [currentBooking, setCurrentBooking] = useState<BookingInterface | any>(null);
+  const formTitle: string = "Edit current booking";
 
   useEffect(() => {
     dispatch(getBooking(Number(bookingId)));
@@ -33,18 +43,18 @@ export const EditBooking = () => {
   }, [singleBooking]);
   
 
-  const handleInput = (event) => {
+  const handleInput = (event: any) => {
     const { name, value } = event.target;
-    setCurrentBooking((prevState) => ({ ...prevState, [name]: value }));
+    setCurrentBooking((prevState: BookingInterface) => ({ ...prevState, [name]: value }));
   };
 
-  const handleCancel = (e) => {
+  const handleCancel = (e: Event): void => {
     e.preventDefault();
     setCurrentBooking({});
     navigate("/bookings");
   };
 
-  const handleSubmit = () => {
+  const handleSubmit = (): void => {
     dispatch(editBooking(currentBooking));
     setCurrentBooking({});
     navigate("/bookings");

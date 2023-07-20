@@ -9,12 +9,16 @@ import { createNewBooking } from "../../features/bookingsSlice";
 // Components
 import BookingForm from "../../components/bookings/BookingForm";
 
+// TypeScript
+import { useAppDispatch } from "../../app/hooks";
+import { BookingInterface } from "../../interfaces/BookingInterface";
+
 export const NewBooking = () => {
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
   const navigate = useNavigate();
 
-  const formTitle = "Adding a new booking";
-  const [currentBooking, setCurrentBooking] = useState({
+  const formTitle: string = "Adding a new booking";
+  const [currentBooking, setCurrentBooking] = useState<BookingInterface>({
     id: Math.floor(Math.random() * 1000),
     bookingID: Math.floor(Math.random() * 10000),
     orderDate: new Date().toLocaleDateString('es-ES', {
@@ -31,20 +35,21 @@ export const NewBooking = () => {
     status: "",
   });
 
-  const handleInput = (event) => {
+  const handleInput = (event: any): void => {
     const { name, value } = event.target;
     setCurrentBooking((prevState) => ({ ...prevState, [name]: value }));
   };
 
-  const handleCancel = (e) => {
+  const handleCancel = (e: Event): void => {
     e.preventDefault();
     navigate("/bookings");
   };
 
-  const handleSubmit = () => {
+  const handleSubmit = (): void => {
     dispatch(createNewBooking(currentBooking));
     navigate("/bookings");
   };
+  
   return (
     <BookingForm
       formTitle={formTitle}
