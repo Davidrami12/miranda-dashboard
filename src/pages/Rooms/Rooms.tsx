@@ -37,6 +37,7 @@ type StatusType = {
 };
 
 export const Rooms = () => {
+  
   const dispatch = useAppDispatch();
   const { roomsList } = useAppSelector<RoomsType>(
     (state) => state.roomsReducer

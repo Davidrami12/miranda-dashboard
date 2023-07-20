@@ -25,6 +25,7 @@ import { Pagination } from "../../components/pagination/Pagination";
 import { Loader } from "../../components/styled/Loader";
 
 export const Contact = () => {
+  
   const dispatch = useDispatch();
   const { reviewsList } = useSelector((state) => state.contactReducer);
   const { status } = useSelector((state) => state.contactReducer);

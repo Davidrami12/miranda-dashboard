@@ -11,15 +11,25 @@ import { getUser, editUser } from "../../features/usersSlice";
 import UserForm from "../../components/users/UserForm";
 import { Loader } from "../../components/styled/Loader";
 
+// TypeScript
+import { useAppDispatch, useAppSelector } from "../../app/hooks";
+import { UserInterface } from "../../interfaces/UserInterface";
+
+type UsersType = {
+  singleUser: UserInterface | null | undefined;
+};
+
 export const EditUser = () => {
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
   const navigate = useNavigate();
   const params = useParams();
   const { id } = params;
-  const { singleUser } = useSelector((state) => state.usersReducer);
+  const { singleUser } = useAppSelector<UsersType>(
+    (state) => state.usersReducer
+  );
 
-  const [currentUser, setCurrentUser] = useState(null);
-  const formTitle = "Edit current user";
+  const [currentUser, setCurrentUser] = useState<UserInterface | any>(null);
+  const formTitle: string = "Edit current user";
 
   useEffect(() => {
     dispatch(getUser(Number(id)));
@@ -32,22 +42,23 @@ export const EditUser = () => {
     }
   }, [singleUser]);
 
-  const handleInput = (event) => {
+  const handleInput = (event: any): void => {
     const { name, value } = event.target;
-    setCurrentUser((prevState) => ({ ...prevState, [name]: value }));
+    setCurrentUser((prevState: UserInterface) => ({ ...prevState, [name]: value }));
   };
 
-  const handleCancel = (e) => {
+  const handleCancel = (e: Event): void => {
     e.preventDefault();
     setCurrentUser({});
     navigate("/users");
   };
 
-  const handleSubmit = () => {
+  const handleSubmit = (): void => {
     dispatch(editUser(currentUser));
     setCurrentUser({});
     navigate("/users");
   };
+
   return !currentUser ? (
     <Loader />
   ) : (

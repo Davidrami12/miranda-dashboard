@@ -9,12 +9,16 @@ import { createNewUser } from "../../features/usersSlice";
 // Components
 import UserForm from "../../components/users/UserForm";
 
+// TypeScript
+import { useAppDispatch } from "../../app/hooks";
+import { UserInterface } from "../../interfaces/UserInterface";
+
 export const NewUser = () => {
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
   const navigate = useNavigate();
 
-  const formTitle = "Adding a new user";
-  const [currentUser, setCurrentUser] = useState({
+  const formTitle: string = "Adding a new user";
+  const [currentUser, setCurrentUser] = useState<UserInterface>({
     id: Math.floor(Math.random() * 100000),
     photo: "",
     name: "",
@@ -27,9 +31,9 @@ export const NewUser = () => {
     pass: "",
   });
 
-  const handleInput = (event) => {
+  const handleInput = (event: any): void => {
     const { name, value } = event.target;
-    let valToUpdate;
+    let valToUpdate: string | string[];
     if (name === "position") {
       valToUpdate = value;
     } else {
@@ -38,12 +42,12 @@ export const NewUser = () => {
     setCurrentUser((prevState) => ({ ...prevState, [name]: valToUpdate }));
   };
 
-  const handleCancel = (e) => {
+  const handleCancel = (e: Event): void => {
     e.preventDefault();
     navigate("/users");
   };
 
-  const handleSubmit = () => {
+  const handleSubmit = (): void => {
     dispatch(createNewUser(currentUser));
     navigate("/users");
   };

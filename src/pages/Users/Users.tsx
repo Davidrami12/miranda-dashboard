@@ -24,16 +24,30 @@ import { CreateButton } from "../../components/styled/Buttons";
 import { UserRow } from "../../components/users/UserRow";
 import { Pagination } from "../../components/pagination/Pagination";
 
+// TypeScript
+import { useAppDispatch, useAppSelector } from "../../app/hooks";
+import { UserInterface } from "../../interfaces/UserInterface";
+
+type UsersType = {
+  usersList: UserInterface[];
+};
+
+type StatusType = {
+  status: string;
+};
+
 export const Users = () => {
   
-  const dispatch = useDispatch();
-  const { usersList, status } = useSelector(
+  const dispatch = useAppDispatch();
+  const { usersList } = useAppSelector<UsersType>(
     (state) => state.usersReducer
   );
+  const { status } = useAppSelector<StatusType>((state) => state.usersReducer);
 
-  const [users, setUsers] = useState(usersList);
-  const [activeFilter, setActiveFilter] = useState("Start date");
-  const [currentUsers, setCurrentUsers] = useState([]);
+
+  const [users, setUsers] = useState<UserInterface[]>(usersList);
+  const [activeFilter, setActiveFilter] = useState<string>("Start date");
+  const [currentUsers, setCurrentUsers] = useState<UserInterface[]>([]);
 
   useEffect(() => {
   if (usersList.length === 0) {
@@ -42,21 +56,21 @@ export const Users = () => {
   setUsers(usersList);
   }, [usersList, dispatch]);
 
-  const getAllUsers = () => {
+  const getAllUsers = (): void => {
     setUsers(usersList);
   };
 
-  const filterByType = (type) => {
+  const filterByType = (type: string): void => {
     setUsers(usersList.filter((user) => user.state === type));
   };
 
   useEffect(() => {
-    const orderedUsers = [...usersList];
+    const orderedUsers: UserInterface[] = [...usersList];
     switch (activeFilter) {
       case "Start date":
-        orderedUsers.sort((a, b) => {
-          let dateA = a.date;
-          let dateB = b.date;
+        orderedUsers.sort((a: UserInterface, b: UserInterface) => {
+          let dateA: string = a.date;
+          let dateB: string = b.date;
           if (dateB.split("/").join() > dateA.split("/").join()) {
             return -1;
           } else {
@@ -65,9 +79,9 @@ export const Users = () => {
         });
         break;
       case "Name":
-        orderedUsers.sort((a, b) => {
-          const nameA = a.name.toUpperCase().replace(/\s/g, "");
-          const nameB = b.name.toUpperCase().replace(/\s/g, "");
+        orderedUsers.sort((a: UserInterface, b: UserInterface) => {
+          const nameA: string = a.name.toUpperCase().replace(/\s/g, "");
+          const nameB: string = b.name.toUpperCase().replace(/\s/g, "");
           if (nameA < nameB) {
             return -1;
           }
@@ -84,17 +98,17 @@ export const Users = () => {
   }, [activeFilter, usersList]);
 
   // Variables for the pagination component
-  const [currentPage, setCurrentPage] = useState(1);
-  const [usersPerPage] = useState(10);
-  const indexOfLastImage = currentPage * usersPerPage;
-  const indexOfFirstImage = indexOfLastImage - usersPerPage;
+  const [currentPage, setCurrentPage] = useState<number>(1);
+  const [usersPerPage] = useState<number>(10);
+  const indexOfLastImage: number = currentPage * usersPerPage;
+  const indexOfFirstImage: number = indexOfLastImage - usersPerPage;
   
   // Setting the current displayed images
   useEffect(() => {
     setCurrentUsers(users.slice(indexOfFirstImage, indexOfLastImage));
   }, [users, indexOfFirstImage, indexOfLastImage]);
 
-  const nPages = Math.ceil(users.length / usersPerPage);
+  const nPages: number = Math.ceil(users.length / usersPerPage);
 
   return (
     <>
