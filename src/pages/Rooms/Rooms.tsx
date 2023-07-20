@@ -2,9 +2,6 @@
 import React, { useState, useEffect } from "react";
 import { NavLink } from "react-router-dom";
 
-// DnD
-// import { DragDropContext, Droppable } from "react-beautiful-dnd";
-
 // Redux
 import { useDispatch, useSelector } from "react-redux";
 import { getDataRooms } from "../../features/roomsSlice";
@@ -27,14 +24,28 @@ import { Loader } from "../../components/styled/Loader";
 import { RoomRow } from "../../components/rooms/RoomRow";
 import { Pagination } from "../../components/pagination/Pagination";
 
-// Component that creates a table and add a row for each item in the data base
-export const Rooms = () => {
-  const dispatch = useDispatch();
-  const { roomsList, status } = useSelector((state) => state.roomsReducer);
+// TypeScript
+import { useAppDispatch, useAppSelector } from "../../app/hooks";
+import { RoomInterface } from "../../interfaces/RoomInterface";
 
-  const [rooms, setRooms] = useState(roomsList);
-  const [activeFilter, setActiveFilter] = useState("Room Nº.");
-  const [currentRooms, setCurrentRooms] = useState([]);
+type RoomsType = {
+  roomsList: RoomInterface[];
+};
+
+type StatusType = {
+  status: string;
+};
+
+export const Rooms = () => {
+  const dispatch = useAppDispatch();
+  const { roomsList } = useAppSelector<RoomsType>(
+    (state) => state.roomsReducer
+  );
+  const { status } = useAppSelector<StatusType>((state) => state.roomsReducer);
+
+  const [rooms, setRooms] = useState<RoomInterface[]>(roomsList);
+  const [activeFilter, setActiveFilter] = useState<string>("Room Nº.");
+  const [currentRooms, setCurrentRooms] = useState<RoomInterface[]>([]);
 
   useEffect(() => {
     if (roomsList.length === 0) {
@@ -48,7 +59,7 @@ export const Rooms = () => {
     setRooms(roomsList);
   };
 
-  const filterByType = (type) => {
+  const filterByType = (type: string): void => {
     setRooms(roomsList.filter((room) => room.room_status === type));
   };
 
@@ -57,13 +68,13 @@ export const Rooms = () => {
     const orderedRooms = [...roomsList];
     switch (activeFilter) {
       case "Room Number":
-        orderedRooms.sort((a, b) => a.room_number - b.room_number);
+        orderedRooms.sort((a, b) => Number(a.room_number) - Number(b.room_number));
         break;
       case "Highest rate":
-        orderedRooms.sort((a, b) => b.room_rate - a.room_rate);
+        orderedRooms.sort((a, b) => Number(b.room_rate) - Number(a.room_rate));
         break;
       case "Lowest rate":
-        orderedRooms.sort((a, b) => a.room_rate - b.room_rate);
+        orderedRooms.sort((a, b) => Number(a.room_rate) - Number(b.room_rate));
         break;
       default:
         break;

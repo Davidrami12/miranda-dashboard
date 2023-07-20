@@ -9,12 +9,17 @@ import { createNewRoom } from "../../features/roomsSlice";
 // Components
 import RoomForm from "../../components/rooms/RoomForm";
 
+// TypeScript
+import { useAppDispatch } from "../../app/hooks";
+import { RoomInterface } from "../../interfaces/RoomInterface";
+
+
 export const NewRoom = () => {
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
   const navigate = useNavigate();
 
-  const formTitle = "Adding a new room";
-  const [currentRoom, setCurrentRoom] = useState({
+  const formTitle: string = "Adding a new room";
+  const [currentRoom, setCurrentRoom] = useState<RoomInterface>({
     id: String(Math.floor(Math.random() * 100000)),
     room_number: "",
     bed_type: "",
@@ -33,11 +38,11 @@ export const NewRoom = () => {
     room_facilities: [],
   });
 
-  const handleInput = (event) => {
+  const handleInput = (event: any): void => {
     const { name, value, type, checked } = event.target;
-    let valToUpdate;
+    let valToUpdate: string | string[];
     if (type === "checkbox") {
-      const newVal = [...currentRoom[name]];
+      const newVal: string[] = [...currentRoom.room_facilities];
       if (checked) {
         newVal.push(value);
       } else {
@@ -51,15 +56,16 @@ export const NewRoom = () => {
     setCurrentRoom((prevState) => ({ ...prevState, [name]: valToUpdate }));
   };
 
-  const handleCancel = (e) => {
+  const handleCancel = (e: Event): void => {
     e.preventDefault();
     navigate("/rooms");
   };
 
-  const handleSubmit = () => {
+  const handleSubmit = (): void => {
     dispatch(createNewRoom(currentRoom));
     navigate("/rooms");
   };
+  
   return (
     <RoomForm
       formTitle={formTitle}

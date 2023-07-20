@@ -11,18 +11,28 @@ import { getRoom, editRoom } from "../../features/roomsSlice";
 import RoomForm from "../../components/rooms/RoomForm";
 import { Loader } from "../../components/styled/Loader";
 
+// TypeScript
+import { useAppDispatch, useAppSelector } from "../../app/hooks";
+import { RoomInterface } from "../../interfaces/RoomInterface";
+
+type RoomsType = {
+  singleRoom: RoomInterface | null | undefined;
+};
+
 export const EditRoom = () => {
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
   const navigate = useNavigate();
   const params = useParams();
   const { roomId } = params;
-  const { singleRoom } = useSelector((state) => state.roomsReducer);
+  const { singleRoom } = useAppSelector<RoomsType>(
+    (state) => state.roomsReducer
+  );
 
-  const [currentRoom, setCurrentRoom] = useState(null);
-  const formTitle = "Edit current room";
+  const [currentRoom, setCurrentRoom] = useState<RoomInterface | any>(null);
+  const formTitle: string = "Edit current room";
 
   useEffect(() => {
-    dispatch(getRoom(roomId));
+    dispatch(getRoom(Number(roomId)));
   }, [dispatch, roomId]); // Removed singleRoom from the dependency array
 
   // Set currentRoom whenever singleRoom changes, but only if singleRoom is not null
@@ -34,9 +44,9 @@ export const EditRoom = () => {
 
 
 
-  const handleInput = (event) => {
+  const handleInput = (event: any) => {
     const { name, value, type, checked } = event.target;
-    let valToUpdate;
+    let valToUpdate: string | string[];
     if (type === "checkbox") {
       const newVal = [...currentRoom[name]];
       if (checked) {
@@ -49,16 +59,19 @@ export const EditRoom = () => {
     } else {
       valToUpdate = value;
     }
-    setCurrentRoom((prevState) => ({ ...prevState, [name]: valToUpdate }));
+    setCurrentRoom((prevState: RoomInterface) => ({
+      ...prevState,
+      [name]: valToUpdate,
+    }));
   };
 
-  const handleCancel = (e) => {
+  const handleCancel = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
     setCurrentRoom({});
     navigate("/rooms");
   };
 
-  const handleSubmit = () => {
+  const handleSubmit = (): void => {
     dispatch(editRoom(currentRoom));
     setCurrentRoom({});
     navigate("/rooms");
