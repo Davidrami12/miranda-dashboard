@@ -9,7 +9,7 @@ export const useLogout = () => {
     try {
       dispatch({ type: "LOGOUT" });
     } catch (err) {
-      console.log(err.message);
+      console.log((err as Error).message);
     }
   };
 

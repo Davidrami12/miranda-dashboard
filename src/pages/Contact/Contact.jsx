@@ -25,7 +25,7 @@ import { Pagination } from "../../components/pagination/Pagination";
 import { Loader } from "../../components/styled/Loader";
 
 export const Contact = () => {
-  
+
   const dispatch = useDispatch();
   const { reviewsList } = useSelector((state) => state.contactReducer);
   const { status } = useSelector((state) => state.contactReducer);
@@ -36,7 +36,7 @@ export const Contact = () => {
 
   useEffect(() => {
     if (reviewsList.length === 0) {
-        dispatch(getDataReviews());
+      dispatch(getDataReviews());
     }
     setReviews(reviewsList);
   }, [reviewsList, dispatch]);

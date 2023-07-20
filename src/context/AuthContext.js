@@ -8,16 +8,12 @@ export const AuthContext = createContext();
 export const authReducer = (state, action) => {
   switch (action.type) {
     case "LOGIN":
-      // If the action is LOGIN, update the user and set authReady to true
       return { ...state, user: action.payload, authReady: true };
     case "LOGOUT":
-      // If the action is LOGOUT, clear the user and set authReady to false
       return { ...state, user: null, authReady: false };
     case "AUTH_READY":
-      // If the action is AUTH_READY, set the user and authReady to true
       return { user: action.payload, authReady: true };
     default:
-      // If the action doesn't match any cases, return the current state
       return state;
   }
 };
