@@ -5,7 +5,7 @@ import { BrowserRouter, Route, Routes, Navigate } from "react-router-dom";
 // React Context
 import { useAuthContext } from "./hooks/useAuthContext";
 
-// Miranda pages
+// Import pages
 import { Dashboard } from "./pages/Dashboard/Dashboard";
 import { Bookings } from "./pages/Bookings/Bookings";
 import { SingleBooking } from "./pages/Bookings/BookingsDetail";
@@ -26,8 +26,8 @@ import { Login } from "./pages/Login/Login";
 // Main app components
 import { Sidebar } from './components/sidebar/Sidebar';
 import { Header } from './components/header/Header';
-import { ProtectRoute } from "./components/ProtectedRoute";
-import { AppContainer, WindowContent} from "./components/AppContainer";
+import { ProtectRoute } from "./router/ProtectedRoute";
+import { AppContainer, WindowContent} from "./components/styled/AppContainer";
 
 function App() {
   
