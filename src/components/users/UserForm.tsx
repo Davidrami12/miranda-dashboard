@@ -15,7 +15,7 @@ import {
   RadioDescription,
   InputSubmit,
   InputCancel,
-} from "../../pages/Login/LoginStyled";
+} from "../styled/Forms";
 import { DropdownMenu } from "../styled/DropdownMenu";
 
 // This form gets used from editBooking and newBooking. If used for editing a booking it will be preloaded with the data from the currentUser to edit

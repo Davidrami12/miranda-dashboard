@@ -1,6 +1,5 @@
-// src/context/AuthContext.tsx
-import React from "react"; // Add this import statement
-
+// Imports required
+import React from "react";
 import { createContext, useReducer, useEffect, ReactNode } from "react";
 
 interface AuthState {
@@ -13,6 +12,7 @@ export type AuthAction = {
   payload?: any;
 };
 
+// This context will provide a user, an authReady flag and a dispatch function
 export const AuthContext = createContext<{
   user: any;
   authReady: boolean;
@@ -23,6 +23,7 @@ export const AuthContext = createContext<{
   dispatch: () => {},
 });
 
+// Reducer for the auth state. It takes a state and an action, and returns the new state
 export const authReducer = ( state: AuthState, action: AuthAction ): AuthState => {
   switch (action.type) {
     case "LOGIN":
@@ -36,16 +37,19 @@ export const authReducer = ( state: AuthState, action: AuthAction ): AuthState =
   }
 };
 
+// props for AuthContextProvider component
 interface AuthContextProviderProps {
   children: ReactNode;
 }
 
+// AuthContextProvider component uses the authReducer to manage the auth state
 export const AuthContextProvider = ({ children }: AuthContextProviderProps) => {
   const [state, dispatch] = useReducer(authReducer, {
     user: null,
     authReady: false,
   });
 
+  // Run this useEffect hook when the component is mounted
   useEffect(() => {
     const localStorageAuth = localStorage.getItem("auth");
     if (localStorageAuth) {
@@ -53,6 +57,7 @@ export const AuthContextProvider = ({ children }: AuthContextProviderProps) => {
     }
   }, []);
 
+  // Render an AuthContext.Provider with the current state and dispatch function
   return (
     <AuthContext.Provider value={{ ...state, dispatch }}>
       {children}

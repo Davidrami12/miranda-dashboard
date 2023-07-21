@@ -7,7 +7,7 @@ import {
   KPI,
   KPIContainer,
   Reviews,
-} from "./DashboardStyled";
+} from "../../components/dashboard/DashboardStyled";
 // Components
 import ReviewsSwiper from "../../components/reviews/Reviews";
 

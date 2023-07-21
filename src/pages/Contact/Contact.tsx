@@ -6,7 +6,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { getDataReviews } from "../../features/contactSlice";
 
 // Styled Components
-import { Reviews } from "../Dashboard/DashboardStyled";
+import { Reviews } from "../../components/dashboard/DashboardStyled";
 import { Container } from "../../components/styled/Containers";
 import {
   Table,
@@ -24,15 +24,31 @@ import { ReviewRow } from "../../components/reviews/ReviewRow";
 import { Pagination } from "../../components/pagination/Pagination";
 import { Loader } from "../../components/styled/Loader";
 
+// TypeScript
+import { useAppDispatch, useAppSelector } from "../../app/hooks";
+import { ContactInterface } from "../../interfaces/ContactInterface";
+
+type ReviewsType = {
+  reviewsList: ContactInterface[];
+};
+type StatusType = {
+  status: string;
+};
+
 export const Contact = () => {
 
-  const dispatch = useDispatch();
-  const { reviewsList } = useSelector((state) => state.contactReducer);
-  const { status } = useSelector((state) => state.contactReducer);
+  const dispatch = useAppDispatch();
+  const { reviewsList } = useAppSelector<ReviewsType>(
+    (state) => state.contactReducer
+  );
+  const { status } = useAppSelector<StatusType>(
+    (state) => state.contactReducer
+  );
 
-  const [reviews, setReviews] = useState(reviewsList);
-  const [activeFilter, setActiveFilter] = useState("Date");
-  const [currentReviews, setCurrentReviews] = useState([]);
+
+  const [reviews, setReviews] = useState<ContactInterface[]>(reviewsList);
+  const [activeFilter, setActiveFilter] = useState<string>("Date");
+  const [currentReviews, setCurrentReviews] = useState<ContactInterface[]>([]);
 
   useEffect(() => {
     if (reviewsList.length === 0) {
@@ -41,11 +57,11 @@ export const Contact = () => {
     setReviews(reviewsList);
   }, [reviewsList, dispatch]);
 
-  const getAllReviews = () => {
+  const getAllReviews = (): void => {
     setReviews(reviewsList);
   };
 
-  const filterByType = (type) => {
+  const filterByType = (type: boolean): void => {
     setReviews(reviewsList.filter((review) => review.archived === type));
   };
 
@@ -53,9 +69,9 @@ export const Contact = () => {
     const orderedReviews = [...reviewsList];
     switch (activeFilter) {
       case "Date":
-        orderedReviews.sort((a, b) => {
-          let dateA = a.date;
-          let dateB = b.date;
+        orderedReviews.sort((a: ContactInterface, b: ContactInterface) => {
+          let dateA: string = a.date;
+          let dateB: string = b.date;
           if (dateB.split("-").join() < dateA.split("-").join()) {
             return -1;
           } else {
@@ -64,9 +80,9 @@ export const Contact = () => {
         });
         break;
       case "User":
-        orderedReviews.sort((a, b) => {
-          const nameA = a.user.name.toUpperCase().replace(/\s/g, "");
-          const nameB = b.user.name.toUpperCase().replace(/\s/g, "");
+        orderedReviews.sort((a: ContactInterface, b: ContactInterface) => {
+          const nameA: string = a.user.name.toUpperCase().replace(/\s/g, "");
+          const nameB: string = b.user.name.toUpperCase().replace(/\s/g, "");
           if (nameA < nameB) {
             return -1;
           }
@@ -83,17 +99,17 @@ export const Contact = () => {
   }, [activeFilter, reviewsList]);
 
   // Variables for the pagination component
-  const [currentPage, setCurrentPage] = useState(1);
-  const [roomsPerPage] = useState(10);
-  const indexOfLastImage = currentPage * roomsPerPage; // For example: let´s say we have 17 pages. indexOfLastImage = 17 * roomsPerPage
-  const indexOfFirstImage = indexOfLastImage - roomsPerPage; // Following same example: indexOfFirstImage = indexOfLastPage – roomsPerPage
-  // Setting the current displayed images
+  const [currentPage, setCurrentPage] = useState<number>(1);
+  const [roomsPerPage] = useState<number>(10);
+  const indexOfLastImage: number = currentPage * roomsPerPage;
+  const indexOfFirstImage: number = indexOfLastImage - roomsPerPage;
+
   useEffect(() => {
     setCurrentReviews(reviews.slice(indexOfFirstImage, indexOfLastImage));
   }, [reviews, indexOfFirstImage, indexOfLastImage]);
 
-  // Images to be displayed on the current page. slice(96, 102) will return images from index 96 to 101
-  const nPages = Math.ceil(reviews.length / roomsPerPage);
+  const nPages: number = Math.ceil(reviews.length / roomsPerPage);
+
 
   return (
     <>

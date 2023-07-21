@@ -8,15 +8,15 @@ import { useAuthContext } from "./hooks/useAuthContext";
 // Miranda pages
 import { Dashboard } from "./pages/Dashboard/Dashboard";
 import { Bookings } from "./pages/Bookings/Bookings";
-import { SingleBooking } from "./pages/Bookings/SingleBooking";
+import { SingleBooking } from "./pages/Bookings/BookingsDetail";
 import { EditBooking } from "./pages/Bookings/EditBooking";
 import { NewBooking } from "./pages/Bookings/NewBooking";
 import { Rooms } from "./pages/Rooms/Rooms";
-import { SingleRoom } from "./pages/Rooms/SingleRoom";
+import { SingleRoom } from "./pages/Rooms/RoomsDetail";
 import { NewRoom } from "./pages/Rooms/NewRoom";
 import { EditRoom } from "./pages/Rooms/EditRoom";
 import { Users } from "./pages/Users/Users";
-import { SingleUser } from "./pages/Users/SingleUser";
+import { SingleUser } from "./pages/Users/UsersDetail";
 import { EditOwnUser } from "./pages/Users/EditOwnUser";
 import { EditUser } from "./pages/Users/EditUser";
 import { NewUser } from "./pages/Users/NewUser";

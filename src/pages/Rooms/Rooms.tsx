@@ -65,7 +65,6 @@ export const Rooms = () => {
   };
 
   useEffect(() => {
-    // Filtering by dropdown selection based on the filtered by search input array
     const orderedRooms = [...roomsList];
     switch (activeFilter) {
       case "Room Number":

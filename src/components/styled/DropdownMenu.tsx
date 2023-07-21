@@ -72,7 +72,7 @@ const DropdownMenu = ({
       </DropdownMenuStyled>
       {/* Another option instead of adding a SVG would be to add a custom background-image to the element to add the custom arrow */}
       <svg
-        style={{ position: "absolute", top: "15%", right: "5%" }}
+        style={{ position: "absolute", top: "28%", right: "10%" }}
         xmlns="http://www.w3.org/2000/svg"
         height="25"
         width="25"

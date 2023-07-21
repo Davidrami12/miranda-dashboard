@@ -13,7 +13,7 @@ import {
   Input,
   Icon,
   ErrorMessage
-} from "./LoginStyled";
+} from "../../components/styled/Forms";
 import Button from '../../components/styled/Buttons';
 import Logo from '../../assets/logo.jpg';
 import { FaUser } from "react-icons/fa"

@@ -15,7 +15,7 @@ import {
   RadioDescription,
   InputSubmit,
   InputCancel,
-} from "../../pages/Login/LoginStyled";
+} from "../styled/Forms";
 
 // TypeScript
 import { BookingFormInt } from "../../interfaces/BookingInterface";
