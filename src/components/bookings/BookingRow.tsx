@@ -39,22 +39,22 @@ export const BookingRow = ({ booking, handleOpenModal }: BookingRowInt) => {
 
   const editSingleBooking = (
     e: React.MouseEvent<HTMLButtonElement>,
-    bookingID: number
+    id: number
   ): void => {
     e.preventDefault();
-    navigate("/editBooking/" + bookingID);
+    navigate("/editBooking/" + id);
   };
 
   const deleteCurrentBooking = (
     e: React.MouseEvent<HTMLButtonElement>,
-    bookingID: number
+    id: number
   ): void => {
     e.preventDefault();
-    dispatch(deleteBooking(bookingID));
+    dispatch(deleteBooking(id));
   };
 
   return (
-    <Row onClick={() => { goToSingleBooking(booking.bookingID) }}>
+    <Row onClick={() => { goToSingleBooking(booking.id) }}>
       <td>
         <GuestContainer>
           <img
@@ -63,7 +63,7 @@ export const BookingRow = ({ booking, handleOpenModal }: BookingRowInt) => {
           />
           <div>
             <GuestName>{booking.userName}</GuestName>
-            <BookingID>#{booking.bookingID}</BookingID>
+            <BookingID>#{booking.id}</BookingID>
           </div>
         </GuestContainer>
       </td>
@@ -116,7 +116,7 @@ export const BookingRow = ({ booking, handleOpenModal }: BookingRowInt) => {
                 <button
                   onClick={(e) => {
                     if (e && e.stopPropagation) e.stopPropagation();
-                    editSingleBooking(e, booking.bookingID);
+                    editSingleBooking(e, booking.id);
                   }}
                 >
                   Edit booking
@@ -126,7 +126,7 @@ export const BookingRow = ({ booking, handleOpenModal }: BookingRowInt) => {
                 <button
                   onClick={(e) => {
                     if (e && e.stopPropagation) e.stopPropagation();
-                    deleteCurrentBooking(e, booking.bookingID);
+                    deleteCurrentBooking(e, booking.id);
                   }}
                 >
                   Delete booking
