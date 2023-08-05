@@ -1,32 +1,32 @@
 [
-  {   
-    "id": "C0001",
-    "date": "2022-03-07",
-    "customer": "Kusnaidi Anderson",
-    "email": "kanderson@gmail.com",
-    "phone": "+34 623 455 928",
-    "affair": "recommendation",
-    "comment": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam",
-    "archived": false
+  {
+    "id": 2361,
+    "date": "2022-05-22",
+    "user": {
+      "name": "Virginia Chittock",
+      "email": "vchittock0@businesswire.com",
+      "phone": "975-135-6128"
+    },
+    "message": {
+      "subject": "Lorem ipsum",
+      "body": "Lorem ipsum"
+    },
+    "stars": 2,
+    "archived": true
   },
-  {   
-    "id": "C2342",
-    "date": "2023-05-12",
-    "customer": "Maria Telkes",
-    "email": "telkesm@gmail.com",
-    "phone": "+41 643 344 295",
-    "affair": "recommendation",
-    "comment": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam",
-    "archived": false
-  },
-  {   
-    "id": "C0003",
-    "date": "2022-01-11",
-    "customer": "Johan Morales",
-    "email": "johmoral@gmail.com",
-    "phone": "+30 911 253 745",
-    "affair": "recommendation",
-    "comment": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam",
+  {
+    "id": 6702,
+    "date": "2022-04-16",
+    "user": {
+      "name": "Dory Meynell",
+      "email": "dmeynell1@dyndns.org",
+      "phone": "846-672-0258"
+    },
+    "message": {
+      "subject": "Lorem ipsum",
+      "body": "Lorem ipsum"
+    },
+    "stars": 1,
     "archived": false
   }
 ]

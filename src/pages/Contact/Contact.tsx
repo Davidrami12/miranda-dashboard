@@ -143,7 +143,7 @@ export const Contact = () => {
             </TableButtons>
           </TableActions>
           <Container>
-            <Table>
+          <Table>
               <thead>
                 <tr>
                   <HeaderTitle>Order ID</HeaderTitle>
@@ -155,13 +155,8 @@ export const Contact = () => {
               </thead>
               <tbody className="task-container">
                 {currentReviews.length > 0 &&
-                  currentReviews.map((review, index) => (
-                    <ReviewRow
-                      key={review.id}
-                      index={index}
-                      review={review}
-                      number={review.id}
-                    />
+                  currentReviews.map((review: ContactInterface) => (
+                    <ReviewRow key={review.id} review={review} />
                   ))}
               </tbody>
             </Table>
