@@ -39,10 +39,11 @@ export const getDataRooms = createAsyncThunk(
 });
 
 export const getRoom = createAsyncThunk(
-  "room/GetRoomDetails", 
-  async (id: number) => {
+  "room/GetRoomDetails",
+  async (id: string) => {
     return await id;
-});
+  }
+);
 
 export const createNewRoom = createAsyncThunk(
   "rooms/CreateRoom",
@@ -52,16 +53,18 @@ export const createNewRoom = createAsyncThunk(
 );
 
 export const editRoom = createAsyncThunk(
-  "rooms/EditRoom", 
-  async (id: number) => {
+  "rooms/EditRoom",
+  async (id: string) => {
     return await id;
-});
+  }
+);
 
 export const deleteRoom = createAsyncThunk(
-  "rooms/DeleteRooms", 
-  async (id: number) => {  
+  "rooms/DeleteRooms",
+  async (id: string) => {
     return await id;
-});
+  }
+);
 
 
 

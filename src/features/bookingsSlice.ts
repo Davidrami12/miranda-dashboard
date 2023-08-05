@@ -62,8 +62,8 @@ export const editBooking = createAsyncThunk(
 
 export const deleteBooking = createAsyncThunk(
   "bookings/DeleteBooking",
-  async (bookingID: number) => {
-    return await bookingID;;
+  async (id: number) => {
+    return await id;;
   }
 );
 
@@ -101,7 +101,7 @@ export const bookingsSlice = createSlice({
         (state: BookingsState, action: ActionInterface) => {
           state.singleBookingStatus = "success";
           state.singleBooking = state.bookingsList.find(
-            (booking) => booking.bookingID === action.payload
+            (booking) => booking.id === action.payload
           );
         }
       )
@@ -121,7 +121,7 @@ export const bookingsSlice = createSlice({
       deleteBooking.fulfilled,
       (state: BookingsState, action: ActionInterface) => {
         state.bookingsList = state.bookingsList.filter(
-          (booking) => booking.bookingID !== action.payload
+          (booking) => booking.id !== action.payload
         );
       }
     );
@@ -130,7 +130,7 @@ export const bookingsSlice = createSlice({
       editBooking.fulfilled,
       (state: BookingsState, action: ActionInterface) => {
         state.bookingsList = state.bookingsList.map((booking) => {
-          return booking.bookingID === action.payload.bookingID
+          return booking.id === action.payload.id
             ? action.payload
             : booking;
         });

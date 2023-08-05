@@ -32,7 +32,7 @@ export const EditRoom = () => {
   const formTitle: string = "Edit current room";
 
   useEffect(() => {
-    dispatch(getRoom(Number(roomId)));
+    dispatch(getRoom(String(roomId)));
   }, [dispatch, roomId]); // Removed singleRoom from the dependency array
 
   // Set currentRoom whenever singleRoom changes, but only if singleRoom is not null
