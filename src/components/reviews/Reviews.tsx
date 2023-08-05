@@ -1,3 +1,6 @@
+// React
+import React from "react";
+
 // Swiper Components
 import { Swiper, SwiperSlide } from "swiper/react";
 
