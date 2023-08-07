@@ -9,7 +9,7 @@ export const useLogin = () => {
     try {
       dispatch({
         type: "LOGIN",
-        payload: { email: email, password: password },
+        payload: { email: email, name: "Admin", password: password },
       });
     } catch (err) {
       console.log((err as Error).message);

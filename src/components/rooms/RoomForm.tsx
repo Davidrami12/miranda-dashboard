@@ -37,9 +37,7 @@ const RoomForm = ({
   return (
     <>
       <DashboardForm style={{ minHeight: "80%" }}>
-        <LoginCard
-          style={{ height: "fit-content", width: "850px" }}
-        >
+        <LoginCard style={{ height: "fit-content", width: "850px" }}>
           <FormTitle>{formTitle}</FormTitle>
           <form
             onSubmit={(e) => {

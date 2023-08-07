@@ -16,8 +16,8 @@ const NavContainer = styled.div<{
   adjustHeight?: string | number;
 }>`
   width: ${props => props.display};
-  //max-width: ${props => props.display};;
-  //min-width: ${props => props.display};;
+  max-width: ${props => props.display};
+  min-width: ${props => props.display};
   box-shadow: 13px 3px 40px #00000005;
   background-color: #FFFFFF;
   transition: width 0.3s;
@@ -41,9 +41,9 @@ const MenuButton = styled.button`
 `;
 
 const UserCard = styled.div`
-  margin-left: 15%;
-  padding-bottom: 10px;
-  overflow: hidden;
+  padding-top: 3rem;
+  padding-bottom: 5rem;
+  //overflow: hidden;
 `;
 
 const LogoContainer = styled.div`
@@ -137,6 +137,7 @@ const Link = styled.li<{
 `;
 
 const NavigationDescription = styled.p`
+  font-size: 1.7rem;
   padding-left: 15%;
   overflow: hidden;
   font-family: var(--font-poppins);

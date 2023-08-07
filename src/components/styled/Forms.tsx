@@ -198,9 +198,10 @@ const FormTitle = styled.p`
 `; */
 
 const LoginButton = styled.div`
+  cursor: pointer;
   background-color: #ebf1ef;
   border: none;
-  border-radius: 8px;
+  border-radius: 12px;
   width: 16rem;
   transition: background-color 0.3s;
   text-align: center;
@@ -212,7 +213,7 @@ const LoginButton = styled.div`
   display: block;
   padding: 1.5rem;
   margin: auto;
-  :hover {
+  &:hover {
     background-color: rgba(19, 87, 69, 0.2);
   }
 `;
