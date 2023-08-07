@@ -26,18 +26,25 @@ export const Login = () => {
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
 
-  const hardCodedMail: string = "admin@admin.com";
-  const hardCodedPassword: string = "Admin123";
+  const hardCodedUser = {
+    email: "admin@admin.com",
+    password: "Admin123",
+    name: "Admin"
+  };
 
   const validateLogin = (e: any): void => {
     e.preventDefault();
-    if (hardCodedMail === email && hardCodedPassword === password) {
+    if (hardCodedUser.email === email && hardCodedUser.password === password) {
       // If email and password are correct, the auth object is stored in the localStorage
       login(email, password);
       localStorage.setItem(
         "auth",
-        JSON.stringify({ auth: true, email: email, password: password })
+        JSON.stringify({
+          auth: true,
+          ...hardCodedUser
+        })
       );
+      
     } else {
       let errorMsg = document.querySelector(".error");
       if (errorMsg) {

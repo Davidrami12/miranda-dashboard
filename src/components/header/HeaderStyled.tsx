@@ -28,4 +28,22 @@ const HeaderElements = styled.div`
   gap: 50px;
 `;
 
-export { HeaderContainer, HeaderTitle, HeaderElements };
+const Icon = styled.div`
+  padding: 1rem;
+  cursor: pointer;
+  background-color: transparent;
+  border-radius: 0%;
+  transition: 0.3s;
+
+  &:hover{
+    background-color: rgba(59, 153, 59, 0.25);
+    border-radius: 50%;
+    transition: 0.3s;
+  }
+  
+  a:active, a:visited{
+    color: black;
+  }
+`;
+
+export { HeaderContainer, HeaderTitle, HeaderElements, Icon };

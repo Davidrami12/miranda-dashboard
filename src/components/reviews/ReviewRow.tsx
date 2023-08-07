@@ -4,17 +4,16 @@ import React from "react";
 // Styled Components
 import { Row, DataContainer, DataContainerButton } from "./ReviewRowStyled";
 
-// Component that creates a table row for the bookings table
 export const ReviewRow = ({ review }: any) => {
-  // Here I display a star based on the user´s given rating
+  
   const stars: JSX.Element[] = [];
   let i = 0;
   while (i < review.stars) {
     stars.push(
       <svg
         xmlns="http://www.w3.org/2000/svg"
-        height="30"
-        width="30"
+        height="25"
+        width="25"
         viewBox="0 0 48 48"
         key={i}
       >

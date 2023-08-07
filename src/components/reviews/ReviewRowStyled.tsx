@@ -43,7 +43,8 @@ const BookingID = styled.p`
 const DataContainer = styled.td`
   vertical-align: middle;
   div {
-    padding-left: 4rem;
+    //padding-left: 4rem;
+    padding: 1rem 0rem 0.2rem 4rem;
     svg {
       fill: #135846;
     }
@@ -53,7 +54,7 @@ const DataContainer = styled.td`
     color: #393939;
     font-size: 1.6rem;
     max-width: 30rem;
-    padding-left: 4rem;
+    padding: 0.2rem 0rem 1rem 4rem;
   }
 `;
 

@@ -39,7 +39,7 @@ const ReviewsSwiper = () => {
               alt="User portrait"
             />
             <div>
-              <GuestName>Richard M.</GuestName>
+              <GuestName>Austin M.</GuestName>
               <BookingID>7m ago</BookingID>
             </div>
             <div>
@@ -77,7 +77,7 @@ const ReviewsSwiper = () => {
               alt="User portrait"
             />
             <div>
-              <GuestName>Nichole C.</GuestName>
+              <GuestName>Lisa C.</GuestName>
               <BookingID>10m ago</BookingID>
             </div>
             <div>
@@ -153,7 +153,7 @@ const ReviewsSwiper = () => {
               alt="User portrait"
             />
             <div>
-              <GuestName>Austin F.</GuestName>
+              <GuestName>Rick F.</GuestName>
               <BookingID>6m ago</BookingID>
             </div>
             <div>
