@@ -41,7 +41,19 @@ export const getDataBookings = createAsyncThunk(
 export const getBooking = createAsyncThunk(
   "booking/GetBookingDetails",
   async (idBooking: number) => {
-    return addDelay(Promise.resolve(idBooking), 200);
+    // with local json data:
+    // return addDelay(Promise.resolve(idBooking), 200);
+
+    // Code sample:
+    const token = localStorage.getItem("auth");
+    const apiResquest = fetch(`${process.env.REACT_APP_API_URL}/bookings/${idBooking}`, {
+      headers: {
+      "Authorization": `Bearer ${token}`
+    }}).then((rawResponse) => {
+      rawResponse.json().then((jsonResponse) => {
+        return jsonResponse.data; 
+      })
+    });
   }
 );
 
@@ -49,7 +61,19 @@ export const getBooking = createAsyncThunk(
 export const createNewBooking = createAsyncThunk(
   "bookings/CreateBooking",
   async (newBooking: BookingInterface) => {
-    return await newBooking;
+    // return await newBooking;
+
+    /* const token = localStorage.getItem("auth");
+    const apiResquest = fetch(`${process.env.REACT_APP_API_URL}/bookings/`, {
+      method: "POST",
+      body: { newBooking },
+      headers: {
+      "Authorization": `Bearer ${token}`
+    }}).then((rawResponse) => {
+      rawResponse.json().then((jsonResponse) => {
+        return jsonResponse.data; 
+      })
+    }); */
   }
 );
 

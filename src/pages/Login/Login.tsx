@@ -26,7 +26,7 @@ export const Login = () => {
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
 
-  const hardCodedUser = {
+  /* const hardCodedUser = {
     email: "admin@admin.com",
     password: "Admin123",
     name: "Admin"
@@ -41,7 +41,8 @@ export const Login = () => {
         "auth",
         JSON.stringify({
           auth: true,
-          ...hardCodedUser
+          email: hardCodedUser.email,
+          name: hardCodedUser.name
         })
       );
       
@@ -51,9 +52,45 @@ export const Login = () => {
         errorMsg.innerHTML = "Email or password are not correct. Please try again.";
       }
     }
+  }; */
+
+  const validateLogin = async (e: React.FormEvent<HTMLFormElement>): Promise<void> => {
+    e.preventDefault();
+    
+    const url = process.env.REACT_APP_API_URL;
+    const response = await fetch(`${url}/login`, {
+      method: "POST",
+      mode: "cors",
+      credentials: "same-origin",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        email: email,
+        password: password,
+      }),
+      }
+    );
+
+    const data = await response.json();
+
+    if (response.status === 200 && data.token) { 
+      login(email, password);
+      localStorage.setItem(
+        "auth",
+        JSON.stringify({
+          auth: true,
+          name: "Admin",
+          email: email,
+          //token: data.token,
+        })
+      );
+
+    } else {
+      let errorMsg = document.querySelector(".error");
+      if (errorMsg) {
+        errorMsg.innerHTML = "Email or password are not correct. Please try again.";
+      }
+    }
   };
-
-
   
   return (
     <LoginContainer>
