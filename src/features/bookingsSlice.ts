@@ -1,5 +1,6 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { fetchData } from "./fetchData";
+import { fetchAPI } from "./fetchAPI";
 import type { BookingInterface } from "../interfaces/BookingInterface";
 
 interface BookingsState {
@@ -7,6 +8,7 @@ interface BookingsState {
   singleBooking: BookingInterface | null | undefined;
   status: "loading" | "success" | "failed";
   singleBookingStatus: "loading" | "success" | "failed";
+  update: boolean;
 }
 interface ActionInterface {
   type: string;
@@ -18,6 +20,7 @@ const initialState: BookingsState = {
   status: "loading",
   singleBooking: null,
   singleBookingStatus: "loading",
+  update: true
 };
 
 
@@ -33,27 +36,17 @@ const addDelay = <T>(promise: Promise<T>, delay: number): Promise<T> => {
 export const getDataBookings = createAsyncThunk(
   "bookings/fetchBookings",
   async () => {
-    const data = await fetchData("Bookings");
-    return addDelay(Promise.resolve(data), 200);
+    return await fetchAPI("/bookings", "GET", null);
   }
 );
 
 export const getBooking = createAsyncThunk(
   "booking/GetBookingDetails",
-  async (idBooking: number) => {
-    // with local json data:
-    // return addDelay(Promise.resolve(idBooking), 200);
-
-    // Code sample:
-    const token = localStorage.getItem("auth");
-    const apiResquest = fetch(`${process.env.REACT_APP_API_URL}/bookings/${idBooking}`, {
-      headers: {
-      "Authorization": `Bearer ${token}`
-    }}).then((rawResponse) => {
-      rawResponse.json().then((jsonResponse) => {
-        return jsonResponse.data; 
-      })
-    });
+  async (idBooking: string) => {
+    if (!idBooking) {
+      throw new Error("Booking ID is not defined.");
+    }
+    return await fetchAPI(`/bookings/${idBooking}`, "GET", null);
   }
 );
 
@@ -61,33 +54,21 @@ export const getBooking = createAsyncThunk(
 export const createNewBooking = createAsyncThunk(
   "bookings/CreateBooking",
   async (newBooking: BookingInterface) => {
-    // return await newBooking;
-
-    /* const token = localStorage.getItem("auth");
-    const apiResquest = fetch(`${process.env.REACT_APP_API_URL}/bookings/`, {
-      method: "POST",
-      body: { newBooking },
-      headers: {
-      "Authorization": `Bearer ${token}`
-    }}).then((rawResponse) => {
-      rawResponse.json().then((jsonResponse) => {
-        return jsonResponse.data; 
-      })
-    }); */
+    return await fetchAPI(`/bookings/newBooking`, "POST", newBooking);
   }
 );
 
 export const editBooking = createAsyncThunk(
   "bookings/EditBooking",
-  async (idBooking: number) => {
-    return await idBooking;
+  async (currentBooking: any) => {
+    return await fetchAPI(`/bookings/editBooking/${currentBooking.bookingID}`, "PUT", currentBooking);
   }
 );
 
 export const deleteBooking = createAsyncThunk(
   "bookings/DeleteBooking",
-  async (id: number) => {
-    return await id;;
+  async (idBooking: string) => {
+    return await fetchAPI(`bookings/${idBooking}`, "DELETE", null);
   }
 );
 
@@ -108,6 +89,7 @@ export const bookingsSlice = createSlice({
         (state: BookingsState, action: ActionInterface) => {
           state.status = "success";
           state.bookingsList = action.payload;
+          state.update = false;
         }
       )
       .addCase(getDataBookings.rejected, (state: BookingsState) => {
@@ -124,9 +106,7 @@ export const bookingsSlice = createSlice({
         getBooking.fulfilled,
         (state: BookingsState, action: ActionInterface) => {
           state.singleBookingStatus = "success";
-          state.singleBooking = state.bookingsList.find(
-            (booking) => booking.id === action.payload
-          );
+          state.singleBooking = action.payload;
         }
       )
       .addCase(getBooking.rejected, (state: BookingsState) => {
@@ -137,7 +117,9 @@ export const bookingsSlice = createSlice({
     builder.addCase(
       createNewBooking.fulfilled,
       (state: BookingsState, action: ActionInterface) => {
-        state.bookingsList = [...state.bookingsList, action.payload];
+        //state.bookingsList = [...state.bookingsList, action.payload];
+        state.bookingsList = [];
+        state.update = true;
       }
     );
 
@@ -145,8 +127,9 @@ export const bookingsSlice = createSlice({
       deleteBooking.fulfilled,
       (state: BookingsState, action: ActionInterface) => {
         state.bookingsList = state.bookingsList.filter(
-          (booking) => booking.id !== action.payload
+          (booking) => booking._id !== action.payload
         );
+        state.update = true;
       }
     );
 
@@ -159,6 +142,7 @@ export const bookingsSlice = createSlice({
             : booking;
         });
         state.singleBooking = null;
+        state.update = true;
       }
     );
   },

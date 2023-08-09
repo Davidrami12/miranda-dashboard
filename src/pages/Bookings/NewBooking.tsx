@@ -19,8 +19,8 @@ export const NewBooking = () => {
 
   const formTitle: string = "Adding a new booking";
   const [currentBooking, setCurrentBooking] = useState<BookingInterface>({
-    id: Math.floor(Math.random() * 1000),
-    bookingID: Math.floor(Math.random() * 10000),
+    _id: "randomId" + Math.floor(Math.random() * 1000),
+    //bookingID: Math.floor(Math.random() * 10000),
     orderDate: new Date().toLocaleDateString('es-ES', {
       day : '2-digit',
       month : '2-digit',

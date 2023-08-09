@@ -33,13 +33,13 @@ export const BookingRow = ({ booking, handleOpenModal }: BookingRowInt) => {
 
   const [showOptions, setShowOptions] = useState<boolean>(false);
 
-  const goToSingleBooking = (id: number): void => {
+  const goToSingleBooking = (id: string): void => {
     navigate("/bookings/" + id);
   };
 
   const editSingleBooking = (
     e: React.MouseEvent<HTMLButtonElement>,
-    id: number
+    id: string
   ): void => {
     e.preventDefault();
     navigate("/editBooking/" + id);
@@ -47,14 +47,14 @@ export const BookingRow = ({ booking, handleOpenModal }: BookingRowInt) => {
 
   const deleteCurrentBooking = (
     e: React.MouseEvent<HTMLButtonElement>,
-    id: number
+    id: string
   ): void => {
     e.preventDefault();
     dispatch(deleteBooking(id));
   };
 
   return (
-    <Row onClick={() => { goToSingleBooking(booking.id) }}>
+    <Row onClick={() => { goToSingleBooking(booking._id) }}>
       <td>
         <GuestContainer>
           <img
@@ -63,7 +63,7 @@ export const BookingRow = ({ booking, handleOpenModal }: BookingRowInt) => {
           />
           <div>
             <GuestName>{booking.userName}</GuestName>
-            <BookingID>#{booking.id}</BookingID>
+            <BookingID>#{booking._id}</BookingID>
           </div>
         </GuestContainer>
       </td>
@@ -116,7 +116,7 @@ export const BookingRow = ({ booking, handleOpenModal }: BookingRowInt) => {
                 <button
                   onClick={(e) => {
                     if (e && e.stopPropagation) e.stopPropagation();
-                    editSingleBooking(e, booking.id);
+                    editSingleBooking(e, booking._id);
                   }}
                 >
                   Edit booking
@@ -126,7 +126,7 @@ export const BookingRow = ({ booking, handleOpenModal }: BookingRowInt) => {
                 <button
                   onClick={(e) => {
                     if (e && e.stopPropagation) e.stopPropagation();
-                    deleteCurrentBooking(e, booking.id);
+                    deleteCurrentBooking(e, booking._id);
                   }}
                 >
                   Delete booking

@@ -202,10 +202,10 @@ export const Bookings = () => {
                 {currentBookings.length > 0 &&
                   currentBookings.map((booking, index) => (
                     <BookingRow
-                      key={booking.id}
+                      key={booking._id}
                       index={index}
                       booking={booking}
-                      number={booking.id}
+                      number={booking._id}
                       handleOpenModal={handleOpenModal}
                     />
                   ))}
