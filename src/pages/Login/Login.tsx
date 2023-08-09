@@ -1,10 +1,11 @@
+// React & Context hooks
 import React, { useState } from 'react';
 import { Navigate } from "react-router-dom";
-
-// React Context
 import { useLogin } from "../../hooks/useLogin";
 
 // Components
+import { Notification } from '../../components/notification/Notification';
+import Button from '../../components/styled/Buttons';
 import {
   LoginContainer,
   LoginCard,
@@ -14,15 +15,9 @@ import {
   Icon,
   ErrorMessage
 } from "../../components/styled/Forms";
-import Button from '../../components/styled/Buttons';
 import Logo from '../../assets/logo.jpg';
 import { FaUser } from "react-icons/fa"
 import { RiLockPasswordFill } from "react-icons/ri";
-
-import { Notification } from '../../components/notification/Notification';
-
-import { toast, ToastContainer } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
 
 export const Login = () => {
 
@@ -31,11 +26,10 @@ export const Login = () => {
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
 
-  //toast("Test notification");
   const validateLogin = async (e: React.FormEvent<HTMLFormElement>): Promise<void> => {
     e.preventDefault();
     
-    const url = process.env.REACT_APP_API_URL;
+    const url = process.env.REACT_APP_LOCAL_URL;
     const response = await fetch(`${url}/login`, {
       method: "POST",
       mode: "cors",
@@ -50,9 +44,6 @@ export const Login = () => {
 
     const data = await response.json();
 
-    console.log("Received email:", email, "Received password:", password);
-    console.log("Response Status:", response.status);
-
     if (response.status === 200) { 
       if(data.token){
       login(email, password);
@@ -62,19 +53,15 @@ export const Login = () => {
           auth: true,
           name: "Admin",
           email: email,
-          //token: data.token,
+          token: data.token,
         })
       );
       Notification('Logged in successfully!', 'success');
       }
     } else if(response.status === 400) {
       Notification('Missing user credentials. Please try again!', 'warn');
-      /* let errorMsg = document.querySelector(".error");
-      if (errorMsg) {
-        errorMsg.innerHTML = "Email or password are not correct. Please try again.";
-      } */
     } else if(response.status === 401) {
-      Notification('User credentials does not match. Please try again!', 'warn');
+      Notification('User credentials are not correct. Please try again!', 'warn');
     }
     
   };
