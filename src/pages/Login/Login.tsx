@@ -19,6 +19,11 @@ import Logo from '../../assets/logo.jpg';
 import { FaUser } from "react-icons/fa"
 import { RiLockPasswordFill } from "react-icons/ri";
 
+import { Notification } from '../../components/notification/Notification';
+
+import { toast, ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 export const Login = () => {
 
   const { login } = useLogin();
@@ -26,34 +31,7 @@ export const Login = () => {
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
 
-  /* const hardCodedUser = {
-    email: "admin@admin.com",
-    password: "Admin123",
-    name: "Admin"
-  };
-
-  const validateLogin = (e: any): void => {
-    e.preventDefault();
-    if (hardCodedUser.email === email && hardCodedUser.password === password) {
-      // If email and password are correct, the auth object is stored in the localStorage
-      login(email, password);
-      localStorage.setItem(
-        "auth",
-        JSON.stringify({
-          auth: true,
-          email: hardCodedUser.email,
-          name: hardCodedUser.name
-        })
-      );
-      
-    } else {
-      let errorMsg = document.querySelector(".error");
-      if (errorMsg) {
-        errorMsg.innerHTML = "Email or password are not correct. Please try again.";
-      }
-    }
-  }; */
-
+  //toast("Test notification");
   const validateLogin = async (e: React.FormEvent<HTMLFormElement>): Promise<void> => {
     e.preventDefault();
     
@@ -72,7 +50,11 @@ export const Login = () => {
 
     const data = await response.json();
 
-    if (response.status === 200 && data.token) { 
+    console.log("Received email:", email, "Received password:", password);
+    console.log("Response Status:", response.status);
+
+    if (response.status === 200) { 
+      if(data.token){
       login(email, password);
       localStorage.setItem(
         "auth",
@@ -83,13 +65,18 @@ export const Login = () => {
           //token: data.token,
         })
       );
-
-    } else {
-      let errorMsg = document.querySelector(".error");
+      Notification('Logged in successfully!', 'success');
+      }
+    } else if(response.status === 400) {
+      Notification('Missing user credentials. Please try again!', 'warn');
+      /* let errorMsg = document.querySelector(".error");
       if (errorMsg) {
         errorMsg.innerHTML = "Email or password are not correct. Please try again.";
-      }
+      } */
+    } else if(response.status === 401) {
+      Notification('User credentials does not match. Please try again!', 'warn');
     }
+    
   };
   
   return (

@@ -29,6 +29,9 @@ import { Header } from './components/header/Header';
 import { ProtectRoute } from "./router/ProtectedRoute";
 import { AppContainer, WindowContent} from "./components/styled/AppContainer";
 
+import { toast, ToastContainer, Flip } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 function App() {
   
   const { authReady } = useAuthContext();
@@ -36,6 +39,20 @@ function App() {
   return (
     <BrowserRouter>
       <AppContainer>
+        <ToastContainer 
+          position="top-right"
+          autoClose={3000}
+          hideProgressBar={false}
+          newestOnTop={false}
+          closeOnClick
+          rtl={false}
+          pauseOnFocusLoss
+          draggable
+          pauseOnHover
+          theme="light"
+          transition={Flip}
+          style={{ fontSize: "1.5rem", fontWeight: "bold", marginTop: "80px" }}
+        />
         {authReady ? <Sidebar /> : <></>}
         <WindowContent>
           {authReady ? <Header /> : <></>}

@@ -8,6 +8,7 @@ import { MdLogout, MdNotificationsNone, MdOutlineEmail } from "react-icons/md";
 import { HeaderContainer, HeaderTitle, HeaderElements, Icon } from './HeaderStyled';
 
 import { useLogout } from "../../hooks/useLogout"
+import { Notification } from "../notification/Notification";
 
 export const Header = () => {
 
@@ -27,6 +28,7 @@ export const Header = () => {
   const goLogin = () => {
     localStorage.removeItem("auth");
     logout()
+    Notification("User logged out", "info")
   };
 
   return (
