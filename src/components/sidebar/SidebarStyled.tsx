@@ -10,6 +10,23 @@ const MenuIcon = styled(MdMenuOpen)<MenuIconProps>`
   transition: transform 0.3s ease-in-out;
 `;
 
+const Icon = styled.div`
+  padding: 1rem;
+  cursor: pointer;
+  background-color: transparent;
+  border-radius: 0%;
+  transition: 0.3s;
+
+  &:hover{
+    background-color: rgba(59, 153, 59, 0.25);
+    border-radius: 50%;
+    transition: 0.3s;
+  }
+  
+  a:active, a:visited{
+    color: black;
+  }
+`;
 
 const NavContainer = styled.div<{
   display: string;
@@ -28,8 +45,8 @@ const NavContainer = styled.div<{
 const MenuButton = styled.button`
   transform: rotate(0deg);
   position: absolute;
-  right: -60px;
-  top: 45px;
+  right: -70px;
+  top: 35px;
   background-color: transparent;
   border: none;
 
@@ -170,5 +187,6 @@ export {
   NavigationRights,
   NavigationAuthor,
   Link,
-  MenuIcon
+  MenuIcon,
+  Icon
 };
