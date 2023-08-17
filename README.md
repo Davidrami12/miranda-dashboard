@@ -1,5 +1,7 @@
 # Getting Started with Create React App
 
+Front-end project recreating an administrative dashboard with management actions for Miranda Hotel. React + Redux + TypeScript
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
