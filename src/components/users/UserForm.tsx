@@ -89,7 +89,7 @@ const UserForm = ({
               </InputContainer>
             </div>
             <div style={{display: "flex", justifyContent: "space-between"}}>
-              <InputContainer style={{ width: "fit-content", marginBottom: "2rem" }}>
+              {/* <InputContainer style={{ width: "fit-content", marginBottom: "2rem" }}>
                 <RadioDescription>Position</RadioDescription>
                 <DropdownMenu
                   type="white"
@@ -98,11 +98,11 @@ const UserForm = ({
                   selected={currentUser.position}
                   handleInput={handleInput}
                 ></DropdownMenu>
-              </InputContainer>
+              </InputContainer> */}
               <InputContainer style={{ width: "50%" }}>
                 <RadioDescription>Position Description</RadioDescription>
                 <InputForm
-                  type="text"
+                  type="textarea"
                   className="input-user"
                   placeholder="Position Description"
                   name="description"

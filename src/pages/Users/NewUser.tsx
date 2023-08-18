@@ -4,10 +4,11 @@ import { useNavigate } from "react-router";
 
 // Redux
 import { useDispatch } from "react-redux";
-import { createNewUser } from "../../features/usersSlice";
+import { createNewUser, getDataUsers } from "../../features/usersSlice";
 
 // Components
 import UserForm from "../../components/users/UserForm";
+import { Notification } from "../../components/notification/Notification";
 
 // TypeScript
 import { useAppDispatch } from "../../app/hooks";
@@ -19,10 +20,9 @@ export const NewUser = () => {
 
   const formTitle: string = "Adding a new user";
   const [currentUser, setCurrentUser] = useState<UserInterface>({
-    id: Math.floor(Math.random() * 100000),
+    //id: Math.floor(Math.random() * 100000),
     photo: "",
     name: "",
-    position: "",
     email: "",
     phone: "",
     date: "",
@@ -47,9 +47,12 @@ export const NewUser = () => {
     navigate("/users");
   };
 
-  const handleSubmit = (): void => {
-    dispatch(createNewUser(currentUser));
+  const handleSubmit = async (): Promise<void> => {
+    await dispatch(createNewUser(currentUser)).then(() => {
+      dispatch(getDataUsers())
+    });
     navigate("/users");
+    Notification("New user added successfully!", "success");
   };
 
   return (

@@ -1,13 +1,15 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { fetchData } from "./fetchData";
+import { fetchAPI } from "./fetchAPI";
 import type { BookingInterface } from "../interfaces/BookingInterface";
 
 interface BookingsState {
   bookingsList: BookingInterface[] | [];
   singleBooking: BookingInterface | null | undefined;
-  status: "loading" | "success" | "failed";
-  singleBookingStatus: "loading" | "success" | "failed";
+  status: "idle" | "loading" | "success" | "failed";
+  singleBookingStatus: "idle" | "loading" | "success" | "failed";
 }
+
 interface ActionInterface {
   type: string;
   payload: any;
@@ -15,9 +17,9 @@ interface ActionInterface {
 
 const initialState: BookingsState = {
   bookingsList: [],
-  status: "loading",
+  status: "idle",
   singleBooking: null,
-  singleBookingStatus: "loading",
+  singleBookingStatus: "idle",
 };
 
 
@@ -33,27 +35,24 @@ const addDelay = <T>(promise: Promise<T>, delay: number): Promise<T> => {
 export const getDataBookings = createAsyncThunk(
   "bookings/fetchBookings",
   async () => {
-    const data = await fetchData("Bookings");
-    return addDelay(Promise.resolve(data), 200);
+    return await fetchAPI("/bookings", "GET", null);
   }
 );
 
 export const getBooking = createAsyncThunk(
   "booking/GetBookingDetails",
-  async (idBooking: number) => {
-    // with local json data:
-    // return addDelay(Promise.resolve(idBooking), 200);
+  async (idBooking: string) => {
+    if (!idBooking) {
+      throw new Error("Booking ID is not defined.");
+    }
 
-    // Code sample:
-    const token = localStorage.getItem("auth");
-    const apiResquest = fetch(`${process.env.REACT_APP_API_URL}/bookings/${idBooking}`, {
-      headers: {
-      "Authorization": `Bearer ${token}`
-    }}).then((rawResponse) => {
-      rawResponse.json().then((jsonResponse) => {
-        return jsonResponse.data; 
-      })
-    });
+    const bookingData = await fetchAPI(`/bookings/${idBooking}`, "GET", null);
+    
+    if (!bookingData) {
+      throw new Error("Booking not found.");
+    }
+
+    return bookingData;
   }
 );
 
@@ -61,33 +60,21 @@ export const getBooking = createAsyncThunk(
 export const createNewBooking = createAsyncThunk(
   "bookings/CreateBooking",
   async (newBooking: BookingInterface) => {
-    // return await newBooking;
-
-    /* const token = localStorage.getItem("auth");
-    const apiResquest = fetch(`${process.env.REACT_APP_API_URL}/bookings/`, {
-      method: "POST",
-      body: { newBooking },
-      headers: {
-      "Authorization": `Bearer ${token}`
-    }}).then((rawResponse) => {
-      rawResponse.json().then((jsonResponse) => {
-        return jsonResponse.data; 
-      })
-    }); */
+    return await fetchAPI(`/bookings/`, "POST", newBooking);
   }
 );
 
 export const editBooking = createAsyncThunk(
   "bookings/EditBooking",
-  async (idBooking: number) => {
-    return await idBooking;
+  async (currentBooking: any) => {
+    return await fetchAPI(`/bookings/${currentBooking._id}`, "PUT", currentBooking);
   }
 );
 
 export const deleteBooking = createAsyncThunk(
   "bookings/DeleteBooking",
-  async (id: number) => {
-    return await id;;
+  async (idBooking: string) => {
+    return await fetchAPI(`/bookings/${idBooking}`, "DELETE", null);
   }
 );
 
@@ -110,9 +97,10 @@ export const bookingsSlice = createSlice({
           state.bookingsList = action.payload;
         }
       )
-      .addCase(getDataBookings.rejected, (state: BookingsState) => {
+      .addCase(getDataBookings.rejected, (state: BookingsState, action) => {
         state.status = "failed";
         console.error("Not possible to fetch the bookings");
+        console.log(action.error.message);
       });
 
     builder
@@ -124,14 +112,13 @@ export const bookingsSlice = createSlice({
         getBooking.fulfilled,
         (state: BookingsState, action: ActionInterface) => {
           state.singleBookingStatus = "success";
-          state.singleBooking = state.bookingsList.find(
-            (booking) => booking.id === action.payload
-          );
+          state.singleBooking = action.payload;
         }
       )
-      .addCase(getBooking.rejected, (state: BookingsState) => {
+      .addCase(getBooking.rejected, (state: BookingsState, action) => {
         state.singleBookingStatus = "failed";
         console.error("Not possible to fetch the booking");
+        console.log(action.error.message);
       });
 
     builder.addCase(
@@ -145,7 +132,7 @@ export const bookingsSlice = createSlice({
       deleteBooking.fulfilled,
       (state: BookingsState, action: ActionInterface) => {
         state.bookingsList = state.bookingsList.filter(
-          (booking) => booking.id !== action.payload
+          (booking) => booking._id !== action.payload
         );
       }
     );
@@ -154,9 +141,7 @@ export const bookingsSlice = createSlice({
       editBooking.fulfilled,
       (state: BookingsState, action: ActionInterface) => {
         state.bookingsList = state.bookingsList.map((booking) => {
-          return booking.id === action.payload.id
-            ? action.payload
-            : booking;
+          return booking.id === action.payload.id ? action.payload : booking;
         });
         state.singleBooking = null;
       }

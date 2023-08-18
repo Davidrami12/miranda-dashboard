@@ -152,7 +152,7 @@ const RoomForm = ({
               <RadioDescription>Room number</RadioDescription>
               <InputForm
                 required
-                type="text"
+                type="number"
                 className="input-user"
                 name="room_number"
                 value={currentRoom.room_number}
@@ -174,7 +174,7 @@ const RoomForm = ({
             <div style={{display: "flex", alignItems: "center"}}>
               <div style={{display: "flex", justifyContent: "space-between", alignItems: "center", width: "70%"}}>
                 <InputContainer style={{ width: "40%" }}>
-                  <RadioDescription>Room rate</RadioDescription>
+                  <RadioDescription>Room rate ($)</RadioDescription>
                   <InputForm
                     required
                     type="number"
@@ -186,7 +186,7 @@ const RoomForm = ({
                   ></InputForm>
                 </InputContainer>
                 <InputContainer style={{ width: "40%" }}>
-                  <RadioDescription>Offer</RadioDescription>
+                  <RadioDescription>Offer discount</RadioDescription>
                   <RadioInput
                     required
                     type="radio"
@@ -212,10 +212,11 @@ const RoomForm = ({
 
               {currentRoom.discount === "Yes" ? (
                 <InputContainer style={{ width: "30%" }}>
-                  <RadioDescription>Discount %</RadioDescription>
+                  <RadioDescription>Discount percentage (%)</RadioDescription>
                   <InputForm
                     required
                     type="number"
+                    max={90}
                     className="input-user"
                     name="discountPercent"
                     value={currentRoom.discountPercent}

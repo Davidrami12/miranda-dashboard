@@ -14,7 +14,8 @@ import {
   NavigationRights,
   NavigationAuthor,
   Link,
-  MenuIcon
+  MenuIcon,
+  Icon
 } from "./SidebarStyled"
 
 import { MdMenuOpen } from "react-icons/md";
@@ -47,7 +48,7 @@ export const Sidebar = () => {
   return (
     <NavContainer display={display ? "0px" : "345px"}>
       <MenuButton onClick={displayMenu}>
-        <MenuIcon rotated={rotated} className='menu' />
+        <Icon><MenuIcon rotated={rotated} className='menu' /></Icon>
       </MenuButton>
 
       <LogoContainer>

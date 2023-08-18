@@ -4,7 +4,7 @@ import { useNavigate } from "react-router";
 
 // Redux
 import { useDispatch } from "react-redux";
-import { deleteBooking } from "../../features/bookingsSlice";
+import { deleteBooking, editBooking, getBooking, getDataBookings } from "../../features/bookingsSlice";
 
 // Styled Components
 import {
@@ -18,6 +18,7 @@ import {
   NotesButton,
   DropDown,
 } from "./BookingRowStyled";
+import { Notification } from "../notification/Notification";
 
 // TypeScript
 import { useAppDispatch } from "../../app/hooks";
@@ -33,13 +34,13 @@ export const BookingRow = ({ booking, handleOpenModal }: BookingRowInt) => {
 
   const [showOptions, setShowOptions] = useState<boolean>(false);
 
-  const goToSingleBooking = (id: number): void => {
+  const goToSingleBooking = (id: string): void => {
     navigate("/bookings/" + id);
   };
 
   const editSingleBooking = (
     e: React.MouseEvent<HTMLButtonElement>,
-    id: number
+    id: string
   ): void => {
     e.preventDefault();
     navigate("/editBooking/" + id);
@@ -47,23 +48,29 @@ export const BookingRow = ({ booking, handleOpenModal }: BookingRowInt) => {
 
   const deleteCurrentBooking = (
     e: React.MouseEvent<HTMLButtonElement>,
-    id: number
+    id: string
   ): void => {
     e.preventDefault();
-    dispatch(deleteBooking(id));
+    dispatch(deleteBooking(id)).then(() => {
+      Notification("Booking was deleted successfully", "info")
+      dispatch(getDataBookings());
+    });
   };
 
   return (
-    <Row onClick={() => { goToSingleBooking(booking.id) }}>
+    <Row onClick={() => { 
+      if (booking._id) {
+        goToSingleBooking(booking._id) 
+      }}}>
       <td>
         <GuestContainer>
           <img
             src={booking.userPicture}
-            alt="User portrait"
+            alt="Booking image"
           />
           <div>
             <GuestName>{booking.userName}</GuestName>
-            <BookingID>#{booking.id}</BookingID>
+            <BookingID>#{booking._id}</BookingID>
           </div>
         </GuestContainer>
       </td>
@@ -101,7 +108,6 @@ export const BookingRow = ({ booking, handleOpenModal }: BookingRowInt) => {
             width="30"
             viewBox="0 0 48 48"
             onClick={(e) => {
-              // avoid the parents event listener to be fired when the child event listener should be fired
               if (e && e.stopPropagation) e.stopPropagation();
               setShowOptions(!showOptions);
             }}
@@ -116,20 +122,24 @@ export const BookingRow = ({ booking, handleOpenModal }: BookingRowInt) => {
                 <button
                   onClick={(e) => {
                     if (e && e.stopPropagation) e.stopPropagation();
-                    editSingleBooking(e, booking.id);
+                    if (booking._id) {
+                      editSingleBooking(e, booking._id);
+                    }
                   }}
                 >
-                  Edit booking
+                  ✏️ Edit booking
                 </button>
               </li>
               <li>
                 <button
                   onClick={(e) => {
                     if (e && e.stopPropagation) e.stopPropagation();
-                    deleteCurrentBooking(e, booking.id);
+                    if (booking._id) {
+                      deleteCurrentBooking(e, booking._id);
+                    }
                   }}
                 >
-                  Delete booking
+                  🗑️ Delete booking
                 </button>
               </li>
             </ul>

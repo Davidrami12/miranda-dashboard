@@ -23,6 +23,7 @@ import { Loader } from "../../components/styled/Loader";
 // Components
 import { RoomRow } from "../../components/rooms/RoomRow";
 import { Pagination } from "../../components/pagination/Pagination";
+import { Notification } from "../../components/notification/Notification";
 
 // TypeScript
 import { useAppDispatch, useAppSelector } from "../../app/hooks";
@@ -47,14 +48,22 @@ export const Rooms = () => {
   const [rooms, setRooms] = useState<RoomInterface[]>(roomsList);
   const [activeFilter, setActiveFilter] = useState<string>("Room Nº.");
   const [currentRooms, setCurrentRooms] = useState<RoomInterface[]>([]);
+  const [isLoading, setIsLoading] = useState(false);
 
+  // useEffect hook runs whenever 'bookingsList' or 'dispatch' changes
   useEffect(() => {
-    if (roomsList.length === 0) {
+    if(status === "idle"){
       dispatch(getDataRooms());
+    }else if(status === "pending"){
+      setIsLoading(true);
+    }else if(status === "success"){
+      setIsLoading(false);
+      setRooms(roomsList);
+    }else if(status === "rejected"){
+      setIsLoading(false);
+      Notification("Error. The action was rejected by the API.", "error")
     }
-    setRooms(roomsList);
   }, [roomsList, dispatch]);
-  
 
   const getAllRooms = () => {
     setRooms(roomsList);
@@ -64,7 +73,7 @@ export const Rooms = () => {
     setRooms(roomsList.filter((room) => room.room_status === type));
   };
 
-  useEffect(() => {
+  /* useEffect(() => {
     const orderedRooms = [...roomsList];
     switch (activeFilter) {
       case "Room Number":
@@ -80,7 +89,7 @@ export const Rooms = () => {
         break;
     }
     setRooms(orderedRooms);
-  }, [activeFilter, roomsList]);
+  }, [activeFilter, roomsList]); */
 
   // Variables for the pagination component
   const [currentPage, setCurrentPage] = useState(1);
@@ -118,7 +127,7 @@ export const Rooms = () => {
         </TableButtons>
       </TableActions>
 
-      {status === "loading" ? (
+      {isLoading ? (
         <Loader />
       ) : (
         <>
@@ -134,23 +143,22 @@ export const Rooms = () => {
                   <HeaderTitle>Status</HeaderTitle>
                 </tr>
               </thead>
-              <>
-                <tbody
-                  className="task-container"
-                >
-                  {currentRooms.length > 0 &&
-                    currentRooms.map((room, index) => (
+              <tbody className="task-container">
+                {currentRooms.length > 0 && currentRooms.map((room, index) => {
+                    if(!room._id) return null;
+                    return(
                       <RoomRow
-                        key={room.id}
+                        key={room._id}
                         index={index}
                         room={room}
-                        number={room.id}
+                        number={room._id}
                       />
-                    ))}
-                </tbody>
-              </>
+                    );
+                  })}
+              </tbody>
             </Table>
           </Container>
+          
           <Pagination
             nPages={nPages}
             currentPage={currentPage}

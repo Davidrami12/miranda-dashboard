@@ -33,14 +33,18 @@ export const ReviewRow = ({ review }: any) => {
       </DataContainer>
       <DataContainer className="data-container__text">
         <p>{review.user.name}</p>
+        <span>{review.user.email}</span>
       </DataContainer>
       <DataContainer className="data-container__text">
         <div>{stars}</div>
         <p>{review.message.body}</p>
       </DataContainer>
       <DataContainerButton>
-        <button className="green">Publish</button>
-        <button className="red">Archive</button>
+        {review.archived ? (
+          <button className="red">Archived</button>
+        ) : (
+          <button className="green">Published</button>
+        )}
       </DataContainerButton>
     </Row>
   );

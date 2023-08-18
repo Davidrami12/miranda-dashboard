@@ -23,6 +23,7 @@ import { CreateButton } from "../../components/styled/Buttons";
 // Components
 import { UserRow } from "../../components/users/UserRow";
 import { Pagination } from "../../components/pagination/Pagination";
+import { Notification } from "../../components/notification/Notification";
 
 // TypeScript
 import { useAppDispatch, useAppSelector } from "../../app/hooks";
@@ -42,18 +43,30 @@ export const Users = () => {
   const { usersList } = useAppSelector<UsersType>(
     (state) => state.usersReducer
   );
-  const { status } = useAppSelector<StatusType>((state) => state.usersReducer);
+
+  const { status } = useAppSelector<StatusType>(
+    (state) => state.usersReducer
+  );
 
 
   const [users, setUsers] = useState<UserInterface[]>(usersList);
   const [activeFilter, setActiveFilter] = useState<string>("Start date");
   const [currentUsers, setCurrentUsers] = useState<UserInterface[]>([]);
+  const [isLoading, setIsLoading] = useState(false);
 
+  // useEffect hook runs whenever 'usersList' or 'dispatch' changes
   useEffect(() => {
-  if (usersList.length === 0) {
-    dispatch(getDataUsers());
-  }
-  setUsers(usersList);
+    if(status === "idle"){
+      dispatch(getDataUsers());
+    }else if(status === "pending"){
+      setIsLoading(true);
+    }else if(status === "success"){
+      setIsLoading(false);
+      setUsers(usersList);
+    }else if(status === "rejected"){
+      setIsLoading(false);
+      Notification("Error. The action was rejected by the API.", "error")
+    }
   }, [usersList, dispatch]);
 
   const getAllUsers = (): void => {
@@ -64,7 +77,7 @@ export const Users = () => {
     setUsers(usersList.filter((user) => user.state === type));
   };
 
-  useEffect(() => {
+  /* useEffect(() => {
     const orderedUsers: UserInterface[] = [...usersList];
     switch (activeFilter) {
       case "Start date":
@@ -95,7 +108,7 @@ export const Users = () => {
         break;
     }
     setUsers(orderedUsers);
-  }, [activeFilter, usersList]);
+  }, [activeFilter, usersList]); */
 
   // Variables for the pagination component
   const [currentPage, setCurrentPage] = useState<number>(1);
@@ -134,7 +147,7 @@ export const Users = () => {
         </TableButtons>
       </TableActions>
 
-      {status === "loading" ? (
+      {isLoading ? (
         <Loader />
       ) : (
         <>
@@ -149,15 +162,17 @@ export const Users = () => {
                 </tr>
               </thead>
               <tbody>
-                {currentUsers.length > 0 &&
-                  currentUsers.map((user, index) => (
+                {currentUsers.length > 0 && currentUsers.map((user, index) => {
+                  if(!user._id) return null;
+                  return(
                     <UserRow
-                      key={user.id}
+                      key={user._id}
                       index={index}
                       user={user}
-                      number={user.id}
+                      number={user._id}
                     />
-                  ))}
+                  );
+                })};
               </tbody>
             </Table>
           </Container>

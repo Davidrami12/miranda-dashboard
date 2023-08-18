@@ -24,6 +24,7 @@ import { CreateButton } from "../../components/styled/Buttons";
 import { BookingRow } from "../../components/bookings/BookingRow";
 import { Modal } from "../../components/styled/Modal";
 import { Pagination } from "../../components/pagination/Pagination";
+import { Notification } from "../../components/notification/Notification";
 
 // TypeScript
 import { useAppDispatch, useAppSelector } from "../../app/hooks";
@@ -54,14 +55,21 @@ export const Bookings = () => {
   const [request, setRequest] = useState("");
   const [activeFilter, setActiveFilter] = useState("Order Date");
   const [currentBookings, setCurrentBookings] = useState<BookingInterface[]>([]);
+  const [isLoading, setIsLoading] = useState(false);
 
   // useEffect hook runs whenever 'bookingsList' or 'dispatch' changes
   useEffect(() => {
-    if (bookingsList.length === 0) {
-      // Check if there is no booking data, dispatch the Redux action to fetch booking data
+    if(status === "idle"){
       dispatch(getDataBookings());
+    }else if(status === "pending"){
+      setIsLoading(true);
+    }else if(status === "success"){
+      setIsLoading(false);
+      setBookings(bookingsList);
+    }else if(status === "rejected"){
+      setIsLoading(false);
+      Notification("Error. The action was rejected by the API.", "error")
     }
-    setBookings(bookingsList);
   }, [bookingsList, dispatch]);
 
   const getAllBookings = () => {
@@ -72,7 +80,7 @@ export const Bookings = () => {
     setBookings(bookingsList.filter((booking) => booking.status === type));
   };
 
-  useEffect(() => {
+  /* useEffect(() => {
     const orderedBookings = [...bookingsList];
     switch (activeFilter) {
       case "Order Date":
@@ -119,7 +127,7 @@ export const Bookings = () => {
         break;
     }
     setBookings(orderedBookings);
-  }, [activeFilter, bookingsList]);
+  }, [activeFilter, bookingsList]); */
 
   const closeModal = (): void => {
     setOpenModal(false);
@@ -174,7 +182,7 @@ export const Bookings = () => {
         </TableButtons>
       </TableActions>
 
-      {status === "loading" ? (
+      {isLoading ? (
         <Loader />
       ) : (
         <>
@@ -199,16 +207,18 @@ export const Bookings = () => {
                 </tr>
               </thead>
               <tbody>
-                {currentBookings.length > 0 &&
-                  currentBookings.map((booking, index) => (
+                {currentBookings.length > 0 && currentBookings.map((booking, index) => {
+                  if(!booking._id) return null;
+                  return (
                     <BookingRow
-                      key={booking.id}
+                      key={booking._id}
                       index={index}
                       booking={booking}
-                      number={booking.id}
+                      number={booking._id}
                       handleOpenModal={handleOpenModal}
                     />
-                  ))}
+                  );
+                })}
               </tbody>
             </Table>
           </Container>

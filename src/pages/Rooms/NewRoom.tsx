@@ -4,10 +4,11 @@ import { useNavigate } from "react-router";
 
 // Redux
 import { useDispatch } from "react-redux";
-import { createNewRoom } from "../../features/roomsSlice";
+import { createNewRoom, getDataRooms } from "../../features/roomsSlice";
 
 // Components
 import RoomForm from "../../components/rooms/RoomForm";
+import { Notification } from "../../components/notification/Notification";
 
 // TypeScript
 import { useAppDispatch } from "../../app/hooks";
@@ -20,7 +21,7 @@ export const NewRoom = () => {
 
   const formTitle: string = "Adding a new room";
   const [currentRoom, setCurrentRoom] = useState<RoomInterface>({
-    id: String(Math.floor(Math.random() * 100000)),
+    //id: String(Math.floor(Math.random() * 100000)),
     room_number: "",
     bed_type: "",
     photo: "",
@@ -61,9 +62,12 @@ export const NewRoom = () => {
     navigate("/rooms");
   };
 
-  const handleSubmit = (): void => {
-    dispatch(createNewRoom(currentRoom));
+  const handleSubmit = async (): Promise<void> => {
+    await dispatch(createNewRoom(currentRoom)).then(() => {
+      dispatch(getDataRooms());
+    });
     navigate("/rooms");
+    Notification("New room added successfully!", "success");
   };
   
   return (

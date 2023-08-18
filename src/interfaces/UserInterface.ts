@@ -1,8 +1,7 @@
 export interface UserInterface {
-  id: number;
+  _id?: string;
   photo: string;
   name: string;
-  position: string;
   email: string;
   phone: string;
   date: string;
