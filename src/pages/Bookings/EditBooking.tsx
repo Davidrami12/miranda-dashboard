@@ -5,11 +5,12 @@ import { useParams } from "react-router-dom";
 
 // Redux
 import { useDispatch, useSelector } from "react-redux";
-import { getBooking, editBooking } from "../../features/bookingsSlice";
+import { getBooking, editBooking, getDataBookings } from "../../features/bookingsSlice";
 
 // Components
 import BookingForm from "../../components/bookings/BookingForm";
 import { Loader } from "../../components/styled/Loader";
+import { Notification } from "../../components/notification/Notification";
 
 // TypeScript
 import { useAppDispatch, useAppSelector } from "../../app/hooks";
@@ -20,6 +21,7 @@ type BookingsType = {
 };
 
 export const EditBooking = () => {
+  
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
   const params = useParams();
@@ -32,7 +34,9 @@ export const EditBooking = () => {
   const formTitle: string = "Edit current booking";
 
   useEffect(() => {
-    dispatch(getBooking(Number(bookingId)));
+    if(bookingId){
+      dispatch(getBooking(bookingId)); //dispatch(getBooking(Number(bookingId)));
+    }
   }, [dispatch, bookingId]); // Remove singleBooking from dependency array
   
   // Set currentBooking whenever singleBooking changes, but only if singleBooking is not null
@@ -41,7 +45,6 @@ export const EditBooking = () => {
       setCurrentBooking(singleBooking);
     }
   }, [singleBooking]);
-  
 
   const handleInput = (event: any) => {
     const { name, value } = event.target;
@@ -54,10 +57,13 @@ export const EditBooking = () => {
     navigate("/bookings");
   };
 
-  const handleSubmit = (): void => {
-    dispatch(editBooking(currentBooking));
-    setCurrentBooking({});
+  const handleSubmit = async (): Promise<void> => {
+    await dispatch(editBooking(currentBooking)).then(() => {
+      dispatch(getDataBookings());
+      setCurrentBooking({});
+    });
     navigate("/bookings");
+    Notification("Booking was edited successfully", "success")
   };
   
   return !currentBooking ? (

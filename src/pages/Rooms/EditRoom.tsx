@@ -5,11 +5,12 @@ import { useParams } from "react-router-dom";
 
 // Redux
 import { useDispatch, useSelector } from "react-redux";
-import { getRoom, editRoom } from "../../features/roomsSlice";
+import { getRoom, editRoom, getDataRooms } from "../../features/roomsSlice";
 
 // Components
 import RoomForm from "../../components/rooms/RoomForm";
 import { Loader } from "../../components/styled/Loader";
+import { Notification } from "../../components/notification/Notification";
 
 // TypeScript
 import { useAppDispatch, useAppSelector } from "../../app/hooks";
@@ -20,6 +21,7 @@ type RoomsType = {
 };
 
 export const EditRoom = () => {
+
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
   const params = useParams();
@@ -32,7 +34,9 @@ export const EditRoom = () => {
   const formTitle: string = "Edit current room";
 
   useEffect(() => {
-    dispatch(getRoom(String(roomId)));
+    if(roomId){
+      dispatch(getRoom(roomId));
+    }
   }, [dispatch, roomId]); // Removed singleRoom from the dependency array
 
   // Set currentRoom whenever singleRoom changes, but only if singleRoom is not null
@@ -41,8 +45,6 @@ export const EditRoom = () => {
       setCurrentRoom(singleRoom);
     }
   }, [singleRoom]);
-
-
 
   const handleInput = (event: any) => {
     const { name, value, type, checked } = event.target;
@@ -71,10 +73,13 @@ export const EditRoom = () => {
     navigate("/rooms");
   };
 
-  const handleSubmit = (): void => {
-    dispatch(editRoom(currentRoom));
-    setCurrentRoom({});
+  const handleSubmit = async (): Promise<void> => {
+    await dispatch(editRoom(currentRoom)).then(() => {
+      dispatch(getDataRooms());
+      setCurrentRoom({});
+    });    
     navigate("/rooms");
+    Notification("Room was edited successfully", "success")
   };
 
   return !currentRoom ? (

@@ -3,6 +3,10 @@ import { Notification } from '../components/notification/Notification';
 const url = process.env.REACT_APP_LOCAL_URL;
 
 export const fetchAPI = async (direction: string, method: string, data: {} | null): Promise<any> => {
+  console.log("URL:", url + direction);
+  console.log("Method:", method);
+  console.log("Data:", data);
+  
   try {
     let tokenStored: string | any = localStorage.getItem("auth");
 
@@ -21,20 +25,21 @@ export const fetchAPI = async (direction: string, method: string, data: {} | nul
       body: data ? JSON.stringify(data) : null,
     });
 
-    // Check if the response was successful
+
+    console.log("Response:", response);
+
     if (!response.ok) {
-      // If unauthorized (401), consider adding a redirect to login or token refresh logic
+      // If unauthorized (401) redirect to login
       if (response.status === 401) {
         Notification("Session expired. Please log in again.", "error");
-        // You can throw an error or add other handling logic here
       }
-      throw new Error(`API returned status: ${response.statusText}`);
+      throw new Error(`API returned status: ${response.status}`);
     }
 
     return response.json();
 
   } catch (error) {
     Notification(`An error occurred: ${error.message}`, "error");
-    throw error; // Propagate the error for further handling
+    throw error;
   }
 }

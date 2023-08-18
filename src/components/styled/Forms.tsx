@@ -218,10 +218,10 @@ const LoginButton = styled.div`
   }
 `;
 const InputSubmit = styled.input`
-  /* display: inline-block;
-  background-color: #ebf1ef;
+  display: inline-block;
+  background-color: #3fad8144;
   border: none;
-  border-radius: 8px;
+  border-radius: 10px;
   width: 16rem;
   transition: background-color 0.3s;
   text-align: center;
@@ -230,17 +230,18 @@ const InputSubmit = styled.input`
   color: #135846;
   font-size: 1.4rem;
   font-weight: 600;
-  padding: 1.5rem;
+  padding: 1.2rem;
   margin: auto;
-  :hover {
-    background-color: rgba(19, 87, 69, 0.2);
-  } */
+  &:hover {
+    cursor: pointer;
+    background-color: rgba(18, 151, 115, 0.461);
+  }
 `;
 const InputCancel = styled.button`
-  /* display: inline-block;
+  display: inline-block;
   background-color: rgba(226, 52, 40, 0.1);
   border: none;
-  border-radius: 8px;
+  border-radius: 10px;
   width: 16rem;
   transition: background-color 0.3s;
   text-align: center;
@@ -249,11 +250,12 @@ const InputCancel = styled.button`
   color: rgba(226, 52, 40, 1);
   font-size: 1.4rem;
   font-weight: 600;
-  padding: 1.5rem;
+  padding: 1.2rem;
   margin: auto;
-  :hover {
-    background-color: rgba(226, 52, 40, 0.2);
-  } */
+  &:hover {
+    cursor: pointer;
+    background-color: rgba(226, 52, 40, 0.369);
+  }
 `;
 
 const RadioInput = styled.input`

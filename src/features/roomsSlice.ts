@@ -1,12 +1,13 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { fetchData } from "./fetchData";
+import { fetchAPI } from "./fetchAPI";
 import type { RoomInterface } from "../interfaces/RoomInterface";
 
 interface RoomState {
   roomsList: RoomInterface[] | [];
   singleRoom: RoomInterface | null | undefined;
-  status: string;
-  singleRoomStatus: string;
+  status: "idle" | "loading" | "success" | "failed";
+  singleRoomStatus: "idle" | "loading" | "success" | "failed";
 }
 
 interface ActionInterface {
@@ -16,9 +17,9 @@ interface ActionInterface {
 
 const initialState: RoomState = {
   roomsList: [],
-  status: "loading",
+  status: "idle",
   singleRoom: null,
-  singleRoomStatus: "loading",
+  singleRoomStatus: "idle",
 };
 
 
@@ -34,35 +35,44 @@ const addDelay = <T>(promise: Promise<T>, delay: number): Promise<T> => {
 export const getDataRooms = createAsyncThunk(
   "rooms/fetchRooms", 
   async () => {
-    const data = await fetchData("Rooms");
-    return addDelay(Promise.resolve(data), 200);
+    return await fetchAPI("/rooms", "GET", null);
 });
 
 export const getRoom = createAsyncThunk(
   "room/GetRoomDetails",
   async (id: string) => {
-    return await id;
+    if (!id) {
+      throw new Error("Room ID is not defined.");
+    }
+
+    const roomData = await fetchAPI(`/rooms/${id}`, "GET", null);
+    
+    if (!roomData) {
+      throw new Error("Room not found.");
+    }
+
+    return roomData;
   }
 );
 
 export const createNewRoom = createAsyncThunk(
   "rooms/CreateRoom",
   async (newRoom: RoomInterface) => {
-    return await newRoom;
+    return await fetchAPI(`/rooms/`, "POST", newRoom);
   }
 );
 
 export const editRoom = createAsyncThunk(
   "rooms/EditRoom",
-  async (id: string) => {
-    return await id;
+  async (currentRoom: any) => {
+    return await fetchAPI(`/rooms/${currentRoom._id}`, "PUT", currentRoom);
   }
 );
 
 export const deleteRoom = createAsyncThunk(
   "rooms/DeleteRooms",
   async (id: string) => {
-    return await id;
+    return await fetchAPI(`/rooms/${id}`, "DELETE", null);
   }
 );
 
@@ -84,9 +94,10 @@ export const roomsSlice = createSlice({
           state.roomsList = action.payload;
         }
       )
-      .addCase(getDataRooms.rejected, (state: RoomState) => {
+      .addCase(getDataRooms.rejected, (state: RoomState, action) => {
         state.status = "failed";
         console.error("Not possible to fetch the rooms");
+        console.log(action.error.message);
       });
 
     builder
@@ -94,15 +105,17 @@ export const roomsSlice = createSlice({
         state.singleRoom = null;
         state.singleRoomStatus = "loading";
       })
-      .addCase(getRoom.fulfilled, (state: RoomState, action: ActionInterface) => {
-        state.singleRoomStatus = "success";
-        state.singleRoom = state.roomsList.find(
-          (room) => room.id === action.payload
-        );
-      })
-      .addCase(getRoom.rejected, (state: RoomState) => {
+      .addCase(
+        getRoom.fulfilled, 
+        (state: RoomState, action: ActionInterface) => {
+          state.singleRoomStatus = "success";
+          state.singleRoom = action.payload;
+        }
+      )
+      .addCase(getRoom.rejected, (state: RoomState, action) => {
         state.singleRoomStatus = "failed";
         console.error("Not possible to fetch the room");
+        console.log(action.error.message);
       });
 
     builder.addCase(

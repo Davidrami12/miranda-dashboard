@@ -9,7 +9,7 @@
     },
     "message": {
       "subject": "Lorem ipsum",
-      "body": "Lorem ipsum"
+      "body": "The food was great!"
     },
     "stars": 2,
     "archived": true
@@ -24,9 +24,9 @@
     },
     "message": {
       "subject": "Lorem ipsum",
-      "body": "Lorem ipsum"
+      "body": "We will come back on next vacations"
     },
-    "stars": 1,
+    "stars": 5,
     "archived": false
   },
   {
@@ -39,7 +39,7 @@
     },
     "message": {
       "subject": "Lorem ipsum",
-      "body": "Lorem ipsum"
+      "body": "Wow. Nice service and great hotel"
     },
     "stars": 4,
     "archived": false

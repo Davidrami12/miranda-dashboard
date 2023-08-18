@@ -5,11 +5,12 @@ import { useParams } from "react-router-dom";
 
 // Redux
 import { useDispatch, useSelector } from "react-redux";
-import { getUser, editUser } from "../../features/usersSlice";
+import { getUser, editUser, getDataUsers } from "../../features/usersSlice";
 
 // Components
 import UserForm from "../../components/users/UserForm";
 import { Loader } from "../../components/styled/Loader";
+import { Notification } from "../../components/notification/Notification";
 
 // TypeScript
 import { useAppDispatch, useAppSelector } from "../../app/hooks";
@@ -20,6 +21,7 @@ type UsersType = {
 };
 
 export const EditUser = () => {
+
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
   const params = useParams();
@@ -32,12 +34,15 @@ export const EditUser = () => {
   const formTitle: string = "Edit current user";
 
   useEffect(() => {
-    dispatch(getUser(Number(id)));
+    if(id){
+      dispatch(getUser(id)); // dispatch(getUser(Number(id)));
+    }
   }, [dispatch, id]); // Removed singleUser from the dependency array
 
   // Set currentUser whenever singleUser changes, but only if singleUser is not null
   useEffect(() => {
     if (singleUser) {
+      console.log("singleUser value:", singleUser);
       setCurrentUser(singleUser);
     }
   }, [singleUser]);
@@ -53,10 +58,13 @@ export const EditUser = () => {
     navigate("/users");
   };
 
-  const handleSubmit = (): void => {
-    dispatch(editUser(currentUser));
-    setCurrentUser({});
+  const handleSubmit = async (): Promise<void> => {
+    await dispatch(editUser(currentUser)).then(() => {
+      dispatch(getDataUsers());
+      setCurrentUser({});
+    });
     navigate("/users");
+    Notification("User was edited successfully", "success")
   };
 
   return !currentUser ? (

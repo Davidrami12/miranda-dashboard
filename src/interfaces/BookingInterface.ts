@@ -1,8 +1,8 @@
 import { MouseEventHandler } from "react";
 
 export interface BookingInterface {
-  _id: string;
-  //bookingID: number;
+  _id?: string;
+  bookingID: number;
   userName: string;
   userPicture: string;
   orderDate: string;

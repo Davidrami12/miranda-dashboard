@@ -51,7 +51,7 @@ function App() {
           pauseOnHover
           theme="light"
           transition={Flip}
-          style={{ fontSize: "1.5rem", fontWeight: "bold", marginTop: "80px" }}
+          style={{ fontSize: "1.5rem", fontWeight: "bold", marginTop: "70px" }}
         />
         {authReady ? <Sidebar /> : <></>}
         <WindowContent>

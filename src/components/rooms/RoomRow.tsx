@@ -4,7 +4,7 @@ import { useNavigate } from "react-router";
 
 // Redux
 import { useDispatch } from "react-redux";
-import { deleteRoom } from "../../features/roomsSlice";
+import { deleteRoom, getDataRooms } from "../../features/roomsSlice";
 
 // Styled Components
 import {
@@ -19,6 +19,7 @@ import {
   RoomStatus,
   DropDown,
 } from "./RoomRowStyled";
+import { Notification } from "../notification/Notification";
 
 // TypeScript
 import { useAppDispatch } from "../../app/hooks";
@@ -34,13 +35,13 @@ export const RoomRow = ({ room, index }: RoomsType | any) => {
 
   const [showOptions, setShowOptions] = useState<boolean>(false);
 
-  const goToSingleRoom = (id: number): void => {
+  const goToSingleRoom = (id: string): void => {
     navigate("/rooms/" + id);
   };
 
   const editSingleRoom = (
     e: React.MouseEvent<HTMLButtonElement>,
-    id: number
+    id: string
   ): void => {
     e.preventDefault();
     navigate("/editRoom/" + id);
@@ -48,19 +49,25 @@ export const RoomRow = ({ room, index }: RoomsType | any) => {
 
   const deleteCurrentRoom = (
     e: React.MouseEvent<HTMLButtonElement>,
-    id: number
+    id: string
   ): void => {
     e.preventDefault();
-    dispatch(deleteRoom(id));
+    dispatch(deleteRoom(id)).then(() => {
+      Notification("Room was deleted successfully", "info")
+      dispatch(getDataRooms());
+    });
   };
 
   return (
-    <Row key={room.id} onClick={() => { goToSingleRoom(room.id) }}>
+    <Row key={room.id} onClick={() => {
+      if (room._id) {
+       goToSingleRoom(room._id) 
+      }}}>
       <td>
         <RoomNameContainer>
           <img src={room.photo} alt="Room Img" />
           <div>
-            <RoomId>#{room.id}</RoomId>
+            <RoomId>#{room._id}</RoomId>
             <RoomNumber>Room Nº. {room.room_number}</RoomNumber>
           </div>
         </RoomNameContainer>
@@ -133,20 +140,24 @@ export const RoomRow = ({ room, index }: RoomsType | any) => {
               <button
                 onClick={(e) => {
                   e.stopPropagation();  // prevent event bubbling
-                  editSingleRoom(e, room.id);
+                  if (room._id) {
+                    editSingleRoom(e, room._id);
+                  }
                 }}
               >
-                Edit room
+                ✏️ Edit room
               </button>
             </li>
             <li>
               <button
                 onClick={(e) => {
                   e.stopPropagation();  // prevent event bubbling
-                  deleteCurrentRoom(e, room.id);
+                  if (room._id) {
+                    deleteCurrentRoom(e, room._id);
+                  }
                 }}
               >
-                Delete room
+                🗑️ Delete room
               </button>
             </li>
           </ul>

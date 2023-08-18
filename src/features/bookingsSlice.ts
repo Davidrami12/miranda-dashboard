@@ -6,10 +6,10 @@ import type { BookingInterface } from "../interfaces/BookingInterface";
 interface BookingsState {
   bookingsList: BookingInterface[] | [];
   singleBooking: BookingInterface | null | undefined;
-  status: "loading" | "success" | "failed";
-  singleBookingStatus: "loading" | "success" | "failed";
-  update: boolean;
+  status: "idle" | "loading" | "success" | "failed";
+  singleBookingStatus: "idle" | "loading" | "success" | "failed";
 }
+
 interface ActionInterface {
   type: string;
   payload: any;
@@ -17,10 +17,9 @@ interface ActionInterface {
 
 const initialState: BookingsState = {
   bookingsList: [],
-  status: "loading",
+  status: "idle",
   singleBooking: null,
-  singleBookingStatus: "loading",
-  update: true
+  singleBookingStatus: "idle",
 };
 
 
@@ -46,7 +45,14 @@ export const getBooking = createAsyncThunk(
     if (!idBooking) {
       throw new Error("Booking ID is not defined.");
     }
-    return await fetchAPI(`/bookings/${idBooking}`, "GET", null);
+
+    const bookingData = await fetchAPI(`/bookings/${idBooking}`, "GET", null);
+    
+    if (!bookingData) {
+      throw new Error("Booking not found.");
+    }
+
+    return bookingData;
   }
 );
 
@@ -54,21 +60,21 @@ export const getBooking = createAsyncThunk(
 export const createNewBooking = createAsyncThunk(
   "bookings/CreateBooking",
   async (newBooking: BookingInterface) => {
-    return await fetchAPI(`/bookings/newBooking`, "POST", newBooking);
+    return await fetchAPI(`/bookings/`, "POST", newBooking);
   }
 );
 
 export const editBooking = createAsyncThunk(
   "bookings/EditBooking",
   async (currentBooking: any) => {
-    return await fetchAPI(`/bookings/editBooking/${currentBooking.bookingID}`, "PUT", currentBooking);
+    return await fetchAPI(`/bookings/${currentBooking._id}`, "PUT", currentBooking);
   }
 );
 
 export const deleteBooking = createAsyncThunk(
   "bookings/DeleteBooking",
   async (idBooking: string) => {
-    return await fetchAPI(`bookings/${idBooking}`, "DELETE", null);
+    return await fetchAPI(`/bookings/${idBooking}`, "DELETE", null);
   }
 );
 
@@ -89,12 +95,12 @@ export const bookingsSlice = createSlice({
         (state: BookingsState, action: ActionInterface) => {
           state.status = "success";
           state.bookingsList = action.payload;
-          state.update = false;
         }
       )
-      .addCase(getDataBookings.rejected, (state: BookingsState) => {
+      .addCase(getDataBookings.rejected, (state: BookingsState, action) => {
         state.status = "failed";
         console.error("Not possible to fetch the bookings");
+        console.log(action.error.message);
       });
 
     builder
@@ -109,17 +115,16 @@ export const bookingsSlice = createSlice({
           state.singleBooking = action.payload;
         }
       )
-      .addCase(getBooking.rejected, (state: BookingsState) => {
+      .addCase(getBooking.rejected, (state: BookingsState, action) => {
         state.singleBookingStatus = "failed";
         console.error("Not possible to fetch the booking");
+        console.log(action.error.message);
       });
 
     builder.addCase(
       createNewBooking.fulfilled,
       (state: BookingsState, action: ActionInterface) => {
-        //state.bookingsList = [...state.bookingsList, action.payload];
-        state.bookingsList = [];
-        state.update = true;
+        state.bookingsList = [...state.bookingsList, action.payload];
       }
     );
 
@@ -129,7 +134,6 @@ export const bookingsSlice = createSlice({
         state.bookingsList = state.bookingsList.filter(
           (booking) => booking._id !== action.payload
         );
-        state.update = true;
       }
     );
 
@@ -137,12 +141,9 @@ export const bookingsSlice = createSlice({
       editBooking.fulfilled,
       (state: BookingsState, action: ActionInterface) => {
         state.bookingsList = state.bookingsList.map((booking) => {
-          return booking.id === action.payload.id
-            ? action.payload
-            : booking;
+          return booking.id === action.payload.id ? action.payload : booking;
         });
         state.singleBooking = null;
-        state.update = true;
       }
     );
   },

@@ -49,6 +49,11 @@ const DataContainer = styled.td`
       fill: #135846;
     }
   }
+  span{
+    padding: 1rem 0rem 0.2rem 4rem;
+    font-size: 1.3rem;
+    color: #8E8E8E;
+  }
   p {
     font-family: var(--font-poppins);
     color: #393939;

@@ -4,7 +4,7 @@ import { useNavigate } from "react-router";
 
 // Redux
 import { useDispatch } from "react-redux";
-import { deleteUser } from "../../features/usersSlice";
+import { deleteUser, getDataUsers } from "../../features/usersSlice";
 
 // Styled Components
 import {
@@ -17,6 +17,7 @@ import {
   Status,
 } from "./UserRowStyled";
 import { DataContainerButton, DropDown } from "../bookings/BookingRowStyled";
+import { Notification } from "../notification/Notification";
 
 // TypeScript
 import { useAppDispatch } from "../../app/hooks";
@@ -26,39 +27,46 @@ type UsersType = {
   singleUser: UserInterface | null | undefined;
 };
 
-// Component that creates a table row for the bookings table
 export const UserRow = ({ user }: UsersType | any) => {
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
 
   const [showOptions, setShowOptions] = useState<boolean>(false);
 
-  const goToSingleUser = (id: number) => {
+  const goToSingleUser = (id: string): void => {
     navigate("/users/" + id);
   };
 
-  const editSingleUser = (e: Event, id: number) => {
+  const editSingleUser = (
+    e: React.MouseEvent<HTMLButtonElement>,
+    id: string
+  ): void => {
     e.preventDefault();
     navigate("/editUser/" + id);
   };
 
-  const deleteCurrentUser = (e: Event, id: number) => {
+  const deleteCurrentUser = (
+    e: React.MouseEvent<HTMLButtonElement>,
+    id: string
+  ): void => {
     e.preventDefault();
-    dispatch(deleteUser(id));
+    dispatch(deleteUser(id)).then(() => {
+      Notification("User was deleted successfully", "info")
+      dispatch(getDataUsers());
+    });
   };
 
   return (
-    <Row
-      onClick={() => {
-        goToSingleUser(user.id);
-      }}
-    >
+    <Row onClick={() => {
+      if (user._id) {
+        goToSingleUser(user._id);
+      }}}>
       <td>
         <UserContainer>
           <img src={user.photo} alt="User portrait" />
           <div>
             <UserName>{user.name}</UserName>
-            <UserID>#{user.id}</UserID>
+            <UserID>#{user._id}</UserID>
             <UserJoinDate>Joined on {user.date}</UserJoinDate>
           </div>
         </UserContainer>
@@ -105,7 +113,6 @@ export const UserRow = ({ user }: UsersType | any) => {
             width="30"
             viewBox="0 0 48 48"
             onClick={(e) => {
-              // With this check I avoid the parents event listener to be fired when the child event listener should be fired
               if (e && e.stopPropagation) e.stopPropagation();
               setShowOptions(!showOptions);
             }}
@@ -120,20 +127,24 @@ export const UserRow = ({ user }: UsersType | any) => {
                 <button
                   onClick={(e: any) => {
                     if (e && e.stopPropagation) e.stopPropagation();
-                    editSingleUser(e, user.id);
+                    if (user._id) {
+                      editSingleUser(e, user._id);
+                    }
                   }}
                 >
-                  Edit user
+                  ✏️ Edit user
                 </button>
               </li>
               <li>
                 <button
                   onClick={(e: any) => {
                     if (e && e.stopPropagation) e.stopPropagation();
-                    deleteCurrentUser(e, user.id);
+                    if (user._id) {
+                      deleteCurrentUser(e, user._id);
+                    }
                   }}
                 >
-                  Delete user
+                  🗑️ Delete user
                 </button>
               </li>
             </ul>
