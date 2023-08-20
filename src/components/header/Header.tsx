@@ -4,7 +4,7 @@ import { useLocation } from "react-router";
 import { Link } from "react-router-dom";
 
 // Icons & styles
-import { MdLogout, MdNotificationsNone, MdOutlineEmail } from "react-icons/md";
+import { MdLogout, MdNotificationsNone, MdOutlineEmail, MdPersonOutline } from "react-icons/md";
 import { HeaderContainer, HeaderTitle, HeaderElements, Icon } from './HeaderStyled';
 
 import { useLogout } from "../../hooks/useLogout"
@@ -39,13 +39,13 @@ export const Header = () => {
           </HeaderTitle>
 
           <Icon>
-            <Link to="/editOwnUser"><MdOutlineEmail style={{width: 30, height: 30}}/></Link>
+            <Link to="/contact"><MdOutlineEmail style={{width: 30, height: 30}}/></Link>
           </Icon>
           <Icon>
-            <Link to="/editOwnUser"><MdNotificationsNone style={{width: 30, height: 30}}/></Link>
+            <Link to="/editOwnUser"><MdPersonOutline style={{width: 30, height: 30}}/></Link>
           </Icon>
           <Icon onClick={goLogin}>
-            <MdLogout data-cy="logout-button"  style={{width: 30, height: 30}}/>
+            <MdLogout data-cy="logout-button" style={{width: 30, height: 30}}/>
           </Icon>
           
         </HeaderElements>

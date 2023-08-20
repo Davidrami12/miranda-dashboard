@@ -49,34 +49,34 @@ const Input = styled.input`
   display: block;
   font-family: var(--font-poppins);
   font-size: 1.5rem;
-  //border: none;
+  border: none;
   border-bottom: 1px solid #C5C5C5;
   padding-left: 30px;
 
-  /*&:hover{
-      border-bottom: 1px solid #135846;
+  &:hover{
+    border-bottom: 1px solid #135846;
   }
   &:hover~div .input-icon{
-      color: #135846;
+    color: #135846;
   }
 
   &:focus{
-      outline: none;
-      border-bottom: 1px solid #135846;
+    outline: none;
+    border-bottom: 1px solid #135846;
   }
 
   &:focus~div .input-icon{
-      color: #135846;
-  }*/
+    color: #135846;
+  }
 `;
 
 const Icon = styled.div`
   position: absolute;
-  top: 5px;
+  top: 0px;
   left: 5px;
   .input-icon{
-      transition: all 0.1s;
-      color: #C5C5C5;
+    transition: all 0.2s;
+    color: #C5C5C5;
   }
 `;
 
@@ -167,6 +167,7 @@ const FormTitle = styled.p`
   font-weight: 500;
   color: #135846;
   margin-bottom: 0rem;
+  text-decoration: underline;
 `;
 
 /* const InputContainer = styled.div`

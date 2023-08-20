@@ -27,6 +27,7 @@ const UserContainer = styled.div`
   svg {
     position: relative;
     top: 5px;
+    margin-right: 5px;
   }
 `;
 const UserName = styled.p`
@@ -50,6 +51,7 @@ const UserJoinDate = styled.p`
   font-family: var(--font-poppins);
   margin: 0;
   line-height: 26px;
+  margin-right: 20px;
 `;
 
 const DataContainer = styled.td`

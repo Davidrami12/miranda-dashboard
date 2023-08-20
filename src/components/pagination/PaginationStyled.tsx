@@ -35,11 +35,12 @@ const LiNextBtn = styled.button`
   font-family: var(--font-poppins);
   font-size: 1.6rem;
   transition: all 0.3s;
-  :hover {
-    //background-color: #135846;
-    //opacity: 0.5;
-    //color: white;
+
+  &:hover {
+    background-color: #135846;
+    color: white;
   }
+
   svg {
     height: 2rem;
     width: 2rem;
@@ -81,6 +82,13 @@ const LiPageBtn = styled.button<LiPageBtnProps>`
   font-family: var(--font-poppins);
   font-size: 1.6rem;
   transition: all 0.3s;
+  
+  &:hover{
+    cursor: pointer;
+    background-color: #135846;
+    opacity: 0.7;
+    color: white;
+  }
 `;
 
 export { Nav, Text, Ul, LiNext, LiNextBtn, LiPageNumber, LiPageBtn };

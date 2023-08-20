@@ -49,7 +49,7 @@ export const AppRoutes = ({ authReady }) => {
         <Route path="users/:id" element={<SingleUser />} />
       </Route>
 
-      <Route path="*" element={<Navigate to="/" />} /> 
+      <Route path="*" element={<Navigate to="/dashboard" />} /> 
       
     </Routes>
   );

@@ -46,7 +46,7 @@ export const EditOwnUser = () => {
     <DashboardForm /* style={{ minHeight: "80%" }} */>
       <LoginCard>
         <FormTitle>
-          Edit admin user
+          Admin user information
         </FormTitle>
         <form>
           <InputContainer>
