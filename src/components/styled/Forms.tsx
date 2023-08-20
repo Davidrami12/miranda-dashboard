@@ -17,6 +17,10 @@ const LoginCard = styled.div`
   width: 600px;
   font-size: 1.7rem;
   text-align: justify;
+  border-radius: 20px;
+  box-shadow: 5px 10px 8px 10px rgba(0, 0, 0, 0.368627451);
+  outline: 2px solid #135846;
+  outline-offset: -12px;
 
   hr{
     border: 2px solid #135846;
@@ -115,12 +119,12 @@ const ErrorMessage = styled.span`
 `; */
 
 const DashboardForm = styled.div`
-width: 100%;
-//height: 100%;
-display: flex;
-justify-content: center;
-margin-top: 4rem;
-padding-bottom: 3rem;
+  width: 100%;
+  //height: 100%;
+  display: flex;
+  justify-content: center;
+  margin-top: 4rem;
+  padding-bottom: 3rem;
 `;
 
 const InputForm = styled.input`
@@ -161,7 +165,7 @@ const FormTitle = styled.p`
   font-family: var(--font-poppins);
   font-size: 3.5rem;
   font-weight: 500;
-  color: #393939;
+  color: #135846;
   margin-bottom: 0rem;
 `;
 
@@ -273,7 +277,7 @@ const RadioLabel = styled.label`
   margin-right: 4rem;
 `;
 
-const RadioDescription = styled.p`
+const InputDescription = styled.p`
   font-family: var(--font-poppins);
   font-size: 1.6rem;
   color: #393939;
@@ -307,7 +311,7 @@ export {
   Description,
   RadioInput,
   RadioLabel,
-  RadioDescription,
+  InputDescription,
   InputSubmit,
   FormTitle,
   InputCancel,

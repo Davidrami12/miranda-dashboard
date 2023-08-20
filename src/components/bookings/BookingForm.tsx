@@ -12,7 +12,7 @@ import {
   FormTitle,
   RadioInput,
   RadioLabel,
-  RadioDescription,
+  InputDescription,
   InputSubmit,
   InputCancel,
 } from "../styled/Forms";
@@ -42,7 +42,7 @@ const BookingForm = ({
             }}
           >
             <InputContainer>
-              <RadioDescription>User name</RadioDescription>
+              <InputDescription>User name</InputDescription>
               <InputForm
                 required
                 type="text"
@@ -54,7 +54,7 @@ const BookingForm = ({
               ></InputForm>
             </InputContainer>
             <InputContainer>
-              <RadioDescription>User picture</RadioDescription>
+              <InputDescription>User picture</InputDescription>
               <InputForm
                 className="input-user"
                 value={currentBooking.userPicture}
@@ -67,7 +67,7 @@ const BookingForm = ({
             </InputContainer>
             <div style={{ display: "flex", justifyContent: "space-between"}}>
               <InputContainer style={{ width: "45%" }}>
-                <RadioDescription>Check in</RadioDescription>
+                <InputDescription>Check in</InputDescription>
                 <InputForm
                   required
                   style={{ color: "#777777" }}
@@ -80,7 +80,7 @@ const BookingForm = ({
                 ></InputForm>
               </InputContainer>
               <InputContainer style={{ width: "45%" }}>
-                <RadioDescription>Check out</RadioDescription>
+                <InputDescription>Check out</InputDescription>
                 <InputForm
                   required
                   style={{ color: "#777777" }}
@@ -94,7 +94,7 @@ const BookingForm = ({
               </InputContainer>
             </div>
             <InputContainer>
-              <RadioDescription>Special request &#40;optional&#41;</RadioDescription>
+              <InputDescription>Special request &#40;optional&#41;</InputDescription>
               <InputForm
                 type="textarea"
                 className="input-user"
@@ -105,7 +105,7 @@ const BookingForm = ({
               ></InputForm>
             </InputContainer>
             <InputContainer>
-              <RadioDescription>Room Type</RadioDescription>
+              <InputDescription>Room Type</InputDescription>
               <RadioInput
                 required
                 type="radio"
@@ -148,7 +148,7 @@ const BookingForm = ({
               <RadioLabel htmlFor="suite">Suite</RadioLabel>
             </InputContainer>
             <InputContainer>
-              <RadioDescription>Booking Status</RadioDescription>
+              <InputDescription>Booking Status</InputDescription>
               <RadioInput
                 required
                 type="radio"

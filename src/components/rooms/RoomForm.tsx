@@ -12,7 +12,7 @@ import {
   FormTitle,
   RadioInput,
   RadioLabel,
-  RadioDescription,
+  InputDescription,
   InputSubmit,
   InputCancel,
 } from "../styled/Forms";
@@ -47,7 +47,7 @@ const RoomForm = ({
           >
             <div style={{display: "flex", justifyContent: "space-between"}}>
               <InputContainer style={{ width: "45%" }}>
-                <RadioDescription>Photo one</RadioDescription>
+                <InputDescription>Photo one</InputDescription>
                 <InputForm
                   type="text"
                   className="input-user"
@@ -55,10 +55,11 @@ const RoomForm = ({
                   value={currentRoom.photo}
                   placeholder="First photo URL"
                   onChange={handleInput}
+                  required
                 ></InputForm>
               </InputContainer>
               <InputContainer style={{ width: "45%" }}>
-                <RadioDescription>Photo two</RadioDescription>
+                <InputDescription>Photo two</InputDescription>
                 <InputForm
                   type="text"
                   className="input-user"
@@ -66,12 +67,13 @@ const RoomForm = ({
                   value={currentRoom.photoTwo}
                   placeholder="Second photo URL"
                   onChange={handleInput}
+                  required
                 ></InputForm>
               </InputContainer>
             </div>
             <div style={{display: "flex", justifyContent: "space-between"}}>
               <InputContainer style={{ width: "45%" }}>
-                <RadioDescription>Photo three</RadioDescription>
+                <InputDescription>Photo three</InputDescription>
                 <InputForm
                   type="text"
                   className="input-user"
@@ -79,10 +81,11 @@ const RoomForm = ({
                   value={currentRoom.photoThree}
                   placeholder="Third photo URL"
                   onChange={handleInput}
+                  required
                 ></InputForm>
               </InputContainer>
               <InputContainer style={{ width: "45%" }}>
-                <RadioDescription>Photo four</RadioDescription>
+                <InputDescription>Photo four</InputDescription>
                 <InputForm
                   type="text"
                   className="input-user"
@@ -90,12 +93,13 @@ const RoomForm = ({
                   value={currentRoom.photoFour}
                   placeholder="Four photo URL"
                   onChange={handleInput}
+                  required
                 ></InputForm>
               </InputContainer>
             </div>
             
             {/* <InputContainer>
-              <RadioDescription>Photo five</RadioDescription>
+              <InputDescription>Photo five</InputDescription>
               <InputForm
                 type="text"
                 className="input-user"
@@ -106,62 +110,68 @@ const RoomForm = ({
               ></InputForm>
             </InputContainer> */}
             <InputContainer>
-              <RadioDescription>Room Type</RadioDescription>
+              <InputDescription>Room Type</InputDescription>
+
               <RadioInput
-                required
                 type="radio"
                 id="singleBed"
                 value="Single Bed"
                 name="bed_type"
                 onClick={handleInput}
                 defaultChecked={currentRoom.bed_type === "Single Bed"}
+                required
               />
               <RadioLabel htmlFor="singleBed">Single Bed</RadioLabel>
+
               <RadioInput
-                required
                 type="radio"
                 id="doubleBed"
                 value="Double Bed"
                 name="bed_type"
                 onClick={handleInput}
                 defaultChecked={currentRoom.bed_type === "Double Bed"}
+                required
               />
               <RadioLabel htmlFor="doubleBed">Double Bed</RadioLabel>
+
               <RadioInput
-                required
                 type="radio"
                 id="doubleSuperior"
                 value="Double Superior"
                 name="bed_type"
                 onClick={handleInput}
                 defaultChecked={currentRoom.bed_type === "Double Superior"}
+                required
               />
               <RadioLabel htmlFor="doubleSuperior">Double Superior</RadioLabel>
+
               <RadioInput
-                required
                 type="radio"
                 id="suite"
                 value="Suite"
                 name="bed_type"
                 onClick={handleInput}
                 defaultChecked={currentRoom.bed_type === "Suite"}
+                required
               />
               <RadioLabel htmlFor="suite">Suite</RadioLabel>
+
             </InputContainer>
-            <InputContainer>
-              <RadioDescription>Room number</RadioDescription>
+            <div style={{display: "flex", justifyContent: "space-between"}}>
+            <InputContainer style={{ width: "28%" }}>
+              <InputDescription>Room number</InputDescription>
               <InputForm
-                required
                 type="number"
                 className="input-user"
                 name="room_number"
                 value={currentRoom.room_number}
                 placeholder="Room Number"
                 onChange={handleInput}
+                required
               ></InputForm>
             </InputContainer>
-            <InputContainer>
-              <RadioDescription>Room description</RadioDescription>
+            <InputContainer style={{ width: "58%" }}>
+              <InputDescription>Room description</InputDescription>
               <InputForm
                 type="text"
                 className="input-user"
@@ -169,42 +179,45 @@ const RoomForm = ({
                 value={currentRoom.description}
                 placeholder="Room description"
                 onChange={handleInput}
+                required
               ></InputForm>
             </InputContainer>
+            </div>
+            
             <div style={{display: "flex", alignItems: "center"}}>
               <div style={{display: "flex", justifyContent: "space-between", alignItems: "center", width: "70%"}}>
                 <InputContainer style={{ width: "40%" }}>
-                  <RadioDescription>Room rate ($)</RadioDescription>
+                  <InputDescription>Room rate ($)</InputDescription>
                   <InputForm
-                    required
                     type="number"
                     className="input-user"
                     placeholder="Price per night"
                     name="room_rate"
                     value={currentRoom.room_rate}
                     onChange={handleInput}
+                    required
                   ></InputForm>
                 </InputContainer>
                 <InputContainer style={{ width: "40%" }}>
-                  <RadioDescription>Offer discount</RadioDescription>
+                  <InputDescription>Offer discount</InputDescription>
                   <RadioInput
-                    required
                     type="radio"
                     id="yes"
                     value="Yes"
                     name="discount"
                     onClick={handleInput}
                     defaultChecked={currentRoom.discount === "Yes"}
+                    required
                   />
                   <RadioLabel htmlFor="yes">Yes</RadioLabel>
                   <RadioInput
-                    required
                     type="radio"
                     id="no"
                     value="No"
                     name="discount"
                     onClick={handleInput}
                     defaultChecked={currentRoom.discount === "No"}
+                    required
                   />
                   <RadioLabel htmlFor="no">No</RadioLabel>
                 </InputContainer>
@@ -212,9 +225,8 @@ const RoomForm = ({
 
               {currentRoom.discount === "Yes" ? (
                 <InputContainer style={{ width: "30%" }}>
-                  <RadioDescription>Discount percentage (%)</RadioDescription>
+                  <InputDescription>Discount percentage (%)</InputDescription>
                   <InputForm
-                    required
                     type="number"
                     max={90}
                     className="input-user"
@@ -222,6 +234,7 @@ const RoomForm = ({
                     value={currentRoom.discountPercent}
                     placeholder="Discount %"
                     onChange={handleInput}
+                    required
                   ></InputForm>
                 </InputContainer>
               ) : null}
@@ -229,7 +242,7 @@ const RoomForm = ({
             </div>
 
             <InputContainer>
-              <RadioDescription>Cancellation Policy</RadioDescription>
+              <InputDescription>Cancellation Policy</InputDescription>
               <InputForm
                 type="text"
                 className="input-user"
@@ -237,23 +250,27 @@ const RoomForm = ({
                 value={currentRoom.cancellationPolicy}
                 placeholder="Cancellation Policy"
                 onChange={handleInput}
+                required
               ></InputForm>
             </InputContainer>
             <InputContainer>
-              <RadioDescription>
+              <InputDescription>
                 Desired amenities to include in the new room
-              </RadioDescription>
+              </InputDescription>
               {listOfAmenities.map((amenity, index) => (
                 <div key={index} style={{ display: "inline-block" }}>
                   {currentRoom.room_facilities.includes(amenity) ? (
                     <RadioInput
-                      type="checkbox"
-                      name="room_facilities"
-                      id={amenity}
-                      value={amenity}
-                      onClick={handleInput}
-                      defaultChecked
-                    />
+                    type="checkbox"
+                    name="room_facilities"
+                    id={amenity}
+                    value={amenity}
+                    onClick={handleInput}
+                    defaultChecked={currentRoom.room_facilities.includes(amenity)}
+                  />
+                  
+                  
+
                   ) : (
                     <RadioInput
                       type="checkbox"
@@ -269,25 +286,25 @@ const RoomForm = ({
               ))}
             </InputContainer>
             <InputContainer>
-              <RadioDescription>Room status</RadioDescription>
+              <InputDescription>Room status</InputDescription>
               <RadioInput
-                required
                 type="radio"
                 id="available"
                 value="Available"
                 name="room_status"
                 onClick={handleInput}
                 defaultChecked={currentRoom.room_status === "Available"}
+                required
               />
               <RadioLabel htmlFor="available">Available</RadioLabel>
               <RadioInput
-                required
                 type="radio"
                 id="booked"
                 value="Booked"
                 name="room_status"
                 onClick={handleInput}
                 defaultChecked={currentRoom.room_status === "Booked"}
+                required
               />
               <RadioLabel htmlFor="booked">Booked</RadioLabel>
             </InputContainer>

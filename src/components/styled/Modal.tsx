@@ -13,14 +13,14 @@ const BackDrop = styled.div`
 
 const ModalCard = styled.div`
   position: relative;
-  width: 60rem;
+  width: 50rem;
   height: fit-content;
-  min-height: 30rem;
+  min-height: 20rem;
   text-align: center;
   z-index: 2;
   background-color: white;
   margin: auto;
-  top: 20rem;
+  top: 30rem;
   border-radius: 1.2rem;
   box-shadow: 0px 4px 30px #00000014;
   h3 {
@@ -34,7 +34,7 @@ const ModalCard = styled.div`
   p {
     font-family: var(--font-poppins);
     color: #799283;
-    font-size: 1rem;
+    font-size: 2rem;
     font-weight: 600;
     padding: 0 4rem;
   }
@@ -46,8 +46,8 @@ const XCloseContainer = styled.div`
   align-items: center;
   justify-content: center;
   position: absolute;
-  right: 1.5rem;
-  top: 1.5rem;
+  right: 2rem;
+  top: 2rem;
   svg {
     fill: #e23428;
   }

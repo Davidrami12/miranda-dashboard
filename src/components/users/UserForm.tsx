@@ -12,7 +12,7 @@ import {
   FormTitle,
   RadioInput,
   RadioLabel,
-  RadioDescription,
+  InputDescription,
   InputSubmit,
   InputCancel,
 } from "../styled/Forms";
@@ -40,7 +40,7 @@ const UserForm = ({
             }}
           >
             <InputContainer>
-              <RadioDescription>User picture</RadioDescription>
+              <InputDescription>User picture</InputDescription>
               <InputForm
                 type="text"
                 className="input-user"
@@ -52,7 +52,7 @@ const UserForm = ({
             </InputContainer>
             <div style={{display: "flex", justifyContent: "space-between"}}>
               <InputContainer style={{ width: "30%" }}>
-                <RadioDescription>User name</RadioDescription>
+                <InputDescription>User name</InputDescription>
                 <InputForm
                   required
                   type="text"
@@ -64,7 +64,7 @@ const UserForm = ({
                 ></InputForm>
               </InputContainer>
               <InputContainer style={{ width: "30%" }}>
-                <RadioDescription>User email</RadioDescription>
+                <InputDescription>User email</InputDescription>
                 <InputForm
                   required
                   type="email"
@@ -76,7 +76,7 @@ const UserForm = ({
                 ></InputForm>
               </InputContainer>
               <InputContainer style={{ width: "30%" }}>
-                <RadioDescription>Phone number</RadioDescription>
+                <InputDescription>Phone number</InputDescription>
                 <InputForm
                   required
                   type="number"
@@ -90,7 +90,7 @@ const UserForm = ({
             </div>
             <div style={{display: "flex", justifyContent: "space-between"}}>
               {/* <InputContainer style={{ width: "fit-content", marginBottom: "2rem" }}>
-                <RadioDescription>Position</RadioDescription>
+                <InputDescription>Position</InputDescription>
                 <DropdownMenu
                   type="white"
                   name="position"
@@ -100,7 +100,7 @@ const UserForm = ({
                 ></DropdownMenu>
               </InputContainer> */}
               <InputContainer style={{ width: "50%" }}>
-                <RadioDescription>Position Description</RadioDescription>
+                <InputDescription>Position Description</InputDescription>
                 <InputForm
                   type="textarea"
                   className="input-user"
@@ -113,7 +113,7 @@ const UserForm = ({
             </div>
             
             <InputContainer>
-              <RadioDescription>Start Date</RadioDescription>
+              <InputDescription>Start Date</InputDescription>
               <InputForm
                 required
                 style={{ color: "#777777" }}
@@ -127,7 +127,7 @@ const UserForm = ({
             </InputContainer>
             
             <InputContainer>
-              <RadioDescription>Select the User Status</RadioDescription>
+              <InputDescription>Select the User Status</InputDescription>
               <RadioInput
                 required
                 type="radio"
@@ -150,7 +150,7 @@ const UserForm = ({
               <RadioLabel htmlFor="INACTIVE">Inactive</RadioLabel>
             </InputContainer>
             <InputContainer>
-              <RadioDescription>Password</RadioDescription>
+              <InputDescription>Password</InputDescription>
               <InputForm
                 type="password"
                 className="input-user"
