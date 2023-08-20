@@ -3,6 +3,30 @@
   margin: 0;
   padding: 0;
 }
+
+body{
+  background-color: #DCE2F0;
+  /* overflow: overlay; *//* transparent scrollbar */
+}
+
+/* scrollbar styles */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f3f3f3; 
+}
+ 
+::-webkit-scrollbar-thumb {
+  background: #35714d; 
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #135846; 
+}
+
 /*.App {
   text-align: center;
 }
