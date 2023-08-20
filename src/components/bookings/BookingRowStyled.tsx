@@ -60,9 +60,28 @@ const DataContainerButton = styled.td`
     background-color: transparent;
     border: none;
     margin-left: 60px;
-    width: 24px;
-    height: 24px;
+    padding: 0.5rem;
+    /* width: 24px;
+    height: 24px; */
     cursor: pointer;
+  }
+`;
+
+const Icon = styled.div`
+  padding: 0.3rem;
+  cursor: pointer;
+  background-color: transparent;
+  border-radius: 0%;
+  transition: 0.3s;
+
+  &:hover{
+    background-color: rgba(59, 153, 59, 0.25);
+    border-radius: 50%;
+    transition: 0.3s;
+  }
+  
+  a:active, a:visited{
+    color: black;
   }
 `;
 
@@ -210,4 +229,5 @@ export {
   NotesButton,
   Status,
   DropDown,
+  Icon
 };

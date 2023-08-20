@@ -17,6 +17,7 @@ import {
   Status,
   NotesButton,
   DropDown,
+  Icon
 } from "./BookingRowStyled";
 import { PiDotsThreeVerticalBold } from "react-icons/pi";
 import { AiOutlineEdit, AiOutlineDelete } from "react-icons/ai"
@@ -104,11 +105,13 @@ export const BookingRow = ({ booking, handleOpenModal }: BookingRowInt) => {
       </td>
       <DataContainerButton style={{ position: "relative" }}>
         <button>
-          <PiDotsThreeVerticalBold style={{ height: 30, width: 30}}
-            onClick={(e) => {
-              if (e && e.stopPropagation) e.stopPropagation();
-              setShowOptions(!showOptions);
-            }}/>
+          <Icon>
+            <PiDotsThreeVerticalBold style={{ height: 30, width: 30}}
+              onClick={(e) => {
+                if (e && e.stopPropagation) e.stopPropagation();
+                setShowOptions(!showOptions);
+              }}/>
+          </Icon>
         </button>
         {showOptions ? (
           <DropDown>

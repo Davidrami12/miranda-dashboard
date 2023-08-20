@@ -1,5 +1,6 @@
 // React
 import React, { ChangeEvent, ReactNode } from "react";
+import { IoIosArrowDown } from "react-icons/io";
 
 // Styled Components
 import styled, { css } from "styled-components";
@@ -70,17 +71,11 @@ const DropdownMenu = ({
           return <option key={index}>{option}</option>;
         })}
       </DropdownMenuStyled>
-      {/* Another option instead of adding a SVG would be to add a custom background-image to the element to add the custom arrow */}
-      <svg
-        style={{ position: "absolute", top: "28%", right: "10%" }}
-        xmlns="http://www.w3.org/2000/svg"
-        height="25"
-        width="25"
-        viewBox="0 0 48 48"
-        fill="#135846"
-      >
-        <path d="M24 31.9 10.8 18.7l3.35-3.35 9.85 9.9 9.85-9.85 3.35 3.35Z" />
-      </svg>
+      
+      <IoIosArrowDown 
+        style={{ position: "absolute", top: "33%", right: "12%", color: "#135846", fontSize: '20px', pointerEvents: 'none' }}
+      />
+
     </div>
   );
 };

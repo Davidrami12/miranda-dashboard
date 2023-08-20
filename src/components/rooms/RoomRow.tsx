@@ -17,7 +17,7 @@ import {
   RoomPrice,
   RoomStatus,
 } from "./RoomRowStyled";
-import { DataContainerButton, DropDown } from "../bookings/BookingRowStyled";
+import { DataContainerButton, DropDown, Icon } from "../bookings/BookingRowStyled";
 import { AiOutlineDelete, AiOutlineEdit } from "react-icons/ai"
 import { PiDotsThreeVerticalBold } from "react-icons/pi";
 import { Notification } from "../notification/Notification";
@@ -121,11 +121,13 @@ export const RoomRow = ({ room, index }: RoomsType | any) => {
       </td>
       <DataContainerButton>
         <button>
-          <PiDotsThreeVerticalBold style={{ height: 30, width: 30}}
-            onClick={(e) => {
-              if (e && e.stopPropagation) e.stopPropagation();
-              setShowOptions(!showOptions);
-            }}/>
+          <Icon>
+            <PiDotsThreeVerticalBold style={{ height: 30, width: 30}}
+              onClick={(e) => {
+                if (e && e.stopPropagation) e.stopPropagation();
+                setShowOptions(!showOptions);
+              }}/>
+          </Icon>
         </button>
         {showOptions ? (
           <DropDown onClick={(e) => e.stopPropagation()}>

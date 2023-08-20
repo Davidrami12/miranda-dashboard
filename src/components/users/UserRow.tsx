@@ -19,7 +19,7 @@ import {
 import { PiDotsThreeVerticalBold } from "react-icons/pi";
 import { AiOutlinePhone, AiOutlineDelete, AiOutlineEdit } from "react-icons/ai"
 import { MdOutlineAlternateEmail } from "react-icons/md"
-import { DataContainerButton, DropDown } from "../bookings/BookingRowStyled";
+import { DataContainerButton, DropDown, Icon } from "../bookings/BookingRowStyled";
 import { Notification } from "../notification/Notification";
 
 // TypeScript
@@ -96,11 +96,14 @@ export const UserRow = ({ user }: UsersType | any) => {
       </td>
       <DataContainerButton style={{ position: "relative" }}>
         <button>
-          <PiDotsThreeVerticalBold style={{ height: 30, width: 30}}
-            onClick={(e) => {
-              if (e && e.stopPropagation) e.stopPropagation();
-              setShowOptions(!showOptions);
-            }}/>
+          <Icon>
+            <PiDotsThreeVerticalBold style={{ height: 30, width: 30}}
+              onClick={(e) => {
+                if (e && e.stopPropagation) e.stopPropagation();
+                setShowOptions(!showOptions);
+              }}/>
+          </Icon>
+          
         </button>
         {showOptions ? (
           <DropDown>
