@@ -157,7 +157,8 @@ const RoomForm = ({
               <RadioLabel htmlFor="suite">Suite</RadioLabel>
 
             </InputContainer>
-            <InputContainer>
+            <div style={{display: "flex", justifyContent: "space-between"}}>
+            <InputContainer style={{ width: "28%" }}>
               <InputDescription>Room number</InputDescription>
               <InputForm
                 type="number"
@@ -169,7 +170,7 @@ const RoomForm = ({
                 required
               ></InputForm>
             </InputContainer>
-            <InputContainer>
+            <InputContainer style={{ width: "58%" }}>
               <InputDescription>Room description</InputDescription>
               <InputForm
                 type="text"
@@ -181,6 +182,8 @@ const RoomForm = ({
                 required
               ></InputForm>
             </InputContainer>
+            </div>
+            
             <div style={{display: "flex", alignItems: "center"}}>
               <div style={{display: "flex", justifyContent: "space-between", alignItems: "center", width: "70%"}}>
                 <InputContainer style={{ width: "40%" }}>

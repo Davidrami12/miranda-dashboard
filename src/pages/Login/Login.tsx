@@ -59,9 +59,9 @@ export const Login = () => {
       Notification('Logged in successfully!', 'success');
       }
     } else if(response.status === 400) {
-      Notification('Missing user credentials. Please try again!', 'warn');
+      Notification('Missing user credentials. Please fill the form!', 'error');
     } else if(response.status === 401) {
-      Notification('User credentials are not correct. Please try again!', 'warn');
+      Notification('User credentials are not correct. Please try again!', 'error');
     }
     
   };

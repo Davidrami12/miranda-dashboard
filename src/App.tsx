@@ -37,7 +37,7 @@ function App() {
   const { authReady } = useAuthContext();
   
   return (
-    <BrowserRouter>
+    <BrowserRouter basename={process.env.REACT_APP_BASENAME}>
       <AppContainer>
         <ToastContainer 
           position="top-right"
