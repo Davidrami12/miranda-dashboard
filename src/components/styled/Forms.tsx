@@ -273,7 +273,7 @@ const RadioLabel = styled.label`
   margin-right: 4rem;
 `;
 
-const RadioDescription = styled.p`
+const InputDescription = styled.p`
   font-family: var(--font-poppins);
   font-size: 1.6rem;
   color: #393939;
@@ -307,7 +307,7 @@ export {
   Description,
   RadioInput,
   RadioLabel,
-  RadioDescription,
+  InputDescription,
   InputSubmit,
   FormTitle,
   InputCancel,

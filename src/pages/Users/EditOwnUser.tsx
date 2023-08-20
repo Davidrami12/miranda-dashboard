@@ -15,7 +15,7 @@ import {
   LoginCard,
   InputContainer,
   Input,
-  RadioDescription,
+  InputDescription,
   LoginButton,
   Description,
 } from "../../components/styled/Forms";
@@ -50,7 +50,7 @@ export const EditOwnUser = () => {
         </FormTitle>
         <form>
           <InputContainer>
-            <RadioDescription>Your current admin name</RadioDescription>
+            <InputDescription>Your current admin name</InputDescription>
             <Input
               type="text"
               className="input-user"
@@ -61,7 +61,7 @@ export const EditOwnUser = () => {
             ></Input>
           </InputContainer>
           <InputContainer>
-            <RadioDescription>Your current admin email</RadioDescription>
+            <InputDescription>Your current admin email</InputDescription>
             <Input
               type="email"
               className="input-user"
