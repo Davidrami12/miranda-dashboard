@@ -109,80 +109,72 @@ const RoomForm = ({
                 onChange={handleInput}
               ></InputForm>
             </InputContainer> */}
-            <InputContainer>
-              <InputDescription>Room Type</InputDescription>
+            <div style={{display: "flex", justifyContent: "space-between", alignItems: "center"}}>
 
-              <RadioInput
-                type="radio"
-                id="singleBed"
-                value="Single Bed"
-                name="bed_type"
-                onClick={handleInput}
-                defaultChecked={currentRoom.bed_type === "Single Bed"}
-                required
-              />
-              <RadioLabel htmlFor="singleBed">Single Bed</RadioLabel>
+              <InputContainer style={{ width: "15%" }}>
+                <InputDescription>Room number</InputDescription>
+                <InputForm
+                  type="number"
+                  className="input-user"
+                  name="room_number"
+                  value={currentRoom.room_number}
+                  placeholder="Room Number"
+                  onChange={handleInput}
+                  required
+                ></InputForm>
+              </InputContainer>
 
-              <RadioInput
-                type="radio"
-                id="doubleBed"
-                value="Double Bed"
-                name="bed_type"
-                onClick={handleInput}
-                defaultChecked={currentRoom.bed_type === "Double Bed"}
-                required
-              />
-              <RadioLabel htmlFor="doubleBed">Double Bed</RadioLabel>
+              <InputContainer style={{ width: "75%" }}>
+                <InputDescription>Room Type</InputDescription>
 
-              <RadioInput
-                type="radio"
-                id="doubleSuperior"
-                value="Double Superior"
-                name="bed_type"
-                onClick={handleInput}
-                defaultChecked={currentRoom.bed_type === "Double Superior"}
-                required
-              />
-              <RadioLabel htmlFor="doubleSuperior">Double Superior</RadioLabel>
+                <RadioInput
+                  type="radio"
+                  id="singleBed"
+                  value="Single Bed"
+                  name="bed_type"
+                  onClick={handleInput}
+                  defaultChecked={currentRoom.bed_type === "Single Bed"}
+                  required
+                />
+                <RadioLabel htmlFor="singleBed">Single Bed</RadioLabel>
 
-              <RadioInput
-                type="radio"
-                id="suite"
-                value="Suite"
-                name="bed_type"
-                onClick={handleInput}
-                defaultChecked={currentRoom.bed_type === "Suite"}
-                required
-              />
-              <RadioLabel htmlFor="suite">Suite</RadioLabel>
+                <RadioInput
+                  type="radio"
+                  id="doubleBed"
+                  value="Double Bed"
+                  name="bed_type"
+                  onClick={handleInput}
+                  defaultChecked={currentRoom.bed_type === "Double Bed"}
+                  required
+                />
+                <RadioLabel htmlFor="doubleBed">Double Bed</RadioLabel>
 
-            </InputContainer>
-            <div style={{display: "flex", justifyContent: "space-between"}}>
-            <InputContainer style={{ width: "28%" }}>
-              <InputDescription>Room number</InputDescription>
-              <InputForm
-                type="number"
-                className="input-user"
-                name="room_number"
-                value={currentRoom.room_number}
-                placeholder="Room Number"
-                onChange={handleInput}
-                required
-              ></InputForm>
-            </InputContainer>
-            <InputContainer style={{ width: "58%" }}>
-              <InputDescription>Room description</InputDescription>
-              <InputForm
-                type="text"
-                className="input-user"
-                name="description"
-                value={currentRoom.description}
-                placeholder="Room description"
-                onChange={handleInput}
-                required
-              ></InputForm>
-            </InputContainer>
+                <RadioInput
+                  type="radio"
+                  id="doubleSuperior"
+                  value="Double Superior"
+                  name="bed_type"
+                  onClick={handleInput}
+                  defaultChecked={currentRoom.bed_type === "Double Superior"}
+                  required
+                />
+                <RadioLabel htmlFor="doubleSuperior">Double Superior</RadioLabel>
+
+                <RadioInput
+                  type="radio"
+                  id="suite"
+                  value="Suite"
+                  name="bed_type"
+                  onClick={handleInput}
+                  defaultChecked={currentRoom.bed_type === "Suite"}
+                  required
+                />
+                <RadioLabel htmlFor="suite">Suite</RadioLabel>
+
+              </InputContainer>
+
             </div>
+            
             
             <div style={{display: "flex", alignItems: "center"}}>
               <div style={{display: "flex", justifyContent: "space-between", alignItems: "center", width: "70%"}}>
@@ -241,18 +233,33 @@ const RoomForm = ({
               
             </div>
 
-            <InputContainer>
-              <InputDescription>Cancellation Policy</InputDescription>
-              <InputForm
-                type="text"
-                className="input-user"
-                name="cancellationPolicy"
-                value={currentRoom.cancellationPolicy}
-                placeholder="Cancellation Policy"
-                onChange={handleInput}
-                required
-              ></InputForm>
-            </InputContainer>
+            <div style={{display: "flex", justifyContent: "space-between"}}>
+              <InputContainer style={{ width: "60%" }}>
+                <InputDescription>Room description</InputDescription>
+                <InputForm
+                  type="text"
+                  className="input-user"
+                  name="description"
+                  value={currentRoom.description}
+                  placeholder="Room description"
+                  onChange={handleInput}
+                  required
+                ></InputForm>
+              </InputContainer>
+              <InputContainer style={{ width: "35%" }}>
+                <InputDescription>Cancellation Policy</InputDescription>
+                <InputForm
+                  type="text"
+                  className="input-user"
+                  name="cancellationPolicy"
+                  value={currentRoom.cancellationPolicy}
+                  placeholder="Cancellation Policy"
+                  onChange={handleInput}
+                  required
+                ></InputForm>
+              </InputContainer>
+            </div>
+            
             <InputContainer>
               <InputDescription>
                 Desired amenities to include in the new room

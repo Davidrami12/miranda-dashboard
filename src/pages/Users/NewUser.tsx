@@ -1,5 +1,5 @@
 // React
-import React, { useState } from "react";
+import React, { ReactNode, useState } from "react";
 import { useNavigate } from "react-router";
 
 // Redux
@@ -9,6 +9,7 @@ import { createNewUser, getDataUsers } from "../../features/usersSlice";
 // Components
 import UserForm from "../../components/users/UserForm";
 import { Notification } from "../../components/notification/Notification";
+import { FaUserPlus } from "react-icons/fa"
 
 // TypeScript
 import { useAppDispatch } from "../../app/hooks";
@@ -18,7 +19,13 @@ export const NewUser = () => {
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
 
-  const formTitle: string = "Adding a new user";
+  const formTitle: ReactNode = (
+    <span style={{ display: 'inline-block', borderBottom: '4px solid #135846' }}>
+      <FaUserPlus style={{width: 30, height: 30, marginRight: 10}}/>
+      Adding a new user
+    </span>
+  );
+
   const [currentUser, setCurrentUser] = useState<UserInterface>({
     //id: Math.floor(Math.random() * 100000),
     photo: "",

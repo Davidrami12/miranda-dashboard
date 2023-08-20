@@ -1,5 +1,5 @@
 // React
-import React, { useState } from "react";
+import React, { ReactNode, useState } from "react";
 import { useNavigate } from "react-router";
 
 // Redux
@@ -9,6 +9,7 @@ import { createNewRoom, getDataRooms } from "../../features/roomsSlice";
 // Components
 import RoomForm from "../../components/rooms/RoomForm";
 import { Notification } from "../../components/notification/Notification";
+import { BsBookmarkCheckFill } from "react-icons/bs"
 
 // TypeScript
 import { useAppDispatch } from "../../app/hooks";
@@ -19,7 +20,13 @@ export const NewRoom = () => {
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
 
-  const formTitle: string = "Adding a new room";
+  const formTitle: ReactNode = (
+    <span style={{ display: 'inline-block', borderBottom: '4px solid #135846' }}>
+      <BsBookmarkCheckFill style={{width: 28, height: 28, marginRight: 10}}/>
+      Adding a new room
+    </span>
+  );
+
   const [currentRoom, setCurrentRoom] = useState<RoomInterface>({
     //id: String(Math.floor(Math.random() * 100000)),
     room_number: "",

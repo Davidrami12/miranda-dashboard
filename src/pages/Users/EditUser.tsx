@@ -1,5 +1,5 @@
 // React
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, ReactNode } from "react";
 import { useNavigate } from "react-router";
 import { useParams } from "react-router-dom";
 
@@ -11,6 +11,7 @@ import { getUser, editUser, getDataUsers } from "../../features/usersSlice";
 import UserForm from "../../components/users/UserForm";
 import { Loader } from "../../components/styled/Loader";
 import { Notification } from "../../components/notification/Notification";
+import { FaUserEdit } from "react-icons/fa"
 
 // TypeScript
 import { useAppDispatch, useAppSelector } from "../../app/hooks";
@@ -31,7 +32,13 @@ export const EditUser = () => {
   );
 
   const [currentUser, setCurrentUser] = useState<UserInterface | any>(null);
-  const formTitle: string = "Edit current user";
+  
+  const formTitle: ReactNode = (
+    <span style={{ display: 'inline-block', borderBottom: '4px solid #135846' }}>
+      <FaUserEdit style={{width: 30, height: 30, marginRight: 10}}/>
+      Edit current user
+    </span>
+  );
 
   useEffect(() => {
     if(id){

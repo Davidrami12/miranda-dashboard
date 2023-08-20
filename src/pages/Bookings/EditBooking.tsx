@@ -1,5 +1,5 @@
 // React
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, ReactNode } from "react";
 import { useNavigate } from "react-router";
 import { useParams } from "react-router-dom";
 
@@ -11,6 +11,7 @@ import { getBooking, editBooking, getDataBookings } from "../../features/booking
 import BookingForm from "../../components/bookings/BookingForm";
 import { Loader } from "../../components/styled/Loader";
 import { Notification } from "../../components/notification/Notification";
+import { BiCalendarEdit } from "react-icons/bi"
 
 // TypeScript
 import { useAppDispatch, useAppSelector } from "../../app/hooks";
@@ -31,7 +32,13 @@ export const EditBooking = () => {
   );
 
   const [currentBooking, setCurrentBooking] = useState<BookingInterface | any>(null);
-  const formTitle: string = "Edit current booking";
+  
+  const formTitle: ReactNode  = (
+    <span style={{ display: 'inline-block', borderBottom: '4px solid #135846' }}>
+      <BiCalendarEdit style={{width: 30, height: 30, marginRight: 10}}/>
+      Edit current booking
+    </span>
+  );
 
   useEffect(() => {
     if(bookingId){
