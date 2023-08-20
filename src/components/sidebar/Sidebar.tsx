@@ -56,8 +56,8 @@ export const Sidebar = () => {
       </LogoContainer>
       <Navigation>
         <ul>
-          <NavLink to="/">
-            <Link route="/" current={location.pathname}>
+          <NavLink to="/dashboard">
+            <Link route="/dashboard" current={location.pathname}>
                 <div/><LuLayoutDashboard className='icon' /><p>Dashboard</p>
             </Link>
           </NavLink>
