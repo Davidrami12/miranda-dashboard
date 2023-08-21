@@ -37,7 +37,7 @@ const NavContainer = styled.div<{
   min-width: ${props => props.display};
   box-shadow: 13px 3px 40px #00000005;
   background-color: #FFFFFF;
-  transition: width 0.3s;
+  transition: all 0.4s;
   overflow: visible;
   position: relative;
 `;
@@ -58,8 +58,8 @@ const MenuButton = styled.button`
 `;
 
 const UserCard = styled.div`
-  padding-top: 3rem;
-  padding-bottom: 5rem;
+  padding-top: 1rem;
+  padding-bottom: 3rem;
   //overflow: hidden;
 `;
 
@@ -174,7 +174,29 @@ const NavigationAuthor = styled.p`
   overflow: hidden;
   color: #799283;
   font-size: 14px;
-  margin-top: 30px;
+  margin-top: 15px;
+`;
+
+const NavigationRepository = styled.p`
+  padding-left: 15%;
+  overflow: hidden;
+  font-size: 14px;
+  margin-top: 15px;
+  
+  a{
+    transition: all 0.3s;
+    color: #218100;
+
+    &:hover{
+      color: white;
+      //background-color: #5AD07A;
+      box-shadow: inset 175px 0 0 0 #135846;
+    }
+
+    &:active{
+      color: #135846;
+    }
+  }
 `;
 
 export {
@@ -186,6 +208,7 @@ export {
   NavigationDescription,
   NavigationRights,
   NavigationAuthor,
+  NavigationRepository,
   Link,
   MenuIcon,
   Icon

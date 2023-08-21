@@ -13,6 +13,7 @@ import {
   NavigationDescription,
   NavigationRights,
   NavigationAuthor,
+  NavigationRepository,
   Link,
   MenuIcon,
   Icon
@@ -54,6 +55,7 @@ export const Sidebar = () => {
       <LogoContainer>
         <img src={Logo} alt="Logo"/>
       </LogoContainer>
+
       <Navigation>
         <ul>
           <NavLink to="/dashboard">
@@ -82,15 +84,19 @@ export const Sidebar = () => {
             </Link>
           </NavLink>
         </ul>
+
+        <UserCard>
+          <CurrentUser photo={user}></CurrentUser>
+        </UserCard>
+
       </Navigation>
 
-      <UserCard>
-        <CurrentUser photo={user}></CurrentUser>
-      </UserCard>
+      
 
       <NavigationDescription>Travl Hotel Admin Dashboard</NavigationDescription>
       <NavigationRights>&copy; 2023 All Rights Reserved</NavigationRights>
       <NavigationAuthor>Made with ♥ by David R.</NavigationAuthor>
+      <NavigationRepository><a href='https://github.com/Davidrami12/miranda-dashboard' target='_blank' rel="noreferrer">Check this repository here!</a></NavigationRepository>
     </NavContainer>
   )
 }
