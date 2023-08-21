@@ -1,5 +1,5 @@
 // React
-import React, { useState } from "react";
+import React, { useState, ReactNode } from "react";
 import { useNavigate } from "react-router";
 
 // Redux
@@ -9,6 +9,7 @@ import { createNewBooking, getDataBookings } from "../../features/bookingsSlice"
 // Components
 import BookingForm from "../../components/bookings/BookingForm";
 import { Notification } from "../../components/notification/Notification";
+import { LuCalendarPlus } from "react-icons/lu"
 
 // TypeScript
 import { useAppDispatch } from "../../app/hooks";
@@ -18,7 +19,13 @@ export const NewBooking = () => {
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
 
-  const formTitle: string = "Adding a new booking";
+  const formTitle: ReactNode = (
+    <span style={{ display: 'inline-block', borderBottom: '4px solid #135846' }}>
+      <LuCalendarPlus style={{width: 28, height: 28, marginRight: 10}}/>
+      Adding a new booking
+    </span>
+  );
+
   const [currentBooking, setCurrentBooking] = useState<BookingInterface>({
     //_id: "randomId" + Math.floor(Math.random() * 1000),
     bookingID: Math.floor(Math.random() * 10000),

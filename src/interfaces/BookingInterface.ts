@@ -1,4 +1,4 @@
-import { MouseEventHandler } from "react";
+import { MouseEventHandler, ReactNode } from "react";
 
 export interface BookingInterface {
   _id?: string;
@@ -15,7 +15,7 @@ export interface BookingInterface {
 
 export interface BookingFormInt {
   currentBooking: BookingInterface;
-  formTitle: string;
+  formTitle: ReactNode;
   handleInput: (
     event:
       | React.ChangeEvent<HTMLInputElement>

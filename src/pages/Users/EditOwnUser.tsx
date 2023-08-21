@@ -19,6 +19,7 @@ import {
   LoginButton,
   Description,
 } from "../../components/styled/Forms";
+import { IoMdFingerPrint } from "react-icons/io"
 
 // Component to update the user´s userName and email. Dispatching the editUser reducer
 export const EditOwnUser = () => {
@@ -46,7 +47,10 @@ export const EditOwnUser = () => {
     <DashboardForm /* style={{ minHeight: "80%" }} */>
       <LoginCard>
         <FormTitle>
-          Edit admin user
+          <span style={{ display: 'inline-block', borderBottom: '4px solid #135846' }}>
+            <IoMdFingerPrint style={{width: 30, height: 30, marginRight: 10}}/>
+            Admin user information
+          </span>
         </FormTitle>
         <form>
           <InputContainer>

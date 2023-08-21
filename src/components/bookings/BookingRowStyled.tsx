@@ -60,9 +60,28 @@ const DataContainerButton = styled.td`
     background-color: transparent;
     border: none;
     margin-left: 60px;
-    width: 24px;
-    height: 24px;
+    padding: 0.5rem;
+    /* width: 24px;
+    height: 24px; */
     cursor: pointer;
+  }
+`;
+
+const Icon = styled.div`
+  padding: 0.3rem;
+  cursor: pointer;
+  background-color: transparent;
+  border-radius: 0%;
+  transition: 0.3s;
+
+  &:hover{
+    background-color: rgba(59, 153, 59, 0.25);
+    border-radius: 50%;
+    transition: 0.3s;
+  }
+  
+  a:active, a:visited{
+    color: black;
   }
 `;
 
@@ -169,10 +188,10 @@ const Status = styled.p<{ status: string }>`
 const DropDown = styled.div`
   display: block;
   position: absolute;
-  //background-color: #777777;
+  background-color: #777777;
   background-color: white;
-  top: 60%;
-  left: 0%;
+  /* top: 60%;
+  right: 5%; */
   z-index: 2;
   ul {
     list-style: none;
@@ -180,19 +199,20 @@ const DropDown = styled.div`
     padding: 0;
     li {
       text-decoration: none;
+      width: 130px;
       button {
         margin: 0;
         width: 100%;
         height: fit-content;
-        padding: 10px 15px;
+        padding: 10px 5px;
         display: block;
         border: 1px solid #d4d4d4;
-        //color: white;
+        color: white;
         color: black;
         font-family: var(--font-poppins);
         transition: all 0.3s;
         &:hover {
-          //background-color: #c5c5c5;
+          background-color: #3fad8144;
         }
       }
     }
@@ -209,4 +229,5 @@ export {
   NotesButton,
   Status,
   DropDown,
+  Icon
 };

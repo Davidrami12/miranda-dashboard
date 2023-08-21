@@ -13,12 +13,13 @@ import {
   RoomId,
   RoomNumber,
   DataContainer,
-  DataContainerButton,
   RoomText,
   RoomPrice,
   RoomStatus,
-  DropDown,
 } from "./RoomRowStyled";
+import { DataContainerButton, DropDown, Icon } from "../bookings/BookingRowStyled";
+import { AiOutlineDelete, AiOutlineEdit } from "react-icons/ai"
+import { PiDotsThreeVerticalBold } from "react-icons/pi";
 import { Notification } from "../notification/Notification";
 
 // TypeScript
@@ -120,18 +121,13 @@ export const RoomRow = ({ room, index }: RoomsType | any) => {
       </td>
       <DataContainerButton>
         <button>
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            height="30"
-            width="30"
-            viewBox="0 0 48 48"
-            onClick={(e) => {
-              e.stopPropagation();
-              setShowOptions(!showOptions);
-            }}
-          >
-            <path d="M24.05 41.7q-1.25 0-2.125-.875t-.875-2.075q0-1.2.875-2.1.875-.9 2.075-.9 1.25 0 2.1.9.85.9.85 2.1 0 1.2-.85 2.075-.85.875-2.05.875Zm0-14.75q-1.25 0-2.125-.875T21.05 24q0-1.25.875-2.1.875-.85 2.075-.85 1.25 0 2.1.85.85.85.85 2.05 0 1.25-.85 2.125t-2.05.875Zm0-14.7q-1.25 0-2.125-.875T21.05 9.25q0-1.25.875-2.125T24 6.25q1.25 0 2.1.875.85.875.85 2.125t-.85 2.125q-.85.875-2.05.875Z" />
-          </svg>
+          <Icon>
+            <PiDotsThreeVerticalBold style={{ height: 30, width: 30}}
+              onClick={(e) => {
+                if (e && e.stopPropagation) e.stopPropagation();
+                setShowOptions(!showOptions);
+              }}/>
+          </Icon>
         </button>
         {showOptions ? (
           <DropDown onClick={(e) => e.stopPropagation()}>
@@ -145,7 +141,8 @@ export const RoomRow = ({ room, index }: RoomsType | any) => {
                   }
                 }}
               >
-                ✏️ Edit room
+                <AiOutlineEdit style={{ width: 22, height: 22, marginBottom: -5, marginRight: 5 }}/>
+                Edit room
               </button>
             </li>
             <li>
@@ -157,7 +154,8 @@ export const RoomRow = ({ room, index }: RoomsType | any) => {
                   }
                 }}
               >
-                🗑️ Delete room
+                <AiOutlineDelete style={{ width: 22, height: 22, marginBottom: -5, marginRight: 5}}/>
+                Delete room
               </button>
             </li>
           </ul>

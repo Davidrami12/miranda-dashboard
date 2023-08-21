@@ -1,5 +1,5 @@
 // React
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, ReactNode } from "react";
 import { useNavigate } from "react-router";
 import { useParams } from "react-router-dom";
 
@@ -11,6 +11,8 @@ import { getRoom, editRoom, getDataRooms } from "../../features/roomsSlice";
 import RoomForm from "../../components/rooms/RoomForm";
 import { Loader } from "../../components/styled/Loader";
 import { Notification } from "../../components/notification/Notification";
+import { BsBookmarkDashFill } from "react-icons/bs"
+
 
 // TypeScript
 import { useAppDispatch, useAppSelector } from "../../app/hooks";
@@ -31,7 +33,13 @@ export const EditRoom = () => {
   );
 
   const [currentRoom, setCurrentRoom] = useState<RoomInterface | any>(null);
-  const formTitle: string = "Edit current room";
+  
+  const formTitle: ReactNode = (
+    <span style={{ display: 'inline-block', borderBottom: '4px solid #135846' }}>
+      <BsBookmarkDashFill style={{width: 28, height: 28, marginRight: 10}}/>
+      Edit current room
+    </span>
+  );
 
   useEffect(() => {
     if(roomId){

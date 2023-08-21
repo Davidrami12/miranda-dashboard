@@ -76,14 +76,13 @@ const UserForm = ({
                 ></InputForm>
               </InputContainer>
               <InputContainer style={{ width: "30%" }}>
-                <InputDescription>Phone number</InputDescription>
+                <InputDescription>Password</InputDescription>
                 <InputForm
-                  required
-                  type="number"
+                  type="password"
                   className="input-user"
-                  value={currentUser.phone}
-                  placeholder="Phone Number"
-                  name="phone"
+                  value={currentUser.pass}
+                  placeholder="Enter the Password"
+                  name="pass"
                   onChange={handleInput}
                 ></InputForm>
               </InputContainer>
@@ -110,21 +109,34 @@ const UserForm = ({
                   onChange={handleInput}
                 ></InputForm>
               </InputContainer>
+              <InputContainer style={{ width: "20%" }}>
+                <InputDescription>Start Date</InputDescription>
+                <InputForm
+                  required
+                  style={{ color: "#777777" }}
+                  type="date"
+                  className="input-user"
+                  placeholder="dd-mm-yyyy"
+                  name="date"
+                  value={currentUser.date}
+                  onChange={handleInput}
+                ></InputForm>
+              </InputContainer>
+              <InputContainer style={{ width: "20%" }}>
+                <InputDescription>Phone number</InputDescription>
+                <InputForm
+                  required
+                  type="number"
+                  className="input-user"
+                  value={currentUser.phone}
+                  placeholder="Phone Number"
+                  name="phone"
+                  onChange={handleInput}
+                ></InputForm>
+              </InputContainer>
             </div>
             
-            <InputContainer>
-              <InputDescription>Start Date</InputDescription>
-              <InputForm
-                required
-                style={{ color: "#777777" }}
-                type="date"
-                className="input-user"
-                placeholder="dd-mm-yyyy"
-                name="date"
-                value={currentUser.date}
-                onChange={handleInput}
-              ></InputForm>
-            </InputContainer>
+            
             
             <InputContainer>
               <InputDescription>Select the User Status</InputDescription>
@@ -149,17 +161,7 @@ const UserForm = ({
               />
               <RadioLabel htmlFor="INACTIVE">Inactive</RadioLabel>
             </InputContainer>
-            <InputContainer>
-              <InputDescription>Password</InputDescription>
-              <InputForm
-                type="password"
-                className="input-user"
-                value={currentUser.pass}
-                placeholder="Enter the Password"
-                name="pass"
-                onChange={handleInput}
-              ></InputForm>
-            </InputContainer>
+            
             <div
               style={{
                 display: "flex",
