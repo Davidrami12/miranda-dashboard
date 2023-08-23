@@ -29,7 +29,7 @@ export const Login = () => {
   const validateLogin = async (e: React.FormEvent<HTMLFormElement>): Promise<void> => {
     e.preventDefault();
     
-    const url = process.env.REACT_APP_LOCAL_URL;
+    const url = process.env.REACT_APP_API_URL;
     const response = await fetch(`${url}/login`, {
       method: "POST",
       mode: "cors",

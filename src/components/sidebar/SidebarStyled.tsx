@@ -1,11 +1,13 @@
 import styled from 'styled-components';
-import { MdMenuOpen } from 'react-icons/md';
+import { MdMenuOpen, MdOutlineKeyboardDoubleArrowLeft } from 'react-icons/md';
+import { RxDoubleArrowLeft } from "react-icons/rx" 
+import { TbLayoutSidebarLeftCollapse } from "react-icons/tb"
 
 type MenuIconProps = {
   rotated?: boolean;
 };
 
-const MenuIcon = styled(MdMenuOpen)<MenuIconProps>`
+const MenuIcon = styled(RxDoubleArrowLeft)<MenuIconProps>`
   transform: ${props => props.rotated ? 'rotate(-180deg)' : 'none'};
   transition: transform 0.3s ease-in-out;
 `;

@@ -91,12 +91,11 @@ export const Sidebar = () => {
 
       </Navigation>
 
-      
-
       <NavigationDescription>Travl Hotel Admin Dashboard</NavigationDescription>
       <NavigationRights>&copy; 2023 All Rights Reserved</NavigationRights>
       <NavigationAuthor>Made with ♥ by David R.</NavigationAuthor>
       <NavigationRepository><a href='https://github.com/Davidrami12/miranda-dashboard' target='_blank' rel="noreferrer">Check this repository here!</a></NavigationRepository>
+    
     </NavContainer>
   )
 }
