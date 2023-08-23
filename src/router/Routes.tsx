@@ -31,7 +31,7 @@ export const AppRoutes = ({ authReady }) => {
         <Route path="dashboard" element={<Dashboard />} />
 
         <Route path="bookings" element={<Bookings />} />
-        <Route path="bookings/:bookingId" element={<SingleBooking />} />
+        <Route path="bookings/:id" element={<SingleBooking />} />
         <Route path="editBooking/:bookingId" element={<EditBooking />} />
         <Route path="newBooking" element={<NewBooking />} />
 

@@ -41,18 +41,8 @@ export const getDataBookings = createAsyncThunk(
 
 export const getBooking = createAsyncThunk(
   "booking/GetBookingDetails",
-  async (idBooking: string) => {
-    if (!idBooking) {
-      throw new Error("Booking ID is not defined.");
-    }
-
-    const bookingData = await fetchAPI(`/bookings/${idBooking}`, "GET", null);
-    
-    if (!bookingData) {
-      throw new Error("Booking not found.");
-    }
-
-    return bookingData;
+  async (id: string) => {
+    return await fetchAPI(`/bookings/${id}`, "GET", null);
   }
 );
 
