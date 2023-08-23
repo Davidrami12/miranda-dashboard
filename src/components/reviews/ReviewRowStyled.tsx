@@ -3,7 +3,7 @@ import styled, { css } from "styled-components";
 const Row = styled.tr`
   border-top: 1px solid #d4d4d4;
   transition: box-shadow 0.2s;
-  cursor: pointer;
+  //cursor: pointer;
   &:hover {
     box-shadow: 0px 4px 30px #00000014;
   }

@@ -13,8 +13,7 @@ const GuestContainer = styled.div`
   display: flex;
   align-items: center;
   gap: 2.8rem;
-  margin-left: 4rem;
-
+  margin-left: 3rem;
   img {
     border-radius: 8px;
     width: 7rem;
