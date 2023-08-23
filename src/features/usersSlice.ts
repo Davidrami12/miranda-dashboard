@@ -40,17 +40,7 @@ export const getDataUsers = createAsyncThunk(
 export const getUser = createAsyncThunk(
   "user/GetUserDetails", 
   async (id: string) => {
-    if (!id) {
-      throw new Error("User ID is not defined.");
-    }
-
-    const usersData = await fetchAPI(`/users/${id}`, "GET", null);
-    
-    if (!id) {
-      throw new Error("User not found.");
-    }
-
-    return usersData;
+    return await fetchAPI(`/users/${id}`, "GET", null);
   }
 );
 

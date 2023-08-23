@@ -49,46 +49,45 @@ export const SingleUser = () => {
   const [currentUser, setCurrentUser] = useState<UserInterface | any>(singleUser);
 
   useEffect(() => {
-    if (singleUser === null && id) {
+    if (id) {
       dispatch(getUser(id));
     }
-    setCurrentUser(singleUser);
-  }, [singleUser, dispatch, id, currentUser]);
+  }, [id, dispatch]);
 
   const goBackToUsers = () => {
     navigate("/users");
   }
 
-  if (currentUser) {
+  if (singleUser) {
     return (
       <Container style={{ width: "95%", marginTop: 30, flexDirection: "row" }}>
         <Subcontainer style={{ width: "100%" }}>
           <RiArrowGoBackFill style={{ width: 30 , height: 30, cursor: "pointer"}} onClick={goBackToUsers}/>
           <GuestContainer>
-            <img style={{ width: 300, height: 300 }} src={currentUser.photo} alt="User portrait"/>
+            <img style={{ width: 300, height: 300 }} src={singleUser.photo} alt="User portrait"/>
             <div>
               <Info>User name:</Info>
-              <InfoContainer>{currentUser.name}</InfoContainer>
+              <InfoContainer>{singleUser.name}</InfoContainer>
               <Info>User ID:</Info>
-              <InfoContainer>{currentUser._id}</InfoContainer>
+              <InfoContainer>{singleUser._id}</InfoContainer>
               <Info>E-mail:</Info>
-              <InfoContainer>{currentUser.email}</InfoContainer>
+              <InfoContainer>{singleUser.email}</InfoContainer>
               <Info>Phone Number:</Info>
-              <InfoContainer>{currentUser.phone}</InfoContainer>
+              <InfoContainer>{singleUser.phone}</InfoContainer>
             </div>
           </GuestContainer>
           <BookingDataContainer>
             <BookingDataSubcontainer>
               <Title>Start date</Title>
-              <Data>{currentUser.date}</Data>
+              <Data>{singleUser.date}</Data>
             </BookingDataSubcontainer>
             <BookingDataSubcontainer>
               <Title>Current position</Title>
-              <Data>{currentUser.description}</Data>
+              <Data>{singleUser.description}</Data>
             </BookingDataSubcontainer>
             <BookingDataSubcontainer>
               <Title>Status</Title>
-              <UserStatus state={currentUser.state}>{currentUser.state}</UserStatus>
+              <UserStatus state={singleUser.state}>{singleUser.state}</UserStatus>
             </BookingDataSubcontainer>
           </BookingDataContainer>
           {/* <Divider /> */}
