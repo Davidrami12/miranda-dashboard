@@ -73,23 +73,23 @@ export const Rooms = () => {
     setRooms(roomsList.filter((room) => room.room_status === type));
   };
 
-  /* useEffect(() => {
+  useEffect(() => {
     const orderedRooms = [...roomsList];
     switch (activeFilter) {
-      case "Room Number":
+      case "Room Nº.":
         orderedRooms.sort((a, b) => Number(a.room_number) - Number(b.room_number));
         break;
       case "Highest rate":
-        orderedRooms.sort((a, b) => Number(b.room_rate) - Number(a.room_rate));
+        orderedRooms.sort((a, b) => Number(b.room_offer) - Number(a.room_offer));
         break;
       case "Lowest rate":
-        orderedRooms.sort((a, b) => Number(a.room_rate) - Number(b.room_rate));
+        orderedRooms.sort((a, b) => Number(a.room_offer) - Number(b.room_offer));
         break;
       default:
         break;
     }
     setRooms(orderedRooms);
-  }, [activeFilter, roomsList]); */
+  }, [activeFilter, roomsList]);
 
   // Variables for the pagination component
   const [currentPage, setCurrentPage] = useState(1);
@@ -122,7 +122,7 @@ export const Rooms = () => {
           <DropdownMenu
             setActiveFilter={setActiveFilter}
             type="white"
-            options={["Room Nº", "Highest rate", "Lowest rate"]}
+            options={["Room Nº.", "Highest rate", "Lowest rate"]}
           ></DropdownMenu>
         </TableButtons>
       </TableActions>

@@ -106,7 +106,7 @@ export const RoomRow = ({ room, index }: RoomsType | any) => {
               ${room.room_offer.toFixed(2)}
               <span> /night</span>
             </>
-          : "No offer"}
+          : <span>No offer available</span>}
       </RoomPrice>
       </DataContainer>
       <td>
