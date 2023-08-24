@@ -1,5 +1,5 @@
 // React & Router
-import React, { useState } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import { useNavigate } from "react-router";
 
 // Redux
@@ -31,10 +31,25 @@ type RoomsType = {
 };
 
 export const RoomRow = ({ room, index }: RoomsType | any) => {
+
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
-
+  const dropdownRef = useRef<HTMLDivElement | null>(null);
   const [showOptions, setShowOptions] = useState<boolean>(false);
+
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (showOptions && dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+        setShowOptions(false);
+      }
+    };
+    document.addEventListener('click', handleClickOutside);
+
+    return () => {
+      document.removeEventListener('click', handleClickOutside);
+    };
+  }, [showOptions]);
+
 
   const goToSingleRoom = (id: string): void => {
     navigate("/rooms/" + id);
@@ -128,7 +143,7 @@ export const RoomRow = ({ room, index }: RoomsType | any) => {
           </Icon>
         </button>
         {showOptions ? (
-          <DropDown onClick={(e) => e.stopPropagation()}>
+          <DropDown ref={dropdownRef} onClick={(e) => e.stopPropagation()}>
           <ul>
             <li>
               <button
