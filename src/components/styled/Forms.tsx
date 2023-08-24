@@ -167,7 +167,7 @@ const FormTitle = styled.p`
   font-weight: 500;
   color: #135846;
   margin-bottom: 0rem;
-  //text-decoration: underline;
+  margin-bottom: 2rem;
 `;
 
 /* const InputContainer = styled.div`

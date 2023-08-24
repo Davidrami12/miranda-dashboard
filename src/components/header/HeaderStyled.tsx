@@ -41,7 +41,7 @@ const Icon = styled.div`
     transition: 0.3s;
   }
   
-  a:active, a:visited{
+  a, a:active, a:visited{
     color: black;
   }
 `;

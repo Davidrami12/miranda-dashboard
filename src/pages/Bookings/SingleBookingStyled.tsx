@@ -33,7 +33,7 @@ const BookingID = styled.p`
 const Subcontainer = styled.div`
   width: 50%;
   border-radius: 1.2rem;
-  padding: 4rem 4rem 4rem 0;
+  padding: 4rem 4rem 4rem 4rem;
 `;
 
 const BookingDataContainer = styled.div`
@@ -229,6 +229,41 @@ const Tag = styled.div<{ currentStatus: string }>`
   }}
 `;
 
+const ProfileContainer = styled.div`
+  display: flex;
+  //align-items: center;
+  gap: 2.8rem;
+  margin-left: 5rem;
+  img {
+    border-radius: 8px;
+    width: 7rem;
+    min-width: 7rem;
+    height: 7rem;
+    min-height: 7rem;
+    object-fit: cover;
+  }
+`;
+
+const Icon = styled.div`
+  width: 5rem;
+  height: 5rem;
+  padding: 1rem;
+  cursor: pointer;
+  background-color: transparent;
+  border-radius: 0%;
+  transition: 0.3s;
+
+  &:hover{
+    background-color: rgba(59, 153, 59, 0.25);
+    border-radius: 50%;
+    transition: 0.3s;
+  }
+  
+  a, a:active, a:visited{
+    color: black;
+  }
+`;
+
 export {
   GuestContainer, 
   GuestName,
@@ -236,6 +271,7 @@ export {
   Subcontainer,
   BookingDataContainer,
   BookingDataSubcontainer,
+  ProfileContainer,
   Title,
   Data,
   Divider,
@@ -243,4 +279,5 @@ export {
   Facilities,
   SwiperContainer,
   Tag,
+  Icon
 };
