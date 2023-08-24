@@ -1,5 +1,35 @@
 import styled, { css } from "styled-components";
 
+const GuestContainer = styled.div`
+  display: flex;
+  //align-items: center;
+  gap: 2.8rem;
+  margin-left: 3rem;
+  img {
+    border-radius: 8px;
+    width: 7rem;
+    min-width: 7rem;
+    height: 7rem;
+    min-height: 7rem;
+    object-fit: cover;
+  }
+`;
+
+const GuestName = styled.p`
+  font-family: var(--font-poppins);
+  font-size: 4rem;
+  font-weight: 500;
+  color: #393939;
+  margin-bottom: 1rem;
+`;
+
+const BookingID = styled.p`
+  color: #799283;
+  font-size: 1.4rem;
+  font-family: var(--font-poppins);
+  margin: 0;
+`;
+
 const Subcontainer = styled.div`
   width: 50%;
   border-radius: 1.2rem;
@@ -21,7 +51,7 @@ const BookingDataSubcontainer = styled.div`
 
 const Title = styled.p`
   font-family: var(--font-poppins);
-  font-size: 1rem;
+  font-size: 2rem;
   font-weight: 400;
   color: #6e6e6e;
   margin: 0;
@@ -42,7 +72,7 @@ const Data = styled.p`
 
 const Text = styled.p`
   font-family: var(--font-poppins);
-  font-size: 1.4rem;
+  font-size: 1.5rem;
   font-weight: 400;
   color: #363636;
   margin: 0;
@@ -92,22 +122,22 @@ const SwiperContainer = styled.div`
   .roomData {
     position: relative;
     font-family: var(--font-poppins);
-    background: #bdc3c7;
-    background: linear-gradient(to top, #333333, #787878);
+    background: white;
+    //background: linear-gradient(to top, #333333, #787878);
     padding: 5rem 5rem 5rem 5rem;
     height: auto;
     border-radius: 0 0 1.2rem 0;
 
     h2 {
-      font-size: 2.4rem;
+      font-size: 3rem;
       font-weight: 500;
-      color: #ffffff;
+      color: black;
       margin: 0;
     }
     p {
-      font-size: 1rem;
+      font-size: 1.4rem;
       font-weight: 400;
-      color: #d4d4d4;
+      color: black;
       margin: 0;
       margin-top: 1rem;
     }
@@ -161,7 +191,7 @@ const Tag = styled.div<{ currentStatus: string }>`
   right: -6rem;
   top: 2rem;
   font-family: var(--font-poppins);
-  font-size: 1rem;
+  font-size: 2rem;
   font-weight: 600;
   color: #ffffff;
   padding: 1rem 7rem;
@@ -175,15 +205,15 @@ const Tag = styled.div<{ currentStatus: string }>`
         `;
       case "Available":
         return css`
-          background-color: green;
+          background-color: #5AD07A;
         `;
       case "Check Out":
         return css`
-          background-color: red;
+          background-color: #E23428;
         `;
       case "Booked":
         return css`
-          background-color: red;
+          background-color: #E23428;
         `;
       case "In Progress":
         return css`
@@ -200,6 +230,9 @@ const Tag = styled.div<{ currentStatus: string }>`
 `;
 
 export {
+  GuestContainer, 
+  GuestName,
+  BookingID,
   Subcontainer,
   BookingDataContainer,
   BookingDataSubcontainer,
