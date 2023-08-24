@@ -70,26 +70,16 @@ export const Contact = () => {
     switch (activeFilter) {
       case "Date":
         orderedReviews.sort((a: ContactInterface, b: ContactInterface) => {
-          let dateA: string = a.date;
-          let dateB: string = b.date;
-          if (dateB.split("-").join() < dateA.split("-").join()) {
-            return -1;
-          } else {
-            return 1;
-          }
+          let dateA: Date = new Date(a.date);
+          let dateB: Date = new Date(b.date);
+          return dateA.getTime() - dateB.getTime();
         });
         break;
-      case "User":
+      case "Name":
         orderedReviews.sort((a: ContactInterface, b: ContactInterface) => {
-          const nameA: string = a.user.name.toUpperCase().replace(/\s/g, "");
-          const nameB: string = b.user.name.toUpperCase().replace(/\s/g, "");
-          if (nameA < nameB) {
-            return -1;
-          }
-          if (nameA > nameB) {
-            return 1;
-          }
-          return 0;
+          const nameA: string = a.user.name.toUpperCase();
+          const nameB: string = b.user.name.toUpperCase();
+          return nameA.localeCompare(nameB);
         });
         break;
       default:
@@ -138,7 +128,7 @@ export const Contact = () => {
               <DropdownMenu
                 setActiveFilter={setActiveFilter}
                 type="white"
-                options={["Date", "User"]}
+                options={["Date", "Name"]}
               ></DropdownMenu>
             </TableButtons>
           </TableActions>

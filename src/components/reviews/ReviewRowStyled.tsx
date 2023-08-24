@@ -64,16 +64,15 @@ const DataContainer = styled.td`
 `;
 
 const DataContainerButton = styled.td`
-  vertical-align: top;
+  vertical-align: middle;
   padding-right: 30px;
 
   button {
     background-color: transparent;
     border: none;
-    margin: 1.5rem 2rem 0 4rem;
+    margin: 0rem 2rem 0 4rem;
     width: 24px;
     height: 24px;
-    cursor: pointer;
     padding: 0;
     font-family: var(--font-poppins);
     font-size: 1.6rem;
