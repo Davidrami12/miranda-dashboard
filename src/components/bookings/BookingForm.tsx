@@ -100,7 +100,7 @@ const BookingForm = ({
               <InputForm
                 type="textarea"
                 className="input-user"
-                placeholder="Special request"
+                placeholder="Any special detail you would like us to know?"
                 name="specialRequest"
                 value={currentBooking.specialRequest}
                 onChange={handleInput}

@@ -134,24 +134,24 @@ const InputForm = styled.input`
   display: block;
   font-family: var(--font-poppins);
   font-size: 1.5rem;
-  //border: none;
+  border: none;
   border-bottom: 1px solid #C5C5C5;
 
-  /*&:hover{
-      border-bottom: 1px solid #135846;
+  &:hover{
+    border-bottom: 1px solid #135846;
   }
   &:hover~div .input-icon{
-      color: #135846;
+    color: #135846;
   }
 
   &:focus{
-      outline: none;
-      border-bottom: 1px solid #135846;
+    outline: none;
+    border-bottom: 1.5px solid #135846;
   }
 
   &:focus~div .input-icon{
-      color: #135846;
-  }*/
+    color: #135846;
+  }
 `;
 
 const Description = styled.p`
