@@ -35,7 +35,6 @@ type UsersType = {
   singleUser: UserInterface | null | undefined;
 };
 
-// Component that displays the data for the selected room
 export const SingleUser = () => {
 
   const dispatch = useAppDispatch();

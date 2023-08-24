@@ -101,7 +101,7 @@ const Reviews = styled.div`
       height: 5.6rem;
       width: 5.6rem;
       border: 1px solid #FFFFFF;
-      border-radius: 50%;
+      border-radius: 25%;
       transition: all 0.2s;
       & .swiper-button-disabled{
         opacity: 0;

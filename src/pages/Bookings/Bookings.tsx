@@ -80,20 +80,14 @@ export const Bookings = () => {
     setBookings(bookingsList.filter((booking) => booking.status === type));
   };
 
-  /* useEffect(() => {
+  useEffect(() => {
     const orderedBookings = [...bookingsList];
     switch (activeFilter) {
       case "Order Date":
         orderedBookings.sort((a, b) => {
-          let dateA = a.orderDate.slice(0, 10);
-          let dateB = b.orderDate.slice(0, 10);
-          if (
-            dateB.split("/").reverse().join() < dateA.split("/").reverse().join()
-          ) {
-            return -1;
-          } else {
-            return 1;
-          }
+          let dateA: Date = new Date(a.orderDate);
+          let dateB: Date = new Date(b.orderDate);
+          return dateA.getTime() - dateB.getTime();
         });
         break;
       case "Guest":
@@ -127,7 +121,7 @@ export const Bookings = () => {
         break;
     }
     setBookings(orderedBookings);
-  }, [activeFilter, bookingsList]); */
+  }, [activeFilter, bookingsList]);
 
   const closeModal = (): void => {
     setOpenModal(false);

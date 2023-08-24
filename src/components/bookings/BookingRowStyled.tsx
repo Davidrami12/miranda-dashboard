@@ -29,7 +29,7 @@ const GuestName = styled.p`
   font-size: 1.6rem;
   font-weight: 500;
   color: #393939;
-  margin: 0;
+  margin-bottom: 0.8rem;
 `;
 
 const BookingID = styled.p`

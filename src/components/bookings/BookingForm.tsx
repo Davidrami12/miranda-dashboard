@@ -41,32 +41,20 @@ const BookingForm = ({
               handleSubmit();
             }}
           >
-            <InputContainer>
-              <InputDescription>User name</InputDescription>
-              <InputForm
-                required
-                type="text"
-                className="input-user"
-                value={currentBooking.userName}
-                placeholder="User Name"
-                name="userName"
-                onChange={handleInput}
-              ></InputForm>
-            </InputContainer>
-            <InputContainer>
-              <InputDescription>User picture</InputDescription>
-              <InputForm
-                className="input-user"
-                value={currentBooking.userPicture}
-                placeholder="Copy your photo URL"
-                name="userPicture"
-                onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
-                  handleInput(e)
-                }
-              ></InputForm>
-            </InputContainer>
             <div style={{ display: "flex", justifyContent: "space-between"}}>
               <InputContainer style={{ width: "45%" }}>
+                <InputDescription>User name</InputDescription>
+                <InputForm
+                  required
+                  type="text"
+                  className="input-user"
+                  value={currentBooking.userName}
+                  placeholder="Name"
+                  name="userName"
+                  onChange={handleInput}
+                ></InputForm>
+              </InputContainer>
+              <InputContainer style={{ width: "20%" }}>
                 <InputDescription>Check in</InputDescription>
                 <InputForm
                   required
@@ -79,7 +67,7 @@ const BookingForm = ({
                   onChange={handleInput}
                 ></InputForm>
               </InputContainer>
-              <InputContainer style={{ width: "45%" }}>
+              <InputContainer style={{ width: "20%" }}>
                 <InputDescription>Check out</InputDescription>
                 <InputForm
                   required
@@ -93,6 +81,20 @@ const BookingForm = ({
                 ></InputForm>
               </InputContainer>
             </div>
+            
+            <InputContainer>
+              <InputDescription>User picture</InputDescription>
+              <InputForm
+                className="input-user"
+                value={currentBooking.userPicture}
+                placeholder="Copy your photo URL"
+                name="userPicture"
+                onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+                  handleInput(e)
+                }
+              ></InputForm>
+            </InputContainer>
+            
             <InputContainer>
               <InputDescription>Special request &#40;optional&#41;</InputDescription>
               <InputForm

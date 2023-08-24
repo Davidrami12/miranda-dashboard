@@ -35,7 +35,8 @@ export const getDataUsers = createAsyncThunk(
   "users/fetchUsers", 
   async () => {
     return await fetchAPI("/users", "GET", null);
-});
+  }
+);
 
 export const getUser = createAsyncThunk(
   "user/GetUserDetails", 

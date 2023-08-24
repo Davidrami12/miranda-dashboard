@@ -31,12 +31,12 @@ export const AppRoutes = ({ authReady }) => {
         <Route path="dashboard" element={<Dashboard />} />
 
         <Route path="bookings" element={<Bookings />} />
-        <Route path="bookings/:bookingId" element={<SingleBooking />} />
+        <Route path="bookings/:id" element={<SingleBooking />} />
         <Route path="editBooking/:bookingId" element={<EditBooking />} />
         <Route path="newBooking" element={<NewBooking />} />
 
         <Route path="rooms" element={<Rooms />} />
-        <Route path="rooms/:roomId" element={<SingleRoom />} />
+        <Route path="rooms/:id" element={<SingleRoom />} />
         <Route path="editRoom/:roomId" element={<EditRoom />} />
         <Route path="newRoom" element={<NewRoom />} />
 
