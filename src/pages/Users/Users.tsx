@@ -50,7 +50,7 @@ export const Users = () => {
 
 
   const [users, setUsers] = useState<UserInterface[]>(usersList);
-  const [activeFilter, setActiveFilter] = useState<string>("Start date");
+  const [activeFilter, setActiveFilter] = useState<string>("Name");
   const [currentUsers, setCurrentUsers] = useState<UserInterface[]>([]);
   const [isLoading, setIsLoading] = useState(false);
 
@@ -77,7 +77,7 @@ export const Users = () => {
     setUsers(usersList.filter((user) => user.state === type));
   };
 
-  /* useEffect(() => {
+  useEffect(() => {
     const orderedUsers: UserInterface[] = [...usersList];
     switch (activeFilter) {
       case "Start date":
@@ -108,7 +108,7 @@ export const Users = () => {
         break;
     }
     setUsers(orderedUsers);
-  }, [activeFilter, usersList]); */
+  }, [activeFilter, usersList]);
 
   // Variables for the pagination component
   const [currentPage, setCurrentPage] = useState<number>(1);
@@ -142,7 +142,7 @@ export const Users = () => {
           <DropdownMenu
             setActiveFilter={setActiveFilter}
             type="white"
-            options={["Start date", "Name"]}
+            options={["Name", "Start date"]}
           ></DropdownMenu>
         </TableButtons>
       </TableActions>

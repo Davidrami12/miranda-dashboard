@@ -100,16 +100,14 @@ export const RoomRow = ({ room, index }: RoomsType | any) => {
         </RoomPrice>
       </DataContainer>
       <DataContainer>
-        <RoomPrice>
-          $
-          {room.discount === "Yes"
-            ? (
-                room.room_rate -
-                (room.room_rate * room.discountPercent) / 100
-              ).toFixed(2)
-            : " - "}
-          <span> /night</span>
-        </RoomPrice>
+      <RoomPrice>
+        {room.discount === "Yes"
+          ? <>
+              ${room.room_offer.toFixed(2)}
+              <span> /night</span>
+            </>
+          : "No offer"}
+      </RoomPrice>
       </DataContainer>
       <td>
         <RoomStatus
