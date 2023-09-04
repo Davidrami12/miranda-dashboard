@@ -40,7 +40,7 @@ export const EditOwnUser = () => {
         email: email,
       })
     );
-    navigate("/");
+    navigate("/dashboard");
   };
 
   return (
@@ -56,6 +56,7 @@ export const EditOwnUser = () => {
           <InputContainer>
             <InputDescription>Your current admin name</InputDescription>
             <Input
+              disabled
               type="text"
               className="input-user"
               required
@@ -67,6 +68,7 @@ export const EditOwnUser = () => {
           <InputContainer>
             <InputDescription>Your current admin email</InputDescription>
             <Input
+              disabled
               type="email"
               className="input-user"
               required

@@ -268,16 +268,13 @@ const RoomForm = ({
                 <div key={index} style={{ display: "inline-block" }}>
                   {currentRoom.room_facilities.includes(amenity) ? (
                     <RadioInput
-                    type="checkbox"
-                    name="room_facilities"
-                    id={amenity}
-                    value={amenity}
-                    onClick={handleInput}
-                    defaultChecked={currentRoom.room_facilities.includes(amenity)}
-                  />
-                  
-                  
-
+                      type="checkbox"
+                      name="room_facilities"
+                      id={amenity}
+                      value={amenity}
+                      onClick={handleInput}
+                      defaultChecked={currentRoom.room_facilities.includes(amenity)}
+                    />
                   ) : (
                     <RadioInput
                       type="checkbox"

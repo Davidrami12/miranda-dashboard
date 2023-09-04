@@ -31,9 +31,7 @@ const BookingForm = ({
   return (
     <>
       <DashboardForm style={{ minHeight: "80%" }}>
-        <LoginCard
-          style={{ height: "fit-content", width: "850px" }}
-        >
+        <LoginCard style={{ height: "fit-content", width: "850px" }}>
           <FormTitle>{formTitle}</FormTitle>
           <form
             onSubmit={(e) => {
@@ -85,6 +83,7 @@ const BookingForm = ({
             <InputContainer>
               <InputDescription>User picture</InputDescription>
               <InputForm
+                required
                 className="input-user"
                 value={currentBooking.userPicture}
                 placeholder="Copy your photo URL"

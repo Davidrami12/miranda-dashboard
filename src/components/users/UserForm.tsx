@@ -42,6 +42,7 @@ const UserForm = ({
             <InputContainer>
               <InputDescription>User picture</InputDescription>
               <InputForm
+                required
                 type="text"
                 className="input-user"
                 value={currentUser.photo}
@@ -78,6 +79,7 @@ const UserForm = ({
               <InputContainer style={{ width: "30%" }}>
                 <InputDescription>Password</InputDescription>
                 <InputForm
+                  required
                   type="password"
                   className="input-user"
                   value={currentUser.pass}
@@ -101,6 +103,7 @@ const UserForm = ({
               <InputContainer style={{ width: "50%" }}>
                 <InputDescription>Position Description</InputDescription>
                 <InputForm
+                  required
                   type="textarea"
                   className="input-user"
                   placeholder="User job position"
