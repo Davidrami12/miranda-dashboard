@@ -40,11 +40,11 @@ export const EditOwnUser = () => {
         email: email,
       })
     );
-    navigate("/");
+    navigate("/dashboard");
   };
 
   return (
-    <DashboardForm /* style={{ minHeight: "80%" }} */>
+    <DashboardForm>
       <LoginCard>
         <FormTitle>
           <span style={{ display: 'inline-block', borderBottom: '4px solid #135846' }}>
@@ -56,6 +56,7 @@ export const EditOwnUser = () => {
           <InputContainer>
             <InputDescription>Your current admin name</InputDescription>
             <Input
+              disabled
               type="text"
               className="input-user"
               required
@@ -67,6 +68,7 @@ export const EditOwnUser = () => {
           <InputContainer>
             <InputDescription>Your current admin email</InputDescription>
             <Input
+              disabled
               type="email"
               className="input-user"
               required

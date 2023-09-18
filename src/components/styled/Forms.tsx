@@ -84,43 +84,8 @@ const ErrorMessage = styled.span`
   color: red;
 `;
 
-
-
-
-
-
-
-
-
-/*const LoginContainer = styled.div`
-  width: 100%;
-  min-height: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-`;*/
-
-/*const LoginCard = styled.div`
-  background-color: white;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
-  border-radius: 8px;
-  box-shadow: 0px 16px 30px #00000014;
-  padding: 3%;
-  width: 50rem;
-  height: 40rem;
-`;*/
-
-/* const LogoContainer = styled.div`
-  width: 100%;
-  display: flex;
-  justify-content: center;
-`; */
-
 const DashboardForm = styled.div`
   width: 100%;
-  //height: 100%;
   display: flex;
   justify-content: center;
   margin-top: 4rem;
@@ -134,24 +99,24 @@ const InputForm = styled.input`
   display: block;
   font-family: var(--font-poppins);
   font-size: 1.5rem;
-  //border: none;
+  border: none;
   border-bottom: 1px solid #C5C5C5;
 
-  /*&:hover{
-      border-bottom: 1px solid #135846;
+  &:hover{
+    border-bottom: 1px solid #135846;
   }
   &:hover~div .input-icon{
-      color: #135846;
+    color: #135846;
   }
 
   &:focus{
-      outline: none;
-      border-bottom: 1px solid #135846;
+    outline: none;
+    border-bottom: 1.5px solid #135846;
   }
 
   &:focus~div .input-icon{
-      color: #135846;
-  }*/
+    color: #135846;
+  }
 `;
 
 const Description = styled.p`
@@ -167,40 +132,8 @@ const FormTitle = styled.p`
   font-weight: 500;
   color: #135846;
   margin-bottom: 0rem;
-  //text-decoration: underline;
+  margin-bottom: 2rem;
 `;
-
-/* const InputContainer = styled.div`
-  position: relative;
-  overflow: hidden;
-`; */
-
-/* const Input = styled.input`
-  transition: all 0.1s;
-  width: 100%;
-  margin: 0 0 3rem 0;
-  display: block;
-  font-family: var(--font-poppins);
-  font-size: 1.6rem;
-  border: none;
-  border-bottom: 1px solid #c5c5c5;
-
-  &:hover {
-    border-bottom: 1px solid #135846;
-  }
-  &:hover ~ div .input-icon {
-    color: #135846;
-  }
-
-  &:focus {
-    outline: none;
-    border-bottom: 1px solid #135846;
-  }
-
-  &:focus ~ div .input-icon {
-    color: #135846;
-  }
-`; */
 
 const LoginButton = styled.div`
   cursor: pointer;

@@ -103,6 +103,41 @@ const Divider = styled.div`
   background-color: #d4d4d4;
 `;
 
+const ProfileContainer = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 2.8rem;
+  margin-left: 5rem;
+  img {
+    border-radius: 20px;
+    width: 7rem;
+    min-width: 7rem;
+    height: 7rem;
+    min-height: 7rem;
+    object-fit: cover;
+  }
+`;
+
+const Icon = styled.div`
+  width: 5rem;
+  height: 5rem;
+  padding: 1rem;
+  cursor: pointer;
+  background-color: transparent;
+  border-radius: 0%;
+  transition: 0.3s;
+
+  &:hover{
+    background-color: rgba(59, 153, 59, 0.25);
+    border-radius: 50%;
+    transition: 0.3s;
+  }
+  
+  a, a:active, a:visited{
+    color: black;
+  }
+`;
+
 export {
   Subcontainer,
   BookingDataContainer,
@@ -114,4 +149,6 @@ export {
   UserStatus,
   Divider,
   Text,
+  ProfileContainer,
+  Icon
 };

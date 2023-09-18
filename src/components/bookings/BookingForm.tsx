@@ -31,9 +31,7 @@ const BookingForm = ({
   return (
     <>
       <DashboardForm style={{ minHeight: "80%" }}>
-        <LoginCard
-          style={{ height: "fit-content", width: "850px" }}
-        >
+        <LoginCard style={{ height: "fit-content", width: "850px" }}>
           <FormTitle>{formTitle}</FormTitle>
           <form
             onSubmit={(e) => {
@@ -85,6 +83,7 @@ const BookingForm = ({
             <InputContainer>
               <InputDescription>User picture</InputDescription>
               <InputForm
+                required
                 className="input-user"
                 value={currentBooking.userPicture}
                 placeholder="Copy your photo URL"
@@ -100,7 +99,7 @@ const BookingForm = ({
               <InputForm
                 type="textarea"
                 className="input-user"
-                placeholder="Special request"
+                placeholder="Any special detail you would like us to know?"
                 name="specialRequest"
                 value={currentBooking.specialRequest}
                 onChange={handleInput}

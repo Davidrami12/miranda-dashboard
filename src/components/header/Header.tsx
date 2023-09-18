@@ -10,7 +10,7 @@ import { HeaderContainer, HeaderTitle, HeaderElements, Icon } from './HeaderStyl
 import { useLogout } from "../../hooks/useLogout"
 import { Notification } from "../notification/Notification";
 
-export const Header = () => {
+export const Header = ({ sidebarExpanded  }) => {
 
   let location = useLocation();
   const { logout } = useLogout();
@@ -33,7 +33,7 @@ export const Header = () => {
 
   return (
     <HeaderContainer>
-        <HeaderElements>
+        <HeaderElements sidebarExpanded={sidebarExpanded}>
           <HeaderTitle>
             {getNavBarTitle(location.pathname.split('/')[1])}
           </HeaderTitle>

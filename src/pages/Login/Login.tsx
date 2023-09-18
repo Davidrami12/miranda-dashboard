@@ -75,7 +75,7 @@ export const Login = () => {
         <hr></hr>
         <p>This is a Dashboard for admin users in Miranda Hotel. </p>
         <p>To log in and visualize the dashboard, please enter e-mail <b>admin@admin.com</b> and password <b>Admin123</b>.</p>
-        <form onSubmit={validateLogin} /*style={{padding: "2rem 0rem 0rem 0rem"}}*/>
+        <form onSubmit={validateLogin}>
           <InputContainer>
               <Input 
                 type="email" 

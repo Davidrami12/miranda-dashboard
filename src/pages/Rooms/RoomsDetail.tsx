@@ -1,7 +1,7 @@
 // React & Router
 import React from "react";
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 
 // Redux
 import { getRoom } from "../../features/roomsSlice";
@@ -22,9 +22,11 @@ import {
   Facilities,
   SwiperContainer,
   Tag,
+  Icon
 } from "../Bookings/SingleBookingStyled";
 import SingleBookingSwiper from "../../components/bookings/SingleBookingSwiper";
 import { Loader } from "../../components/styled/Loader";
+import { RiArrowGoBackFill } from "react-icons/ri"
 
 // TypeScript
 import { useAppDispatch, useAppSelector } from "../../app/hooks";
@@ -38,6 +40,8 @@ export const SingleRoom = () => {
   
   const dispatch = useAppDispatch();
   const params = useParams();
+  const navigate = useNavigate();
+
   const { id } = params;
   const { singleRoom } = useAppSelector<RoomsType>(
     (state) => state.roomsReducer
@@ -48,14 +52,19 @@ export const SingleRoom = () => {
     if (id) {
       dispatch(getRoom(id));
     }
-
-    //setCurrentRoom(singleRoom);
   }, [id, dispatch]);
+
+  const goBackToUsers = () => {
+    navigate(-1);
+  }
 
   if (singleRoom) {
     return (
       <Container style={{ flexDirection: "row" }}>
         <Subcontainer>
+          <Icon onClick={goBackToUsers}>
+            <RiArrowGoBackFill style={{ width: 30 , height: 30 }}/>
+          </Icon>
           <GuestContainer>
             <img
               style={{ width: 150, height: 150 }}

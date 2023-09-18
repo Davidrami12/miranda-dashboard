@@ -1,5 +1,5 @@
 // React & Router
-import React, { useState } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import { useNavigate } from "react-router";
 
 // Redux
@@ -31,10 +31,25 @@ type UsersType = {
 };
 
 export const UserRow = ({ user }: UsersType | any) => {
+
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
-
+  const dropdownRef = useRef<HTMLDivElement | null>(null);
   const [showOptions, setShowOptions] = useState<boolean>(false);
+
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (showOptions && dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+        setShowOptions(false);
+      }
+    };
+    document.addEventListener('click', handleClickOutside);
+
+    return () => {
+      document.removeEventListener('click', handleClickOutside);
+    };
+  }, [showOptions]);
+
 
   const goToSingleUser = (id: string): void => {
     navigate("/users/" + id);
@@ -106,7 +121,7 @@ export const UserRow = ({ user }: UsersType | any) => {
           
         </button>
         {showOptions ? (
-          <DropDown>
+          <DropDown ref={dropdownRef}>
             <ul>
               <li>
                 <button

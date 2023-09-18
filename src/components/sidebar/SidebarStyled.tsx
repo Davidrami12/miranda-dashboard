@@ -1,13 +1,11 @@
 import styled from 'styled-components';
-import { MdMenuOpen, MdOutlineKeyboardDoubleArrowLeft } from 'react-icons/md';
-import { RxDoubleArrowLeft } from "react-icons/rx" 
 import { TbLayoutSidebarLeftCollapse } from "react-icons/tb"
 
 type MenuIconProps = {
   rotated?: boolean;
 };
 
-const MenuIcon = styled(RxDoubleArrowLeft)<MenuIconProps>`
+const MenuIcon = styled(TbLayoutSidebarLeftCollapse)<MenuIconProps>`
   transform: ${props => props.rotated ? 'rotate(-180deg)' : 'none'};
   transition: transform 0.3s ease-in-out;
 `;
@@ -37,11 +35,13 @@ const NavContainer = styled.div<{
   width: ${props => props.display};
   max-width: ${props => props.display};
   min-width: ${props => props.display};
+  height: 100vh;
   box-shadow: 13px 3px 40px #00000005;
   background-color: #FFFFFF;
   transition: all 0.4s;
   overflow: visible;
-  position: relative;
+  position: fixed;
+  z-index: 999;
 `;
 
 const MenuButton = styled.button`

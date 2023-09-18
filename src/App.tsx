@@ -1,5 +1,6 @@
 import './App.css';
 import React from "react";
+import { useState } from 'react';
 import { BrowserRouter, Route, Routes, Navigate } from "react-router-dom";
 
 // React Context
@@ -9,14 +10,21 @@ import { useAuthContext } from "./hooks/useAuthContext";
 import { AppRoutes } from './router/Routes';
 import { Sidebar } from './components/sidebar/Sidebar';
 import { Header } from './components/header/Header';
-import { AppContainer, WindowContent} from "./components/styled/AppContainer";
+import { AppContainer, WindowContent, AppContent } from "./components/styled/AppContainer";
 
 import { toast, ToastContainer, Flip } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 function App() {
-  
+
   const { authReady } = useAuthContext();
+  const [ sidebarExpanded, setSidebarExpanded ] = useState(true);
+  const [ rotated, setRotated ] = useState(false);
+
+  const toggleSidebar = () => {
+    setSidebarExpanded(!sidebarExpanded);
+    setRotated(!rotated);
+  };
   
   return (
     <BrowserRouter basename={process.env.REACT_APP_BASENAME}>
@@ -36,11 +44,13 @@ function App() {
           style={{ fontSize: "1.5rem", fontWeight: "bold", marginTop: "70px" }}
         />
 
-        {authReady ? <Sidebar /> : <></>}
-
+        {authReady ? <Sidebar expanded={sidebarExpanded} toggleSidebar={toggleSidebar} rotated={rotated} /> : <></>}
+        
         <WindowContent>
-          {authReady ? <Header /> : <></>}
-          <AppRoutes authReady={authReady} />
+          {authReady ? <Header sidebarExpanded={sidebarExpanded} /> : <></>}
+          <AppContent sidebarExpanded={sidebarExpanded}>
+            <AppRoutes authReady={authReady} />
+          </AppContent>
         </WindowContent>
 
       </AppContainer>

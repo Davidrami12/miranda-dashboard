@@ -18,6 +18,8 @@ import {
   Data,
   UserStatus,
   Divider,
+  ProfileContainer,
+  Icon
 } from "./SingleUserStyled";
 import {
   GuestContainer,
@@ -54,15 +56,17 @@ export const SingleUser = () => {
   }, [id, dispatch]);
 
   const goBackToUsers = () => {
-    navigate("/users");
+    navigate(-1);
   }
 
   if (singleUser) {
     return (
       <Container style={{ width: "95%", marginTop: 30, flexDirection: "row" }}>
         <Subcontainer style={{ width: "100%" }}>
-          <RiArrowGoBackFill style={{ width: 30 , height: 30, cursor: "pointer"}} onClick={goBackToUsers}/>
-          <GuestContainer>
+          <Icon onClick={goBackToUsers}>
+            <RiArrowGoBackFill style={{ width: 30 , height: 30 }}/>
+          </Icon>
+          <ProfileContainer>
             <img style={{ width: 300, height: 300 }} src={singleUser.photo} alt="User portrait"/>
             <div>
               <Info>User name:</Info>
@@ -74,7 +78,7 @@ export const SingleUser = () => {
               <Info>Phone Number:</Info>
               <InfoContainer>{singleUser.phone}</InfoContainer>
             </div>
-          </GuestContainer>
+          </ProfileContainer>
           <BookingDataContainer>
             <BookingDataSubcontainer>
               <Title>Start date</Title>

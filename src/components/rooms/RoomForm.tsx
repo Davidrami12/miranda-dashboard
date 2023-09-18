@@ -112,13 +112,13 @@ const RoomForm = ({
             <div style={{display: "flex", justifyContent: "space-between", alignItems: "center"}}>
 
               <InputContainer style={{ width: "15%" }}>
-                <InputDescription>Room number</InputDescription>
+                <InputDescription>Room Nº.</InputDescription>
                 <InputForm
                   type="number"
                   className="input-user"
                   name="room_number"
                   value={currentRoom.room_number}
-                  placeholder="Room Number"
+                  placeholder="Room number"
                   onChange={handleInput}
                   required
                 ></InputForm>
@@ -241,7 +241,7 @@ const RoomForm = ({
                   className="input-user"
                   name="description"
                   value={currentRoom.description}
-                  placeholder="Room description"
+                  placeholder="Description for this room"
                   onChange={handleInput}
                   required
                 ></InputForm>
@@ -253,7 +253,7 @@ const RoomForm = ({
                   className="input-user"
                   name="cancellationPolicy"
                   value={currentRoom.cancellationPolicy}
-                  placeholder="Cancellation Policy"
+                  placeholder="Provide any service policy"
                   onChange={handleInput}
                   required
                 ></InputForm>
@@ -268,16 +268,13 @@ const RoomForm = ({
                 <div key={index} style={{ display: "inline-block" }}>
                   {currentRoom.room_facilities.includes(amenity) ? (
                     <RadioInput
-                    type="checkbox"
-                    name="room_facilities"
-                    id={amenity}
-                    value={amenity}
-                    onClick={handleInput}
-                    defaultChecked={currentRoom.room_facilities.includes(amenity)}
-                  />
-                  
-                  
-
+                      type="checkbox"
+                      name="room_facilities"
+                      id={amenity}
+                      value={amenity}
+                      onClick={handleInput}
+                      defaultChecked={currentRoom.room_facilities.includes(amenity)}
+                    />
                   ) : (
                     <RadioInput
                       type="checkbox"

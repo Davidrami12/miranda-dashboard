@@ -42,6 +42,7 @@ const UserForm = ({
             <InputContainer>
               <InputDescription>User picture</InputDescription>
               <InputForm
+                required
                 type="text"
                 className="input-user"
                 value={currentUser.photo}
@@ -58,7 +59,7 @@ const UserForm = ({
                   type="text"
                   className="input-user"
                   value={currentUser.name}
-                  placeholder="User Name"
+                  placeholder="Name"
                   name="name"
                   onChange={handleInput}
                 ></InputForm>
@@ -70,7 +71,7 @@ const UserForm = ({
                   type="email"
                   className="input-user"
                   value={currentUser.email}
-                  placeholder="User Email"
+                  placeholder="e.g. dashboard@email.com"
                   name="email"
                   onChange={handleInput}
                 ></InputForm>
@@ -78,10 +79,11 @@ const UserForm = ({
               <InputContainer style={{ width: "30%" }}>
                 <InputDescription>Password</InputDescription>
                 <InputForm
+                  required
                   type="password"
                   className="input-user"
                   value={currentUser.pass}
-                  placeholder="Enter the Password"
+                  placeholder="************"
                   name="pass"
                   onChange={handleInput}
                 ></InputForm>
@@ -101,9 +103,10 @@ const UserForm = ({
               <InputContainer style={{ width: "50%" }}>
                 <InputDescription>Position Description</InputDescription>
                 <InputForm
+                  required
                   type="textarea"
                   className="input-user"
-                  placeholder="Position Description"
+                  placeholder="User job position"
                   name="description"
                   value={currentUser.description}
                   onChange={handleInput}
@@ -129,7 +132,7 @@ const UserForm = ({
                   type="number"
                   className="input-user"
                   value={currentUser.phone}
-                  placeholder="Phone Number"
+                  placeholder="e.g. 913661842"
                   name="phone"
                   onChange={handleInput}
                 ></InputForm>

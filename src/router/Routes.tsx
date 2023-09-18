@@ -25,6 +25,7 @@ export const AppRoutes = ({ authReady }) => {
   return (
     <Routes>
             
+      <Route path="/" element={<Navigate to="/dashboard" />} />
       <Route path="/login" element={authReady ? <Navigate to="/dashboard" /> : <Login />}/>
 
       <Route path="/" element={<ProtectRoute authReady={authReady} />}>

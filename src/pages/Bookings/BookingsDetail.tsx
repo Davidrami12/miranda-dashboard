@@ -1,7 +1,7 @@
 // React & Router
 import React from "react";
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 
 // Redux
 import { getBooking } from "../../features/bookingsSlice";
@@ -12,6 +12,9 @@ import {
   Subcontainer,
   BookingDataContainer,
   BookingDataSubcontainer,
+  ProfileContainer,
+  GuestName,
+  BookingID,
   Title,
   Data,
   Text,
@@ -19,14 +22,11 @@ import {
   Facilities,
   SwiperContainer,
   Tag,
+  Icon
 } from "./SingleBookingStyled";
-import {
-  GuestContainer,
-  GuestName,
-  BookingID,
-} from "../../components/bookings/BookingRowStyled";
 import SingleBookingSwiper from "../../components/bookings/SingleBookingSwiper";
 import { Loader } from "../../components/styled/Loader";
+import { RiArrowGoBackFill } from "react-icons/ri"
 
 // TypeScript
 import { useAppDispatch, useAppSelector } from "../../app/hooks";
@@ -41,6 +41,7 @@ export const SingleBooking = () => {
 
   const dispatch = useAppDispatch();
   const params = useParams();
+  const navigate = useNavigate();
 
   const { id } = params;
   const { singleBooking } = useAppSelector<BookingsType>(
@@ -52,14 +53,20 @@ export const SingleBooking = () => {
     if (id) {
       dispatch(getBooking(id));
     }
-    console.log(id)
   }, [id, dispatch]);
+
+  const goBackToUsers = () => {
+    navigate(-1);
+  }
 
   if (singleBooking) {
     return (
       <Container style={{ flexDirection: "row" }}>
         <Subcontainer>
-          <GuestContainer>
+          <Icon onClick={goBackToUsers}>
+            <RiArrowGoBackFill style={{ width: 30 , height: 30 }}/>
+          </Icon>
+          <ProfileContainer>
             <img
               style={{ width: 150, height: 150 }}
               src={singleBooking.userPicture}
@@ -69,7 +76,7 @@ export const SingleBooking = () => {
               <GuestName>{singleBooking.userName}</GuestName>
               <BookingID>ID {singleBooking._id}</BookingID>
             </div>
-          </GuestContainer>
+          </ProfileContainer>
           <BookingDataContainer>
             <BookingDataSubcontainer>
               <Title>Check In</Title>

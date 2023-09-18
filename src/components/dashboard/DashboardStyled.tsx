@@ -9,11 +9,6 @@ const DashboardContainer = styled.div`
 `;
 
 const KPI = styled.div`
-  /* height: 12.5rem;
-  width: 100%;
-  display: flex;
-  justify-content: space-between;
-  gap: 4rem; */
   display: flex;
   flex-wrap: wrap;
   gap: 40px;
