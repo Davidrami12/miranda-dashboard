@@ -8,6 +8,8 @@ const HeaderContainer = styled.div`
   align-items: center;
   background-color: white;
   box-shadow: 0px 3px 10px #00000005;
+  position: fixed;
+  z-index: 998;
 `;
 
 const HeaderTitle = styled.h1`
@@ -18,7 +20,7 @@ const HeaderTitle = styled.h1`
   flex: 1;
 `;
 
-const HeaderElements = styled.div`
+const HeaderElements = styled.div<{ sidebarExpanded: boolean }>`
   width: 100%;
   padding-left: 5rem;
   padding-right: 3rem;
@@ -26,6 +28,8 @@ const HeaderElements = styled.div`
   align-items: center;
   justify-content: center;
   gap: 50px;
+  transition: all 0.4s;
+  margin-left: ${props => props.sidebarExpanded ? "345px" : "0px"};
 `;
 
 const Icon = styled.div`
@@ -34,6 +38,7 @@ const Icon = styled.div`
   background-color: transparent;
   border-radius: 0%;
   transition: 0.3s;
+  z-index: 999;
 
   &:hover{
     background-color: rgba(59, 153, 59, 0.25);

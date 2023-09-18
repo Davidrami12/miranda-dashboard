@@ -27,8 +27,7 @@ import { FaUsers } from "react-icons/fa";
 import { ImKey } from "react-icons/im"
 
 
-
-export const Sidebar = () => {
+export const Sidebar = ({ expanded, toggleSidebar, rotated }) => {
 
   let user: object = {
     photo: UserImage,
@@ -37,18 +36,18 @@ export const Sidebar = () => {
   }
 
   const [display, setDisplay] = useState(0);
-  const [rotated, setRotated] = useState(false);
+  //const [rotated, setRotated] = useState(false);
 
   const location = useLocation();
 
-  const displayMenu = () => {
+  /* const displayMenu = () => {
     setDisplay(display === 0 ? 345 : 0);
     setRotated(!rotated);
-  }
+  } */
 
   return (
-    <NavContainer display={display ? "0px" : "345px"}>
-      <MenuButton onClick={displayMenu}>
+    <NavContainer display={expanded ? "345px" : "0px"}>
+      <MenuButton onClick={toggleSidebar}>
         <Icon><MenuIcon rotated={rotated} className='menu' /></Icon>
       </MenuButton>
 

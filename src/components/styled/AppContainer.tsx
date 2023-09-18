@@ -8,7 +8,6 @@ const AppContainer = styled.div`
   width: fit-content;
   min-width: 100%;
   min-height: 100vh;
-  //height: 100%;
   .window-container {
     width: 100%;
   }
@@ -18,4 +17,10 @@ const WindowContent = styled.div`
   width: 100%;
 `;
 
-export { AppContainer, WindowContent };
+const AppContent = styled.div<{ sidebarExpanded: boolean }>`
+  margin-left: ${props => props.sidebarExpanded ? "345px" : "0px"};
+  margin-top: 150px;
+  transition: all 0.4s;
+`;
+
+export { AppContainer, WindowContent, AppContent };
