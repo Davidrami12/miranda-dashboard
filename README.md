@@ -1,72 +1,105 @@
-# Getting Started with Create React App
+# <p align="center">🏨 Miranda Dashboard ⭐</p>
 
-Front-end project recreating an administrative dashboard with management actions for Miranda Hotel. React + Redux + TypeScript
+<div align="center">
+  <img src="src/assets/logo.jpg" alt="Miranda logo"/>  
+</div>
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
+## Table of Contents
 
-In the project directory, you can run:
+1. [Introduction](#introduction)
+2. [Technologies](#technologies)
+3. [Features](#features)
+4. [Setup](#setup)
+5. [Usage](#usage)
+6. [Contributing](#contributing)
 
-### `npm start`
+## Introduction
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+<p>💻 Miranda Dashboard is an administratrive page for the Hotel Miranda page, where you can manage bookings, rooms, users and even more things!</p>
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+<p>📦 Deployed on Amazon Web Service (AWS) with S3. You can visualize this project at: http://miranda-travl.s3-website.eu-west-3.amazonaws.com/miranda/login</p>
 
-### `npm test`
+<p>🔗 Connected with an API backend developed also by me. You can check out the repository here: https://github.com/Davidrami12/miranda-dashboard-backend (also deployed on AWS)</p>
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Technologies
+<!-- FRONT END SIDE -->
 
-### `npm run build`
+- HTML
+- CSS
+- JavaScript
+- TypeScript
+- React
+- Redux
+- Toastify
+- Cypress
+- JEST
+- MongoDB
+- Atlas
+- AWS
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+<!-- BACK END SIDE -->
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## Features
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+- **Login Page**: Firstly you will have to log in as a user of the miranda's dashboard. Don't worry, there is a hardcoded administrative user so you can pass the log in form, which has a token that expires after some days to keep some security.
+- **Dashboard Page**: The application's main page, you can visualize the main page with some stadistics and relevant informations such as recent reviews made by users.
+- **Bookings Page**: In the bookings page there will be the bookings that users made to book a room, or several rooms, with important data like check in and check out dates. Click on any booking to see more details about it.
+- **Rooms Page**: Display all the rooms availables and booked too. Enter any room to see some pics inside and check important info about it
+- **Users Page**: The users that are registered inside the dashboard administrative system.
+- **Contacts Page**: In this page there will be comments in a slider and also messages from users that reviewed the hotel.
 
-### `npm run eject`
+## Setup
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+### Prerequisites
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+- Node.js installed (v14 or later recommended)
+- NPM (v6 or later) or Yarn (v1.22 or later)
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+### Installation
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+1. Clone the repository
 
-## Learn More
+```bash
+git clone https://github.com/Davidrami12/miranda-dashboard.git
+cd miranda-dashboard
+```
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+2. Install NPM packages
+```bash
+npm install
+```
+  or
+```bash
+yarn install
+```
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+3. Create a .env file in the root directory of the project, and add the backend API key
+```bash
+REACT_APP_API_URL=your_api_key_here
+```
 
-### Code Splitting
+OR
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+If you want to use local data (JSON) there's also an old version of this application on the branch: local_json_data. NOTE: This version will be an old one and some features would not be available since all the implementations are written directly on the typescript branch and then merged within then current branch.
 
-### Analyzing the Bundle Size
+4. Run the app in the development mode
+```bash
+npm start
+```
+   or
+```
+yarn start
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+Open http://localhost:3000/miranda to view it in the browser.
 
-### Making a Progressive Web App
+## Usage
+Navigate between the sidebar's routes, you can visualize bookings, rooms, users and reviews. And you can even create, update or delete some of them!
+All data is generated using Faker.js library so there is no real information, all the data from the 
+Navigate to the Search page and input a topic to retrieve images related to your query. To add an image to your Favorites, simply click on the heart icon. Visit the Favorites page to view all your favorite images.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+NOTE: Responsive web design has not been planned since this is an applications for administrative personal, it is intentionally developed to use on a PC for desktop users, not available for mobiles.
 
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+## Contributing
+<p>This project is under the MIT license, and contributions are welcome. Please feel free to fork, create a feature branch, and submit a pull request. If you want to contribute to this project and make it better, your help is very welcome.</p>
