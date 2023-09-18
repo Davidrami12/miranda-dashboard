@@ -44,7 +44,7 @@ export const EditOwnUser = () => {
   };
 
   return (
-    <DashboardForm /* style={{ minHeight: "80%" }} */>
+    <DashboardForm>
       <LoginCard>
         <FormTitle>
           <span style={{ display: 'inline-block', borderBottom: '4px solid #135846' }}>

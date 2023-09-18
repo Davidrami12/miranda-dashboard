@@ -60,8 +60,6 @@ const DataContainerButton = styled.td`
     border: none;
     margin-left: 60px;
     padding: 0.5rem;
-    /* width: 24px;
-    height: 24px; */
     cursor: pointer;
   }
 `;
@@ -189,8 +187,6 @@ const DropDown = styled.div`
   position: absolute;
   background-color: #777777;
   background-color: white;
-  /* top: 60%;
-  right: 5%; */
   z-index: 2;
   ul {
     list-style: none;
