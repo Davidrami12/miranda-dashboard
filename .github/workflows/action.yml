@@ -12,6 +12,7 @@ jobs:
       AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
       REACT_APP_API_URL: ${{ secrets.API_URL }}
       AWS_REGION: 'eu-west-3'
+      CI: false
     steps:
 
       - name: Configure AWS Credentials
