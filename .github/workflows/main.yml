@@ -1,0 +1,17 @@
+name: Dashboard update on AWS
+on:
+  push:
+    branches:
+      - master
+      - typescript
+jobs:
+  check-bats-version:
+  run:
+    runs-on: ubuntu-latest
+    env:
+      AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+      AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+      REACT_APP_API_URL: ${{ secrets.API_URL }}
+    steps:
+        - uses: actions/checkout@v3
+        - run: ls -l
