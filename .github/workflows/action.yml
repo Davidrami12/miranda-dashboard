@@ -37,4 +37,4 @@ jobs:
         run: npm run build
 
       - name: Deploy to AWS S3 bucket
-        run: aws s3 sync ./build/ s3://miranda-travl --delete
+        run: aws s3 sync ./build/ s3://${{ secrets.AWS_BUCKET }} --delete
