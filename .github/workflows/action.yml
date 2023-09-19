@@ -24,6 +24,8 @@ jobs:
 
       - name: Checkout code
         uses: actions/checkout@master
+
+      - name: Sync to S3
         uses: jakejarvis/s3-sync-action@master
         with:
           args: --acl public-read --follow-symlinks --delete
