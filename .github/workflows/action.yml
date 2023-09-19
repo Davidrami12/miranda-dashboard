@@ -1,0 +1,13 @@
+name: Dashboard update on AWS
+on:
+  push:
+    branches:
+      - master
+      - typescript
+jobs:
+  check-bats-version:
+  run:
+    runs-on: ubuntu-latest
+    steps:
+        - uses: actions/checkout@v3
+        - run: ls -l
