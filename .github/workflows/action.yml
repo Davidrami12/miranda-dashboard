@@ -12,6 +12,7 @@ jobs:
       AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
       AWS_S3_BUCKET: ${{ secrets.AWS_S3_BUCKET }}
       REACT_APP_API_URL: ${{ secrets.API_URL }}
+      REACT_APP_BASENAME: ${{ secrets.BASENAME }}
       AWS_REGION: 'eu-west-3'
       CI: false
     steps:
