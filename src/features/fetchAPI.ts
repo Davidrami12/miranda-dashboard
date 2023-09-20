@@ -1,6 +1,6 @@
 import { Notification } from '../components/notification/Notification';
 
-const url = process.env.REACT_APP_API_URL;
+const url = process.env.API_URL;
 
 export const fetchAPI = async (direction: string, method: string, data: {} | null): Promise<any> => {
   console.log("URL:", url + direction);
