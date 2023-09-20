@@ -15,6 +15,7 @@ jobs:
       AWS_REGION: 'eu-west-3'
       CI: false
     steps:
+    
       - name: Configure AWS Credentials
         uses: aws-actions/configure-aws-credentials@v2
         with:
