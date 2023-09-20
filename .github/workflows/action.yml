@@ -1,0 +1,42 @@
+name: Dashboard update on AWS
+on:
+  push:
+    branches:
+      - master
+      - typescript
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    env:
+      AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+      AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+      AWS_S3_BUCKET: ${{ secrets.AWS_S3_BUCKET }}
+      REACT_APP_API_URL: ${{ secrets.API_URL }}
+      REACT_APP_BASENAME: ${{ secrets.BASENAME }}
+      AWS_REGION: 'eu-west-3'
+      CI: false
+    steps:
+
+      - name: Configure AWS Credentials
+        uses: aws-actions/configure-aws-credentials@v2
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: eu-west-3
+
+      - name: Checkout code
+        uses: actions/checkout@master
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: "18.12.1"
+
+      - name: Install dependencies
+        run: npm install --legacy-peer-deps
+
+      - name: Build project
+        run: npm run build
+
+      - name: Deploy to AWS S3 bucket
+        run: aws s3 sync ./build/ s3://${{ secrets.AWS_BUCKET }} --delete
