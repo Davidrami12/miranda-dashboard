@@ -81,10 +81,6 @@ const Icon = styled.div`
   }
 `;
 
-const ErrorMessage = styled.span`
-  color: red;
-`;
-
 const DashboardForm = styled.div`
   width: 100%;
   display: flex;
