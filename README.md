@@ -23,8 +23,8 @@
 <p>🔗 Connected with an API backend developed also by me. You can check out the repository here: https://github.com/Davidrami12/miranda-dashboard-backend (also deployed on AWS)</p>
 
 ## Technologies
-<!-- FRONT END SIDE -->
 
+>   <ins>FRONT-END</ins>
 - HTML
 - CSS
 - JavaScript
@@ -34,7 +34,14 @@
 - Toastify
 - Cypress
 - JEST
+
+>   <ins>BACK-END</ins>
+- JavaScript
+- TypeScript
+- NodeJS
+- Express
 - MongoDB
+- MySQL
 - Atlas
 - AWS
 
