@@ -13,7 +13,7 @@ import {
   InputContainer,
   Input,
   Icon,
-  ErrorMessage
+  Note
 } from "../../components/styled/Forms";
 import Logo from '../../assets/logo.jpg';
 import { FaUser } from "react-icons/fa"
@@ -94,7 +94,7 @@ export const Login = () => {
               onChange={(e) => setPassword(e.target.value)}/>
             <Icon><RiLockPasswordFill className='input-icon'></RiLockPasswordFill></Icon>
           </InputContainer>
-          <ErrorMessage className="error">&nbsp;</ErrorMessage>
+          <Note>Note: You might experience a slight delay upon logging in as it is using free AWS services to power this app. Please be patient.</Note>
           <Button type="login" text="LOGIN" data-cy="submit" />
         </form>
       </LoginCard>

@@ -156,6 +156,14 @@ const LoginButton = styled.div`
     background-color: rgba(19, 87, 69, 0.2);
   }
 `;
+
+const Note = styled.div`
+  font-size: 1.6rem;
+  font-style: italic;
+  font-weight: 200;
+  color: #0f2a1fd4;
+`;
+
 const InputSubmit = styled.input`
   display: inline-block;
   background-color: #3fad8144;
@@ -176,6 +184,7 @@ const InputSubmit = styled.input`
     background-color: rgba(18, 151, 115, 0.461);
   }
 `;
+
 const InputCancel = styled.button`
   display: inline-block;
   background-color: rgba(226, 52, 40, 0.1);
@@ -234,12 +243,7 @@ export {
   InputContainer,
   Input,
   Icon,
-  ErrorMessage,
-  
-  
-  
-  
-  
+  Note,
   LoginButton,
   DashboardForm,
   InputForm,
